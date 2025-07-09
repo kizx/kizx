@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>主题 on 醉后的星星</title><link>http://kizx.gitee.io/tags/%E4%B8%BB%E9%A2%98/</link><description>Recent content in 主题 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 06 Jul 2025 08:38:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建及stack主题设置</title><link>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 06 Jul 2025 08:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装hugo">&lt;a href="#%e5%ae%89%e8%a3%85hugo" class="header-anchor">&lt;/a>安装Hugo
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>主题 on 醉后的星星</title><link>https://kizx.github.io/kizx/tags/%E4%B8%BB%E9%A2%98/</link><description>Recent content in 主题 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 06 Jul 2025 08:38:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/kizx/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建及stack主题设置</title><link>https://kizx.github.io/kizx/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 06 Jul 2025 08:38:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装hugo">&lt;a href="#%e5%ae%89%e8%a3%85hugo" class="header-anchor">&lt;/a>安装Hugo
 &lt;/h2>&lt;p>Hugo有标准版、扩展版（extended），还有一个部署版（extended_withdeploy）,扩展板多了图像和Sass处理器，部署版支持直接部署到google、AWS云等。&lt;/p>
 &lt;p>直接下载扩展版：&lt;a class="link" href="https://github.com/gohugoio/hugo/releases/" target="_blank" rel="noopener"
 >https://github.com/gohugoio/hugo/releases/&lt;/a>&lt;/p>
@@ -105,7 +105,7 @@
 &lt;p>&lt;a class="link" href="https://tabler.io/icons" target="_blank" rel="noopener"
 >图标下载&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://krislinzhao.github.io/docs/create-a-wesite-using-github-pages-and-hugo/" target="_blank" rel="noopener"
->如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a>&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
+>如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a>&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>https://kizx.github.io/kizx/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
 >onedrive-OneManager&lt;/a>重新写了个样式当作练手了，本来是想在原有的基础上做一点美化，但程序原样式都是内部样式，而且还有许多内联样式，改起来超级麻烦，所以干脆就从头开始重写了。&lt;/p>
 &lt;h2 id="下载地址">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80" class="header-anchor">&lt;/a>下载地址
 &lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://github.com/kizx/onedrive-index-theme" target="_blank" rel="noopener"
@@ -135,7 +135,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
 [/tabs]&lt;/p>
 &lt;h2 id="更多关于onemanager的设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e5%85%b3%e4%ba%8eonemanager%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多关于OneManager的设置
-&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>PyCharm主题，插件推荐</title><link>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 16 Feb 2020 10:50:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid><description>&lt;p>&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Plugins&lt;/code>里搜索相应插件名即可，或者去网页 &lt;a class="link" href="https://plugins.jetbrains.com/pycharm" target="_blank" rel="noopener"
+&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>PyCharm主题，插件推荐</title><link>https://kizx.github.io/kizx/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 16 Feb 2020 10:50:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid><description>&lt;p>&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Plugins&lt;/code>里搜索相应插件名即可，或者去网页 &lt;a class="link" href="https://plugins.jetbrains.com/pycharm" target="_blank" rel="noopener"
 >https://plugins.jetbrains.com/pycharm&lt;/a> 搜索插件下载后本地安装亦可，唯一的问题可能就是网络连接性可能不太好。&lt;/p>
 &lt;h2 id="主题推荐">&lt;a href="#%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>主题推荐
 &lt;/h2>&lt;p>先说说主题设置，下好主题后在设置&lt;code>Appearance&lt;/code>里切换主题。
@@ -276,7 +276,7 @@ loading="lazy"
 一个很全的设置说明：https://blog.csdn.net/u013088062/article/details/50388329
 对部分设置选项功能进行说明：https://segmentfault.com/a/1190000022799670
 一些有用的设置：https://cloud.tencent.com/developer/news/393471
-一个炒鸡棒的PyCharm 中文指南：http://pycharm.iswbm.com/zh_CN/latest/index.html&lt;/p></description></item><item><title>Typecho+Handsome主题美化</title><link>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</link><pubDate>Sat, 28 Dec 2019 06:06:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</guid><description>&lt;h2 id="美化教程">&lt;a href="#%e7%be%8e%e5%8c%96%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>美化教程
+一个炒鸡棒的PyCharm 中文指南：http://pycharm.iswbm.com/zh_CN/latest/index.html&lt;/p></description></item><item><title>Typecho+Handsome主题美化</title><link>https://kizx.github.io/kizx/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</link><pubDate>Sat, 28 Dec 2019 06:06:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</guid><description>&lt;h2 id="美化教程">&lt;a href="#%e7%be%8e%e5%8c%96%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>美化教程
 &lt;/h2>&lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/docs/#/" target="_blank" rel="noopener"
 >handsome使用文档&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/course.html" target="_blank" rel="noopener"
@@ -666,7 +666,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Typecho主题推荐</title><link>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 15 Sep 2019 14:05:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="typecho主题推荐">&lt;a href="#typecho%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Typecho主题推荐
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Typecho主题推荐</title><link>https://kizx.github.io/kizx/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 15 Sep 2019 14:05:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="typecho主题推荐">&lt;a href="#typecho%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Typecho主题推荐
 &lt;/h1>&lt;h2 id="1-purelovefortypecho">&lt;a href="#1-purelovefortypecho" class="header-anchor">&lt;/a>1. &lt;a class="link" href="https://www.hoehub.com/PHP/typecho-pureLove.html" target="_blank" rel="noopener"
 >PureLoveForTypecho&lt;/a>
 &lt;/h2>&lt;p>&lt;img src="https://www.hoehub.com/usr/uploads/2018/11/1320732040.png"
@@ -716,7 +716,7 @@ loading="lazy"
 >hufman&lt;/a>
 &lt;/h2>&lt;p>&lt;img src="https://user-images.githubusercontent.com/22344037/57577796-760b5b80-74b1-11e9-8475-b18e17371f31.jpg"
 loading="lazy"
->&lt;/p></description></item><item><title>Zblog主题推荐</title><link>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Fri, 06 Sep 2019 17:20:00 +0000</pubDate><guid>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="zblog主题推荐">&lt;a href="#zblog%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Zblog主题推荐
+>&lt;/p></description></item><item><title>Zblog主题推荐</title><link>https://kizx.github.io/kizx/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Fri, 06 Sep 2019 17:20:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="zblog主题推荐">&lt;a href="#zblog%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Zblog主题推荐
 &lt;/h1>&lt;h2 id="1-filmlee">&lt;a href="#1-filmlee" class="header-anchor">&lt;/a>1. filmlee
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.talklee.com/blog/162.html" target="_blank" rel="noopener"
 >https://www.talklee.com/blog/162.html&lt;/a>&lt;br>
@@ -758,7 +758,7 @@ loading="lazy"
 >https://app.zblogcn.com/?id=877&lt;/a>&lt;br>
 &lt;img src="https://pan.2bboy.com/img/2019/10/20190907020425.png"
 loading="lazy"
->&lt;/p></description></item><item><title>WordPress主题推荐</title><link>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Thu, 05 Sep 2019 17:19:00 +0000</pubDate><guid>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="wordpress主题推荐">&lt;a href="#wordpress%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>WordPress主题推荐
+>&lt;/p></description></item><item><title>WordPress主题推荐</title><link>https://kizx.github.io/kizx/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Thu, 05 Sep 2019 17:19:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="wordpress主题推荐">&lt;a href="#wordpress%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>WordPress主题推荐
 &lt;/h1>&lt;h2 id="1-dobby">&lt;a href="#1-dobby" class="header-anchor">&lt;/a>1. Dobby
 &lt;/h2>&lt;p>Download: &lt;a class="link" href="https://github.com/Vtrois/Dobby" target="_blank" rel="noopener"
 >https://github.com/Vtrois/Dobby&lt;/a>&lt;br>
@@ -826,7 +826,7 @@ loading="lazy"
 >&lt;br>
 &lt;img src="https://pan.2bboy.com/img/2019/10/20190907013155.png"
 loading="lazy"
->&lt;/p></description></item><item><title>Hexo主题推荐</title><link>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Tue, 03 Sep 2019 17:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="hexo主题推荐">&lt;a href="#hexo%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Hexo主题推荐
+>&lt;/p></description></item><item><title>Hexo主题推荐</title><link>https://kizx.github.io/kizx/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Tue, 03 Sep 2019 17:18:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="hexo主题推荐">&lt;a href="#hexo%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Hexo主题推荐
 &lt;/h1>&lt;h2 id="双栏">&lt;a href="#%e5%8f%8c%e6%a0%8f" class="header-anchor">&lt;/a>双栏
 &lt;/h2>&lt;h3 id="1-a-ace">&lt;a href="#1-a-ace" class="header-anchor">&lt;/a>1. A-ACE
 &lt;/h3>&lt;ul>

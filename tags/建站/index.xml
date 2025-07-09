@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>建站 on 醉后的星星</title><link>http://kizx.gitee.io/tags/%E5%BB%BA%E7%AB%99/</link><description>Recent content in 建站 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 06 Jul 2025 08:38:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建及stack主题设置</title><link>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 06 Jul 2025 08:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装hugo">&lt;a href="#%e5%ae%89%e8%a3%85hugo" class="header-anchor">&lt;/a>安装Hugo
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>建站 on 醉后的星星</title><link>https://kizx.github.io/kizx/tags/%E5%BB%BA%E7%AB%99/</link><description>Recent content in 建站 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 06 Jul 2025 08:38:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/kizx/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建及stack主题设置</title><link>https://kizx.github.io/kizx/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 06 Jul 2025 08:38:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装hugo">&lt;a href="#%e5%ae%89%e8%a3%85hugo" class="header-anchor">&lt;/a>安装Hugo
 &lt;/h2>&lt;p>Hugo有标准版、扩展版（extended），还有一个部署版（extended_withdeploy）,扩展板多了图像和Sass处理器，部署版支持直接部署到google、AWS云等。&lt;/p>
 &lt;p>直接下载扩展版：&lt;a class="link" href="https://github.com/gohugoio/hugo/releases/" target="_blank" rel="noopener"
 >https://github.com/gohugoio/hugo/releases/&lt;/a>&lt;/p>
@@ -105,7 +105,7 @@
 &lt;p>&lt;a class="link" href="https://tabler.io/icons" target="_blank" rel="noopener"
 >图标下载&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://krislinzhao.github.io/docs/create-a-wesite-using-github-pages-and-hugo/" target="_blank" rel="noopener"
->如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a>&lt;/p></description></item><item><title>阿里云OSS自动上传部署静态网站</title><link>http://kizx.gitee.io/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link><pubDate>Sat, 29 May 2021 13:44:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid><description>&lt;h2 id="准备">&lt;a href="#%e5%87%86%e5%a4%87" class="header-anchor">&lt;/a>准备
+>如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a>&lt;/p></description></item><item><title>阿里云OSS自动上传部署静态网站</title><link>https://kizx.github.io/kizx/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link><pubDate>Sat, 29 May 2021 13:44:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid><description>&lt;h2 id="准备">&lt;a href="#%e5%87%86%e5%a4%87" class="header-anchor">&lt;/a>准备
 &lt;/h2>&lt;p>现要利用阿里云OSS部署一个静态网页，通过本地编译生成静态网页后实现自动上传更新部署。&lt;/p>
 &lt;ol>
 &lt;li>首先开通阿里OSS服务，然后新建一个存储桶，权限设为公共可读，地域选择香港，因为国内域名需备案。&lt;/li>
@@ -190,7 +190,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="https://help.aliyun.com/document_detail/32068.html?spm=a2c4g.11186623.6.1058.42b92a220SHC2F" target="_blank" rel="noopener"
 >https://help.aliyun.com/document_detail/32068.html?spm=a2c4g.11186623.6.1058.42b92a220SHC2F&lt;/a>
 &lt;a class="link" href="https://help.aliyun.com/document_detail/39630.html?spm=a2c4g.11186623.6.666.1b263331Q5jiQY" target="_blank" rel="noopener"
->https://help.aliyun.com/document_detail/39630.html?spm=a2c4g.11186623.6.666.1b263331Q5jiQY&lt;/a>&lt;/p></description></item><item><title>Onedrive云盘程序——OneManager小白设置指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Sun, 24 May 2020 08:06:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="onemanager是什么">&lt;a href="#onemanager%e6%98%af%e4%bb%80%e4%b9%88" class="header-anchor">&lt;/a>OneManager是什么
+>https://help.aliyun.com/document_detail/39630.html?spm=a2c4g.11186623.6.666.1b263331Q5jiQY&lt;/a>&lt;/p></description></item><item><title>Onedrive云盘程序——OneManager小白设置指南</title><link>https://kizx.github.io/kizx/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Sun, 24 May 2020 08:06:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="onemanager是什么">&lt;a href="#onemanager%e6%98%af%e4%bb%80%e4%b9%88" class="header-anchor">&lt;/a>OneManager是什么
 &lt;/h2>&lt;p>这是一个利用微软onedrive api将onedrive目录映射成一个云盘的程序，类似的程序有很多，比如OneIndex、Pyone、OnePoint等等。这个程序的特点是支持多种onedrive类型，可以部署在vps，heroku，以及腾讯云scf上。
 [button color=&amp;ldquo;info&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://github.com/qkqpttgf/OneManager-php&amp;rdquo; type=&amp;quot;&amp;quot;]项目地址[/button]
 [button color=&amp;ldquo;info&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://pan.2bboy.com/&amp;rdquo; type=&amp;quot;&amp;quot;]我的Demo[/button]&lt;/p>
@@ -344,7 +344,7 @@ loading="lazy"
 &lt;li>游客上传文件时只能单个上传，不能批量上传。&lt;/li>
 &lt;li>由于scf的缓存系统，在scf上进行某项改动后有时候不会立马生效，或者刷新后时而生效时而不生效，只要多等一会儿，等旧缓存自己失效就好了。&lt;/li>
 &lt;li>php格式的主题为旧版主题，许多功能不支持，html格式的主题为新版主题，不同主题的作者更新频率和支持功能都可能不同，功能测试请以最新版本的默认主题为准。&lt;/li>
-&lt;/ul></description></item><item><title>使用百度统计和百度搜索为网站增加小功能</title><link>http://kizx.gitee.io/post/%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E4%B8%BA%E7%BD%91%E7%AB%99%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%8A%9F%E8%83%BD/</link><pubDate>Thu, 21 May 2020 06:13:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E4%B8%BA%E7%BD%91%E7%AB%99%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>百度统计平台：https://tongji.baidu.com/web/28991244/welcome/login&lt;/p>
+&lt;/ul></description></item><item><title>使用百度统计和百度搜索为网站增加小功能</title><link>https://kizx.github.io/kizx/post/%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E4%B8%BA%E7%BD%91%E7%AB%99%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%8A%9F%E8%83%BD/</link><pubDate>Thu, 21 May 2020 06:13:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E4%BD%BF%E7%94%A8%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E5%92%8C%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E4%B8%BA%E7%BD%91%E7%AB%99%E5%A2%9E%E5%8A%A0%E5%B0%8F%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>百度统计平台：https://tongji.baidu.com/web/28991244/welcome/login&lt;/p>
 &lt;p>&lt;img src="https://pan.2bboy.com/img/2020/05/0521131515.png"
 loading="lazy"
 >
@@ -388,7 +388,7 @@ loading="lazy"
 >
 &lt;img src="https://pan.2bboy.com/img/2020/05/0521191015.png"
 loading="lazy"
->&lt;/p></description></item><item><title>利用腾讯云SCF免费搭建自己的一言API接口</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</link><pubDate>Thu, 16 Apr 2020 14:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>通常我们如果想要搭建一个API服务，最起码都需要一个服务器，但是即使是最便宜的虚拟主机价格也不一定便宜，而且就算你会用自己的语言写API接口，服务器的响应环境配置也是相当麻烦。而利用云函数则完美避开了这些坑，腾讯云函数的免费额度个人用的话基本等于免费。关于云函数的使用我之前也略微了解过，下面就用Python搭建一个简单的一言API接口来实际操作下。
+>&lt;/p></description></item><item><title>利用腾讯云SCF免费搭建自己的一言API接口</title><link>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</link><pubDate>Thu, 16 Apr 2020 14:11:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>通常我们如果想要搭建一个API服务，最起码都需要一个服务器，但是即使是最便宜的虚拟主机价格也不一定便宜，而且就算你会用自己的语言写API接口，服务器的响应环境配置也是相当麻烦。而利用云函数则完美避开了这些坑，腾讯云函数的免费额度个人用的话基本等于免费。关于云函数的使用我之前也略微了解过，下面就用Python搭建一个简单的一言API接口来实际操作下。
 [post cid=&amp;ldquo;143&amp;rdquo; /]&lt;/p>
 &lt;h2 id="搭建过程">&lt;a href="#%e6%90%ad%e5%bb%ba%e8%bf%87%e7%a8%8b" class="header-anchor">&lt;/a>搭建过程
 &lt;/h2>&lt;p>首先新建函数，这里我选择python3.6环境
@@ -493,7 +493,7 @@ loading="lazy"
 如果你不想要后面这个云函数的名称或者想换一个，还是那个服务界面，选择管理API，点击编辑就能自定义后缀了，修改后按照提示下一步然后重新发布就行了，现在就能通过http://api.2bboy.com/访问了
 &lt;img src="https://pan.2bboy.com/img/2020/04/0416220637.jpg"
 loading="lazy"
->&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
+>&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>https://kizx.github.io/kizx/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
 >onedrive-OneManager&lt;/a>重新写了个样式当作练手了，本来是想在原有的基础上做一点美化，但程序原样式都是内部样式，而且还有许多内联样式，改起来超级麻烦，所以干脆就从头开始重写了。&lt;/p>
 &lt;h2 id="下载地址">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80" class="header-anchor">&lt;/a>下载地址
 &lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://github.com/kizx/onedrive-index-theme" target="_blank" rel="noopener"
@@ -523,7 +523,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
 [/tabs]&lt;/p>
 &lt;h2 id="更多关于onemanager的设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e5%85%b3%e4%ba%8eonemanager%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多关于OneManager的设置
-&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>Typecho+Handsome主题美化</title><link>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</link><pubDate>Sat, 28 Dec 2019 06:06:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</guid><description>&lt;h2 id="美化教程">&lt;a href="#%e7%be%8e%e5%8c%96%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>美化教程
+&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>Typecho+Handsome主题美化</title><link>https://kizx.github.io/kizx/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</link><pubDate>Sat, 28 Dec 2019 06:06:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</guid><description>&lt;h2 id="美化教程">&lt;a href="#%e7%be%8e%e5%8c%96%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>美化教程
 &lt;/h2>&lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/docs/#/" target="_blank" rel="noopener"
 >handsome使用文档&lt;/a>&lt;/p>
 &lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/course.html" target="_blank" rel="noopener"
@@ -913,7 +913,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>利用windows自带的网络位置进行ftp登录</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8windows%E8%87%AA%E5%B8%A6%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E8%BF%9B%E8%A1%8Cftp%E7%99%BB%E5%BD%95/</link><pubDate>Sun, 15 Dec 2019 06:21:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8windows%E8%87%AA%E5%B8%A6%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E8%BF%9B%E8%A1%8Cftp%E7%99%BB%E5%BD%95/</guid><description>&lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>利用windows自带的网络位置进行ftp登录</title><link>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8windows%E8%87%AA%E5%B8%A6%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E8%BF%9B%E8%A1%8Cftp%E7%99%BB%E5%BD%95/</link><pubDate>Sun, 15 Dec 2019 06:21:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8windows%E8%87%AA%E5%B8%A6%E7%9A%84%E7%BD%91%E7%BB%9C%E4%BD%8D%E7%BD%AE%E8%BF%9B%E8%A1%8Cftp%E7%99%BB%E5%BD%95/</guid><description>&lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
 &lt;/h2>&lt;p>打开我的电脑，空白处右键添加网络位置，点下一步然后参照示例添加ftp地址
 &lt;img src="https://pan.2bboy.com/img/2019/12/1215141252.png"
 loading="lazy"
@@ -923,7 +923,7 @@ loading="lazy"
 loading="lazy"
 >
 [scode type=&amp;ldquo;blue&amp;rdquo;]其实这就是个快捷方式，在资源管理器地址栏直接输入ftp地址就可以直接登陆。
-另外，在浏览器里直接输入ftp地址也是可以进行访问的。[/scode]&lt;/p></description></item><item><title>利用QQ机器人发送时光机</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</link><pubDate>Fri, 15 Nov 2019 12:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</guid><description>&lt;p>现在handsome主题已经有了微信公众号和浏览器拓展两种方式向时光机发送消息，那么自然就想到QQ端是否也可以做到，所以我就通过对浏览器扩展发送时光机进行抓包，然后基于酷Q和nonebot，实现了通过向QQ小号发送消息的方式向时光机发送消息。
+另外，在浏览器里直接输入ftp地址也是可以进行访问的。[/scode]&lt;/p></description></item><item><title>利用QQ机器人发送时光机</title><link>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</link><pubDate>Fri, 15 Nov 2019 12:38:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</guid><description>&lt;p>现在handsome主题已经有了微信公众号和浏览器拓展两种方式向时光机发送消息，那么自然就想到QQ端是否也可以做到，所以我就通过对浏览器扩展发送时光机进行抓包，然后基于酷Q和nonebot，实现了通过向QQ小号发送消息的方式向时光机发送消息。
 [scode type=&amp;ldquo;share&amp;rdquo;]代码见&lt;a class="link" href="https://github.com/kizx/coolq-cross-bot" target="_blank" rel="noopener"
 >github&lt;/a>[/scode]&lt;/p>
 &lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
@@ -1061,7 +1061,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;glyphicon glyphicon-record m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 改成下面这样
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&amp;lt;?php echo &lt;/span>&lt;span style="color:#e6db74">$ua-&amp;gt;returnTimeUa&lt;/span>&lt;span style="color:#e6db74">()[&amp;#39;icon&amp;#39;] ?&amp;gt; m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OneDrive使用指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OneDrive使用指南</title><link>https://kizx.github.io/kizx/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
 &lt;/h2>&lt;p>OneDrive当云盘的好处是不限速，但实际速度并不会跑满带宽，具体速度以实际情况为准，我的速度用客户端上传的话最快能跑到7M/s，网页下载配合idm的话有时能跑满带宽，还是相当给力的。其次还有一个优点就是内容不会被和谐。&lt;/p>
 &lt;p>但普通邮箱注册只有5G的免费空间，教育邮箱注册可以获得5T的免费空间，但一般正规教育邮箱注册只有1T的可用空间，不过1T也基本上够用了，如果没有教育邮箱可以选择花几块钱买一个5T账号省的麻烦。&lt;/p>
 &lt;p>注意我们这里注册的是office365的账号和微软账号通用，可以通过以下方法查看空间大小：登录到office365，进入OneDrive，选择右上角设置-&amp;gt;OneDrive设置，继续选择其他设置-&amp;gt;存储标准即可看到空间大小，或者打开onedrive桌面客户端也可以进行查看。&lt;/p>
@@ -1085,7 +1085,7 @@ loading="lazy"
 &lt;h2 id="附onedrive种类示意图">&lt;a href="#%e9%99%84onedrive%e7%a7%8d%e7%b1%bb%e7%a4%ba%e6%84%8f%e5%9b%be" class="header-anchor">&lt;/a>附onedrive种类示意图
 &lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/20200312191455.jpg"
 loading="lazy"
->&lt;/p></description></item><item><title>Typecho主题推荐</title><link>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 15 Sep 2019 14:05:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="typecho主题推荐">&lt;a href="#typecho%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Typecho主题推荐
+>&lt;/p></description></item><item><title>Typecho主题推荐</title><link>https://kizx.github.io/kizx/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 15 Sep 2019 14:05:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="typecho主题推荐">&lt;a href="#typecho%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Typecho主题推荐
 &lt;/h1>&lt;h2 id="1-purelovefortypecho">&lt;a href="#1-purelovefortypecho" class="header-anchor">&lt;/a>1. &lt;a class="link" href="https://www.hoehub.com/PHP/typecho-pureLove.html" target="_blank" rel="noopener"
 >PureLoveForTypecho&lt;/a>
 &lt;/h2>&lt;p>&lt;img src="https://www.hoehub.com/usr/uploads/2018/11/1320732040.png"
@@ -1135,7 +1135,7 @@ loading="lazy"
 >hufman&lt;/a>
 &lt;/h2>&lt;p>&lt;img src="https://user-images.githubusercontent.com/22344037/57577796-760b5b80-74b1-11e9-8475-b18e17371f31.jpg"
 loading="lazy"
->&lt;/p></description></item><item><title>百度云虚拟主机BCH + Typecho的一些坑</title><link>http://kizx.gitee.io/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link><pubDate>Fri, 13 Sep 2019 17:31:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid><description>&lt;h2 id="1-ssl配置">&lt;a href="#1-ssl%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>1. SSL配置
+>&lt;/p></description></item><item><title>百度云虚拟主机BCH + Typecho的一些坑</title><link>https://kizx.github.io/kizx/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link><pubDate>Fri, 13 Sep 2019 17:31:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid><description>&lt;h2 id="1-ssl配置">&lt;a href="#1-ssl%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>1. SSL配置
 &lt;/h2>&lt;p>默认情况下使用SSL浏览器会提示有危险加载项，而且后台也进不去，这时只需要在后台将在目录下的 &lt;code>config.inc.php&lt;/code>文件中添加一下代码即可一切正常&lt;/p>
 &lt;pre tabindex="0">&lt;code>/** 开启HTTPS */
 define(&amp;#39;__TYPECHO_SECURE__&amp;#39;,true);
@@ -1149,7 +1149,7 @@ rewrite ^(.*)$ /index.php$1 last;
 }
 &lt;/code>&lt;/pre>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
 &lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/enweitech/article/details/75108048" target="_blank" rel="noopener"
->https://blog.csdn.net/enweitech/article/details/75108048&lt;/a>&lt;/p></description></item><item><title>Hexo、WordPress、Zblog、Typecho比较</title><link>http://kizx.gitee.io/post/hexowordpresszblogtypecho%E6%AF%94%E8%BE%83/</link><pubDate>Fri, 06 Sep 2019 18:22:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hexowordpresszblogtypecho%E6%AF%94%E8%BE%83/</guid><description>&lt;h2 id="总览">&lt;a href="#%e6%80%bb%e8%a7%88" class="header-anchor">&lt;/a>总览
+>https://blog.csdn.net/enweitech/article/details/75108048&lt;/a>&lt;/p></description></item><item><title>Hexo、WordPress、Zblog、Typecho比较</title><link>https://kizx.github.io/kizx/post/hexowordpresszblogtypecho%E6%AF%94%E8%BE%83/</link><pubDate>Fri, 06 Sep 2019 18:22:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/hexowordpresszblogtypecho%E6%AF%94%E8%BE%83/</guid><description>&lt;h2 id="总览">&lt;a href="#%e6%80%bb%e8%a7%88" class="header-anchor">&lt;/a>总览
 &lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
@@ -1223,7 +1223,7 @@ rewrite ^(.*)$ /index.php$1 last;
 &lt;p>说到简介，Typecho显然更胜一筹，安装包只有几百kb大小，后台也简洁到没有一处多余功能，Typecho的主题大都也继承这种简洁风格，可供选择主题的主题还算是蛮多的，&lt;a class="link" href="https://www.2bboy.com/archives/16.html" target="_blank" rel="noopener"
 >我的Typecho主题搜集&lt;/a>，虽然简洁但也是五脏俱全，如果能懂一点网页编程的话就能更好的改造出适合自己的主题了。&lt;/p>
 &lt;/li>
-&lt;/ul></description></item><item><title>Zblog主题推荐</title><link>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Fri, 06 Sep 2019 17:20:00 +0000</pubDate><guid>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="zblog主题推荐">&lt;a href="#zblog%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Zblog主题推荐
+&lt;/ul></description></item><item><title>Zblog主题推荐</title><link>https://kizx.github.io/kizx/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Fri, 06 Sep 2019 17:20:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="zblog主题推荐">&lt;a href="#zblog%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Zblog主题推荐
 &lt;/h1>&lt;h2 id="1-filmlee">&lt;a href="#1-filmlee" class="header-anchor">&lt;/a>1. filmlee
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.talklee.com/blog/162.html" target="_blank" rel="noopener"
 >https://www.talklee.com/blog/162.html&lt;/a>&lt;br>
@@ -1265,7 +1265,7 @@ loading="lazy"
 >https://app.zblogcn.com/?id=877&lt;/a>&lt;br>
 &lt;img src="https://pan.2bboy.com/img/2019/10/20190907020425.png"
 loading="lazy"
->&lt;/p></description></item><item><title>WordPress主题推荐</title><link>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Thu, 05 Sep 2019 17:19:00 +0000</pubDate><guid>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="wordpress主题推荐">&lt;a href="#wordpress%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>WordPress主题推荐
+>&lt;/p></description></item><item><title>WordPress主题推荐</title><link>https://kizx.github.io/kizx/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Thu, 05 Sep 2019 17:19:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="wordpress主题推荐">&lt;a href="#wordpress%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>WordPress主题推荐
 &lt;/h1>&lt;h2 id="1-dobby">&lt;a href="#1-dobby" class="header-anchor">&lt;/a>1. Dobby
 &lt;/h2>&lt;p>Download: &lt;a class="link" href="https://github.com/Vtrois/Dobby" target="_blank" rel="noopener"
 >https://github.com/Vtrois/Dobby&lt;/a>&lt;br>
@@ -1333,7 +1333,7 @@ loading="lazy"
 >&lt;br>
 &lt;img src="https://pan.2bboy.com/img/2019/10/20190907013155.png"
 loading="lazy"
->&lt;/p></description></item><item><title>Hexo主题推荐</title><link>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Tue, 03 Sep 2019 17:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="hexo主题推荐">&lt;a href="#hexo%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Hexo主题推荐
+>&lt;/p></description></item><item><title>Hexo主题推荐</title><link>https://kizx.github.io/kizx/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Tue, 03 Sep 2019 17:18:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="hexo主题推荐">&lt;a href="#hexo%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Hexo主题推荐
 &lt;/h1>&lt;h2 id="双栏">&lt;a href="#%e5%8f%8c%e6%a0%8f" class="header-anchor">&lt;/a>双栏
 &lt;/h2>&lt;h3 id="1-a-ace">&lt;a href="#1-a-ace" class="header-anchor">&lt;/a>1. A-ACE
 &lt;/h3>&lt;ul>
@@ -1474,7 +1474,7 @@ loading="lazy"
 &lt;img src="https://pan.2bboy.com/img/2019/10/20190906002802.png"
 loading="lazy"
 >&lt;/li>
-&lt;/ul></description></item><item><title>零基础不花一分钱建站之WordPress篇</title><link>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</link><pubDate>Sat, 17 Aug 2019 17:17:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/ul></description></item><item><title>零基础不花一分钱建站之WordPress篇</title><link>https://kizx.github.io/kizx/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</link><pubDate>Sat, 17 Aug 2019 17:17:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
 &lt;/h2>&lt;p>最近懒癌犯了，本来应该紧接着上一个hexo篇写的，这样也好做一个对比，但长时间不操作我也有点忘了，赶紧靠着仅存的记忆记一下wp建站的操作。&lt;/p>
 &lt;p>比起hexo建站，wp在操作上可以说是很简单了，但wp的功能和可玩性比hexo更强，毕竟是应用最广泛的建站方案，其主题数量和应用范围远远超过hexo，除了博客网站，各种新闻、商店、图片等网站也大量使用wp。&lt;/p>
 &lt;p>本篇主题为零基础不花一分钱建站，建站需要两样东西：主机空间和域名。我这里的不花一分钱主要指免费的主机空间，主机空间一般都有临时域名可以拿来用用，所以买域名的钱我就不算了，而且最便宜的域名也只要1块钱，也不算贵。&lt;/p>
@@ -1541,7 +1541,7 @@ alt="控制台"
 &lt;li>缺点：服务器在国外访问速度较慢，但也还能接受啦，只能免费用一年。&lt;/li>
 &lt;/ul>&lt;/blockquote>&lt;/blockquote>
 &lt;h2 id="和hexo比较">&lt;a href="#%e5%92%8chexo%e6%af%94%e8%be%83" class="header-anchor">&lt;/a>和Hexo比较
-&lt;/h2>&lt;p>由于wordpress有自己的后台管理，在功能上比静态的hexo要强大不少，部署的操作上比较简单，但是部署后网站的后台维护和管理感觉会更麻烦，后台里一堆设置看得人眼花。虽然wp的主题多到数不过来，但是优秀的主题如大海捞针，而且好看的主题大部分都是收费的。从操作上我更喜欢wp，hexo每次都要部署实属麻烦，但hexo的主题我倒是更喜欢。一句话喜欢折腾搞花样的选择wp，喜欢轻便只写博客的选择hexo。&lt;/p></description></item><item><title>零基础不花一分钱建站之Hexo篇</title><link>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</link><pubDate>Fri, 16 Aug 2019 17:15:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/h2>&lt;p>由于wordpress有自己的后台管理，在功能上比静态的hexo要强大不少，部署的操作上比较简单，但是部署后网站的后台维护和管理感觉会更麻烦，后台里一堆设置看得人眼花。虽然wp的主题多到数不过来，但是优秀的主题如大海捞针，而且好看的主题大部分都是收费的。从操作上我更喜欢wp，hexo每次都要部署实属麻烦，但hexo的主题我倒是更喜欢。一句话喜欢折腾搞花样的选择wp，喜欢轻便只写博客的选择hexo。&lt;/p></description></item><item><title>零基础不花一分钱建站之Hexo篇</title><link>https://kizx.github.io/kizx/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</link><pubDate>Fri, 16 Aug 2019 17:15:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
 &lt;/h2>&lt;p>之前一个偶然的机会b站首页推荐了一个github+hexo建站的视频，虽然我对写博客没什么兴趣，但是对建站本身倒是很感兴趣，于是尝试做了一下，下面只宏观介绍下，不细节展开了。&lt;/p>
 &lt;h2 id="建站流程">&lt;a href="#%e5%bb%ba%e7%ab%99%e6%b5%81%e7%a8%8b" class="header-anchor">&lt;/a>建站流程
 &lt;/h2>&lt;p>建站流程大致如下（这只是一般步骤，后面还有更简单的方案）&lt;/p>

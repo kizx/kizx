@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 醉后的星星</title><link>http://kizx.gitee.io/tags/windows/</link><description>Recent content in Windows on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Wed, 29 Jul 2020 07:01:19 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>电脑连接手机摄像头</title><link>http://kizx.gitee.io/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</link><pubDate>Wed, 29 Jul 2020 07:01:19 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</guid><description>&lt;p>台式机没有摄像头，有时候有些代码会调用摄像头，比如下面的项目有用到面部捕捉，这时候拿手机充当摄像头是个不错的选择。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 醉后的星星</title><link>https://kizx.github.io/kizx/tags/windows/</link><description>Recent content in Windows on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Wed, 29 Jul 2020 07:01:19 +0000</lastBuildDate><atom:link href="https://kizx.github.io/kizx/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>电脑连接手机摄像头</title><link>https://kizx.github.io/kizx/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</link><pubDate>Wed, 29 Jul 2020 07:01:19 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</guid><description>&lt;p>台式机没有摄像头，有时候有些代码会调用摄像头，比如下面的项目有用到面部捕捉，这时候拿手机充当摄像头是个不错的选择。&lt;/p>
 &lt;p>[post cid=&amp;ldquo;147&amp;rdquo; cover=&amp;quot;&amp;quot;/]&lt;/p>
 &lt;h2 id="软件">&lt;a href="#%e8%bd%af%e4%bb%b6" class="header-anchor">&lt;/a>软件
 &lt;/h2>&lt;p>百度搜索 &lt;code>iVCam&lt;/code> 下载安装即可，手机上也要扫码安装相应的客户端。连接前必须保证手机和电脑处在同一个局域网中，如果手机搜索不到电脑，可以手动输入电脑的局域网ipv4地址（通过cmd窗口 &lt;code>ipconfig&lt;/code>命令可以查看）。&lt;/p>
 &lt;h2 id="捕获">&lt;a href="#%e6%8d%95%e8%8e%b7" class="header-anchor">&lt;/a>捕获
 &lt;/h2>&lt;p>之前的那个项目是使用OpenCV的api捕获摄像头的，默认摄像头的设备id为0，但用这个软件进行捕获时可能也为1或者更大的数字。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>video_capture &lt;span style="color:#f92672">=&lt;/span> cv2&lt;span style="color:#f92672">.&lt;/span>VideoCapture(&lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#75715e"># 摄像头id可能不为0&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>几款看图软件测评</title><link>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</link><pubDate>Tue, 17 Mar 2020 07:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</guid><description>&lt;p>因为平时看图较多（不是那种图），所以一款好的看图软件显得很重要，我以连续查看4K大图作为测试手段，主要从速度、颜值、功能、便捷几个角度来评判。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>几款看图软件测评</title><link>https://kizx.github.io/kizx/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</link><pubDate>Tue, 17 Mar 2020 07:11:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</guid><description>&lt;p>因为平时看图较多（不是那种图），所以一款好的看图软件显得很重要，我以连续查看4K大图作为测试手段，主要从速度、颜值、功能、便捷几个角度来评判。&lt;/p>
 &lt;h2 id="honeyview">&lt;a href="#honeyview" class="header-anchor">&lt;/a>HoneyView
 &lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317132914.jpg"
 loading="lazy"
@@ -82,7 +82,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317223134.jpg"
 loading="lazy"
 >
-左键按住显示原始大小，右键按住显示三倍大小，这个设定倒是很有趣，速度较慢，不支持tif格式。&lt;/p></description></item><item><title>VirtualBox安装linux虚拟机</title><link>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</link><pubDate>Wed, 08 Jan 2020 09:47:00 +0000</pubDate><guid>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid><description>&lt;p>VirtualBox下载地址：https://www.virtualbox.org/wiki/Downloads
+左键按住显示原始大小，右键按住显示三倍大小，这个设定倒是很有趣，速度较慢，不支持tif格式。&lt;/p></description></item><item><title>VirtualBox安装linux虚拟机</title><link>https://kizx.github.io/kizx/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</link><pubDate>Wed, 08 Jan 2020 09:47:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid><description>&lt;p>VirtualBox下载地址：https://www.virtualbox.org/wiki/Downloads
 系统镜像下载，这是网易的镜像下载地址，速度很快：http://mirrors.163.com/ubuntu-releases/&lt;/p>
 &lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
 &lt;/h2>&lt;p>安装教程：
@@ -95,7 +95,7 @@ loading="lazy"
 loading="lazy"
 >&lt;/li>
 &lt;li>网络无法连接可以换回默认的连接方式&lt;/li>
-&lt;/ol></description></item><item><title>几款密码管理软件</title><link>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</link><pubDate>Sun, 29 Dec 2019 08:26:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</guid><description>&lt;p>i&amp;gt; We always have to remember a lot of accounts and passwords in our daily life. Some people like to use their particular passwords, while others like to keep them in a notebook. If you&amp;rsquo;re frustrated to manage your passwords, here are some password management tools you can have a try. Good tools can improve our efficiency, but even the best tools can be a burden if they don&amp;rsquo;t fit us; therefore, don&amp;rsquo;t use a tool just to use the tool.&lt;/p>
+&lt;/ol></description></item><item><title>几款密码管理软件</title><link>https://kizx.github.io/kizx/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</link><pubDate>Sun, 29 Dec 2019 08:26:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</guid><description>&lt;p>i&amp;gt; We always have to remember a lot of accounts and passwords in our daily life. Some people like to use their particular passwords, while others like to keep them in a notebook. If you&amp;rsquo;re frustrated to manage your passwords, here are some password management tools you can have a try. Good tools can improve our efficiency, but even the best tools can be a burden if they don&amp;rsquo;t fit us; therefore, don&amp;rsquo;t use a tool just to use the tool.&lt;/p>
 &lt;h2 id="keepass">&lt;a href="#keepass" class="header-anchor">&lt;/a>keepass
 &lt;/h2>&lt;p>一款本地的密码管理软件，不能云端，就是个高级的带密码的记事本或者数据库，好像有浏览器插件但必须本地开着keepass的客户端才能用。如果只是喜欢记一些数据到本地，配合坚果云同步用用还可以。&lt;/p>
 &lt;h2 id="1password">&lt;a href="#1password" class="header-anchor">&lt;/a>1password
@@ -103,7 +103,7 @@ loading="lazy"
 &lt;h2 id="lastpass">&lt;a href="#lastpass" class="header-anchor">&lt;/a>lastpass
 &lt;/h2>&lt;p>一款免费的密码管理软件，浏览器插件界面略丑，不支持中文，用了一个多月，老是弹升级信息。总之一句话不够简洁，越用越讨厌。&lt;/p>
 &lt;h2 id="bitwarden">&lt;a href="#bitwarden" class="header-anchor">&lt;/a>Bitwarden
-&lt;/h2>&lt;p>也是免费的一款软件，特点是可以自建云端，同时也自带的云端同步。浏览器插件界面简洁，支持中文，各方面都还优秀，唯一的缺点就是无法自动感知你网页密码的添加和改变，也不能自动填入密码，得在插件上点一下才行。如果不怕麻烦的话这款软件用着很舒服。&lt;/p></description></item><item><title>远程开机的几种方式</title><link>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 04 Dec 2019 10:16:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="开机棒">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%a3%92" class="header-anchor">&lt;/a>开机棒
+&lt;/h2>&lt;p>也是免费的一款软件，特点是可以自建云端，同时也自带的云端同步。浏览器插件界面简洁，支持中文，各方面都还优秀，唯一的缺点就是无法自动感知你网页密码的添加和改变，也不能自动填入密码，得在插件上点一下才行。如果不怕麻烦的话这款软件用着很舒服。&lt;/p></description></item><item><title>远程开机的几种方式</title><link>https://kizx.github.io/kizx/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 04 Dec 2019 10:16:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="开机棒">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%a3%92" class="header-anchor">&lt;/a>开机棒
 &lt;/h2>&lt;p>开机棒是插在路由器LAN口上使用的，如果是校园网那就用不了，因为你根本不知道路由器或者交换机在哪，知道在哪你也不能插个这么个玩意上去，不过你自己单独再整个路由器，然后电脑连路由器上应该可以。
 开机棒由一个usb线单独供电，远程开机的原理应该是WOL网络远程唤醒电脑，只要不是古董机，一般电脑主板都有这个功能。其实这个功能本来只能用于局域网唤醒主机，要实现外网唤醒，必须做内网穿透，但开机棒自己就能连接外网，所以内网穿透就不用我们操心了。&lt;/p>
 &lt;h2 id="开机插座">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%8f%92%e5%ba%a7" class="header-anchor">&lt;/a>开机插座
@@ -111,7 +111,7 @@ loading="lazy"
 &lt;h2 id="开机卡">&lt;a href="#%e5%bc%80%e6%9c%ba%e5%8d%a1" class="header-anchor">&lt;/a>开机卡
 &lt;/h2>&lt;p>一块插在电脑主板PCI-E口上的板子，PCI-E的接口只有供电的作用。因为主板有系统关机但PCI-E不断电的功能，所以就保证了这块卡在关机状态下也能工作。开机卡也需要联网，板子上有接口和电脑的开机和重启的跳线相接，其实就是模拟你按下开机键进行开关机。通过开机卡的软件客户端可以实现定时开关机和语音唤醒等功能，具体就看厂商支持那些功能了。&lt;/p>
 &lt;hr>
-&lt;p>我买回来后才发现我这校园网虽然有2.4G信号，但需要网页验证，所以无法识别成功，没办法我就淘了个路由器利用路由器的WiFi才行。然后我就又发现淘的路由器太辣鸡不支持ipv6，无奈又整了个交换机，这一波投入有点亏，这是后话。&lt;/p></description></item><item><title>Rime-小狼毫输入法使用指南</title><link>http://kizx.gitee.io/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 27 Nov 2019 17:29:00 +0000</pubDate><guid>http://kizx.gitee.io/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;p>下载地址：https://rime.im/
+&lt;p>我买回来后才发现我这校园网虽然有2.4G信号，但需要网页验证，所以无法识别成功，没办法我就淘了个路由器利用路由器的WiFi才行。然后我就又发现淘的路由器太辣鸡不支持ipv6，无奈又整了个交换机，这一波投入有点亏，这是后话。&lt;/p></description></item><item><title>Rime-小狼毫输入法使用指南</title><link>https://kizx.github.io/kizx/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 27 Nov 2019 17:29:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;p>下载地址：https://rime.im/
 官方说明：https://github.com/rime/home/wiki/UserGuide
 输入方案：https://github.com/rime/plum
 其他教程：
@@ -212,7 +212,7 @@ loading="lazy"
 &lt;ul>
 &lt;li>同步
 点击菜单中的用户资料同步即会在sync目录下生成一个同步文件夹，记录了当前电脑上的用户配置文件和词库，只需把这个文件夹同步到另一台电脑上相同的位置下，词库便会自动合并，但用户配置文件不会自动合并，需手动进行替换。文件夹的名字和位置可以在&lt;code>installation.yaml&lt;/code>中自行指定。&lt;/li>
-&lt;/ul></description></item><item><title>Git常用命令</title><link>http://kizx.gitee.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>http://kizx.gitee.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
+&lt;/ul></description></item><item><title>Git常用命令</title><link>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
 >https://gitee.com/help/categories/43&lt;/a>
 &lt;a class="link" href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener"
 >https://git-scm.com/book/zh/v2/&lt;/a>
@@ -239,7 +239,7 @@ git commit -m &amp;#34;first commit&amp;#34;
 git remote add origin git@gitee.com:kizx/rime.git
 # 推送
 git push -u origin master
-&lt;/code>&lt;/pre></description></item><item><title>我用的软件</title><link>http://kizx.gitee.io/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</link><pubDate>Fri, 22 Nov 2019 11:52:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</guid><description>&lt;ul>
+&lt;/code>&lt;/pre></description></item><item><title>我用的软件</title><link>https://kizx.github.io/kizx/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</link><pubDate>Fri, 22 Nov 2019 11:52:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</guid><description>&lt;ul>
 &lt;li>百分浏览器 &lt;a class="link" href="https://www.centbrowser.cn/" target="_blank" rel="noopener"
 >https://www.centbrowser.cn/&lt;/a>&lt;/li>
 &lt;li>压缩 &lt;a class="link" href="http://www.bandisoft.com/bandizip/" target="_blank" rel="noopener"
@@ -385,7 +385,7 @@ git push -u origin master
 &lt;li>这个网站有超多实用小程序
 &lt;a class="link" href="http://www.nirsoft.net/utils/index.html" target="_blank" rel="noopener"
 >http://www.nirsoft.net/utils/index.html&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Windows中的高级“快捷方式”</title><link>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</link><pubDate>Sat, 19 Oct 2019 05:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</guid><description>&lt;p>很久以前就知道windows中这么一种快捷方式，不同于普通的快捷方式，是一种可以和源文件发挥相同功效作用的“快捷方式”，但是一直未深入探索使用过，现在想起来或许这种快捷方式可以为我们的工作带来很大便利。
+&lt;/ul></description></item><item><title>Windows中的高级“快捷方式”</title><link>https://kizx.github.io/kizx/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</link><pubDate>Sat, 19 Oct 2019 05:18:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</guid><description>&lt;p>很久以前就知道windows中这么一种快捷方式，不同于普通的快捷方式，是一种可以和源文件发挥相同功效作用的“快捷方式”，但是一直未深入探索使用过，现在想起来或许这种快捷方式可以为我们的工作带来很大便利。
 部分参考资料：
 &lt;a class="link" href="https://baike.baidu.com/item/mklink/566760?fr=aladdin" title="mklink_百度百科"
 target="_blank" rel="noopener"
@@ -512,7 +512,7 @@ loading="lazy"
 &lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
 &lt;/h2>&lt;p>这个up在视频里讲解了硬链接，本文有些错误懒得改了，建议结合视频观看理解
 &lt;a class="link" href="https://www.bilibili.com/video/BV11b4y1t72B" target="_blank" rel="noopener"
->https://www.bilibili.com/video/BV11b4y1t72B&lt;/a>&lt;/p></description></item><item><title>OneDrive使用指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
+>https://www.bilibili.com/video/BV11b4y1t72B&lt;/a>&lt;/p></description></item><item><title>OneDrive使用指南</title><link>https://kizx.github.io/kizx/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
 &lt;/h2>&lt;p>OneDrive当云盘的好处是不限速，但实际速度并不会跑满带宽，具体速度以实际情况为准，我的速度用客户端上传的话最快能跑到7M/s，网页下载配合idm的话有时能跑满带宽，还是相当给力的。其次还有一个优点就是内容不会被和谐。&lt;/p>
 &lt;p>但普通邮箱注册只有5G的免费空间，教育邮箱注册可以获得5T的免费空间，但一般正规教育邮箱注册只有1T的可用空间，不过1T也基本上够用了，如果没有教育邮箱可以选择花几块钱买一个5T账号省的麻烦。&lt;/p>
 &lt;p>注意我们这里注册的是office365的账号和微软账号通用，可以通过以下方法查看空间大小：登录到office365，进入OneDrive，选择右上角设置-&amp;gt;OneDrive设置，继续选择其他设置-&amp;gt;存储标准即可看到空间大小，或者打开onedrive桌面客户端也可以进行查看。&lt;/p>
