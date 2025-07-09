@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>酷Q on 醉后的星星</title><link>http://kizx.gitee.io/tags/%E9%85%B7q/</link><description>Recent content in 酷Q on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Fri, 15 Nov 2019 12:38:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/%E9%85%B7q/index.xml" rel="self" type="application/rss+xml"/><item><title>利用QQ机器人发送时光机</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</link><pubDate>Fri, 15 Nov 2019 12:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</guid><description>&lt;p>现在handsome主题已经有了微信公众号和浏览器拓展两种方式向时光机发送消息，那么自然就想到QQ端是否也可以做到，所以我就通过对浏览器扩展发送时光机进行抓包，然后基于酷Q和nonebot，实现了通过向QQ小号发送消息的方式向时光机发送消息。
+[scode type=&amp;ldquo;share&amp;rdquo;]代码见&lt;a class="link" href="https://github.com/kizx/coolq-cross-bot" target="_blank" rel="noopener"
+>github&lt;/a>[/scode]&lt;/p>
+&lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
+&lt;/h2>&lt;p>和微信公众号的用法大同小异，所有消息需要私聊机器人&lt;/p>
+&lt;blockquote>
+&lt;p>发送&lt;code>帮助 时光机&lt;/code>查看帮助信息
+发送&lt;code>绑定&lt;/code>然后根据提示输入绑定信息，发送&lt;code>解绑&lt;/code>取消绑定
+发送&lt;code>时光鸡&lt;/code>然后根据提示输入你要发送的消息（也可以一次性输入&lt;code>时光鸡 你要发送的消息&lt;/code>中间加空格即可）
+发送&lt;code>开始&lt;/code>然后可以逐条发送消息，发送&lt;code>结束&lt;/code>结束混合消息，发送&lt;code>取消&lt;/code>取消发送
+发送的第一条消息如果以&lt;code>#&lt;/code>开头即为私密消息
+发送&lt;code>博客&lt;/code>获取博客地址
+发送&lt;code>图床&lt;/code>更改图床&lt;/p>&lt;/blockquote>
+&lt;p>如有需要，可以直接加群体验我已经搭建好的QQ机器人
+[button color=&amp;ldquo;success&amp;rdquo; icon=&amp;ldquo;fa fa-qq&amp;rdquo; url=&amp;quot;//shang.qq.com/wpa/qunwpa?idkey=786f97195ca56ef0a1888eef7e803fabee0b70cb01d6dbf0c2295454797d803b&amp;quot;]QQ群 642739195[/button]&lt;/p>
+&lt;h2 id="已知问题">&lt;a href="#%e5%b7%b2%e7%9f%a5%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>已知问题
+&lt;/h2>&lt;ol>
+&lt;li>由于QQ可以在一条消息里同时塞进文字和图片，所以发送单条消息也可以达到混合消息的效果，但经我测试在QQ手机客户端如果一条消息同时包含文字和图片，那么图片会无法解析，但是电脑的TIM客户端不存在这个问题。这个问题出在酷Q上，所以要同时发送文字和图片，在手机客户端最好采用逐条发送的模式。&lt;/li>
+&lt;li>由于handsome_6.0对上传的图片进行了压缩，所以上传gif图片会被压缩成jpg图片，因此图片增加图床功能并默认采用QQ图片的源地址，省去了下载和上传操作，速度更快，但QQ源图片腾讯可能采取限制而无法引用，而且目前已知腾讯对这些图片的缓存会过一段时间就清掉，所以QQ源图床慎用。最好的当然是接入自己的图床，暂时先懒得弄。&lt;/li>
+&lt;/ol>
+&lt;h2 id="安装方法windows">&lt;a href="#%e5%ae%89%e8%a3%85%e6%96%b9%e6%b3%95windows" class="header-anchor">&lt;/a>安装方法（Windows）
+&lt;/h2>&lt;p>你可以先在自己的电脑上安装和熟悉使用&lt;/p>
+&lt;h3 id="1-准备">&lt;a href="#1-%e5%87%86%e5%a4%87" class="header-anchor">&lt;/a>1. 准备
+&lt;/h3>&lt;p>所有需要下载的东西已打包-&amp;gt;&lt;a class="link" href="https://pan.2bboy.com/Public/Software/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/" target="_blank" rel="noopener"
+>点击下载&lt;/a>
+因为是基于酷Q和Python运行的，所以需要先安装酷Q Air-&amp;gt;&lt;a class="link" href="https://cqp.cc/t/23253" target="_blank" rel="noopener"
+>下载地址&lt;/a>，然后打开酷Q，登陆你的作为QQ机器人的QQ小号，熟悉酷Q的使用，尤其是插件的安装和启用，酷Q论坛里也有许多其他插件可供玩耍。
+然后下载安装python，建议下载安装&lt;a class="link" href="https://www.python.org/ftp/python/3.7.4/python-3.7.4.exe" target="_blank" rel="noopener"
+>Python 3.7.x 32位版本&lt;/a>，因为我是基于这个版本开发的，别的版本尤其是最新的3.8版本可能会有未知的不兼容的bug。安装的时候记得勾选环境变量。
+&lt;img src="https://pan.2bboy.com/img/2019/12/3530015735.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-安装插件">&lt;a href="#2-%e5%ae%89%e8%a3%85%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>2. 安装插件
+&lt;/h3>&lt;p>这里可以参考&lt;a class="link" href="https://cqhttp.cc/docs/4.12/#/" target="_blank" rel="noopener"
+>CoolQ HTTP API官方说明&lt;/a>
+将io.github.richardchien.coolqhttpapi.cpk移动至酷Q的app文件下，然后重启酷Q或者在应用管理里重载应用，在应用管理里选中HTTP API插件，点击启用，接下来几个弹窗统统选是。启用成功后会弹出控制台窗口。
+[scode type=&amp;ldquo;yellow&amp;rdquo;]如果弹窗提示应用加载失败，先安装[ Visual C++ 可再发行软件包]( Visual C++ 可再发行软件包)[/scode]
+&lt;img src="https://pan.2bboy.com/img/2019/12/1695724369.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="3启用nonebot">&lt;a href="#3%e5%90%af%e7%94%a8nonebot" class="header-anchor">&lt;/a>3.启用nonebot
+&lt;/h3>&lt;p>这里可以参考&lt;a class="link" href="https://nonebot.cqp.moe/guide/getting-started.html" target="_blank" rel="noopener"
+>Nonebot官方说明&lt;/a>
+如果你之前成功开启了插件，那么酷Q的data/app/io.github.richardchien.coolqhttpapi/config/目录中应该已经有了一个名为 &lt;!-- raw HTML omitted -->.json 的文件（&lt;!-- raw HTML omitted --> 为你登录的 QQ 账号），修改其中的内容如下：
+[collapse status=&amp;ldquo;false&amp;rdquo; title=&amp;ldquo;json文件内容&amp;rdquo;]&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;host&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;[::]&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;port&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">5700&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;use_http&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_host&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;[::]&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_port&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">6700&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;use_ws&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_reverse_url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_reverse_api_url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ws://127.0.0.1:8080/ws/api/&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_reverse_event_url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;ws://127.0.0.1:8080/ws/event/&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_reverse_reconnect_interval&amp;#34;&lt;/span>: &lt;span style="color:#ae81ff">3000&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;ws_reverse_reconnect_on_code_1000&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;use_ws_reverse&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;post_url&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;access_token&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;secret&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;post_message_format&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;string&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;serve_data_files&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;update_source&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;github&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;update_channel&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;stable&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;auto_check_update&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;auto_perform_update&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;show_log_console&amp;#34;&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;log_level&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;info&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/collapse]&lt;/p>
+&lt;p>然后下载找到我写的&lt;code>coolq-cross-bot&lt;/code>文件，用python运行该文件夹下的&lt;code>bot.py&lt;/code>文件，运行前要先安装依赖库。&lt;/p>
+&lt;p>[tabs]
+[tab name=&amp;ldquo;运行方式&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]
+打开命令提示符窗口，执行以下命令：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>pip install nonebot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pip install aiohttp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后在控制台进入&lt;code>coolq-cross-bot&lt;/code>文件夹内，输入&lt;code>python bot.py&lt;/code>运行该文件，当然也可以用IDE运行。
+[/tab]
+[/tabs]
+[scode type=&amp;ldquo;yellow&amp;rdquo;]阿里云服务器如果一直卡在下载图片且ping不通c2cpicdw.qpic.cn可能是因为节点问题，需添加host记录&lt;code>113.96.232.144 c2cpicdw.qpic.cn &lt;/code>[/scode]
+最后重启酷Q软件或者重载插件，弹出来的控制台如下显示成功字样则代表配置成功，这时你就可以私聊机器人发送&lt;code>初始化&lt;/code>创建一个数据库后就可以使用了（初始化命令只需执行一次，用于在文件目录下新建bind_info.sqlite文件用于记录绑定信息）,最后要注意两个控制台窗口都不能关闭，你可以选择新建一个桌面单独用于运行他们。
+&lt;img src="https://pan.2bboy.com/img/2019/12/2111826091.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="安装方法linux">&lt;a href="#%e5%ae%89%e8%a3%85%e6%96%b9%e6%b3%95linux" class="header-anchor">&lt;/a>安装方法（Linux）
+&lt;/h2>&lt;p>详细参考：&lt;a class="link" href="https://cqhttp.cc/docs/4.13/#/Docker" target="_blank" rel="noopener"
+>CoolQ HTTP API官方说明&lt;/a>
+Linux系统需要在docker中运行酷Q，所以要先安装docker，安装教程请自行百度，以下仅供参考，以我的Ubuntu16.04 64位为例，ssh连上服务器后运行以下命令安装docker&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ curl -fsSL https://get.docker.com -o get-docker.sh
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo sh get-docker.sh
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后安装酷Q和HTTP API插件（配置参数无所谓，后面手动替换）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>$ docker pull richardchien/cqhttp:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ mkdir coolq &lt;span style="color:#75715e"># 用于存储 酷Q 的程序文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ docker run -ti --rm --name cqhttp-test &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> -v &lt;span style="color:#66d9ef">$(&lt;/span>pwd&lt;span style="color:#66d9ef">)&lt;/span>/coolq:/home/user/coolq &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># 将宿主目录挂载到容器内用于持久化 酷Q 的程序文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -p 9000:9000 &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># noVNC 端口，用于从浏览器控制 酷Q&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -p 5700:5700 &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># HTTP API 插件开放的端口&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -e COOLQ_ACCOUNT&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">123456&lt;/span> &lt;span style="color:#ae81ff">\ &lt;/span>&lt;span style="color:#75715e"># 要登录的 QQ 账号，可选但建议填&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -e CQHTTP_POST_URL&lt;span style="color:#f92672">=&lt;/span>http://example.com:8080 &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># 事件上报地址&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -e CQHTTP_SERVE_DATA_FILES&lt;span style="color:#f92672">=&lt;/span>yes &lt;span style="color:#ae81ff">\ &lt;/span> &lt;span style="color:#75715e"># 允许通过 HTTP 接口访问 酷Q 数据文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> richardchien/cqhttp:latest
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后访问 http://[你的服务器IP]:9000/ 进入 noVNC（默认密码 MAX8char），登录酷Q，即可开始使用（插件已自动启用，配置文件也根据启动命令的环境变量自动生成了）
+[scode type=&amp;ldquo;yellow&amp;rdquo;]如果阿里云主机注意要先开放相应的端口，默认是9000端口[/scode]
+把coolq-cross-bot文件夹上传至服务器，将之前的json文件也上传至服务器并替换掉app/io.github.richardchien.coolqhttpapi/下的ini配置文件（注意将配置文件中&lt;em>127.0.0.1&lt;/em>换成&lt;em>172.17.0.1&lt;/em>），然后用python3命令运行文件下的bot.py，重启插件&lt;/p>
+&lt;h2 id="进阶自定义修改可选">&lt;a href="#%e8%bf%9b%e9%98%b6%e8%87%aa%e5%ae%9a%e4%b9%89%e4%bf%ae%e6%94%b9%e5%8f%af%e9%80%89" class="header-anchor">&lt;/a>进阶自定义修改（可选）
+&lt;/h2>&lt;h3 id="1-自定义命令">&lt;a href="#1-%e8%87%aa%e5%ae%9a%e4%b9%89%e5%91%bd%e4%bb%a4" class="header-anchor">&lt;/a>1. 自定义命令
+&lt;/h3>&lt;p>其实时光机的触发命令不仅可以是‘时光机’，也可以是‘时光鸡’、‘时光姬’等，具体可以在 coolq-cross-bot/plugins/handsome/timeji.py 源码中找到类似下面的语句自行进行修改。
+&lt;code>@on_command('timeji', aliases=('时光鸡', '时光机', '时光姬', '动态', '说说'))&lt;/code>
+其他命令类似。&lt;/p>
+&lt;h3 id="2-添加消息来源">&lt;a href="#2-%e6%b7%bb%e5%8a%a0%e6%b6%88%e6%81%af%e6%9d%a5%e6%ba%90" class="header-anchor">&lt;/a>2. 添加消息来源
+&lt;/h3>&lt;p>&lt;img src="https://pan.2bboy.com/img/2019/12/291730057.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>如上图所示，在时光机消息的来源处，如果不对handsome的源码进行修改，就会显示来自未知浏览器，找到handsome/libs/UA.php文件，在文件的最后加入如下所示的QQ的来源，名称可以自定义。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">public&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">returnTimeUa&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> ($this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">ua&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;weixin&amp;#34;&lt;/span> &lt;span style="color:#f92672">||&lt;/span> $this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">ua&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;weChat&amp;#34;&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">array&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;title&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">_mt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;微信公众号&amp;#34;&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#e6db74">&amp;#34;compass&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }&lt;span style="color:#66d9ef">elseif&lt;/span> ($this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">ua&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;crx&amp;#34;&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">array&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;title&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">_mt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;Chrome扩展&amp;#34;&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#e6db74">&amp;#34;chrome&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }&lt;span style="color:#66d9ef">elseif&lt;/span> ($this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">ua&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;qq&amp;#34;&lt;/span>){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">array&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;title&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">_mt&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;QQ时光姬&amp;#34;&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span>&lt;span style="color:#f92672">=&amp;gt;&lt;/span>&lt;span style="color:#e6db74">&amp;#34;compass&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }&lt;span style="color:#66d9ef">else&lt;/span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $ua &lt;span style="color:#f92672">=&lt;/span> $this&lt;span style="color:#f92672">-&amp;gt;&lt;/span>&lt;span style="color:#a6e22e">returnOS&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> $ua[&lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;disc&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> $ua;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3添加消息来源前的图标60主题不需要了">&lt;a href="#3%e6%b7%bb%e5%8a%a0%e6%b6%88%e6%81%af%e6%9d%a5%e6%ba%90%e5%89%8d%e7%9a%84%e5%9b%be%e6%a0%8760%e4%b8%bb%e9%a2%98%e4%b8%8d%e9%9c%80%e8%a6%81%e4%ba%86" class="header-anchor">&lt;/a>&lt;del>3.添加消息来源前的图标（6.0主题不需要了）&lt;/del>
+&lt;/h3>&lt;p>主题默认呈现出来的都是清一色的小圆点图标，要更改消息来源前的小图标，首先要&lt;a class="link" href="https://handsome.ihewro.com/#/functions?id=%e6%b7%bb%e5%8a%a0%e8%87%aa%e5%ae%9a%e4%b9%89%e5%9b%be%e6%a0%87" target="_blank" rel="noopener"
+>添加fontawesome图标&lt;/a>，然后找到handsome/component/say.php，找到下面第一条语句，改成第二句。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 找到下面这一句
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;glyphicon glyphicon-record m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 改成下面这样
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&amp;lt;?php echo &lt;/span>&lt;span style="color:#e6db74">$ua-&amp;gt;returnTimeUa&lt;/span>&lt;span style="color:#e6db74">()[&amp;#39;icon&amp;#39;] ?&amp;gt; m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Nonebot酷Q应用开发</title><link>http://kizx.gitee.io/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Wed, 30 Oct 2019 13:49:00 +0000</pubDate><guid>http://kizx.gitee.io/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>前面已经研究过&lt;a class="link" href="https://www.2bboy.com/archives/3.html" target="_blank" rel="noopener"
+>Python&lt;/a>和&lt;a class="link" href="https://www.2bboy.com/archives/116.html" target="_blank" rel="noopener"
+>C++&lt;/a>的酷Q应用开发流程了，其中慕晓飞大大的SDK虽然前期配置需要一定经验，但配置好后上手很快很简单的，但这个SDK不支持并发是最大的硬伤，限制了其使用范围。而C++的SDK无疑写起来过于麻烦，好在该SDK的大神richardchien在C++ SDK的基础上开发出了基于&lt;a class="link" href="https://github.com/richardchien/coolq-http-api" target="_blank" rel="noopener"
+>HTTP的API接口&lt;/a>，由此衍生出了基于该HTTP API的多种语言开发版本，其中就有同样是该作者基于Quart框架开发的&lt;a class="link" href="https://github.com/richardchien/nonebot" target="_blank" rel="noopener"
+>Nonebot&lt;/a>,支持异步处理是其最大的特点，但也由于对消息封装的过于深入，使得在入手使用Nonebot带来不小的挑战。&lt;/p>
+&lt;h2 id="入门">&lt;a href="#%e5%85%a5%e9%97%a8" class="header-anchor">&lt;/a>入门
+&lt;/h2>&lt;p>要使用Nonebot得先从HTTP API开始，先根据这篇说明：https://cqhttp.cc/docs/4.12/#/ 完成对HTTP API的成功调用，然后再到我们的Nonebot出场，官方的入门文档写的已经很仔细了：https://nonebot.cqp.moe/guide/installation.html， 走完这篇入门文档，应该很容易就实现了案例中的天气和图灵机器人案例。
+接下来来梳理以下Nonebot的编写逻辑，他将消息处理分为on_command，on_natural_language，on_request（其他的暂不清楚）几个类型，command用于处理命令，也是用的最多的类型，这里就不用我们手动检测消息里的命令关键字了，然后未被匹配的消息会送到natural_language中处理，如果没有natural_language消息就会被忽略。request用于处理加群请求等非消息类的任务。
+还有许多细节问题就需要慢慢研究了，比如想在群聊中也是用命令，可以加&lt;code>only_to_me=False&lt;/code>参数。
+要主动调用&lt;a class="link" href="https://cqhttp.cc/docs/4.12/#/API?id=api-%e5%88%97%e8%a1%a8" target="_blank" rel="noopener"
+>HTTP API&lt;/a>可以使用如下方式：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>bot &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>bot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># bot = nonebot.get_bot()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">await&lt;/span> bot&lt;span style="color:#f92672">.&lt;/span>send_private_msg(user_id&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">12345678&lt;/span>, message&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;你好～&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>要获得&lt;a class="link" href="https://cqhttp.cc/docs/4.12/#/Post?id=%e4%ba%8b%e4%bb%b6%e5%88%97%e8%a1%a8" target="_blank" rel="noopener"
+>上报事件&lt;/a>中的参数，需要访问session.ctx。
+然后下面这个例子是发送测试获得该消息的上报内容，发送其他消息则会复读。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> nonebot &lt;span style="color:#f92672">import&lt;/span> on_command, CommandSession
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> nonebot &lt;span style="color:#f92672">import&lt;/span> on_natural_language, NLPSession, IntentCommand
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>__plugin_name__ &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;测试&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>__plugin_usage__ &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;测试 命令&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@on_command&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;test&amp;#39;&lt;/span>, aliases&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;测试&amp;#39;&lt;/span>,), only_to_me&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">test&lt;/span>(session: CommandSession):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ctx &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>ctx
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">await&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>send(str(ctx))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@on_natural_language&lt;/span>(only_to_me&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">repeat&lt;/span>(session: NLPSession):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>ctx[&lt;span style="color:#e6db74">&amp;#34;message&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">await&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>send(msg)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还有更多应用后续再研究。。。&lt;/p></description></item><item><title>C++酷Q应用开发</title><link>http://kizx.gitee.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Sat, 26 Oct 2019 09:31:00 +0000</pubDate><guid>http://kizx.gitee.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>以前自己的水平不够，这个项目一直搞不懂，现在起码能跑通了，其实也是比较简单的，项目地址：https://github.com/richardchien/coolq-cpp-sdk&lt;/p>
+&lt;h2 id="步骤">&lt;a href="#%e6%ad%a5%e9%aa%a4" class="header-anchor">&lt;/a>步骤
+&lt;/h2>&lt;p>在该装的东西都装了后，在cmd中依次执行以下命令即可。其中最后一个命令，可能需要先进powershell管理员模式运行&lt;code>Set-ExecutionPolicy&lt;/code>并选择是来打开权限。另外由于网络原因，可能会在Unpacking objects这一步卡住，我是通过加速来解决的。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>git clone https://github.com/richardchien/coolq-cpp-sdk.git my-awesome-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">cd&lt;/span> my-awesome-app
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule update
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>powershell .\scripts\prepare_prebuilt.ps1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后编译项目，把编译出来的相应文件丢进酷Q的dev文件夹里就行了。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>powershell .\scripts\generate.ps1 Release
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>powershell .\scripts\build.ps1 Release
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python酷Q应用开发</title><link>http://kizx.gitee.io/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Tue, 03 Sep 2019 16:59:00 +0000</pubDate><guid>http://kizx.gitee.io/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/h2>&lt;ul>
+&lt;li>酷Q机器人应用一般都是用易语言开发的，但是一方面不想再多学一门易语言，另一方面开发脚本还是用Python比较舒服。关于Python的酷Q的SDK我在论坛找了一下，目前用的比较多的有两个（现在应该是三个了，见文末），一个是基于http的none-bot，功能更强大，但上手有一定难度，所以最简单的我觉得还是慕晓飞大大的 &lt;a class="link" href="https://gitee.com/muxiaofei/coolq_sdk_x/wikis/pages?sort_id=1415025&amp;amp;doc_id=287242" target="_blank" rel="noopener"
+>&lt;strong>Python酷Q_SDK_X&lt;/strong>&lt;/a>&lt;/li>
+&lt;li>本站更多关于酷Q的文章：&lt;a class="link" href="https://www.2bboy.com/tag/coolq/" target="_blank" rel="noopener"
+>点我&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="环境配置">&lt;a href="#%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>环境配置
+&lt;/h2>&lt;p>首先需要按照文档的说明配置开发环境，这点文档讲的很详细，就不赘述了，需要注意的是：&lt;/p>
+&lt;ol>
+&lt;li>酷Q本身是32位程序，开发时只支持32位的Python。&lt;/li>
+&lt;li>还有一点就是app_id应该按照官方规范来，否则可能会出问题，&lt;a class="link" href="https://docs.cqp.im/dev/v9/appid/" target="_blank" rel="noopener"
+>&lt;strong>规范说明&lt;/strong>&lt;/a>。&lt;/li>
+&lt;li>酷Q升级后开发环境的目录移动至酷Q的dev目录下，如果酷Q没有自动更正的话请手动更正。更正方法为，在dev目录下新建cn.muxiaofei.coolq_sdk_x文件夹，将原来的cn.muxiaofei.coolq_sdk_x.dll和cn.muxiaofei.coolq_sdk_x.json重命名为app.dll和app.json移动至新建的文件夹下，其他不变。&lt;/li>
+&lt;/ol>
+&lt;p>配置完环境，如果不出意外的话，应该就能在酷Q日志的DEBUG里看到输出的hello world。&lt;/p>
+&lt;h2 id="编写程序">&lt;a href="#%e7%bc%96%e5%86%99%e7%a8%8b%e5%ba%8f" class="header-anchor">&lt;/a>编写程序
+&lt;/h2>&lt;ul>
+&lt;li>接下来就是敲自己的代码了，这个SDK的所有事件处理和API调用都在&lt;em>CQPlusHandler.py&lt;/em>文件的?&lt;em>MainHandler&lt;/em>类中进行编写，关于事件和参数的说明在开发文档中都有说明，API可以通过输入&lt;em>self.api&lt;/em>的代码提示进行查看，也可以转到一个_api.py的文件中查看，至于这些API函数和参数的意义基本上看名字就能猜到八九分了，具体使用方法需要自己去尝试。&lt;/li>
+&lt;li>新手需要注意的是这个&lt;em>CQPlusHandler.py&lt;/em>程序是由酷Q软件自动执行的，不需要在Python的IDE里点运行，当然你点了也没用，如果setting里的DEBUG参数你没改的话，只要修改代码并保存，修改的代码就会实时生效。&lt;/li>
+&lt;li>然后需要说明的就是@和表情，这个需要使用CQ码，&lt;a class="link" href="https://docs.cqp.im/manual/cqcode/" target="_blank" rel="noopener"
+>&lt;strong>CQ码详细介绍&lt;/strong>&lt;/a>。但一般只需在QQ中发一条包含@或表情的消息，然后通过酷Q的日志就能直接进行右键复制了，复制后只需将相应的格式通过字符串的格式和普通消息一样输出就行了。&lt;/li>
+&lt;li>举个例子，在&lt;em>CQPlusHandler.py&lt;/em>文件中写入以下代码就能实现在群聊里复读并@发言的人的功能：&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># -*- coding:utf-8 -*-&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> cqplus
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainHandler&lt;/span>(cqplus&lt;span style="color:#f92672">.&lt;/span>CQPlusHandler):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">handle_event&lt;/span>(self, event, params):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> event &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;on_group_msg&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;[CQ:at,qq=&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> str(params[&lt;span style="color:#e6db74">&amp;#39;from_qq&amp;#39;&lt;/span>]) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;]&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> params[&lt;span style="color:#e6db74">&amp;#39;msg&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>api&lt;span style="color:#f92672">.&lt;/span>send_group_msg(params[&lt;span style="color:#e6db74">&amp;#39;from_group&amp;#39;&lt;/span>], msg)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="案例">&lt;a href="#%e6%a1%88%e4%be%8b" class="header-anchor">&lt;/a>案例
+&lt;/h2>&lt;ul>
+&lt;li>然后下面是我根据需求给群友写的一个自助Roll游戏的插件，和论坛上我能找到的抽奖插件相比，这个插件的特点在于完全由qq消息进行命令，可以直接丢到服务器上就不用管了，另一个特点是可以同时进行多个Roll游戏活动而互不干扰，以下是一个使用案例。这个应用其实还有一些功能我想过但还没加进去，以后根据需要有时间再看看吧，我把我写的垃圾代码放在了GitHub上，希望可以给有需要的人一点有价值的参考：&lt;a class="link" href="https://github.com/kizx/coolq-rollgames-bot" target="_blank" rel="noopener"
+>&lt;strong>Github链接&lt;/strong>&lt;/a>
+&lt;img src="https://pan.2bboy.com/img/2019/10/roll_game.jpg"
+loading="lazy"
+alt="案例"
+>&lt;/li>
+&lt;/ul>
+&lt;h2 id="已知问题">&lt;a href="#%e5%b7%b2%e7%9f%a5%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>已知问题
+&lt;/h2>&lt;h3 id="打包">&lt;a href="#%e6%89%93%e5%8c%85" class="header-anchor">&lt;/a>打包
+&lt;/h3>&lt;ul>
+&lt;li>最后就是应用的打包，直接使用打包生成的cpk文件会报错，需要像开发应用一样配置好环境并把源程序也放进去，唯一的差别就在于可以不用进入酷Q的开发者模式，所以要丢到服务器上的话，还有一丢丢的麻烦。由于Python的SDK的特性，编写的插件就不能像论坛上别的插件一样只发布cpk文件即可，而且使用者还需配置环境，对于普通用户来说过于麻烦了，所以这个还是只适合开发者自己使用。&lt;/li>
+&lt;/ul>
+&lt;h3 id="消息并发处理">&lt;a href="#%e6%b6%88%e6%81%af%e5%b9%b6%e5%8f%91%e5%a4%84%e7%90%86" class="header-anchor">&lt;/a>消息并发处理
+&lt;/h3>&lt;ul>
+&lt;li>由于Python的GLI锁机制，本插件不支持并发处理。表现为有事件发生时，比如各种消息和定时器事件，插件便会调用一次&lt;em>CQPlusHandler.py&lt;/em>进行事件处理，所以当上一次事件还未处理完时，下一个事件又紧接着发，这时便会发生内存报错。虽然报错了程序并不会崩溃，不过如果程序要处理网络请求一类的耗时任务，这个缺陷是致命的。要想避免这种报错，只在&lt;em>CQPlusHandler.py&lt;/em>文件里下功夫（比如用多线程）应该是不行的，估计得从源码上想想办法才行。不过我的机器人不需要处理大量消息，消息处理的也很快，所以凑合用用也还行。&lt;/li>
+&lt;li>后来有大神重新写了个支持并发的&lt;a class="link" href="https://github.com/crud-boy/cqp-sdk-for-py37-native" target="_blank" rel="noopener"
+>python SDK&lt;/a>，现在也更推荐使用这个或者更高级的nonebot。&lt;/li>
+&lt;/ul></description></item></channel></rss>

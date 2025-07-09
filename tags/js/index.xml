@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JS on 醉后的星星</title><link>http://kizx.gitee.io/tags/js/</link><description>Recent content in JS on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Wed, 15 Mar 2023 15:52:01 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/js/index.xml" rel="self" type="application/rss+xml"/><item><title>javascript中文按拼音顺序排序</title><link>http://kizx.gitee.io/post/javascript%E4%B8%AD%E6%96%87%E6%8C%89%E6%8B%BC%E9%9F%B3%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%BA%8F/</link><pubDate>Wed, 15 Mar 2023 15:52:01 +0000</pubDate><guid>http://kizx.gitee.io/post/javascript%E4%B8%AD%E6%96%87%E6%8C%89%E6%8B%BC%E9%9F%B3%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%BA%8F/</guid><description>&lt;p>js的sort函数的默认排序方法是将排序对象转成字符串，然后根据字符串中每个字符的ascll码依次进行排序，对于不在ascll表中的中文无法进行排序。&lt;/p>
+&lt;h2 id="localecompare">&lt;a href="#localecompare" class="header-anchor">&lt;/a>localeCompare
+&lt;/h2>&lt;p>localeCompare函数可以比较两个中文的顺序，用该方法配合sort方法可以实现中文排序：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">names&lt;/span>.&lt;span style="color:#a6e22e">sort&lt;/span>((&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">b&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进一步，如果想获得中文首字母，可以依次和每个字母的第一个中文进行比较，进而得出该中文字符的首字母：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">getFirstLetter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ABCDEFGHJKLMNOPQRSTWXYZ#&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">zh&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;阿八嚓哒妸发旮哈讥咔垃呣拏噢妑七呥扨它穵夕丫帀糳&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">word&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">zh&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span>], &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>) &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#a6e22e">word&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">zh&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#39;#&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意有些字母没有对应的姓氏，因此不在比较之列。
+本方法最大的问题是，微信小程序和很多浏览器内核都不支持该函数，用之前先做好测试。&lt;/p>
+&lt;h2 id="第三方库">&lt;a href="#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93" class="header-anchor">&lt;/a>第三方库
+&lt;/h2>&lt;p>若不能使用上述方法，发现一个第三方库jian-pinyin，体积不大，可以直接给出汉字的拼音，很棒。
+地址：&lt;a class="link" href="https://github.com/xinglie/pinyin" target="_blank" rel="noopener"
+>https://github.com/xinglie/pinyin&lt;/a>
+通过该库直接获取汉字的拼音，然后通过sort函数进行排序，注意js中字符串之间是可以直接比较大小的，比较的依据仍然是ascll。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">getSpell&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>, &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">charactor&lt;/span>, &lt;span style="color:#a6e22e">spell&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">spell&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">names&lt;/span>.&lt;span style="color:#a6e22e">sort&lt;/span>((&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span>(&lt;span style="color:#a6e22e">b&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>JS类型转换</title><link>http://kizx.gitee.io/post/js%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</link><pubDate>Fri, 27 Aug 2021 15:04:00 +0000</pubDate><guid>http://kizx.gitee.io/post/js%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</guid><description>&lt;p>首先会判断两者类型，相同直接比较是否全等，类型不相同的话，就会进行类型转换，按以下规则：&lt;/p>
+&lt;ul>
+&lt;li>布尔-&amp;gt;数值&lt;/li>
+&lt;li>字符+数值-&amp;gt;数值&lt;/li>
+&lt;li>对象-&amp;gt;valueof&lt;/li>
+&lt;li>null==undefined&lt;/li>
+&lt;li>遇到NaN直接不等&lt;/li>
+&lt;/ul>
+&lt;h2 id="全等不全等">&lt;a href="#%e5%85%a8%e7%ad%89%e4%b8%8d%e5%85%a8%e7%ad%89" class="header-anchor">&lt;/a>全等&lt;code>===&lt;/code>不全等&lt;code>!==&lt;/code>
+&lt;/h2>&lt;p>类型不相同时不会转换类型，直接返回false&lt;/p>
+&lt;ul>
+&lt;li>null===undefined //true&lt;/li>
+&lt;/ul>
+&lt;h2 id="objectis">&lt;a href="#objectis" class="header-anchor">&lt;/a>Object.is()
+&lt;/h2>&lt;p>除了特殊情况一般和===相同&lt;/p>
+&lt;ul>
+&lt;li>Object.is(NaN,NaN) //true&lt;/li>
+&lt;li>Object.is(0,-0) //false&lt;/li>
+&lt;/ul>
+&lt;h2 id="转为数值">&lt;a href="#%e8%bd%ac%e4%b8%ba%e6%95%b0%e5%80%bc" class="header-anchor">&lt;/a>转为数值
+&lt;/h2>&lt;ul>
+&lt;li>null-&amp;gt;0&lt;/li>
+&lt;li>undefined-&amp;gt;NaN&lt;/li>
+&lt;li>true-&amp;gt;1 false-&amp;gt;0&lt;/li>
+&lt;li>数字字符串-&amp;gt;数字&lt;/li>
+&lt;li>字符串包含非数字-&amp;gt;NaN&lt;/li>
+&lt;li>&amp;ldquo;&amp;rdquo;-&amp;gt;0&lt;/li>
+&lt;li>Symbol-&amp;gt;报错&lt;/li>
+&lt;li>对象-&amp;gt;valueOf()??toString() []-&amp;gt;0 [1]-&amp;gt;1 [1,1]-&amp;gt;NaN {}-&amp;gt;NaN&lt;/li>
+&lt;/ul>
+&lt;h2 id="转为布尔">&lt;a href="#%e8%bd%ac%e4%b8%ba%e5%b8%83%e5%b0%94" class="header-anchor">&lt;/a>转为布尔
+&lt;/h2>&lt;p>记住以下false假值：&lt;/p>
+&lt;ul>
+&lt;li>undefined&lt;/li>
+&lt;li>null&lt;/li>
+&lt;li>+0、-0&lt;/li>
+&lt;li>NaN&lt;/li>
+&lt;/ul>
+&lt;h2 id="转为字符串">&lt;a href="#%e8%bd%ac%e4%b8%ba%e5%ad%97%e7%ac%a6%e4%b8%b2" class="header-anchor">&lt;/a>转为字符串
+&lt;/h2>&lt;ul>
+&lt;li>null-&amp;gt;&amp;ldquo;null&amp;rdquo;&lt;/li>
+&lt;li>undefined-&amp;gt;&amp;ldquo;undefined&amp;rdquo;&lt;/li>
+&lt;li>true-&amp;gt;&amp;ldquo;true&amp;rdquo;、false-&amp;gt;&amp;ldquo;false&amp;rdquo;&lt;/li>
+&lt;li>数值-&amp;gt;&amp;ldquo;数值&amp;rdquo;&lt;/li>
+&lt;li>对象-&amp;gt;toString()方法，该方法会被重写，未重写Object.prototype.toString-&amp;gt;&amp;quot;[object 具体类型]&amp;quot;&lt;/li>
+&lt;li>Symbol-&amp;gt;只能强制转换，隐式转换报错&lt;/li>
+&lt;/ul>
+&lt;h2 id="加法">&lt;a href="#%e5%8a%a0%e6%b3%95" class="header-anchor">&lt;/a>加法
+&lt;/h2>&lt;p>数值+数值：&lt;/p>
+&lt;ul>
+&lt;li>NaN+*=NaN&lt;/li>
+&lt;li>Infinity+-Infinity=NaN&lt;/li>
+&lt;li>-Infinity+-Infinity=-Infinity&lt;/li>
+&lt;li>-0+-0=-0&lt;/li>
+&lt;li>0+-0=0
+只要有一个操作数是字符串，则转换为字符串进行拼接&lt;/li>
+&lt;li>[]+{}=&amp;quot;[object Object]&amp;quot; {}+[]=0&lt;/li>
+&lt;/ul>
+&lt;h2 id="减法">&lt;a href="#%e5%87%8f%e6%b3%95" class="header-anchor">&lt;/a>减法
+&lt;/h2>&lt;ul>
+&lt;li>NaN-*=NaN&lt;/li>
+&lt;li>Infinity-Infinity=NaN&lt;/li>
+&lt;li>-Infinity&amp;ndash;Infinity=NaN&lt;/li>
+&lt;li>操作数是字符串、布尔、null、undefined-&amp;gt;数值&lt;/li>
+&lt;li>对象-&amp;gt;valueOf()??toString()&lt;/li>
+&lt;/ul>
+&lt;h2 id="和">&lt;a href="#%e5%92%8c" class="header-anchor">&lt;/a>&amp;gt;和&amp;lt;
+&lt;/h2>&lt;ul>
+&lt;li>字符串比较-&amp;gt;逐个比较字母编码&lt;/li>
+&lt;li>有一个是数值-&amp;gt;将另一个转为数值&lt;/li>
+&lt;li>对象-》valueof().toString()&lt;/li>
+&lt;li>布尔-&amp;gt;数值&lt;/li>
+&lt;li>NaN-&amp;gt;返回false&lt;/li>
+&lt;/ul>
+&lt;h2 id="valueoftostring">&lt;a href="#valueoftostring" class="header-anchor">&lt;/a>valueOf()、toString()
+&lt;/h2>&lt;ul>
+&lt;li>[1,&amp;lsquo;a&amp;rsquo;].valueOf() -&amp;gt; [1,&amp;lsquo;a&amp;rsquo;]&lt;/li>
+&lt;li>[1,&amp;lsquo;a&amp;rsquo;].toString() -&amp;gt; &amp;lsquo;1,a&amp;rsquo;&lt;/li>
+&lt;li>{}.valueOf() -&amp;gt; {}&lt;/li>
+&lt;li>{}.toString() -&amp;gt; &amp;lsquo;[Object Object]&amp;rsquo;&lt;/li>
+&lt;/ul>
+&lt;h2 id="arguments">&lt;a href="#arguments" class="header-anchor">&lt;/a>arguments
+&lt;/h2>&lt;p>在严格模式或使用&lt;code>...args&lt;/code>的的情况下arguments不再追踪参数的变化。&lt;/p></description></item><item><title>JS常见设计模式</title><link>http://kizx.gitee.io/post/js%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><pubDate>Mon, 23 Aug 2021 13:44:00 +0000</pubDate><guid>http://kizx.gitee.io/post/js%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>将创建对象的具体逻辑封装在?个函数中，创建后返回这个对象，那么这个函数就可以被视为?个??。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 简单??模式：只需要?个正确的参数，就可以获取到你所需要的对象，?于?成实例
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 比如对象工厂，函数工厂
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">opts&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Object();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">color&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">opts&lt;/span>.&lt;span style="color:#a6e22e">color&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">opts&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">getInfo&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#34;名称：&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;， 颜?：&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">color&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">cat&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>({ &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;波斯猫&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">color&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;??&amp;#34;&lt;/span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ???法模式：本意是将实际创建对象的?作推迟到?类中，这样核?类就变成了抽象类，
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ???法只是?个实例化对象的??，只做实例化对象这?件事情，?于?成实例
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">User&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">viewPage&lt;/span> &lt;span style="color:#f92672">=&lt;/span> []) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#66d9ef">new&lt;/span>.&lt;span style="color:#a6e22e">target&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">User&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Error(&lt;span style="color:#e6db74">&amp;#34;抽象类不能实例化!&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">viewPage&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">viewPage&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">UserFactory&lt;/span> &lt;span style="color:#66d9ef">extends&lt;/span> &lt;span style="color:#a6e22e">User&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, &lt;span style="color:#a6e22e">viewPage&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">super&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>, &lt;span style="color:#a6e22e">viewPage&lt;/span>); &lt;span style="color:#75715e">// 调??类的constructor(name, viewPage)，继承?类的this对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// let user = new User(); // 不允许直接实例化
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">userFactory&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">UserFactory&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//抽象??模式：并不直接?成实例，?是?于对产品类簇的创建
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">getAbstractUserFactory&lt;/span>(&lt;span style="color:#a6e22e">type&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">switch&lt;/span> (&lt;span style="color:#a6e22e">type&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#e6db74">&amp;#34;wechat&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">UserOfWechat&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#e6db74">&amp;#34;qq&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">UserOfQq&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">case&lt;/span> &lt;span style="color:#e6db74">&amp;#34;weibo&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">UserOfWeibo&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">default&lt;/span>&lt;span style="color:#f92672">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">throw&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Error(&lt;span style="color:#e6db74">&amp;#34;参数错误, 可选参数:wechat、qq、weibo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">WechatUserClass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAbstractUserFactory&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;wechat&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">QqUserClass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAbstractUserFactory&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;qq&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">WeiboUserClass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAbstractUserFactory&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;weibo&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">wechatUser&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">WechatUserClass&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;微信?李&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">qqUser&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">QqUserClass&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;QQ?李&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">weiboUser&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">WeiboUserClass&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;微博?李&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="单例模式">&lt;a href="#%e5%8d%95%e4%be%8b%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>单例模式
+&lt;/h2>&lt;p>保证?个类仅有?个实例，并提供?个访问它的全局访问点。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Singleton&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">static&lt;/span> &lt;span style="color:#a6e22e">getInstance&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">instance&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">instance&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">instance&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Singleton&lt;/span>(...&lt;span style="color:#a6e22e">arguments&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">instance&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">s1&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">Singleton&lt;/span>.&lt;span style="color:#a6e22e">getInstance&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;lisi&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">s1&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>); &lt;span style="color:#75715e">//lisi
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">s2&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">Singleton&lt;/span>.&lt;span style="color:#a6e22e">getInstance&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;san&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">s1&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>); &lt;span style="color:#75715e">//lisi
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">s1&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">s2&lt;/span>); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="观察者模式">&lt;a href="#%e8%a7%82%e5%af%9f%e8%80%85%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>观察者模式
+&lt;/h2>&lt;p>定义了对象间?对多的依赖关系，当?标对象的状态发?改变时，所有依赖它的对象都会得到通知。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ?标者类
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Subject&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">observers&lt;/span> &lt;span style="color:#f92672">=&lt;/span> []; &lt;span style="color:#75715e">// 观察者列表
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 添加
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#a6e22e">observer&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">observers&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#a6e22e">observer&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 删除
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">remove&lt;/span>(&lt;span style="color:#a6e22e">observer&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">idx&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">observers&lt;/span>.&lt;span style="color:#a6e22e">findIndex&lt;/span>((&lt;span style="color:#a6e22e">item&lt;/span>) =&amp;gt; &lt;span style="color:#a6e22e">item&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">observer&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">idx&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">observers&lt;/span>.&lt;span style="color:#a6e22e">splice&lt;/span>(&lt;span style="color:#a6e22e">idx&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 通知
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">notify&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">observer&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">observers&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">observer&lt;/span>.&lt;span style="color:#a6e22e">update&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 观察者类
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Observer&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">constructor&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// ?标对象更新时触发的回调
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">update&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`?标者通知我更新了，我是：&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 实例化?标者
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">subject&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Subject&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 实例化两个观察者
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">obs1&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observer&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;前端开发者&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">obs2&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Observer&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;后端开发者&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 向?标者添加观察者
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">subject&lt;/span>.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#a6e22e">obs1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">subject&lt;/span>.&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#a6e22e">obs2&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ?标者通知更新
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">subject&lt;/span>.&lt;span style="color:#a6e22e">notify&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 输出：
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ?标者通知我更新了，我是前端开发者
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// ?标者通知我更新了，我是后端开发者
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="发布订阅模式">&lt;a href="#%e5%8f%91%e5%b8%83%e8%ae%a2%e9%98%85%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>发布订阅模式
+&lt;/h2>&lt;p>实现了对象间多对多的依赖关系，通过事件中?管理多个事件。?标对象并不直接通知观察者，?是通过事件中?来派发通知。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 事件中?
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">pubSub&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">list&lt;/span>&lt;span style="color:#f92672">:&lt;/span> {}, &lt;span style="color:#75715e">// {onwork:[fn1,fn2],offwork:[fn1,fn2],launch:[fn1,fn2]}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">subscribe&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 订阅
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>[&lt;span style="color:#a6e22e">key&lt;/span>]) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>[&lt;span style="color:#a6e22e">key&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> [];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>[&lt;span style="color:#a6e22e">key&lt;/span>].&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#a6e22e">fn&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">publish&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">key&lt;/span>, ...&lt;span style="color:#a6e22e">arg&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 发布
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>[&lt;span style="color:#a6e22e">key&lt;/span>]) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, ...&lt;span style="color:#a6e22e">arg&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">unSubscribe&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 取消订阅
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">fnList&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>[&lt;span style="color:#a6e22e">key&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">fnList&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 不传?指定取消的订阅?法，则清空所有key下的订阅
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fnList&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> (&lt;span style="color:#a6e22e">fnList&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fnList&lt;/span>.&lt;span style="color:#a6e22e">forEach&lt;/span>((&lt;span style="color:#a6e22e">item&lt;/span>, &lt;span style="color:#a6e22e">index&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">item&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fnList&lt;/span>.&lt;span style="color:#a6e22e">splice&lt;/span>(&lt;span style="color:#a6e22e">index&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 订阅
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;onwork&amp;#34;&lt;/span>, (&lt;span style="color:#a6e22e">time&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`上班了：&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">time&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;offwork&amp;#34;&lt;/span>, (&lt;span style="color:#a6e22e">time&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`下班了：&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">time&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">subscribe&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;launch&amp;#34;&lt;/span>, (&lt;span style="color:#a6e22e">time&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`吃饭了：&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">time&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 发布
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">publish&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;onwork&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;9:00:00&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">publish&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;offwork&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;18:00:00&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">publish&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;launch&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;12:00:00&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 取消订阅
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">unSubscribe&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;onwork&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">pubSub&lt;/span>.&lt;span style="color:#a6e22e">publish&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;onwork&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;9:00:00&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="适配器模式">&lt;a href="#%e9%80%82%e9%85%8d%e5%99%a8%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>适配器模式
+&lt;/h2>&lt;p>适配器?来解决两个接?不兼容的情况，不需要改变已有的接?，通过包装?层的?式实现两个接?的正常协作。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 已有的地图接?
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">googleMap&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">show&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始渲染?歌地图&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">baiduMap&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">display&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;开始渲染百度地图&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 已有的渲染接?
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">renderMap&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">map&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">map&lt;/span>.&lt;span style="color:#a6e22e">show&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> Function) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">map&lt;/span>.&lt;span style="color:#a6e22e">show&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 适配器
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">baiduMapAdapter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">show&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">baiduMap&lt;/span>.&lt;span style="color:#a6e22e">display&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">renderMap&lt;/span>(&lt;span style="color:#a6e22e">googleMap&lt;/span>); &lt;span style="color:#75715e">// 开始渲染?歌地图
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">renderMap&lt;/span>(&lt;span style="color:#a6e22e">baiduMapAdapter&lt;/span>); &lt;span style="color:#75715e">// 开始渲染百度地图
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="代理模式">&lt;a href="#%e4%bb%a3%e7%90%86%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>代理模式
+&lt;/h2>&lt;p>不直接引?另?个对象，通过代理对象间接引用，起到中介的作?。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">proxy&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Proxy(&lt;span style="color:#a6e22e">obj&lt;/span>, {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">target&lt;/span>, &lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">receiver&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`getting &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">key&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">!`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">Reflect&lt;/span>.&lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#a6e22e">target&lt;/span>, &lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">receiver&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">set&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">target&lt;/span>, &lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">value&lt;/span>, &lt;span style="color:#a6e22e">receiver&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">`setting &lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">key&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">!`&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">Reflect&lt;/span>.&lt;span style="color:#a6e22e">set&lt;/span>(&lt;span style="color:#a6e22e">target&lt;/span>, &lt;span style="color:#a6e22e">key&lt;/span>, &lt;span style="color:#a6e22e">value&lt;/span>, &lt;span style="color:#a6e22e">receiver&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">proxy&lt;/span>.&lt;span style="color:#a6e22e">count&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">proxy&lt;/span>.&lt;span style="color:#a6e22e">count&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="装饰模式">&lt;a href="#%e8%a3%85%e9%a5%b0%e6%a8%a1%e5%bc%8f" class="header-anchor">&lt;/a>装饰模式
+&lt;/h2>&lt;p>不改变已有的函数，给函数添加额外的功能，?如ES7中的装饰器。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://refactoringguru.cn/design-patterns/catalog" target="_blank" rel="noopener"
+>https://refactoringguru.cn/design-patterns/catalog&lt;/a>&lt;/p></description></item><item><title>学习资料</title><link>http://kizx.gitee.io/post/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link><pubDate>Tue, 13 Jul 2021 07:55:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid><description>&lt;p>&lt;a class="link" href="https://doc.houdunren.com/" target="_blank" rel="noopener"
+>后盾人&lt;/a>
+&lt;a class="link" href="http://www.cyc2018.xyz/" target="_blank" rel="noopener"
+>CS-Note&lt;/a>&lt;/p>
+&lt;h2 id="算法">&lt;a href="#%e7%ae%97%e6%b3%95" class="header-anchor">&lt;/a>算法
+&lt;/h2>&lt;p>&lt;a class="link" href="https://programmercarl.com/" target="_blank" rel="noopener"
+>代码随想录&lt;/a>&lt;/p>
+&lt;h2 id="知识点">&lt;a href="#%e7%9f%a5%e8%af%86%e7%82%b9" class="header-anchor">&lt;/a>知识点
+&lt;/h2>&lt;p>&lt;a class="link" href="https://mp.weixin.qq.com/s/StIo-eC-7UeBr-fb6lIZkQ" target="_blank" rel="noopener"
+>Cookies,Session和Token&lt;/a>
+&lt;a class="link" href="https://mp.weixin.qq.com/s/djhGnfxeuhIOtSHy2in8NA" target="_blank" rel="noopener"
+>TCP 三次握手源码&lt;/a>
+&lt;a class="link" href="https://yuanrengu.blog.csdn.net/article/details/102366854" target="_blank" rel="noopener"
+>TCP握手挥手&lt;/a>
+&lt;a class="link" href="https://mp.weixin.qq.com/s/3Ep5pJULvP7WHJvVJNDV-g" target="_blank" rel="noopener"
+>Service Worker&lt;/a>
+&lt;a class="link" href="https://view.inews.qq.com/a/20210812A0FIIR00" target="_blank" rel="noopener"
+>HTTPS 加密、证书、签名与握手&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/weixin_43698328/article/details/110742906" target="_blank" rel="noopener"
+>4种常见的内存泄露&lt;/a>
+&lt;a class="link" href="https://www.ruanyifeng.com/blog/2012/11/require_js.html" target="_blank" rel="noopener"
+>JS模块化&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/u013108007/article/details/107804387" target="_blank" rel="noopener"
+>简单了解二叉树diff算法&lt;/a>
+&lt;a class="link" href="https://github.com/livoras/blog/issues/13" target="_blank" rel="noopener"
+>如何实现一个 Virtual DOM 算法&lt;/a>
+&lt;a class="link" href="https://imtaotao.github.io/co-share/#/title" target="_blank" rel="noopener"
+>js 异步历史与 co.js 解读&lt;/a>&lt;/p>
+&lt;h2 id="面试相关">&lt;a href="#%e9%9d%a2%e8%af%95%e7%9b%b8%e5%85%b3" class="header-anchor">&lt;/a>面试相关
+&lt;/h2>&lt;p>&lt;a class="link" href="https://mp.weixin.qq.com/s/NnbpJQM3du2ovsV2SKKcMg" target="_blank" rel="noopener"
+>vue2,vue3面试汇总&lt;/a>
+&lt;a class="link" href="https://github.com/whylisa/front-end-interview" target="_blank" rel="noopener"
+>前端面试资源&lt;/a>
+&lt;a class="link" href="https://www.iamshuaidi.com/673.html" target="_blank" rel="noopener"
+>计算机网络面试真题&lt;/a>
+&lt;a class="link" href="https://www.nowcoder.com/tutorial/96/e38c9c9efd254bd694e5dcaffa0f879c" target="_blank" rel="noopener"
+>前端面试宝典&lt;/a>
+&lt;a class="link" href="https://barryyeee.github.io/InterviewGuide/" target="_blank" rel="noopener"
+>前端面试小本本&lt;/a>&lt;/p>
+&lt;h2 id="博客">&lt;a href="#%e5%8d%9a%e5%ae%a2" class="header-anchor">&lt;/a>博客
+&lt;/h2>&lt;p>&lt;a class="link" href="https://78.al/" target="_blank" rel="noopener"
+>https://78.al/&lt;/a>
+&lt;a class="link" href="https://jerryzou.com/posts/rxjs-practice-01/" target="_blank" rel="noopener"
+>https://jerryzou.com/posts/rxjs-practice-01/&lt;/a>
+&lt;a class="link" href="https://gongchenghuigch.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" target="_blank" rel="noopener"
+>前端面试题&lt;/a>
+&lt;a class="link" href="https://www.ruanyifeng.com/blog/javascript/" target="_blank" rel="noopener"
+>阮一峰的网络日志&lt;/a>&lt;/p></description></item><item><title>javascript一些方法原理实现</title><link>http://kizx.gitee.io/post/javascript%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0/</link><pubDate>Tue, 13 Apr 2021 10:01:00 +0000</pubDate><guid>http://kizx.gitee.io/post/javascript%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>一般认为js数据类型为7种：&lt;code>number&lt;/code>,&lt;code>string&lt;/code>,&lt;code>boolean&lt;/code>,&lt;code>undefined&lt;/code>,&lt;code>null&lt;/code>,&lt;code>symbol&lt;/code>,&lt;code>object&lt;/code>，（有的把&lt;code>bigint&lt;/code>也算一种，）其中object为引用类型，其余为基本类型。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>); &lt;span style="color:#75715e">// number
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>); &lt;span style="color:#75715e">// boolean
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#e6db74">&amp;#34;str&amp;#34;&lt;/span>); &lt;span style="color:#75715e">// string
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> []); &lt;span style="color:#75715e">// object
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> {}); &lt;span style="color:#75715e">// object
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {}); &lt;span style="color:#75715e">// function
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#66d9ef">undefined&lt;/span>); &lt;span style="color:#75715e">// undefined
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>); &lt;span style="color:#75715e">// object
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>((&lt;span style="color:#ae81ff">2&lt;/span>).&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> Number); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">true&lt;/span>.&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> Boolean); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;str&amp;#34;&lt;/span>.&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> String); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>([].&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> Array); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>({}.&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> Object); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span> () {}.&lt;span style="color:#a6e22e">constructor&lt;/span> &lt;span style="color:#f92672">===&lt;/span> Function); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">str&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Object.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">toString&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)); &lt;span style="color:#75715e">//[object Number]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">true&lt;/span>)); &lt;span style="color:#75715e">//[object Boolean]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;str&amp;#34;&lt;/span>)); &lt;span style="color:#75715e">//[object String]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>([])); &lt;span style="color:#75715e">//[object Array]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span> () {})); &lt;span style="color:#75715e">//[object Function]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>({})); &lt;span style="color:#75715e">//[object Object]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">undefined&lt;/span>)); &lt;span style="color:#75715e">//[object Undefined]
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">str&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">null&lt;/span>)); &lt;span style="color:#75715e">//[object Null]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="instanceof">&lt;a href="#instanceof" class="header-anchor">&lt;/a>instanceof
+&lt;/h2>&lt;p>instanceof 运算符用于判断构造函数的 prototype 属性是否出现在对象的原型链中的任何位置，不能用来判断包装对象。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> Number); &lt;span style="color:#75715e">// false
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> Boolean); &lt;span style="color:#75715e">// false
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;str&amp;#39;&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> String); &lt;span style="color:#75715e">// false
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>([] &lt;span style="color:#66d9ef">instanceof&lt;/span> Array); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span> () {} &lt;span style="color:#66d9ef">instanceof&lt;/span> Function); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>({} &lt;span style="color:#66d9ef">instanceof&lt;/span> Object); &lt;span style="color:#75715e">// true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(Object &lt;span style="color:#66d9ef">instanceof&lt;/span> Object); &lt;span style="color:#75715e">//true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(Function &lt;span style="color:#66d9ef">instanceof&lt;/span> Object); &lt;span style="color:#75715e">//true
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 原理实现
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">myInstanceof&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#a6e22e">tar&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 获取对象的原型
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">proto&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Object.&lt;span style="color:#a6e22e">getPrototypeOf&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 获取构造函数的 prototype 对象
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">tar&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 对象原型走到头了
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">proto&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//判断原型是否相等
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">proto&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">myInstanceof&lt;/span>(&lt;span style="color:#a6e22e">proto&lt;/span>, &lt;span style="color:#a6e22e">tar&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="深拷贝">&lt;a href="#%e6%b7%b1%e6%8b%b7%e8%b4%9d" class="header-anchor">&lt;/a>深拷贝
+&lt;/h2>&lt;p>数组、对象的typeof结果都为&amp;rsquo;object&amp;rsquo;，需要注意的是null的typeof结果也为&amp;rsquo;object&amp;rsquo;，函数的typeof结果为&amp;rsquo;function&amp;rsquo;，symbol无法直接遍历到。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">deepcopy&lt;/span>(&lt;span style="color:#a6e22e">data&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">data&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">data&lt;/span> &lt;span style="color:#66d9ef">instanceof&lt;/span> Array &lt;span style="color:#f92672">?&lt;/span> [] &lt;span style="color:#f92672">:&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> [&lt;span style="color:#a6e22e">k&lt;/span>, &lt;span style="color:#a6e22e">v&lt;/span>] &lt;span style="color:#66d9ef">of&lt;/span> Object.&lt;span style="color:#a6e22e">entries&lt;/span>(&lt;span style="color:#a6e22e">data&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>[&lt;span style="color:#a6e22e">k&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#e6db74">&amp;#34;object&amp;#34;&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">deepcopy&lt;/span>(&lt;span style="color:#a6e22e">v&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">k&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> Object.&lt;span style="color:#a6e22e">getOwnPropertySymbols&lt;/span>(&lt;span style="color:#a6e22e">data&lt;/span>)) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>[&lt;span style="color:#a6e22e">k&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#a6e22e">data&lt;/span>[&lt;span style="color:#a6e22e">k&lt;/span>] &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#e6db74">&amp;#34;object&amp;#34;&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">deepcopy&lt;/span>(&lt;span style="color:#a6e22e">data&lt;/span>[&lt;span style="color:#a6e22e">k&lt;/span>]) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">data&lt;/span>[&lt;span style="color:#a6e22e">k&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="objectcreate">&lt;a href="#objectcreate" class="header-anchor">&lt;/a>Object.create
+&lt;/h2>&lt;p>Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的__proto__，和new有点像。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#a6e22e">proto&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">obj&lt;/span>.&lt;span style="color:#a6e22e">__proto__&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">proto&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#75715e">//直译
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#a6e22e">proto&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() {}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">proto&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#75715e">//推荐
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="new">&lt;a href="#new" class="header-anchor">&lt;/a>new
+&lt;/h2>&lt;p>new操作主要执行了以下操作：&lt;/p>
+&lt;ol>
+&lt;li>新建一个空对象obj&lt;/li>
+&lt;li>将空对象的&lt;code>__proto__&lt;/code>原型链指向构造函数的原型&lt;code>prototype&lt;/code>&lt;/li>
+&lt;li>将构造函数的&lt;code>this&lt;/code>指向obj，执行构造函数&lt;/li>
+&lt;li>返回构造函数的返回，如果返回为空则返回obj&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">newObj&lt;/span>(&lt;span style="color:#a6e22e">p&lt;/span>, ...&lt;span style="color:#a6e22e">args&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Object.&lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#a6e22e">p&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">p&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#a6e22e">args&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">||&lt;/span> &lt;span style="color:#a6e22e">obj&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Person&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">person1&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Person&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;san&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">person2&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">newObj&lt;/span>(&lt;span style="color:#a6e22e">Person&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;si&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">person2&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="防抖">&lt;a href="#%e9%98%b2%e6%8a%96" class="header-anchor">&lt;/a>防抖
+&lt;/h2>&lt;p>快速连续触发事件时，只有最后一次触发能成功执行。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">debounce&lt;/span>(&lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">timeout&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">null&lt;/span>; &lt;span style="color:#75715e">// 创建一个标记用来存放定时器的返回值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">clearTimeout&lt;/span>(&lt;span style="color:#a6e22e">timeout&lt;/span>); &lt;span style="color:#75715e">// 每当用户输入的时候把前一个 setTimeout clear 掉
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">timeout&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 然后又创建一个新的 setTimeout, 这样就能保证输入字符后的 interval 间隔内如果还有字符输入的话，就不会执行 fn 函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">arguments&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#ae81ff">500&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">sayHi&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;防抖成功&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">inp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">createElement&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;input&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">inp&lt;/span>.&lt;span style="color:#a6e22e">addEventListener&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;input&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">debounce&lt;/span>(&lt;span style="color:#a6e22e">sayHi&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>document.&lt;span style="color:#a6e22e">body&lt;/span>.&lt;span style="color:#a6e22e">append&lt;/span>(&lt;span style="color:#a6e22e">inp&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="节流">&lt;a href="#%e8%8a%82%e6%b5%81" class="header-anchor">&lt;/a>节流
+&lt;/h2>&lt;p>一定时间内只会执行1次，上一次未处理完则不会执行。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">throttle&lt;/span>(&lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">canRun&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>; &lt;span style="color:#75715e">// 通过闭包保存一个标记
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#a6e22e">canRun&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span>; &lt;span style="color:#75715e">// 在函数开头判断标记是否为true，不为true则return
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">canRun&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span>; &lt;span style="color:#75715e">// 立即设置为false
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 将外部传入的函数的执行放在setTimeout中
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">arguments&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 最后在setTimeout执行完毕后再把标记设置为true(关键)表示可以执行下一次循环了。当定时器没有执行的时候标记永远是false，在开头被return掉
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">canRun&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#ae81ff">500&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">sayHi&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;节流成功&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">btn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">createElement&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;button&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">btn&lt;/span>.&lt;span style="color:#a6e22e">innerHTML&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;节流&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">btn&lt;/span>.&lt;span style="color:#a6e22e">addEventListener&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;click&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">throttle&lt;/span>(&lt;span style="color:#a6e22e">sayHi&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>document.&lt;span style="color:#a6e22e">body&lt;/span>.&lt;span style="color:#a6e22e">append&lt;/span>(&lt;span style="color:#a6e22e">btn&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="call">&lt;a href="#call" class="header-anchor">&lt;/a>call
+&lt;/h2>&lt;p>将this挂载到目标上后执行，最后再删除&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>Function.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">myCall&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">context&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">context&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span> &lt;span style="color:#f92672">||&lt;/span> window;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">arg&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [...&lt;span style="color:#a6e22e">arguments&lt;/span>].&lt;span style="color:#a6e22e">slice&lt;/span>(&lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span>(...&lt;span style="color:#a6e22e">arg&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">delete&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="apply">&lt;a href="#apply" class="header-anchor">&lt;/a>apply
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>Function.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">myApply&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">context&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">context&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span> &lt;span style="color:#f92672">||&lt;/span> window;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 需要判断是否存储第二个参数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// 如果存在，就将第二个参数展开
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">arguments&lt;/span>[&lt;span style="color:#ae81ff">1&lt;/span>]) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span>(...&lt;span style="color:#a6e22e">arguments&lt;/span>[&lt;span style="color:#ae81ff">1&lt;/span>]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">else&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">delete&lt;/span> &lt;span style="color:#a6e22e">context&lt;/span>.&lt;span style="color:#a6e22e">fn&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="bind">&lt;a href="#bind" class="header-anchor">&lt;/a>bind
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>Function.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">myBind&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">context&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">args&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [...&lt;span style="color:#a6e22e">arguments&lt;/span>].&lt;span style="color:#a6e22e">slice&lt;/span>(&lt;span style="color:#ae81ff">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// 返回一个函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#a6e22e">context&lt;/span>, &lt;span style="color:#a6e22e">args&lt;/span>.&lt;span style="color:#a6e22e">concat&lt;/span>(...&lt;span style="color:#a6e22e">arguments&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="柯里化">&lt;a href="#%e6%9f%af%e9%87%8c%e5%8c%96" class="header-anchor">&lt;/a>柯里化
+&lt;/h2>&lt;p>将能够接收多个参数的函数转化为接收单一参数的函数，并且返回能接收余下参数且返回结果的新函数的技术&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> Array.&lt;span style="color:#a6e22e">from&lt;/span>(&lt;span style="color:#a6e22e">arguments&lt;/span>).&lt;span style="color:#a6e22e">reduce&lt;/span>((&lt;span style="color:#a6e22e">cur&lt;/span>, &lt;span style="color:#a6e22e">item&lt;/span>) =&amp;gt; &lt;span style="color:#a6e22e">cur&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">item&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">currying&lt;/span>(&lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">args&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">args&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>(...&lt;span style="color:#a6e22e">arguments&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">args&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">add&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">currying&lt;/span>(&lt;span style="color:#a6e22e">add&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#ae81ff">1&lt;/span>)); &lt;span style="color:#75715e">//1
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#ae81ff">2&lt;/span>)); &lt;span style="color:#75715e">//3
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">add&lt;/span>(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>)); &lt;span style="color:#75715e">//10
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">add&lt;/span>()); &lt;span style="color:#75715e">//10
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="反柯里化">&lt;a href="#%e5%8f%8d%e6%9f%af%e9%87%8c%e5%8c%96" class="header-anchor">&lt;/a>反柯里化
+&lt;/h2>&lt;p>方法借用，扩展方法使用范围，和call,apply,bind类似&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">unCurrying&lt;/span>(&lt;span style="color:#a6e22e">fn&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">obj&lt;/span>, ...&lt;span style="color:#a6e22e">args&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">fn&lt;/span>.&lt;span style="color:#a6e22e">apply&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#a6e22e">args&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">push&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">unCurrying&lt;/span>(Array.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;lisi&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;san&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 等同于bind方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">obj&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">push&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Array.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>.&lt;span style="color:#a6e22e">bind&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;lisi&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;san&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>);
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="双向绑定">&lt;a href="#%e5%8f%8c%e5%90%91%e7%bb%91%e5%ae%9a" class="header-anchor">&lt;/a>双向绑定
+&lt;/h2>&lt;p>通过Proxy实现对数据监听。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">model&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;input&amp;#34;&lt;/span> &lt;span style="color:#f92672">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">input&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">model&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;input&amp;#34;&lt;/span> &lt;span style="color:#f92672">/&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">div&lt;/span> &lt;span style="color:#a6e22e">v&lt;/span>&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">bind&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;input&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/div&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">script&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">data&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {};
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">proxy&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> Proxy(&lt;span style="color:#a6e22e">data&lt;/span>, {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">get&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#a6e22e">property&lt;/span>) {},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">set&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>, &lt;span style="color:#a6e22e">property&lt;/span>, &lt;span style="color:#a6e22e">value&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// model赋值
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// obj[property] = value;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#a6e22e">Reflect&lt;/span>.&lt;span style="color:#a6e22e">set&lt;/span>(...&lt;span style="color:#a6e22e">arguments&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//视图响应
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">els&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">querySelectorAll&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">`[v-model=&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">property&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;],[v-bind=&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>&lt;span style="color:#a6e22e">property&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;]`&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">el&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> &lt;span style="color:#a6e22e">els&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">el&lt;/span>.&lt;span style="color:#a6e22e">innerHTML&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">el&lt;/span>.&lt;span style="color:#a6e22e">value&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">value&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> (&lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">els&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">querySelectorAll&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;[v-model]&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">el&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> &lt;span style="color:#a6e22e">els&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">el&lt;/span>.&lt;span style="color:#a6e22e">addEventListener&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;keyup&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">proxy&lt;/span>[&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">getAttribute&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;v-model&amp;#34;&lt;/span>)] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">value&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/script&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="数组扁平化">&lt;a href="#%e6%95%b0%e7%bb%84%e6%89%81%e5%b9%b3%e5%8c%96" class="header-anchor">&lt;/a>数组扁平化
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">flat&lt;/span>(&lt;span style="color:#a6e22e">arr&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">res&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">item&lt;/span> &lt;span style="color:#66d9ef">of&lt;/span> &lt;span style="color:#a6e22e">arr&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">res&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Array.&lt;span style="color:#a6e22e">isArray&lt;/span>(&lt;span style="color:#a6e22e">item&lt;/span>) &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">res&lt;/span>.&lt;span style="color:#a6e22e">concat&lt;/span>(&lt;span style="color:#a6e22e">flat&lt;/span>(&lt;span style="color:#a6e22e">item&lt;/span>)) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">res&lt;/span>.&lt;span style="color:#a6e22e">concat&lt;/span>(&lt;span style="color:#a6e22e">item&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">res&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>JS原型与继承</title><link>http://kizx.gitee.io/post/js%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/</link><pubDate>Sun, 11 Apr 2021 12:33:00 +0000</pubDate><guid>http://kizx.gitee.io/post/js%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/</guid><description>&lt;h3 id="隐式原型__proto__">&lt;a href="#%e9%9a%90%e5%bc%8f%e5%8e%9f%e5%9e%8b__proto__" class="header-anchor">&lt;/a>隐式原型__proto__
+&lt;/h3>&lt;p>除了元对象Object，每个js对象都有隐式原型，但也可以通过&lt;code>Object.create(null)&lt;/code>强制创建一个没有__proto__的对象，__proto__指向该对象的构造函数的原型对象。
+原型链指的就是__proto__串起来的链。&lt;/p>
+&lt;h3 id="原型prototype">&lt;a href="#%e5%8e%9f%e5%9e%8bprototype" class="header-anchor">&lt;/a>原型prototype
+&lt;/h3>&lt;p>函数对象拥有prototype属性，函数的原型对象包含所有实例共享的方法，包含__proto__和constructor两个属性，constructor指回函数本身，函数原型对象也有__proto__属性，指向构造函数的原型即Function.prototype。
+实例的__proto__指向函数原型对象，即&lt;code>f1.__proto__ === Foo.prototype&lt;/code>。
+Object.prototype.__proto__指向null。&lt;/p>
+&lt;h3 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
+&lt;/h3>&lt;p>定义函数时自动创建prototype原型对象，原型对象包含constructor构造函数，构造函数指回函数本身，new出来的实例拥有__proto__指向prototype原型对象。
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/08/2508891233.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="类式继承原型链继承">&lt;a href="#%e7%b1%bb%e5%bc%8f%e7%bb%a7%e6%89%bf%e5%8e%9f%e5%9e%8b%e9%93%be%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>类式继承（原型链继承）
+&lt;/h2>&lt;p>将父类的实例赋给子类的prototype，缺点是父类共有属性为引用对象时，所有子类实例会公用同一个对象；无法向父类传参；子类不是父类的实例，而子类的原型是父类的实例，缺少constructor属性。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="构造函数继承">&lt;a href="#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>构造函数继承
+&lt;/h2>&lt;p>将子类的变量在父类中执行一遍，即在子类的构造函数中执行一次父类的构造函数，缺点只执行了父类的构造函数，没有继承父类原型，父类的所有方法必须在构造函数中声明才能继承。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//执行父类构造函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// dog.getname() //无法继承原型方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// dog.getsupername()
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="组合继承">&lt;a href="#%e7%bb%84%e5%90%88%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>组合继承
+&lt;/h2>&lt;p>结合前面两种方法，在子类构造函数中执行父类构造函数，子类原型指向父类的实例，缺点是父类构造函数执行了两遍，子类不是父类的实例。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//继承属性
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>() &lt;span style="color:#75715e">//继承方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="原型式继承">&lt;a href="#%e5%8e%9f%e5%9e%8b%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>原型式继承
+&lt;/h2>&lt;p>和类式继承相似，创建一个新对象并使用父类对象做为新对象的原型对象，和类式继承存在一样的问题，引用值会在实例间共享。和&lt;code>Object.create()&lt;/code>方法作用一致。适合不需要单独创建构造函数，但仍需要在实例间共享属性的场合。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">Animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="寄生式继承">&lt;a href="#%e5%af%84%e7%94%9f%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>寄生式继承
+&lt;/h2>&lt;p>对原型继承的二次封装，对继承的对象进行了拓展。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">createDog&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">o&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#75715e">// 增加属性和方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">createDog&lt;/span>(&lt;span style="color:#a6e22e">Animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="寄生组合式继承">&lt;a href="#%e5%af%84%e7%94%9f%e7%bb%84%e5%90%88%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>寄生组合式继承
+&lt;/h2>&lt;p>寄生继承和构造函数继承的组合，修复子类的原型，子类的原型指向父类原型的一份实例，construction指向子类本身。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inheritPtototype&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>, &lt;span style="color:#a6e22e">superClass&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">p&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">superClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">p&lt;/span>.&lt;span style="color:#a6e22e">construction&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">subClass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">inheritPtototype&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>但是上面左还有一个小问题，就是遍历子类实例属性时，会把construction也遍历出来，可以通过&lt;code>Object.defineProperty&lt;/code>方法禁止遍历。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">key&lt;/span> &lt;span style="color:#66d9ef">in&lt;/span> &lt;span style="color:#a6e22e">dog&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">key&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>所以再升级一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>, &lt;span style="color:#a6e22e">superClass&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Object.&lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#a6e22e">superClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Object.&lt;span style="color:#a6e22e">defineProperty&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;constructor&amp;#34;&lt;/span>, {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">subClass&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">enumerable&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#75715e">//禁止遍历
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="mixin多继承">&lt;a href="#mixin%e5%a4%9a%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>mixin多继承
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">Mammal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">skill&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;是哺乳动物&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#75715e">// mixin类
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>Object.&lt;span style="color:#a6e22e">assign&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>, &lt;span style="color:#a6e22e">Mammal&lt;/span>) &lt;span style="color:#75715e">//往子类原型拓展其他类方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">skill&lt;/span>()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/cc18868876837/article/details/81211729" target="_blank" rel="noopener"
+>帮你彻底搞懂JS中的prototype、__proto__与constructor（图解）&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/cc18868876837/article/details/103149502" target="_blank" rel="noopener"
+>JavaScript中的new操作符的原理解析&lt;/a>
+&lt;a class="link" href="https://www.zhihu.com/question/34183746" target="_blank" rel="noopener"
+>js中__proto__和prototype的区别和关系？&lt;/a>
+&lt;a class="link" href="https://doc.houdunren.com/js/11%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF.html" target="_blank" rel="noopener"
+>原型基础&lt;/a>&lt;/p></description></item></channel></rss>

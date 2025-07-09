@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pycharm on 醉后的星星</title><link>http://kizx.gitee.io/tags/pycharm/</link><description>Recent content in Pycharm on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 16 Feb 2020 10:50:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/pycharm/index.xml" rel="self" type="application/rss+xml"/><item><title>PyCharm主题，插件推荐</title><link>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 16 Feb 2020 10:50:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid><description>&lt;p>&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Plugins&lt;/code>里搜索相应插件名即可，或者去网页 &lt;a class="link" href="https://plugins.jetbrains.com/pycharm" target="_blank" rel="noopener"
+>https://plugins.jetbrains.com/pycharm&lt;/a> 搜索插件下载后本地安装亦可，唯一的问题可能就是网络连接性可能不太好。&lt;/p>
+&lt;h2 id="主题推荐">&lt;a href="#%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>主题推荐
+&lt;/h2>&lt;p>先说说主题设置，下好主题后在设置&lt;code>Appearance&lt;/code>里切换主题。
+设完主题后还可以设置代码样式，这两个是可以分开设置的，比如我主题是One Dark，代码样式是Atom One Dark。如果你不喜欢现有的代码配色风格，可以在&lt;a class="link" href="http://color-themes.com" target="_blank" rel="noopener"
+>Color Theme网站&lt;/a> 下载喜欢的配色，然后在代码样式里导入即可。
+&lt;img src="https://pan.2bboy.com/img/2020/03/0313180726.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;p>另外字体也可以自定义，软件界面字体在settings-&amp;gt;appearance里修改。代码字体在settings-&amp;gt;editor-&amp;gt;font里（如果直接改这里没用，点上面有个感叹号那里，其实就是color scheme font里改）。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216182934.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="1-one-dark">&lt;a href="#1-one-dark" class="header-anchor">&lt;/a>1. One Dark
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/11938-one-dark-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+我最常用的主题，还有一个&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12178-atom-onedark-theme" target="_blank" rel="noopener"
+>Atom One Dark&lt;/a>的主题也不错。
+&lt;img src="https://plugins.jetbrains.com/files/11938/screenshot_19494.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-material-theme-ui">&lt;a href="#2-material-theme-ui" class="header-anchor">&lt;/a>2. Material Theme UI
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+这大概是使用最广泛的主题了吧，毕竟人家样式全，美化全面，但是个人不是很喜欢。
+&lt;img src="https://plugins.jetbrains.com/files/8006/screenshot_17526.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="3-the-doki-doki-theme">&lt;a href="#3-the-doki-doki-theme" class="header-anchor">&lt;/a>3. The Doki-Doki Theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10804-the-doki-doki-theme/" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+看这名字就知道是一款二次元主题，不仅有心跳人物的主题，还包含Re0等二次元人物，下面只列举部分，作者更新相当勤快，可以说是老二次元了。
+[album]
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22344.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22341.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22346.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22349.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22503.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22342.png"
+loading="lazy"
+>
+[/album]&lt;/p>
+&lt;h3 id="4-gruvbox-theme">&lt;a href="#4-gruvbox-theme" class="header-anchor">&lt;/a>4. gruvbox-theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12310-gruvbox-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+深色配色很舒服
+&lt;img src="https://plugins.jetbrains.com/files/12310/screenshot_19486.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="5-visual-studio-code-dark-plus-theme">&lt;a href="#5-visual-studio-code-dark-plus-theme" class="header-anchor">&lt;/a>5. Visual Studio Code Dark Plus Theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12255-visual-studio-code-dark-plus-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+vscode风格主题，适合vscode爱好者
+&lt;img src="https://plugins.jetbrains.com/files/12255/screenshot_19350.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="插件推荐">&lt;a href="#%e6%8f%92%e4%bb%b6%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>插件推荐
+&lt;/h2>&lt;h3 id="1-codeglance">&lt;a href="#1-codeglance" class="header-anchor">&lt;/a>1. CodeGlance
+&lt;/h3>&lt;p>可以像VScode一样在右侧显示预览条，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/index?xmlId=net.vektah.codeglance" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/7275/screenshot_16821.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-save-actions">&lt;a href="#2-save-actions" class="header-anchor">&lt;/a>2. Save Actions
+&lt;/h3>&lt;p>Pycharm的代码格式化每次都要按快捷键太麻烦了，有了这个插件就可以在保存的时候自动格式化了，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/7642-save-actions" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+插件需要在&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Other Settings&lt;/code>里启动才行
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216163232.jpg"
+loading="lazy"
+>
+唯一不足的是这个插件的设置是针对每个项目单独设置的，默认下图是都没有勾选的，每次新开一个工程都需要重新设置一遍
+要想新建工程时默认勾选，需要你打开软件时在configure里进行设置（前提设置打开软件弹出这个界面而非上次的工程）
+&lt;img src="https://pan.2bboy.com/img/2020/07/0714100107.png"
+loading="lazy"
+>
+该插件还有另一个分支版本功能相同&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13331-save-actions-reborn" target="_blank" rel="noopener"
+>Save Actions Reborn&lt;/a>&lt;/p>
+&lt;h3 id="3-background-image-plus-">&lt;a href="#3-background-image-plus-" class="header-anchor">&lt;/a>3. Background Image Plus +
+&lt;/h3>&lt;p>可以设置背景图的插件，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/11247-background-image-plus-" target="_blank" rel="noopener"
+>插件地址&lt;/a>，下载后在下图所示的位置设置背景图片文件夹。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216175836.jpg"
+loading="lazy"
+>
+如果只是一张图的话，软件默认就带这个功能，不需要插件。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216180519.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="4-key-promoter-x">&lt;a href="#4-key-promoter-x" class="header-anchor">&lt;/a>4. Key Promoter X
+&lt;/h3>&lt;p>如果你使用鼠标点击了某个按钮，右下角就会弹窗提醒你相应的快捷键，想不记住快捷键都难。
+&lt;img src="https://plugins.jetbrains.com/files/9792/screenshot_17105.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="5-translation">&lt;a href="#5-translation" class="header-anchor">&lt;/a>5. Translation
+&lt;/h3>&lt;p>翻译插件，可以随时随地一键翻译，再也不用担心读不懂源码注释了，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8579-translation" target="_blank" rel="noopener"
+>插件地址&lt;/a>，使用方法可以参照插件地址。
+&lt;img src="https://plugins.jetbrains.com/files/8579/screenshot_20602.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="6atom-material-icons">&lt;a href="#6atom-material-icons" class="header-anchor">&lt;/a>6.Atom Material Icons
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons" target="_blank" rel="noopener"
+>插件地址&lt;/a>，更改文件图标的插件。
+&lt;img src="https://plugins.jetbrains.com/files/10044/screenshot_21309.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="7rainbow-brackets">&lt;a href="#7rainbow-brackets" class="header-anchor">&lt;/a>7.Rainbow Brackets
+&lt;/h3>&lt;p>彩虹括号，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/10080/screenshot_17373.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="8indent-rainbow">&lt;a href="#8indent-rainbow" class="header-anchor">&lt;/a>8.Indent Rainbow
+&lt;/h3>&lt;p>彩虹缩进，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13308-indent-rainbow" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/13308/screenshot_20509.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="9rainbow-fart">&lt;a href="#9rainbow-fart" class="header-anchor">&lt;/a>9.Rainbow Fart
+&lt;/h3>&lt;p>彩虹屁插件，一个在你编程时持续用语音夸你写的牛逼的插件，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart" target="_blank" rel="noopener"
+>插件地址&lt;/a>，支持自定义语音包：https://github.com/izhangzhihao/intellij-rainbow-fart&lt;/p>
+&lt;h3 id="10nyan-progress-bar">&lt;a href="#10nyan-progress-bar" class="header-anchor">&lt;/a>10.Nyan Progress Bar
+&lt;/h3>&lt;p>彩虹猫进度条，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar" target="_blank" rel="noopener"
+>插件地址&lt;/a>&lt;/p>
+&lt;h3 id="11中文语言包">&lt;a href="#11%e4%b8%ad%e6%96%87%e8%af%ad%e8%a8%80%e5%8c%85" class="header-anchor">&lt;/a>11.中文语言包
+&lt;/h3>&lt;p>官方出的中文语言包，比什么汉化都要好使
+&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----" target="_blank" rel="noopener"
+>插件地址&lt;/a>&lt;/p>
+&lt;h2 id="附">&lt;a href="#%e9%99%84" class="header-anchor">&lt;/a>附
+&lt;/h2>&lt;p>官方帮助：https://www.jetbrains.com/help/pycharm/2020.1/quick-start-guide.html
+一个很全的设置说明：https://blog.csdn.net/u013088062/article/details/50388329
+对部分设置选项功能进行说明：https://segmentfault.com/a/1190000022799670
+一些有用的设置：https://cloud.tencent.com/developer/news/393471
+一个炒鸡棒的PyCharm 中文指南：http://pycharm.iswbm.com/zh_CN/latest/index.html&lt;/p></description></item><item><title>Pycharm之自定义工具</title><link>http://kizx.gitee.io/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</link><pubDate>Sat, 02 Nov 2019 06:05:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</guid><description>&lt;p>可以在Tool里添加工具来代替某些命令行操作，新建一个工程后，建议使用系统环境解释器，这样安装包时可以直接安装到环境中，这样在别的工程里也能用上，使用虚拟环境的话，虚拟环境变动了就找不到工具了，当然本质上只要在选择程序时选择环境里的程序就行了。添加的地方在setting-&amp;gt;Tools-&amp;gt;External Tools。&lt;/p>
+&lt;h2 id="示例">&lt;a href="#%e7%a4%ba%e4%be%8b" class="header-anchor">&lt;/a>示例
+&lt;/h2>&lt;h3 id="1-qt-designer">&lt;a href="#1-qt-designer" class="header-anchor">&lt;/a>1. Qt Designer
+&lt;/h3>&lt;p>首先确保库中安装了pyqt5，然后如下图配置&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-pycharm" data-lang="pycharm">program: C:\Users\ZXIN\Anaconda3\Library\bin\designer.exe
+working directory: $ProjectFileDir$
+&lt;/code>&lt;/pre>&lt;p>也可以安装pyqt5-tools，然后在Scripts中找到程序
+&lt;img src="https://pan.2bboy.com/img/2019/11/3659543400.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-pyuic">&lt;a href="#2-pyuic" class="header-anchor">&lt;/a>2. PyUIC
+&lt;/h3>&lt;pre tabindex="0">&lt;code class="language-pycharm" data-lang="pycharm">program: C:\Users\ZXIN\Anaconda3\Scripts\pyuic5.exe
+Arguments: $FileName$ -o $FileNameWithoutExtension$.py
+working directory: $FileDir$
+&lt;/code>&lt;/pre>&lt;p>&lt;img src="https://pan.2bboy.com/img/2019/11/490591843.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="3-autopep8">&lt;a href="#3-autopep8" class="header-anchor">&lt;/a>3. autopep8
+&lt;/h3>&lt;pre tabindex="0">&lt;code class="language-pycharm" data-lang="pycharm">program: C:\Users\ZXIN\AppData\Roaming\Python\Python37\Scripts\autopep8.exe
+Arguments: --in-place --aggressive --aggressive $FilePath$
+working directory: $ProjectFileDir$
+&lt;/code>&lt;/pre>&lt;h3 id="4-black">&lt;a href="#4-black" class="header-anchor">&lt;/a>4. Black
+&lt;/h3>&lt;p>需要先安装black&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-pycharm" data-lang="pycharm">program: C:\Users\ZXIN\AppData\Roaming\Python\Python37\Scripts\black.exe
+Arguments: $FilePath$
+working directory: $FileDir$
+&lt;/code>&lt;/pre></description></item></channel></rss>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blender on 醉后的星星</title><link>http://kizx.gitee.io/tags/blender/</link><description>Recent content in Blender on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Tue, 08 Dec 2020 07:55:51 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/blender/index.xml" rel="self" type="application/rss+xml"/><item><title>blender脚本新建物体的方法</title><link>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%AC%E6%96%B0%E5%BB%BA%E7%89%A9%E4%BD%93%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 08 Dec 2020 07:55:51 +0000</pubDate><guid>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%AC%E6%96%B0%E5%BB%BA%E7%89%A9%E4%BD%93%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;p>blender插件脚本里新建物体的两种方法，其实本质上是一样的，这里做个记录以防日后忘记。&lt;/p>
+&lt;h2 id="方法一">&lt;a href="#%e6%96%b9%e6%b3%95%e4%b8%80" class="header-anchor">&lt;/a>方法一
+&lt;/h2>&lt;p>来自之前在网络上搜到的方法，是直接在data里新建物体并link到场景集合里。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PointsImport&lt;/span>(bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Operator):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_idname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;obj.import_points&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_label &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;导入点云&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_options &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;REGISTER&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;UNDO&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty(default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;points&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> path: bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty(subtype&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;FILE_PATH&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">execute&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> points &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>load(self&lt;span style="color:#f92672">.&lt;/span>path)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> verts &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> points:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> verts&lt;span style="color:#f92672">.&lt;/span>append(tuple(i))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 新建mesh&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mymesh &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>data&lt;span style="color:#f92672">.&lt;/span>meshes&lt;span style="color:#f92672">.&lt;/span>new(self&lt;span style="color:#f92672">.&lt;/span>name)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mymesh&lt;span style="color:#f92672">.&lt;/span>from_pydata(verts, [], [])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mymesh&lt;span style="color:#f92672">.&lt;/span>update()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 新建object并添加到场景&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> myobject &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>data&lt;span style="color:#f92672">.&lt;/span>objects&lt;span style="color:#f92672">.&lt;/span>new(self&lt;span style="color:#f92672">.&lt;/span>name, mymesh)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bpy&lt;span style="color:#f92672">.&lt;/span>context&lt;span style="color:#f92672">.&lt;/span>scene&lt;span style="color:#f92672">.&lt;/span>collection&lt;span style="color:#f92672">.&lt;/span>objects&lt;span style="color:#f92672">.&lt;/span>link(myobject)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>report({&lt;span style="color:#e6db74">&amp;#39;INFO&amp;#39;&lt;/span>}, &lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#39;import &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>len(points)&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74"> points&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;FINISHED&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="方法二">&lt;a href="#%e6%96%b9%e6%b3%95%e4%ba%8c" class="header-anchor">&lt;/a>方法二
+&lt;/h2>&lt;p>来自blender自带的demo，直接调用了object_data_add方法，是更正规的方法，需要注意的是需要继承AddObjectHelper&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> bpy
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> bpy.types &lt;span style="color:#f92672">import&lt;/span> Operator
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> bpy.props &lt;span style="color:#f92672">import&lt;/span> FloatVectorProperty
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> bpy_extras.object_utils &lt;span style="color:#f92672">import&lt;/span> AddObjectHelper, object_data_add
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> mathutils &lt;span style="color:#f92672">import&lt;/span> Vector
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">add_object&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> scale_x &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>scale&lt;span style="color:#f92672">.&lt;/span>x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> scale_y &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>scale&lt;span style="color:#f92672">.&lt;/span>y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> verts &lt;span style="color:#f92672">=&lt;/span> [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Vector((&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_x, &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_y, &lt;span style="color:#ae81ff">0&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Vector((&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_x, &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_y, &lt;span style="color:#ae81ff">0&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Vector((&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_x, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_y, &lt;span style="color:#ae81ff">0&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Vector((&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_x, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">*&lt;/span> scale_y, &lt;span style="color:#ae81ff">0&lt;/span>)),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> edges &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> faces &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mesh &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>data&lt;span style="color:#f92672">.&lt;/span>meshes&lt;span style="color:#f92672">.&lt;/span>new(name&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;New Object Mesh&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mesh&lt;span style="color:#f92672">.&lt;/span>from_pydata(verts, edges, faces)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># useful for development when the mesh may be invalid.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># mesh.validate(verbose=True)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> object_data_add(context, mesh, operator&lt;span style="color:#f92672">=&lt;/span>self)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">OBJECT_OT_add_object&lt;/span>(Operator, AddObjectHelper):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;Create a new Mesh Object&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_idname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;mesh.add_object&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_label &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Add Mesh Object&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_options &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;REGISTER&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;UNDO&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> scale: FloatVectorProperty(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;scale&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> default&lt;span style="color:#f92672">=&lt;/span>(&lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> subtype&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;TRANSLATION&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> description&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;scaling&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">execute&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> add_object(self, context)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;FINISHED&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>blender插件编写入门</title><link>http://kizx.gitee.io/post/blender%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E5%85%A5%E9%97%A8/</link><pubDate>Sat, 05 Dec 2020 14:12:00 +0000</pubDate><guid>http://kizx.gitee.io/post/blender%E6%8F%92%E4%BB%B6%E7%BC%96%E5%86%99%E5%85%A5%E9%97%A8/</guid><description>&lt;p>都说blender的python脚本编写起来很简单，虽然已经能够在脚本里调用一些api实现自动化，但实际写成插件还是有很多东西需要摸索的，这里记录一些关键知识点。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>先将一些重要的和有益的参考或学习资料列一下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>一篇相当棒的入门教程
+&lt;a class="link" href="https://www.bilibili.com/video/BV1kg4y1v7Um" target="_blank" rel="noopener"
+>Blender Python小白向入门&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>主要是第2期和第3期杂志关于插件一节写的很棒
+&lt;a class="link" href="https://www.blendercn.org/blendercn%e7%94%b5%e5%ad%90%e6%9d%82%e5%bf%97" target="_blank" rel="noopener"
+>blendercn电子杂志&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>其中Quickstart部分不错，不过需要一定经验后回头看才能看的更明白，其他时候主要是当作字典查询，其中有许多example值得参考
+&lt;a class="link" href="https://docs.blender.org/api/current/" target="_blank" rel="noopener"
+>blenderAPI&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>blender软件中自带的Templates&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="概览">&lt;a href="#%e6%a6%82%e8%a7%88" class="header-anchor">&lt;/a>概览
+&lt;/h2>&lt;p>blender插件大部分内容都是写在class中的，无论是新建一个api接口，还是绘制一个新的界面，都是新建一个class，然后继承相应的类，所以找到相应的类，是编写插件的第一步。
+然后新写的类都要通过下面的注册函数register才能成为blender的一部分，有注册就有注销，注册函数在启用插件时激活，注销函数在取消启用插件时激活。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>bpy&lt;span style="color:#f92672">.&lt;/span>utils&lt;span style="color:#f92672">.&lt;/span>register_class(CLASS_NAME)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bpy&lt;span style="color:#f92672">.&lt;/span>utils&lt;span style="color:#f92672">.&lt;/span>unregister_class(CLASS_NAME)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下面是一个在顶部添加语言切换功能的面板示例代码，关键的部分有继承bpy.types.Header，定义bl_space_type等内容，这些参数可以通过查阅api获取，或者从别人的代码参考过来，绘制界面就是重写draw()函数。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">LanguageChange&lt;/span>(bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Header):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_space_type &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;TOPBAR&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_idname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;MY_HT_LanguageChange&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> context&lt;span style="color:#f92672">.&lt;/span>region&lt;span style="color:#f92672">.&lt;/span>alignment &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;RIGHT&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>layout&lt;span style="color:#f92672">.&lt;/span>prop(context&lt;span style="color:#f92672">.&lt;/span>preferences&lt;span style="color:#f92672">.&lt;/span>view,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;use_translate_interface&amp;#34;&lt;/span>, text&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Language&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>传入的context就表示当前上下文，通过打印dir(context)可知其包涵以下属性和方法：&lt;/p>
+&lt;p>[&amp;rsquo;&lt;strong>doc&lt;/strong>&amp;rsquo;, &amp;lsquo;&lt;strong>module&lt;/strong>&amp;rsquo;, &amp;lsquo;&lt;strong>slots&lt;/strong>&amp;rsquo;, &amp;lsquo;active_annotation_layer&amp;rsquo;, &amp;lsquo;active_base&amp;rsquo;, &amp;lsquo;active_bone&amp;rsquo;, &amp;lsquo;active_editable_fcurve&amp;rsquo;, &amp;lsquo;active_gpencil_frame&amp;rsquo;, &amp;lsquo;active_gpencil_layer&amp;rsquo;, &amp;lsquo;active_object&amp;rsquo;, &amp;lsquo;active_operator&amp;rsquo;, &amp;lsquo;active_pose_bone&amp;rsquo;, &amp;lsquo;annotation_data&amp;rsquo;, &amp;lsquo;annotation_data_owner&amp;rsquo;, &amp;lsquo;area&amp;rsquo;, &amp;lsquo;bl_rna&amp;rsquo;, &amp;lsquo;blend_data&amp;rsquo;, &amp;lsquo;collection&amp;rsquo;, &amp;lsquo;copy&amp;rsquo;, &amp;rsquo;edit_object&amp;rsquo;, &amp;rsquo;editable_bones&amp;rsquo;, &amp;rsquo;editable_fcurves&amp;rsquo;, &amp;rsquo;editable_gpencil_layers&amp;rsquo;, &amp;rsquo;editable_gpencil_strokes&amp;rsquo;, &amp;rsquo;editable_objects&amp;rsquo;, &amp;rsquo;engine&amp;rsquo;, &amp;rsquo;evaluated_depsgraph_get&amp;rsquo;, &amp;lsquo;gizmo_group&amp;rsquo;, &amp;lsquo;gpencil_data&amp;rsquo;, &amp;lsquo;gpencil_data_owner&amp;rsquo;, &amp;lsquo;image_paint_object&amp;rsquo;, &amp;rsquo;layer_collection&amp;rsquo;, &amp;lsquo;mode&amp;rsquo;, &amp;lsquo;object&amp;rsquo;, &amp;lsquo;objects_in_mode&amp;rsquo;, &amp;lsquo;objects_in_mode_unique_data&amp;rsquo;, &amp;lsquo;particle_edit_object&amp;rsquo;, &amp;lsquo;pose_object&amp;rsquo;, &amp;lsquo;preferences&amp;rsquo;, &amp;lsquo;region&amp;rsquo;, &amp;lsquo;region_data&amp;rsquo;, &amp;lsquo;rna_type&amp;rsquo;, &amp;lsquo;scene&amp;rsquo;, &amp;lsquo;screen&amp;rsquo;, &amp;lsquo;sculpt_object&amp;rsquo;, &amp;lsquo;selectable_objects&amp;rsquo;, &amp;lsquo;selected_bones&amp;rsquo;, &amp;lsquo;selected_editable_bones&amp;rsquo;, &amp;lsquo;selected_editable_fcurves&amp;rsquo;, &amp;lsquo;selected_editable_objects&amp;rsquo;, &amp;lsquo;selected_editable_sequences&amp;rsquo;, &amp;lsquo;selected_nla_strips&amp;rsquo;, &amp;lsquo;selected_objects&amp;rsquo;, &amp;lsquo;selected_pose_bones&amp;rsquo;, &amp;lsquo;selected_pose_bones_from_active_object&amp;rsquo;, &amp;lsquo;selected_sequences&amp;rsquo;, &amp;lsquo;selected_visible_fcurves&amp;rsquo;, &amp;lsquo;sequences&amp;rsquo;, &amp;lsquo;space_data&amp;rsquo;, &amp;rsquo;tool_settings&amp;rsquo;, &amp;lsquo;vertex_paint_object&amp;rsquo;, &amp;lsquo;view_layer&amp;rsquo;, &amp;lsquo;visible_bones&amp;rsquo;, &amp;lsquo;visible_fcurves&amp;rsquo;, &amp;lsquo;visible_gpencil_layers&amp;rsquo;, &amp;lsquo;visible_objects&amp;rsquo;, &amp;lsquo;visible_pose_bones&amp;rsquo;, &amp;lsquo;weight_paint_object&amp;rsquo;, &amp;lsquo;window&amp;rsquo;, &amp;lsquo;window_manager&amp;rsquo;, &amp;lsquo;workspace&amp;rsquo;]&lt;/p>
+&lt;p>界面布局layout就不细说了，&lt;code>prop&lt;/code>和&lt;code>operator&lt;/code>两个控件用的比较多，前者用于显示各种属性值，后者就是一个按钮，按下可以执行关联的的api，这两个控件也不细说了，可以查阅api文档。&lt;/p>
+&lt;h2 id="自定义方法">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>自定义方法
+&lt;/h2>&lt;p>到目前位置我们还只能调用blender已有的属性和方法的api，我们实现自己的功能必然需要新建一个自己的api，同样新建api也是新写一个类，如下所示，继承bpy.types.Operator，然后定义bl_idname等内容，执行的具体代码在execute()函数中编写，同样这个类写完后记得注册后才能调用。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">PointsImport&lt;/span>(bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Operator):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_idname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;obj.import_points&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_label &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;导入点云&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_options &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;REGISTER&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;UNDO&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">execute&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;我的代码&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;FINISHED&amp;#39;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>调用的方法是在界面类里调用&lt;code>layout.operator(&amp;quot;obj.import_points&amp;quot;)&lt;/code>，可以看到，bl_idname 就是注册后api的名字。&lt;/p>
+&lt;h2 id="自定义变量">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>自定义变量
+&lt;/h2>&lt;p>除了自定义方法，有时候我们还需要自定义变量，可以参考文档 &lt;a class="link" href="https://docs.blender.org/api/current/bpy.props.html" target="_blank" rel="noopener"
+>https://docs.blender.org/api/current/bpy.props.html&lt;/a> 这一节，就是在方法的类中通过&lt;code>bpy.props.FloatProperty&lt;/code>等函数定义变量，调用的时候需要将实例赋值给一个变量，然后通过变量去调用和修改，可以参考文档的示例代码。&lt;/p>
+&lt;p>有时候我们希望从界面视图中输入一个值，然后将这个值作为自定义api的一个输入参数，如果在界面中直接调用我们创建的方法的属性变量，你就会发现在界面中这个值只能显示出来而不能修改。&lt;/p>
+&lt;p>要想获得一个可以在界面中修改的属性，需要在blender的data中创建一个数据，方法如下，在Scene中加入了一个变量，或者在WindowManager中添加一个变量，当然在其他数据块中添加变量也可以，添加的变量可以在blender api data面板中进行查看。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Scene&lt;span style="color:#f92672">.&lt;/span>points_name &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>WindowManager&lt;span style="color:#f92672">.&lt;/span>points_name &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后将这个值再赋值给方法的属性就可以了，参考我的下面代码。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyPanel&lt;/span>(bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Panel):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_label &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;面板&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 面板显示的名称&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_idname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;MY_PT_Import&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 面板的id，每个面版类的id应保持唯一，建议格式大写NAME_PT_id&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_space_type &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;VIEW_3D&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 面板所处的模式，&amp;#34;VIEW_3D&amp;#34;=3D视窗&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_region_type &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;UI&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 面板所在的位置，&amp;#34;UI&amp;#34;=N面板&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bl_category &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;点云&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 面板所在的标签页&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Scene&lt;span style="color:#f92672">.&lt;/span>points_name &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty(default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;yp&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> bpy&lt;span style="color:#f92672">.&lt;/span>types&lt;span style="color:#f92672">.&lt;/span>Scene&lt;span style="color:#f92672">.&lt;/span>points_file_path &lt;span style="color:#f92672">=&lt;/span> bpy&lt;span style="color:#f92672">.&lt;/span>props&lt;span style="color:#f92672">.&lt;/span>StringProperty(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">r&lt;/span>&lt;span style="color:#e6db74">&amp;#39;C:\Users\kizx\Desktop\Projects\cv\ypa.npy&amp;#39;&lt;/span>, subtype&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;FILE_PATH&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>(self, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> layout &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>layout
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> row &lt;span style="color:#f92672">=&lt;/span> layout&lt;span style="color:#f92672">.&lt;/span>row()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> row&lt;span style="color:#f92672">.&lt;/span>prop(context&lt;span style="color:#f92672">.&lt;/span>scene, &lt;span style="color:#e6db74">&amp;#34;points_name&amp;#34;&lt;/span>, text&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;名称&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> row &lt;span style="color:#f92672">=&lt;/span> layout&lt;span style="color:#f92672">.&lt;/span>row()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> row&lt;span style="color:#f92672">.&lt;/span>prop(context&lt;span style="color:#f92672">.&lt;/span>scene, &lt;span style="color:#e6db74">&amp;#34;points_file_path&amp;#34;&lt;/span>, text&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;点云文件&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> row &lt;span style="color:#f92672">=&lt;/span> layout&lt;span style="color:#f92672">.&lt;/span>row()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pc &lt;span style="color:#f92672">=&lt;/span> row&lt;span style="color:#f92672">.&lt;/span>operator(&lt;span style="color:#e6db74">&amp;#34;obj.import_points&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pc&lt;span style="color:#f92672">.&lt;/span>path &lt;span style="color:#f92672">=&lt;/span> context&lt;span style="color:#f92672">.&lt;/span>scene&lt;span style="color:#f92672">.&lt;/span>points_file_path
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pc&lt;span style="color:#f92672">.&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> context&lt;span style="color:#f92672">.&lt;/span>scene&lt;span style="color:#f92672">.&lt;/span>points_name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>blender脚本python代码自动补全方法</title><link>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%ACpython%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%96%B9%E6%B3%95/</link><pubDate>Wed, 19 Aug 2020 12:13:16 +0000</pubDate><guid>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%ACpython%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%96%B9%E6%B3%95/</guid><description>&lt;p>只要安装&lt;code>fake-bpy-module&lt;/code>这个模块就可以实现代码自动补全了，正如其名，这个库只用于代码提示补全作用，并不具备任何实质可运行代码。&lt;/p>
+&lt;h2 id="pip安装">&lt;a href="#pip%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>pip安装
+&lt;/h2>&lt;p>如果你编程时使用的是自己的python坏境，那么使用以下的pip命令安装即可。&lt;/p>
+&lt;pre tabindex="0">&lt;code>pip install fake-bpy-module- &amp;lt;version&amp;gt;
+# version: 2.78|2.79|2.80|2.81|2.82|2.83
+# e.g.
+pip install fake-bpy-module-2.80
+&lt;/code>&lt;/pre>&lt;h2 id="手动安装">&lt;a href="#%e6%89%8b%e5%8a%a8%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>手动安装
+&lt;/h2>&lt;p>如果你用的是blender自带的python坏境，不好用pip进行安装，此时只能手动安装了。&lt;/p>
+&lt;h3 id="vscode">&lt;a href="#vscode" class="header-anchor">&lt;/a>vscode
+&lt;/h3>&lt;p>从 &lt;a class="link" href="https://github.com/nutti/fake-bpy-module/releases" target="_blank" rel="noopener"
+>https://github.com/nutti/fake-bpy-module/releases&lt;/a> 页面下载对应版本的包并解压，打开vscode，&lt;code>Ctrl+Shift+P&lt;/code>搜索&lt;code>Settings&lt;/code>打开工作区设置（打开设置文件setting.json），设置以下内容，其中填写刚才解压的路径。&lt;/p>
+&lt;pre tabindex="0">&lt;code>{
+&amp;#34;python.autoComplete.extraPaths&amp;#34;: [
+&amp;#34;&amp;lt;path-to-generated-modules&amp;gt;&amp;#34;
+]
+}
+&lt;/code>&lt;/pre>&lt;p>保存后重启vscode就行了。&lt;/p>
+&lt;h3 id="pycharm">&lt;a href="#pycharm" class="header-anchor">&lt;/a>pycharm
+&lt;/h3>&lt;p>日后补充&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/nutti/fake-bpy-module" target="_blank" rel="noopener"
+>https://github.com/nutti/fake-bpy-module&lt;/a>&lt;/p></description></item><item><title>在vscode中开发blender插件和脚本</title><link>http://kizx.gitee.io/post/%E5%9C%A8vscode%E4%B8%AD%E5%BC%80%E5%8F%91blender%E6%8F%92%E4%BB%B6%E5%92%8C%E8%84%9A%E6%9C%AC/</link><pubDate>Tue, 18 Aug 2020 14:50:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%9C%A8vscode%E4%B8%AD%E5%BC%80%E5%8F%91blender%E6%8F%92%E4%BB%B6%E5%92%8C%E8%84%9A%E6%9C%AC/</guid><description>&lt;p>用blender内置的文本编辑器来编写代码体验实在是太糟糕了，利用JacquesLucke大神编写的vscode插件&lt;code>Blender Development&lt;/code>就可以开心的在vscode里编写代码了。
+打开vscode在插件市场里搜索&lt;code>Blender Development&lt;/code>安装即可，该插件依赖于&lt;code>python&lt;/code>和&lt;code>C/C++&lt;/code>插件，安装时会自动安装依赖，如果没有安装请手动安装。&lt;/p>
+&lt;p>&lt;img src="https://www.2bboy.com/usr/uploads/2020/08/615827561.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="使用">&lt;a href="#%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>使用
+&lt;/h2>&lt;h3 id="插件">&lt;a href="#%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>插件
+&lt;/h3>&lt;p>&lt;code>ctrl+shift+P&lt;/code>打开控制台，输入&lt;code>blender&lt;/code>就能看到本插件的所有命令，点击&lt;code>Blender: New Addon&lt;/code>，弹出模板选项，可以选择&lt;code>Simple&lt;/code>简单模板或者&lt;code>WithAutoLoad&lt;/code>模板。然后输入插件名和作者名，最后给插件选择一个目录，一个插件模板就新建成功了。&lt;/p>
+&lt;p>如果你选的是&lt;code>Simple&lt;/code>模板，那么就只会生成一个&lt;code>__init__.py&lt;/code>，如果你选择的是&lt;code>WithAutoLoad&lt;/code>模板，会生成&lt;code>__init__.py&lt;/code>、&lt;code>auto_load.py&lt;/code>、&lt;code>operators.py&lt;/code>三个文件，两个模板的主要区别在于后者会自动注册&lt;code>register()&lt;/code>和注销&lt;code>unregister()&lt;/code>operators.py中的类，当然我们我们自己写一下注册方法也不是多麻烦。&lt;/p>
+&lt;p>代码有了，下面就是如何联合blender了，我们都知道blender里自带一个python解释器，首先我们应该在vscode中点击左下角的python解释器选择blender安装文件夹里的python.exe作为解释器，这个路径一般形如 &lt;code>\blender-2.83.0-windows64\2.83\python\bin\python.exe&lt;/code>。当然你不用blender自带的解释器也行，但是需要在vscode设置里打开&lt;code>blender.allowModifyExternalPython&lt;/code>，允许后面自动下载依赖库。&lt;/p>
+&lt;p>然后&lt;code>ctrl+shift+P&lt;/code>打开控制台，搜索执行&lt;code>Blender: Start&lt;/code>命令，这时选择你的blender.exe，一切正常的话，程序会自动下载&lt;code>ptvsd&lt;/code>、&lt;code>flask&lt;/code>、&lt;code>requests&lt;/code>几个库，所以第一次启动会慢点，如果你卡在这里的话，一般是网络原因，请尝试更新pip、更换pip镜像源，再不济手动安装这些库。&lt;/p>
+&lt;p>[post cid=&amp;ldquo;156&amp;rdquo; cover=&amp;ldquo;http://&amp;rdquo;/]&lt;/p>
+&lt;p>启动blender后，打开N面板有一个Dev的面板就说明成功了。&lt;/p>
+&lt;p>&lt;img src="https://www.2bboy.com/usr/uploads/2020/08/2078653010.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="保存自动刷新">&lt;a href="#%e4%bf%9d%e5%ad%98%e8%87%aa%e5%8a%a8%e5%88%b7%e6%96%b0" class="header-anchor">&lt;/a>保存自动刷新
+&lt;/h3>&lt;p>当我们更改代码后，我们总是希望已保存代码blender那边就立马更新，只需要在vscode设置里打开&lt;code>blender.addon.reloadOnSave&lt;/code>即可。&lt;/p>
+&lt;h3 id="脚本">&lt;a href="#%e8%84%9a%e6%9c%ac" class="header-anchor">&lt;/a>脚本
+&lt;/h3>&lt;p>插件还提供了快速脚本功能，脚本就是类似于直接在blender交互式命令行直接输入命令，不用像写插件一样那么麻烦了，&lt;code>ctrl+shift+P&lt;/code>打开控制台选择&lt;code>Blender: New Script&lt;/code>就可以新建一个脚本，然后通过&lt;code>Blender: Start&lt;/code>打开blender，运行脚本用&lt;code>Blender: Run Script&lt;/code>命令，不过我测试了下这个脚本命令写的一不留神一运行就闪退了，感觉不如在blender的文本编辑器里好用。&lt;/p>
+&lt;h3 id="更改上下文">&lt;a href="#%e6%9b%b4%e6%94%b9%e4%b8%8a%e4%b8%8b%e6%96%87" class="header-anchor">&lt;/a>更改上下文
+&lt;/h3>&lt;p>有时脚本需要特定的模式下，通过&lt;code>Blender: Set Script Context&lt;/code>命令可以设置形如&lt;code>#context.area: VIEW_3D&lt;/code>的注释来达到控制上下文的作用。&lt;/p>
+&lt;h3 id="debug">&lt;a href="#debug" class="header-anchor">&lt;/a>Debug
+&lt;/h3>&lt;p>用vscode的一大好处在于可以打断点进行debug，这些都是vscode的基本操作就不说了。&lt;/p>
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>vscode插件更新到0.0.15版本后，只能适配blender2.92及以上版本，如果还用小于2.92的版本，就需要安装0.0.14版本的插件，并禁用vscode插件自动更新功能。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/JacquesLucke/blender_vscode" target="_blank" rel="noopener"
+>https://github.com/JacquesLucke/blender_vscode&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.bilibili.com/video/BV1EJ41187hT" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/BV1EJ41187hT&lt;/a>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CMake on 醉后的星星</title><link>http://kizx.gitee.io/tags/cmake/</link><description>Recent content in CMake on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Thu, 04 Jun 2020 13:31:51 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/cmake/index.xml" rel="self" type="application/rss+xml"/><item><title>CLion编译运行OpenGL项目</title><link>http://kizx.gitee.io/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</link><pubDate>Thu, 04 Jun 2020 13:31:51 +0000</pubDate><guid>http://kizx.gitee.io/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前面已经用Visual Studio成功运行了OpenGL了，但是VS的界面比较丑，而且代码提示和补全等各方面不够人性化（主要是我不习惯），相比之下，JB家的CLion虽然运行上慢一点，bug多一点，配置麻烦一点（喂！这缺点太多了吧），但是为了颜值和流畅的编程体验，用一下也不是不可以。&lt;/p>
+&lt;h2 id="配置">&lt;a href="#%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>配置
+&lt;/h2>&lt;p>安装什么的就不说了，新建一个项目，Clion会自动生成一个&lt;code>CMakeLists.txt&lt;/code>和&lt;code>main.cpp&lt;/code>，点击运行没毛病，那就进入opengl的环境配置。
+我这里用的是glut库，别的库参照着配置问题应该不大。在vs里我们是通过右键项目属性设置“三大件”的，但CLion是通过cmake来管理编译和链接的，只能通过手写CMakelists来进行配置。其实配置思路都差不多，手写配置还可以更清晰。
+以下是&lt;code>CMakeLists.txt&lt;/code>内容：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmake" data-lang="cmake">&lt;span style="display:flex;">&lt;span>cmake_minimum_required(&lt;span style="color:#e6db74">VERSION&lt;/span> &lt;span style="color:#e6db74">3.16&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>project(&lt;span style="color:#e6db74">gl_demo&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>set(&lt;span style="color:#e6db74">CMAKE_CXX_STANDARD&lt;/span> &lt;span style="color:#e6db74">14&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>include_directories(&lt;span style="color:#e6db74">C:/dev/glut/include&lt;/span>) &lt;span style="color:#75715e"># 添加include头文件目录
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>link_directories(&lt;span style="color:#e6db74">C:/dev//glut/lib&lt;/span>) &lt;span style="color:#75715e"># 添加lib库目录
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>add_executable(&lt;span style="color:#e6db74">gl_demo&lt;/span> &lt;span style="color:#e6db74">main.cpp&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>target_link_libraries(&lt;span style="color:#e6db74">gl_demo&lt;/span> &lt;span style="color:#e6db74">glut32.lib&lt;/span> &lt;span style="color:#e6db74">opengl32.lib&lt;/span>) &lt;span style="color:#75715e"># 添加链接的具体lib项
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下是demo&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Lines.c
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// OpenGL SuperBible, Chapter 4
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Demonstrates primitive GL_LINES
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Program by Richard S. Wright Jr.
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;gl/glut.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;math.h&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Define a constant for the value of PI
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#75715e">#define GL_PI 3.1415f
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Rotation amounts
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">static&lt;/span> GLfloat xRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">static&lt;/span> GLfloat yRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// Called to draw scene
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">RenderScene&lt;/span>(&lt;span style="color:#66d9ef">void&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLfloat x, y, z, angle; &lt;span style="color:#75715e">// Storage for coordinates and angles
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Clear the window with current clearing color
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glClear(GL_COLOR_BUFFER_BIT);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Save matrix state and do the rotation
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glPushMatrix();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glRotatef(xRot, &lt;span style="color:#ae81ff">1.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glRotatef(yRot, &lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">1.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Call only once for all remaining points
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glBegin(GL_LINES);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> z &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (angle &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>; angle &lt;span style="color:#f92672">&amp;lt;=&lt;/span> GL_PI &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">3.0f&lt;/span>; angle &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">0.5f&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Top half of the circle
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50.0f&lt;/span> &lt;span style="color:#f92672">*&lt;/span> cos(angle);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50.0f&lt;/span> &lt;span style="color:#f92672">*&lt;/span> sin(angle);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glVertex3f(x, y, z);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Bottom half of the circle
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50.0f&lt;/span> &lt;span style="color:#f92672">*&lt;/span> cos(angle &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">3.1415f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">50.0f&lt;/span> &lt;span style="color:#f92672">*&lt;/span> sin(angle &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">3.1415f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glVertex3f(x, y, z);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Done drawing points
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glEnd();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Restore transformations
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glPopMatrix();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Flush drawing commands
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glutSwapBuffers();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// This function does any needed initialization on the rendering
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">SetupRC&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Black background
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glClearColor(&lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">1.0f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Set drawing color to green
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glColor3f(&lt;span style="color:#ae81ff">0.0f&lt;/span>, &lt;span style="color:#ae81ff">1.0f&lt;/span>, &lt;span style="color:#ae81ff">0.0f&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">SpecialKeys&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> key, &lt;span style="color:#66d9ef">int&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> y) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> GLUT_KEY_UP)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> GLUT_KEY_DOWN)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> GLUT_KEY_LEFT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> GLUT_KEY_RIGHT)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">356.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">355.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">356.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">355.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Refresh the Window
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glutPostRedisplay();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">KeyPressFunc&lt;/span>(&lt;span style="color:#66d9ef">unsigned&lt;/span> &lt;span style="color:#66d9ef">char&lt;/span> key, &lt;span style="color:#66d9ef">int&lt;/span> x, &lt;span style="color:#66d9ef">int&lt;/span> y) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">32&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">97&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">98&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">99&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">5.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">356.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">355.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">356.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (key &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0f&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> yRot &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">355.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Refresh the Window
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glutPostRedisplay();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">void&lt;/span> &lt;span style="color:#a6e22e">ChangeSize&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> w, &lt;span style="color:#66d9ef">int&lt;/span> h) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLfloat nRange &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">100.0f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Prevent a divide by zero
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (h &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> h &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Set Viewport to window dimensions
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glViewport(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, w, h);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Reset coordinate system
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> glMatrixMode(GL_PROJECTION);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glLoadIdentity();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// Establish clipping volume (left, right, bottom, top, near, far)
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> (w &lt;span style="color:#f92672">&amp;lt;=&lt;/span> h)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glOrtho(&lt;span style="color:#f92672">-&lt;/span>nRange, nRange, &lt;span style="color:#f92672">-&lt;/span>nRange &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">/&lt;/span> w, nRange &lt;span style="color:#f92672">*&lt;/span> h &lt;span style="color:#f92672">/&lt;/span> w, &lt;span style="color:#f92672">-&lt;/span>nRange, nRange);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glOrtho(&lt;span style="color:#f92672">-&lt;/span>nRange &lt;span style="color:#f92672">*&lt;/span> w &lt;span style="color:#f92672">/&lt;/span> h, nRange &lt;span style="color:#f92672">*&lt;/span> w &lt;span style="color:#f92672">/&lt;/span> h, &lt;span style="color:#f92672">-&lt;/span>nRange, nRange, &lt;span style="color:#f92672">-&lt;/span>nRange, nRange);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glMatrixMode(GL_MODELVIEW);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glLoadIdentity();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>argv[]) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLsizei h &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">500&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLsizei w &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">500&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> GLsizei x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">200&lt;/span>, y &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutInit(&lt;span style="color:#f92672">&amp;amp;&lt;/span>argc, argv);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutInitDisplayMode(GLUT_DOUBLE &lt;span style="color:#f92672">|&lt;/span> GLUT_RGB &lt;span style="color:#f92672">|&lt;/span> GLUT_DEPTH);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutInitWindowSize(h, w);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutInitWindowPosition(x, y);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutCreateWindow(&lt;span style="color:#e6db74">&amp;#34;Lines Example&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutDisplayFunc(RenderScene);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutReshapeFunc(ChangeSize);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutSpecialFunc(SpecialKeys);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutKeyboardFunc(KeyPressFunc);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> SetupRC();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> glutMainLoop();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Windows编译安装CGAL</title><link>http://kizx.gitee.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</link><pubDate>Mon, 25 May 2020 18:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</guid><description>&lt;p>CGAL是一个C++计算几何算法库，官方安装说明：https://doc.cgal.org/latest/Manual/windows.html
+我的配置是win10+vs2019，已安装有CMake。
+[button color=&amp;ldquo;success&amp;rdquo; icon=&amp;ldquo;fa fa-download&amp;rdquo; url=&amp;ldquo;https://pan.2bboy.com/Public/Software/CGAL/&amp;rdquo; type=&amp;quot;&amp;quot;]我用到的所有安装文件[/button]&lt;/p>
+&lt;h2 id="下载安装boost">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85boost" class="header-anchor">&lt;/a>下载安装boost
+&lt;/h2>&lt;p>CGAL依赖于boost库，因此需要先安装boost，二进制boost下载地址：https://sourceforge.net/projects/boost/files/boost-binaries/
+根据官网说明选择1.17.0版本即可，然后下载具体版本根据vs版本和位数来选择，14.0对应VC2015，14.1对应VC2017，14.2对应VC2019，因此我选择boost_1_71_0-msvc-14.2-64.exe下载即可。
+下载解压到硬盘，比如解压到C:\dev\目录下，然后设置环境变量。&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>BOOST_LIBRARYDIR = C:\dev\libboost_1_71_0\lib64-msvc-XX.Y&lt;/li>
+&lt;li>BOOST_INCLUDEDIR = C:\dev\libboost_1_71_0&lt;/li>
+&lt;/ul>&lt;/blockquote>
+&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/05/0526010253.png"
+loading="lazy"
+>
+最后将&lt;code>C:\dev\libboost_1_71_0\lib64-msvc-XX.Y&lt;/code>添加到系统环境变量&lt;code>PATH&lt;/code>中。&lt;/p>
+&lt;hr>
+&lt;h3 id="自己编译">&lt;a href="#%e8%87%aa%e5%b7%b1%e7%bc%96%e8%af%91" class="header-anchor">&lt;/a>自己编译
+&lt;/h3>&lt;p>如果不直接下载二进制文件，自己来编译也是可以的（我刚开始就这么干的(ー_ー)!!）
+下载解压boost源文件：https://sourceforge.net/projects/boost/files/boost-binaries/
+解压过程比较慢，解压后得到一堆文件，运行解压目录下的bootstrap.bat文件进行编译。
+第一次运行会报下面的错误：&lt;/p>
+&lt;pre tabindex="0">&lt;code>&amp;#39;cl&amp;#39; 不是内部或外部命令，也不是可运行的程序或批处理文件。
+&lt;/code>&lt;/pre>&lt;p>解决方法是将&lt;code>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\Hostx64\x64&lt;/code>添加到系统变量，然后运行vs的命令行工具&lt;code>x64 Native Tools Command Prompt for VS 2019&lt;/code>(用系统的命令行会报错)，这个命令行不能直接cd切到另一个盘符下，需要先输入&lt;code>d:&lt;/code>切换盘符才行。
+然后&lt;code>cd d:\boost\boost_1_66_0&lt;/code>切换到文件目录，输入&lt;code>bootstrap.bat&lt;/code>运行，然后目录下就会生成几个文件，其中有个b2.exe，直接运行会报错。
+解决方法是打开&lt;code>project-config.jam&lt;/code>，修改为&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>import option ;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>using msvc : 16.0 : &amp;#34;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.26.28801\bin\Hostx64\x64\c1.exe&amp;#34;;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>option.set keep-going : false ;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后输入&lt;code>b2.exe --with-system --with-thread&lt;/code>进行编译，不带后面参数会编译所有库，相当费时间，只编译需要的库就好。
+编译好的lib库在&amp;quot;/stage/lib&amp;quot;下，将根目录和lib目录添加到系统变量。&lt;/p>
+&lt;h2 id="下载安装cgal">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85cgal" class="header-anchor">&lt;/a>下载安装CGAL
+&lt;/h2>&lt;p>从github上下载CGAL-5.0.2-Setup.exe：https://github.com/CGAL/cgal/releases
+点击安装，安装到最后应该会有一个弹窗提醒手动设置环境变量，那就将&lt;code>C:\dev\CGAL-5.0.2\auxiliary\gmp\lib&lt;/code>添加到环境变量&lt;code>PATH&lt;/code>中。&lt;/p>
+&lt;h2 id="其他可选依赖">&lt;a href="#%e5%85%b6%e4%bb%96%e5%8f%af%e9%80%89%e4%be%9d%e8%b5%96" class="header-anchor">&lt;/a>其他可选依赖
+&lt;/h2>&lt;h3 id="qt">&lt;a href="#qt" class="header-anchor">&lt;/a>Qt
+&lt;/h3>&lt;p>下载地址：https://www.qt.io/offline-installers 或 &lt;a class="link" href="http://download.qt.io/official_releases/" target="_blank" rel="noopener"
+>http://download.qt.io/official_releases/&lt;/a>
+安装时勾选MSVC2017的编译器和Qt Script(有些demo可能会用到)，如果硬盘够大的话，把下面几个Qt都勾了也没什么不好。如果现在不勾选，后面再想安装就会很麻烦，具体方法可以自行百度。
+&lt;img src="https://pan.2bboy.com/img/2020/05/0526224650.png"
+loading="lazy"
+>
+完成后添加&lt;code>QTDIR&lt;/code>的系统变量，路径为根目录&lt;code>C:\Qt\Qt5.12.8&lt;/code>，然后添加之前勾选的编译器系统坏境路径&lt;code>C:\Qt\Qt5.12.8\5.12.8\msvc2017_64\bin&lt;/code>到&lt;code>PATH&lt;/code>中。&lt;/p>
+&lt;h3 id="eigen">&lt;a href="#eigen" class="header-anchor">&lt;/a>Eigen
+&lt;/h3>&lt;p>下载地址：http://eigen.tuxfamily.org/index.php?title=Main_Page&lt;/p>
+&lt;h2 id="cmake编译运行">&lt;a href="#cmake%e7%bc%96%e8%af%91%e8%bf%90%e8%a1%8c" class="header-anchor">&lt;/a>Cmake编译运行
+&lt;/h2>&lt;p>然后我们按照官网上的说明进入examples\Triangulation_2目录，新建一个build文件夹，然后启动Cmake，设置源文件夹和输出文件夹，如果用下面的命令行启动的话会自动设置好。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>C:\dev\CGAL-5.0.2&lt;span style="color:#75715e">&amp;gt; cd examples\Triangulation_2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C:\dev\CGAL-5.0.2\examples\Triangulation_2&lt;span style="color:#75715e">&amp;gt; mkdir build&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C:\dev\CGAL-5.0.2\examples\Triangulation_2&lt;span style="color:#75715e">&amp;gt; cd build&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C:\dev\CGAL-5.0.2\examples\Triangulation_2\build&lt;span style="color:#75715e">&amp;gt; cmake-gui ..&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/05/0526015343.png"
+loading="lazy"
+>
+点击左下角&lt;code>Configure&lt;/code>进行配置，一般要点两次。
+&lt;img src="https://pan.2bboy.com/img/2020/05/0526015403.png"
+loading="lazy"
+>
+继续点击&lt;code>Generate&lt;/code>。
+&lt;img src="https://pan.2bboy.com/img/2020/05/0526013040.png"
+loading="lazy"
+>
+生成成功的话在build目录下会生成&lt;code>Triangulation_2_Examples.sln&lt;/code>文件，点击打开或者点击&lt;code>Open Project&lt;/code>也可以直接打开，在vs里生成不报错应该就没问题。
+但是直接点击(ctrl)F5会报错无法启动程序，那是因为当前项目是CMake自动生成的ALL_BUILD，需要将别的项目切换为当前项目（不会用vs的我被这个给坑了好久。。。）
+&lt;img src="https://pan.2bboy.com/img/2020/05/0526214519.png"
+loading="lazy"
+>&lt;/p>
+&lt;hr>
+&lt;p>官网上面是一个编译了一个三角剖分Triangulation的example，运行起来没有什么意思。
+其实我们可以对CGAL里的任何一个demo或者example进行编译，当然也可以对整个CGAL文件夹或demo/examples文件夹进行编译，只要文件夹下有CMakeLists.txt文件就能被CMake编译，不过整个编译文件夹容易出错，因为包含了更多的库，可能这些库我们并没有装全，而且全部编译后的工程文件太大对电脑性能要求也更高。
+下面是编译demo文件夹后，运行P4HDT2的界面。
+&lt;img src="https://pan.2bboy.com/img/2020/05/0526220507.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/u013094443/article/details/51106015" target="_blank" rel="noopener"
+>https://blog.csdn.net/u013094443/article/details/51106015&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/s_lisheng/article/details/72871218" target="_blank" rel="noopener"
+>https://blog.csdn.net/s_lisheng/article/details/72871218&lt;/a>
+&lt;a class="link" href="https://zhuanlan.zhihu.com/p/99814130" target="_blank" rel="noopener"
+>https://zhuanlan.zhihu.com/p/99814130&lt;/a>&lt;/p></description></item><item><title>Windows下使用make命令</title><link>http://kizx.gitee.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 13 Oct 2019 08:47:03 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>看CMake教程时每次在cmake后都会跟着一个make命令，Linux系统下天然有这个命令。但是我的电脑装了MinGW，也设了环境变量却用不了make命令。&lt;/p>
+&lt;h2 id="解决">&lt;a href="#%e8%a7%a3%e5%86%b3" class="header-anchor">&lt;/a>解决
+&lt;/h2>&lt;p>先去MinGW的安装目录下的bin目录里看看有没有mingw32-make.exe文件，如果没有用以下命令下载：
+&lt;code>mingw-get install gcc g++ mingw32-make&lt;/code>
+然后将该文件重命名为make.exe即可。
+这样通过CMake利用MinGW编译生成MakeFile相关文件，直接调用make命令就能生成可执行文件了，比起用微软的VS要方便不少。&lt;/p></description></item><item><title>CMake+VS2017编译OpenCV程序</title><link>http://kizx.gitee.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</link><pubDate>Fri, 11 Oct 2019 16:27:00 +0000</pubDate><guid>http://kizx.gitee.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</guid><description>&lt;p>起因来自下面的OpenCVd官方的一个教程，尝试使用CMake。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html" target="_blank" rel="noopener"
+>https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>但是按照官方的教程会出现很多问题。&lt;/p>
+&lt;h2 id="建立工程">&lt;a href="#%e5%bb%ba%e7%ab%8b%e5%b7%a5%e7%a8%8b" class="header-anchor">&lt;/a>建立工程
+&lt;/h2>&lt;ul>
+&lt;li>先建立下面的这样一个结构
+&lt;img src="https://pan.2bboy.com/img/2019/10/1102879862.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>主函数代码&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;opencv2/core.hpp&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;opencv2/highgui.hpp&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">using&lt;/span> &lt;span style="color:#66d9ef">namespace&lt;/span> cv;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span>&lt;span style="color:#f92672">**&lt;/span> argv )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mat image;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image &lt;span style="color:#f92672">=&lt;/span> imread( &lt;span style="color:#e6db74">&amp;#34;C:&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">Users&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">ZXIN&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">Desktop&lt;/span>&lt;span style="color:#ae81ff">\\&lt;/span>&lt;span style="color:#e6db74">001.png&amp;#34;&lt;/span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> namedWindow(&lt;span style="color:#e6db74">&amp;#34;Display Image&amp;#34;&lt;/span>, WINDOW_AUTOSIZE );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> imshow(&lt;span style="color:#e6db74">&amp;#34;Display Image&amp;#34;&lt;/span>, image);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> waitKey(&lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>CMakeLists.txt内容&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>cmake_minimum_required(VERSION 2.8)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>project( DisplayImage )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>find_package( OpenCV REQUIRED )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>add_executable( DisplayImage DisplayImage.cpp )
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="编译">&lt;a href="#%e7%bc%96%e8%af%91" class="header-anchor">&lt;/a>编译
+&lt;/h2>&lt;ul>
+&lt;li>如果在命令行cmake的话会找不到路径，所以我改用CMake GUI，先选择CMakeLists所在文件夹和编译后的一个空文件夹
+&lt;img src="https://pan.2bboy.com/img/2019/10/1024986576.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>点击Configure，按下图配置，点击Finish
+&lt;img src="https://pan.2bboy.com/img/2019/10/2555629652.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>这是应该会报错，这是就体现gui的方便之处了，点击替换正确的OpenCV路径
+&lt;img src="https://pan.2bboy.com/img/2019/10/2692616696.png"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2019/10/889438698.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>如果还有报错的话，建议gui左上角清除CMake缓存重新开始，没有问题的话继续点击Generate和Open Project，软件自动打开build下的VS工程文件，VS里右键生成解决方案即可。&lt;/li>
+&lt;/ul></description></item></channel></rss>

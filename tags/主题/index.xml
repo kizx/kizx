@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>主题 on 醉后的星星</title><link>http://kizx.gitee.io/tags/%E4%B8%BB%E9%A2%98/</link><description>Recent content in 主题 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Sun, 06 Jul 2025 08:38:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/%E4%B8%BB%E9%A2%98/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo博客搭建及stack主题设置</title><link>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Sun, 06 Jul 2025 08:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hugo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装hugo">&lt;a href="#%e5%ae%89%e8%a3%85hugo" class="header-anchor">&lt;/a>安装Hugo
+&lt;/h2>&lt;p>Hugo有标准版、扩展版（extended），还有一个部署版（extended_withdeploy）,扩展板多了图像和Sass处理器，部署版支持直接部署到google、AWS云等。&lt;/p>
+&lt;p>直接下载扩展版：&lt;a class="link" href="https://github.com/gohugoio/hugo/releases/" target="_blank" rel="noopener"
+>https://github.com/gohugoio/hugo/releases/&lt;/a>&lt;/p>
+&lt;p>解压后将&lt;code>hugo.exe&lt;/code>目录添加到全局环境变量中。&lt;/p>
+&lt;ul>
+&lt;li>新建站点&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>hugo new site quickstart&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>初始化git&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>git init&lt;/p>&lt;/blockquote>
+&lt;p>hugo命令见官方指南：&lt;a class="link" href="https://hugo.opendocs.io/getting-started/" target="_blank" rel="noopener"
+>https://hugo.opendocs.io/getting-started/&lt;/a>&lt;/p>
+&lt;h2 id="安装主题">&lt;a href="#%e5%ae%89%e8%a3%85%e4%b8%bb%e9%a2%98" class="header-anchor">&lt;/a>安装主题
+&lt;/h2>&lt;p>hugo主题网站：&lt;a class="link" href="https://themes.gohugo.com.cn/" target="_blank" rel="noopener"
+>https://themes.gohugo.com.cn/&lt;/a>&lt;/p>
+&lt;p>这里使用stack主题：&lt;a class="link" href="https://stack.jimmycai.com/" target="_blank" rel="noopener"
+>https://stack.jimmycai.com/&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>安装主题&lt;/li>
+&lt;/ul>
+&lt;p>直接使用git命令或者手动下载放到themes目录下&lt;/p>
+&lt;blockquote>
+&lt;p>git submodule add &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack/" target="_blank" rel="noopener"
+>https://github.com/CaiJimmy/hugo-theme-stack/&lt;/a> themes/hugo-theme-stack&lt;/p>&lt;/blockquote>
+&lt;h2 id="主题设置">&lt;a href="#%e4%b8%bb%e9%a2%98%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>主题设置
+&lt;/h2>&lt;p>stack主题设置参考：&lt;a class="link" href="https://stack.jimmycai.com/config/" target="_blank" rel="noopener"
+>https://stack.jimmycai.com/config/&lt;/a>&lt;/p>
+&lt;p>以下本站设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">baseURL&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;http://kizx.gitee.io/&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">languageCode&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;zh-cn&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">title&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;醉后的星星&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">theme&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;hugo-theme-stack&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">copyright&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;kizx&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">DefaultContentLanguage&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;zh-cn&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">favicon&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;/favicon.ico&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">sidebar&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#compact = true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">emoji&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;🔞&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">subtitle&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;我好菜啊&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">avatar&lt;/span>.&lt;span style="color:#a6e22e">enabled&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">avatar&lt;/span>.&lt;span style="color:#a6e22e">local&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">avatar&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;img/avatar.gif&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">Footer&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">since&lt;/span> = &lt;span style="color:#ae81ff">2019&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#customText = &amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">Article&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">headingAnchor&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">math&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">readingTime&lt;/span> = &lt;span style="color:#66d9ef">false&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">widgets&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">homepage&lt;/span> = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;search&amp;#39;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;archives&amp;#39;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;tag-cloud&amp;#39;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">page&lt;/span> = [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;toc&amp;#39;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#a6e22e">type&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;categories&amp;#39;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">opengraph&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">twitter&lt;/span>.&lt;span style="color:#a6e22e">site&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;kizx&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">twitter&lt;/span>.&lt;span style="color:#a6e22e">card&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;summary&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">enabled&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">src&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;img/default.jpg&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">local&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">menu&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[[&lt;span style="color:#a6e22e">menu&lt;/span>.&lt;span style="color:#a6e22e">social&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">identifier&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;github&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">url&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;https://github.com/kizx&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">icon&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;brand-github&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[[&lt;span style="color:#a6e22e">menu&lt;/span>.&lt;span style="color:#a6e22e">social&lt;/span>]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">identifier&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;bilibili&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">url&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;https://space.bilibili.com/22411920&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">params&lt;/span>.&lt;span style="color:#a6e22e">icon&lt;/span> = &lt;span style="color:#e6db74">&amp;#39;brand-bilibili&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>左侧菜单页设置：&lt;/p>
+&lt;p>直接将&lt;code>hugo-theme-stack\exampleSite\content\page&lt;/code>拷贝到网页的&lt;code>content\page&lt;/code>中&lt;/p>
+&lt;p>需要出现在菜单栏中的页面通过在md文件的Front Matter中添加：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">menu&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">main&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">title (optional)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">weight&lt;/span>: -&lt;span style="color:#ae81ff">90&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">params&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">icon&lt;/span>: &lt;span style="color:#ae81ff">icon-name&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>或者直接在配置文件中添加，但在配置文件中添加会缺少当前惨淡选中高亮显示。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://liuhouliang.com/post/hugo_theme/" target="_blank" rel="noopener"
+>使用hugo stack主题快速搭建博客&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://serennan.github.io/post/hugo-config/" target="_blank" rel="noopener"
+>【Hugo】配置 (stack 主题)&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://tabler.io/icons" target="_blank" rel="noopener"
+>图标下载&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://krislinzhao.github.io/docs/create-a-wesite-using-github-pages-and-hugo/" target="_blank" rel="noopener"
+>如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a>&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
+>onedrive-OneManager&lt;/a>重新写了个样式当作练手了，本来是想在原有的基础上做一点美化，但程序原样式都是内部样式，而且还有许多内联样式，改起来超级麻烦，所以干脆就从头开始重写了。&lt;/p>
+&lt;h2 id="下载地址">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80" class="header-anchor">&lt;/a>下载地址
+&lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://github.com/kizx/onedrive-index-theme" target="_blank" rel="noopener"
+>下载地址&lt;/a>[/scode]&lt;/p>
+&lt;h2 id="预览">&lt;a href="#%e9%a2%84%e8%a7%88" class="header-anchor">&lt;/a>预览
+&lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://pan.2bboy.com/" target="_blank" rel="noopener"
+>在线预览&lt;/a>[/scode]
+虽然本人的审美不咋地，但是原主题那个超大的圆角我已经忍了很久了┻━┻ ヘ╰( ??ε?? ╰)，主题的配色我不是很懂，你要是不喜欢反正在我css的基础上改起来也简单。&lt;/p>
+&lt;h2 id="使用说明">&lt;a href="#%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e" class="header-anchor">&lt;/a>使用说明
+&lt;/h2>&lt;p>[tabs]
+[tab name=&amp;quot;&lt;del>旧版本&lt;/del>&amp;quot;]&lt;/p>
+&lt;ul>
+&lt;li>简单点就是直接把下载的onemoe.php复制到theme文件夹下然后网站后台切换主题即可。&lt;/li>
+&lt;li>我的onemoe.php其实是在classic.php基础上改的，本着尽量不改动内部的原则（其实是我不会php,另一个是改动的越少主程序更新时就修改的越少），改动的地方是把head里所有内部样式删除，然后替换成下面这句。
+&lt;code>&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;[onemoe.css的地址]&amp;quot; type=&amp;quot;text/css&amp;quot; /&amp;gt;&lt;/code>&lt;/li>
+&lt;li>更新多盘后发现多了个div不好定位，无奈只好在内部加了两个onemoe的class，一个位于底部readme，一个位于多盘位置，另外删除了文件大小和时间两个标题的内联样式。所以如果你用这个主题出现什么问题，除了显示样式上的问题，其余的bug肯定与我无瓜。&lt;/li>
+&lt;li>现在我把onemoe.css文件放在我的网站上并提供了百度cdn加速，如果你想修改主题配色什么的，可以直接在我的css上进行修改，然后把你修改的css文件放在自己的onedrive目录或者别的cdn处，然后把上面的链接替换下就可以了，主题更新时同理也只需把新的css文件链接替换下就行。
+[/tab]
+[tab name=&amp;ldquo;新版本&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]&lt;/li>
+&lt;li>程序已内置本主题，后台切换主题即可使用。&lt;/li>
+&lt;li>或者可以手动下载onemoe.html放在程序theme文件夹下后台启用主题，以此来获取最新主题。&lt;/li>
+&lt;li>本主题只是基于classic主题的css重写，并未改动原主题任何主体内容。&lt;/li>
+&lt;li>css文件默认从 &lt;a class="link" href="https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css" target="_blank" rel="noopener"
+>https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css&lt;/a> 加载，你也可以自行修改上述地址，改成自己的cdn地址。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">link&lt;/span> &lt;span style="color:#a6e22e">rel&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;stylesheet&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text/css&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
+[/tabs]&lt;/p>
+&lt;h2 id="更多关于onemanager的设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e5%85%b3%e4%ba%8eonemanager%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多关于OneManager的设置
+&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>PyCharm主题，插件推荐</title><link>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 16 Feb 2020 10:50:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pycharm%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid><description>&lt;p>&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Plugins&lt;/code>里搜索相应插件名即可，或者去网页 &lt;a class="link" href="https://plugins.jetbrains.com/pycharm" target="_blank" rel="noopener"
+>https://plugins.jetbrains.com/pycharm&lt;/a> 搜索插件下载后本地安装亦可，唯一的问题可能就是网络连接性可能不太好。&lt;/p>
+&lt;h2 id="主题推荐">&lt;a href="#%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>主题推荐
+&lt;/h2>&lt;p>先说说主题设置，下好主题后在设置&lt;code>Appearance&lt;/code>里切换主题。
+设完主题后还可以设置代码样式，这两个是可以分开设置的，比如我主题是One Dark，代码样式是Atom One Dark。如果你不喜欢现有的代码配色风格，可以在&lt;a class="link" href="http://color-themes.com" target="_blank" rel="noopener"
+>Color Theme网站&lt;/a> 下载喜欢的配色，然后在代码样式里导入即可。
+&lt;img src="https://pan.2bboy.com/img/2020/03/0313180726.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;p>另外字体也可以自定义，软件界面字体在settings-&amp;gt;appearance里修改。代码字体在settings-&amp;gt;editor-&amp;gt;font里（如果直接改这里没用，点上面有个感叹号那里，其实就是color scheme font里改）。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216182934.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="1-one-dark">&lt;a href="#1-one-dark" class="header-anchor">&lt;/a>1. One Dark
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/11938-one-dark-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+我最常用的主题，还有一个&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12178-atom-onedark-theme" target="_blank" rel="noopener"
+>Atom One Dark&lt;/a>的主题也不错。
+&lt;img src="https://plugins.jetbrains.com/files/11938/screenshot_19494.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-material-theme-ui">&lt;a href="#2-material-theme-ui" class="header-anchor">&lt;/a>2. Material Theme UI
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8006-material-theme-ui" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+这大概是使用最广泛的主题了吧，毕竟人家样式全，美化全面，但是个人不是很喜欢。
+&lt;img src="https://plugins.jetbrains.com/files/8006/screenshot_17526.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="3-the-doki-doki-theme">&lt;a href="#3-the-doki-doki-theme" class="header-anchor">&lt;/a>3. The Doki-Doki Theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10804-the-doki-doki-theme/" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+看这名字就知道是一款二次元主题，不仅有心跳人物的主题，还包含Re0等二次元人物，下面只列举部分，作者更新相当勤快，可以说是老二次元了。
+[album]
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22344.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22341.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22346.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22349.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22503.png"
+loading="lazy"
+>
+&lt;img src="https://plugins.jetbrains.com/files/10804/screenshot_22342.png"
+loading="lazy"
+>
+[/album]&lt;/p>
+&lt;h3 id="4-gruvbox-theme">&lt;a href="#4-gruvbox-theme" class="header-anchor">&lt;/a>4. gruvbox-theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12310-gruvbox-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+深色配色很舒服
+&lt;img src="https://plugins.jetbrains.com/files/12310/screenshot_19486.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="5-visual-studio-code-dark-plus-theme">&lt;a href="#5-visual-studio-code-dark-plus-theme" class="header-anchor">&lt;/a>5. Visual Studio Code Dark Plus Theme
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/12255-visual-studio-code-dark-plus-theme" target="_blank" rel="noopener"
+>主题地址&lt;/a>
+vscode风格主题，适合vscode爱好者
+&lt;img src="https://plugins.jetbrains.com/files/12255/screenshot_19350.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="插件推荐">&lt;a href="#%e6%8f%92%e4%bb%b6%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>插件推荐
+&lt;/h2>&lt;h3 id="1-codeglance">&lt;a href="#1-codeglance" class="header-anchor">&lt;/a>1. CodeGlance
+&lt;/h3>&lt;p>可以像VScode一样在右侧显示预览条，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/index?xmlId=net.vektah.codeglance" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/7275/screenshot_16821.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="2-save-actions">&lt;a href="#2-save-actions" class="header-anchor">&lt;/a>2. Save Actions
+&lt;/h3>&lt;p>Pycharm的代码格式化每次都要按快捷键太麻烦了，有了这个插件就可以在保存的时候自动格式化了，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/7642-save-actions" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+插件需要在&lt;code>Setting&lt;/code> -&amp;gt; &lt;code>Other Settings&lt;/code>里启动才行
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216163232.jpg"
+loading="lazy"
+>
+唯一不足的是这个插件的设置是针对每个项目单独设置的，默认下图是都没有勾选的，每次新开一个工程都需要重新设置一遍
+要想新建工程时默认勾选，需要你打开软件时在configure里进行设置（前提设置打开软件弹出这个界面而非上次的工程）
+&lt;img src="https://pan.2bboy.com/img/2020/07/0714100107.png"
+loading="lazy"
+>
+该插件还有另一个分支版本功能相同&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13331-save-actions-reborn" target="_blank" rel="noopener"
+>Save Actions Reborn&lt;/a>&lt;/p>
+&lt;h3 id="3-background-image-plus-">&lt;a href="#3-background-image-plus-" class="header-anchor">&lt;/a>3. Background Image Plus +
+&lt;/h3>&lt;p>可以设置背景图的插件，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/11247-background-image-plus-" target="_blank" rel="noopener"
+>插件地址&lt;/a>，下载后在下图所示的位置设置背景图片文件夹。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216175836.jpg"
+loading="lazy"
+>
+如果只是一张图的话，软件默认就带这个功能，不需要插件。
+&lt;img src="https://pan.2bboy.com/img/2020/02/0216180519.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="4-key-promoter-x">&lt;a href="#4-key-promoter-x" class="header-anchor">&lt;/a>4. Key Promoter X
+&lt;/h3>&lt;p>如果你使用鼠标点击了某个按钮，右下角就会弹窗提醒你相应的快捷键，想不记住快捷键都难。
+&lt;img src="https://plugins.jetbrains.com/files/9792/screenshot_17105.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="5-translation">&lt;a href="#5-translation" class="header-anchor">&lt;/a>5. Translation
+&lt;/h3>&lt;p>翻译插件，可以随时随地一键翻译，再也不用担心读不懂源码注释了，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8579-translation" target="_blank" rel="noopener"
+>插件地址&lt;/a>，使用方法可以参照插件地址。
+&lt;img src="https://plugins.jetbrains.com/files/8579/screenshot_20602.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="6atom-material-icons">&lt;a href="#6atom-material-icons" class="header-anchor">&lt;/a>6.Atom Material Icons
+&lt;/h3>&lt;p>&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10044-atom-material-icons" target="_blank" rel="noopener"
+>插件地址&lt;/a>，更改文件图标的插件。
+&lt;img src="https://plugins.jetbrains.com/files/10044/screenshot_21309.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="7rainbow-brackets">&lt;a href="#7rainbow-brackets" class="header-anchor">&lt;/a>7.Rainbow Brackets
+&lt;/h3>&lt;p>彩虹括号，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/10080/screenshot_17373.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="8indent-rainbow">&lt;a href="#8indent-rainbow" class="header-anchor">&lt;/a>8.Indent Rainbow
+&lt;/h3>&lt;p>彩虹缩进，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13308-indent-rainbow" target="_blank" rel="noopener"
+>插件地址&lt;/a>
+&lt;img src="https://plugins.jetbrains.com/files/13308/screenshot_20509.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="9rainbow-fart">&lt;a href="#9rainbow-fart" class="header-anchor">&lt;/a>9.Rainbow Fart
+&lt;/h3>&lt;p>彩虹屁插件，一个在你编程时持续用语音夸你写的牛逼的插件，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/14543-rainbow-fart" target="_blank" rel="noopener"
+>插件地址&lt;/a>，支持自定义语音包：https://github.com/izhangzhihao/intellij-rainbow-fart&lt;/p>
+&lt;h3 id="10nyan-progress-bar">&lt;a href="#10nyan-progress-bar" class="header-anchor">&lt;/a>10.Nyan Progress Bar
+&lt;/h3>&lt;p>彩虹猫进度条，&lt;a class="link" href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar" target="_blank" rel="noopener"
+>插件地址&lt;/a>&lt;/p>
+&lt;h3 id="11中文语言包">&lt;a href="#11%e4%b8%ad%e6%96%87%e8%af%ad%e8%a8%80%e5%8c%85" class="header-anchor">&lt;/a>11.中文语言包
+&lt;/h3>&lt;p>官方出的中文语言包，比什么汉化都要好使
+&lt;a class="link" href="https://plugins.jetbrains.com/plugin/13710-chinese-simplified-language-pack----" target="_blank" rel="noopener"
+>插件地址&lt;/a>&lt;/p>
+&lt;h2 id="附">&lt;a href="#%e9%99%84" class="header-anchor">&lt;/a>附
+&lt;/h2>&lt;p>官方帮助：https://www.jetbrains.com/help/pycharm/2020.1/quick-start-guide.html
+一个很全的设置说明：https://blog.csdn.net/u013088062/article/details/50388329
+对部分设置选项功能进行说明：https://segmentfault.com/a/1190000022799670
+一些有用的设置：https://cloud.tencent.com/developer/news/393471
+一个炒鸡棒的PyCharm 中文指南：http://pycharm.iswbm.com/zh_CN/latest/index.html&lt;/p></description></item><item><title>Typecho+Handsome主题美化</title><link>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</link><pubDate>Sat, 28 Dec 2019 06:06:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho+handsome%E4%B8%BB%E9%A2%98%E7%BE%8E%E5%8C%96/</guid><description>&lt;h2 id="美化教程">&lt;a href="#%e7%be%8e%e5%8c%96%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>美化教程
+&lt;/h2>&lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/docs/#/" target="_blank" rel="noopener"
+>handsome使用文档&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://auth.ihewro.com/user/course.html" target="_blank" rel="noopener"
+>handsome社区分享&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.kancloud.cn/jarvis0912/handsome/1500818" target="_blank" rel="noopener"
+>史上最全的handsome美化，没有之一！&lt;/a>&lt;/p>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://sunpma.com/674.html" target="_blank" rel="noopener"
+>sunpma.com主题美化记录&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.onlaly.com/archives/268/" target="_blank" rel="noopener"
+>www.onlaly.com的魔改&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://blog.qqiyu.cn/397.html" target="_blank" rel="noopener"
+>blog.qqiyu.cn美化魔改&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://itudo.cn/handsome-change.html" target="_blank" rel="noopener"
+>itudo.cn魔改合集&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://gordsky.cn/106.html" target="_blank" rel="noopener"
+>gordsky.cn美化分享&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.cooyf.com/default/1.html" target="_blank" rel="noopener"
+>www.cooyf.com的一些美化&lt;/a>&lt;/p>
+&lt;hr>
+&lt;p>&lt;a class="link" href="https://www.phenxso.com/archives/194.html" target="_blank" rel="noopener"
+>typecho评论后台图片超出范围&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://dxoca.cn/front/257.html" target="_blank" rel="noopener"
+>typecho文章挂载Bilibili视频&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://eas1.cn/190.html" target="_blank" rel="noopener"
+>弹窗提醒以及个性化提示&lt;/a>&lt;/p>
+&lt;h2 id="插件">&lt;a href="#%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>插件
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.xcnte.com/archives/523/" target="_blank" rel="noopener"
+>代码高亮插件Code Prettify&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.hoehub.com/PHP/typecho-HoerMouse.html" target="_blank" rel="noopener"
+>Typecho炫彩鼠标插件:HoerMouse&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/gaobinzhan/CommentPush" target="_blank" rel="noopener"
+>评论通知推送多服务&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://minirizhi.com/104.html" target="_blank" rel="noopener"
+>百度提交插件BaiduSubmit魔改&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://paugram.com/coding/add-poster-girl-with-plugin.html" target="_blank" rel="noopener"
+>Live2D 插件Pio&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://qqdie.com/archives/tyepcho-tag-select-plugin.html" target="_blank" rel="noopener"
+>后台编辑文章时增加标签选择列表&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://qqdie.com/archives/tereplace-plugin-typecho.html" target="_blank" rel="noopener"
+>文章内容替换工具&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/ShadowySpirits/BangumiList" target="_blank" rel="noopener"
+>Bangumi 追番列表&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://blog.imalan.cn/archives/128/" target="_blank" rel="noopener"
+>PandaBangumi 追番列表&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://zjhblog.cc/index.php/archives/159/" target="_blank" rel="noopener"
+>EditorMD + handsome 编辑器插件整合&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://keymoe.com/archives/55/" target="_blank" rel="noopener"
+>WowScroll动感元素插件&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.zpblogs.cn/103.html" target="_blank" rel="noopener"
+>WenYu特效管理插件&lt;/a>&lt;/p>
+&lt;h2 id="博主的介绍">&lt;a href="#%e5%8d%9a%e4%b8%bb%e7%9a%84%e4%bb%8b%e7%bb%8d" class="header-anchor">&lt;/a>博主的介绍
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--博主介绍的闪字特效--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text-muted text-xs block&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;chakhsu&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">chakhsu&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">r&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">t&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>[Math.&lt;span style="color:#a6e22e">floor&lt;/span>(Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>)]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">e&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> String.&lt;span style="color:#a6e22e">fromCharCode&lt;/span>(&lt;span style="color:#ae81ff">94&lt;/span> &lt;span style="color:#f92672">*&lt;/span> Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">33&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">n&lt;/span>(&lt;span style="color:#a6e22e">r&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">n&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">createDocumentFragment&lt;/span>(), &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">l&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">createElement&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;span&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">l&lt;/span>.&lt;span style="color:#a6e22e">textContent&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">e&lt;/span>(), &lt;span style="color:#a6e22e">l&lt;/span>.&lt;span style="color:#a6e22e">style&lt;/span>.&lt;span style="color:#a6e22e">color&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">t&lt;/span>(), &lt;span style="color:#a6e22e">n&lt;/span>.&lt;span style="color:#a6e22e">appendChild&lt;/span>(&lt;span style="color:#a6e22e">l&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">n&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">t&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>[&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillI&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">step&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">step&lt;/span>&lt;span style="color:#f92672">--&lt;/span> &lt;span style="color:#f92672">:&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">step&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">g&lt;/span>, &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">l&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">?&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span> &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">text&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#a6e22e">l&lt;/span>[&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span>]),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;forward&amp;#34;&lt;/span> &lt;span style="color:#f92672">===&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">direction&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">t&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">?&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">text&lt;/span> &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#a6e22e">t&lt;/span>[&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">delay&lt;/span> &lt;span style="color:#f92672">?&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">delay&lt;/span>&lt;span style="color:#f92672">--&lt;/span> &lt;span style="color:#f92672">:&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">direction&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;backward&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">delay&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">?&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">text&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">text&lt;/span>.&lt;span style="color:#a6e22e">slice&lt;/span>(&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>), &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span>&lt;span style="color:#f92672">--&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillI&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillI&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>, &lt;span style="color:#a6e22e">c&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">direction&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;forward&amp;#34;&lt;/span>)), &lt;span style="color:#a6e22e">r&lt;/span>.&lt;span style="color:#a6e22e">textContent&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">text&lt;/span>, &lt;span style="color:#a6e22e">r&lt;/span>.&lt;span style="color:#a6e22e">appendChild&lt;/span>(&lt;span style="color:#a6e22e">n&lt;/span>(&lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">l&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">?&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Math.&lt;span style="color:#a6e22e">min&lt;/span>(&lt;span style="color:#a6e22e">s&lt;/span>, &lt;span style="color:#a6e22e">s&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">prefixP&lt;/span>) &lt;span style="color:#f92672">:&lt;/span> Math.&lt;span style="color:#a6e22e">min&lt;/span>(&lt;span style="color:#a6e22e">s&lt;/span>, &lt;span style="color:#a6e22e">t&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#a6e22e">c&lt;/span>.&lt;span style="color:#a6e22e">skillP&lt;/span>))), &lt;span style="color:#a6e22e">setTimeout&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span>, &lt;span style="color:#a6e22e">d&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#75715e">/*以下内容自定义修改*/&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">l&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">o&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;我好菜啊&amp;#34;&lt;/span>].&lt;span style="color:#a6e22e">map&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span> (&lt;span style="color:#a6e22e">r&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">r&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">g&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">s&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">d&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">75&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;rgb(110,64,170)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(150,61,179)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(191,60,175)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(228,65,157)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(254,75,131)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;rgb(255,94,99)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(255,120,71)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(251,150,51)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(226,183,47)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(198,214,60)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;rgb(175,240,91)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(127,246,88)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(82,246,103)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(48,239,130)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(29,223,163)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;rgb(26,199,194)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(35,171,216)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(54,140,225)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(76,110,219)&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;rgb(96,84,200)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">c&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">text&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">prefixP&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#a6e22e">s&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">skillI&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">skillP&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">direction&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;forward&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">delay&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">step&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">g&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">i&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">chakhsu&lt;/span>(document.&lt;span style="color:#a6e22e">getElementById&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;chakhsu&amp;#39;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="左侧边栏导航">&lt;a href="#%e5%b7%a6%e4%be%a7%e8%be%b9%e6%a0%8f%e5%af%bc%e8%88%aa" class="header-anchor">&lt;/a>左侧边栏导航
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;留言板&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-liuyan&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://www.2bboy.com/guestbook.html&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;target&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;_self&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;动态&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-dongtai2&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://www.2bboy.com/cross.html&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;target&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;_self&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;归档&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-rili2&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://www.2bboy.com/file.html&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;target&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;_self&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;追番&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-pgc_bangumi&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://www.2bboy.com/bangumi.html&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;target&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;_self&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;云盘&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-yun&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://pan.2bboy.com/Public&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;home&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;status&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;hide&amp;#34;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="顶部导航">&lt;a href="#%e9%a1%b6%e9%83%a8%e5%af%bc%e8%88%aa" class="header-anchor">&lt;/a>顶部导航
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;bilibili&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-bilibili-fill&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://space.bilibili.com/22411920&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;github&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-github&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://github.com/kizx&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;steam&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;iconfont icon-steam&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://steamcommunity.com/id/kizxmoe&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;talk&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;status&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;hide&amp;#34;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="时光机社交按钮">&lt;a href="#%e6%97%b6%e5%85%89%e6%9c%ba%e7%a4%be%e4%ba%a4%e6%8c%89%e9%92%ae" class="header-anchor">&lt;/a>时光机社交按钮
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;微博&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;fontello fontello-weibo&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://weibo.com/u/5938819173&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;github&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;fa fa-github&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://github.com/kizx&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;gitee&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;fa fa-git&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://gitee.com/kizx&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;steam&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;fa fa-steam&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://steamcommunity.com/id/kizxmoe&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;bilibili&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;status&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;single&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://space.bilibili.com/22411920&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;网易云&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;status&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;single&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;https://music.163.com/#/user/home?id=111496719&amp;#34;&lt;/span>}&lt;span style="color:#960050;background-color:#1e0010">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{&lt;span style="color:#f92672">&amp;#34;name&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;bangumi&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;status&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;single&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;class&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;fa fa-heartbeat&amp;#34;&lt;/span>,&lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;http://bangumi.tv/user/305237&amp;#34;&lt;/span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="pjax回调函数">&lt;a href="#pjax%e5%9b%9e%e8%b0%83%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>pjax回调函数
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--&lt;/span>&lt;span style="color:#a6e22e">彩色标签云&lt;/span>&lt;span style="color:#f92672">--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">tags&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">querySelectorAll&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;#tag_cloud-2 a&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;#428BCA&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#AEDCAE&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#ECA9A7&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#DA99FF&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#FFB380&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#D9B999&amp;#34;&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">tags&lt;/span>.&lt;span style="color:#a6e22e">forEach&lt;/span>(&lt;span style="color:#a6e22e">tag&lt;/span> =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">tagsColor&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span>[Math.&lt;span style="color:#a6e22e">floor&lt;/span>(Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>)];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">tag&lt;/span>.&lt;span style="color:#a6e22e">style&lt;/span>.&lt;span style="color:#a6e22e">backgroundColor&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">tagsColor&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--&lt;/span>&lt;span style="color:#a6e22e">代码高亮&lt;/span>&lt;span style="color:#f92672">--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#66d9ef">typeof&lt;/span> &lt;span style="color:#a6e22e">Prism&lt;/span> &lt;span style="color:#f92672">!==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;undefined&amp;#39;&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Prism&lt;/span>.&lt;span style="color:#a6e22e">highlightAll&lt;/span>(&lt;span style="color:#66d9ef">true&lt;/span>,&lt;span style="color:#66d9ef">null&lt;/span>);}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--&lt;/span>&lt;span style="color:#a6e22e">复制提示&lt;/span>&lt;span style="color:#f92672">--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">kaygb_copy&lt;/span>();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="博客底部左侧">&lt;a href="#%e5%8d%9a%e5%ae%a2%e5%ba%95%e9%83%a8%e5%b7%a6%e4%be%a7" class="header-anchor">&lt;/a>博客底部左侧
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;github-badge&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;./&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;?2019 kizx&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-subject&amp;#34;&lt;/span>&amp;gt;Copyright&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-value bg-blue&amp;#34;&lt;/span>&amp;gt;?2019 kizx&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;github-badge&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://beian.miit.gov.cn&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">target&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;_blank&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;陕ICP备19016973号&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">style&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;cursor: url(&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">usr&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">plugins&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">HoerMouse&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">static&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">image&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">dew&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">link&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">.&lt;/span>&lt;span style="color:#a6e22e">cur&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;#34;),&lt;/span> &lt;span style="color:#a6e22e">pointer&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">;&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-subject&amp;#34;&lt;/span>&amp;gt;陕ICP备&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-value bg-green&amp;#34;&lt;/span>&amp;gt;19016973号&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="博客底部右侧">&lt;a href="#%e5%8d%9a%e5%ae%a2%e5%ba%95%e9%83%a8%e5%8f%b3%e4%be%a7" class="header-anchor">&lt;/a>博客底部右侧
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;github-badge&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;http://www.typecho.org&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">target&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;_blank&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;由 Typecho 强力驱动&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">style&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;cursor: url(&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">usr&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">plugins&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">HoerMouse&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">static&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">image&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">dew&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">link&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">.&lt;/span>&lt;span style="color:#a6e22e">cur&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;#34;),&lt;/span> &lt;span style="color:#a6e22e">pointer&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">;&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-subject&amp;#34;&lt;/span>&amp;gt;Powered&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-value bg-blue&amp;#34;&lt;/span>&amp;gt;Typecho&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> |
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;github-badge&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">a&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.ihewro.com/archives/489/&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">target&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;_blank&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Handsome主题&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">style&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;cursor: url(&amp;#34;&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">usr&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">plugins&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">HoerMouse&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">static&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">image&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">dew&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">/&lt;/span>&lt;span style="color:#a6e22e">link&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">.&lt;/span>&lt;span style="color:#a6e22e">cur&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">&amp;#34;),&lt;/span> &lt;span style="color:#a6e22e">pointer&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">;&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-subject&amp;#34;&lt;/span>&amp;gt;Theme&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;&amp;lt;&lt;span style="color:#f92672">span&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;badge-value bg-orange&amp;#34;&lt;/span>&amp;gt;Handsome&amp;lt;/&lt;span style="color:#f92672">span&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">a&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="自定义css">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89css" class="header-anchor">&lt;/a>自定义css
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-css" data-lang="css">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/* 首页文章列表悬停上浮 */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">blog-post&lt;/span> .&lt;span style="color:#a6e22e">panel&lt;/span>:&lt;span style="color:#a6e22e">not&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">article&lt;/span>&lt;span style="color:#f92672">)&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transition&lt;/span>: &lt;span style="color:#66d9ef">all&lt;/span> &lt;span style="color:#ae81ff">0.3&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">blog-post&lt;/span> .&lt;span style="color:#a6e22e">panel&lt;/span>:&lt;span style="color:#a6e22e">not&lt;/span>&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">article&lt;/span>&lt;span style="color:#f92672">)&lt;/span>:&lt;span style="color:#a6e22e">hover&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transform&lt;/span>: translateY(&lt;span style="color:#ae81ff">-10&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">8&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> rgba(&lt;span style="color:#ae81ff">73&lt;/span>, &lt;span style="color:#ae81ff">90&lt;/span>, &lt;span style="color:#ae81ff">47&lt;/span>, &lt;span style="color:#ae81ff">0.47&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/* 头像呼吸光环和鼠标悬停旋转放大 */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">img-full&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-radius&lt;/span>: &lt;span style="color:#ae81ff">50&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">animation&lt;/span>: light &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span> &lt;span style="color:#66d9ef">ease-in-out&lt;/span> &lt;span style="color:#66d9ef">infinite&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transition&lt;/span>: &lt;span style="color:#ae81ff">0.5&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">img-square&lt;/span>&lt;span style="color:#f92672">,&lt;/span> .&lt;span style="color:#a6e22e">img-circle&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transition&lt;/span>: &lt;span style="color:#ae81ff">0.5&lt;/span>&lt;span style="color:#66d9ef">s&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">img-square&lt;/span>:&lt;span style="color:#a6e22e">hover&lt;/span>&lt;span style="color:#f92672">,&lt;/span> .&lt;span style="color:#a6e22e">img-circle&lt;/span>:&lt;span style="color:#a6e22e">hover&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transform&lt;/span>: scale(&lt;span style="color:#ae81ff">1.15&lt;/span>) rotate(&lt;span style="color:#ae81ff">360&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">img-full&lt;/span>:&lt;span style="color:#a6e22e">hover&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">transform&lt;/span>: scale(&lt;span style="color:#ae81ff">1.15&lt;/span>) rotate(&lt;span style="color:#ae81ff">720&lt;/span>&lt;span style="color:#66d9ef">deg&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@&lt;span style="color:#66d9ef">keyframes&lt;/span> &lt;span style="color:#f92672">light&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">0&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">#f00&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">25&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">16&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">#0f0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">50&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">#00f&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">75&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">16&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">#0f0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">100&lt;/span>&lt;span style="color:#f92672">%&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">box-shadow&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">#f00&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/*底部页脚*/&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-block&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-radius&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">text-shadow&lt;/span>: &lt;span style="color:#66d9ef">none&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">font-size&lt;/span>: &lt;span style="color:#ae81ff">12&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">color&lt;/span>: &lt;span style="color:#ae81ff">#fff&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">line-height&lt;/span>: &lt;span style="color:#ae81ff">15&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#abbac3&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">margin-bottom&lt;/span>: &lt;span style="color:#ae81ff">5&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">badge-subject&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-block&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#4d4d4d&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">padding&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-top-left-radius&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-bottom-left-radius&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">badge-value&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">display&lt;/span>: &lt;span style="color:#66d9ef">inline-block&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">padding&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-top-right-radius&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">border-bottom-right-radius&lt;/span>: &lt;span style="color:#ae81ff">4&lt;/span>&lt;span style="color:#66d9ef">px&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">bg-blue&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#007ec6&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">bg-orange&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#ffa500&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">bg-red&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#f00&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">bg-green&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#3bca6e&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">github-badge&lt;/span> .&lt;span style="color:#a6e22e">bg-purple&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">background-color&lt;/span>: &lt;span style="color:#ae81ff">#ab34e9&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/*Bilibili视频挂载*/&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">iframe_video&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">position&lt;/span>: &lt;span style="color:#66d9ef">relative&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@&lt;span style="color:#66d9ef">media&lt;/span> &lt;span style="color:#f92672">only&lt;/span> &lt;span style="color:#f92672">screen&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">max-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">767px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">iframe_video&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">15&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@&lt;span style="color:#66d9ef">media&lt;/span> &lt;span style="color:#f92672">only&lt;/span> &lt;span style="color:#f92672">screen&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">min-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">768px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">max-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">991px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">iframe_video&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">20&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@&lt;span style="color:#66d9ef">media&lt;/span> &lt;span style="color:#f92672">only&lt;/span> &lt;span style="color:#f92672">screen&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">min-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">992px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">max-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">1199px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">iframe_video&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">30&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>@&lt;span style="color:#66d9ef">media&lt;/span> &lt;span style="color:#f92672">only&lt;/span> &lt;span style="color:#f92672">screen&lt;/span> &lt;span style="color:#f92672">and&lt;/span> &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#f92672">min-width&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">1200px&lt;/span>&lt;span style="color:#f92672">)&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">iframe_video&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">40&lt;/span>&lt;span style="color:#66d9ef">em&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">iframe_cross&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">position&lt;/span>: &lt;span style="color:#66d9ef">relative&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">padding-bottom&lt;/span>: &lt;span style="color:#ae81ff">75&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">iframe_cross&lt;/span> &lt;span style="color:#f92672">iframe&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">position&lt;/span>: &lt;span style="color:#66d9ef">absolute&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">width&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">height&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#66d9ef">%&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">left&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">top&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="自定义javascript">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89javascript" class="header-anchor">&lt;/a>自定义javascript
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/* 彩色标签云 */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">tags&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">querySelectorAll&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;#tag_cloud-2 a&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span> &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#34;#428BCA&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#AEDCAE&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#ECA9A7&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#DA99FF&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#FFB380&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;#D9B999&amp;#34;&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">tags&lt;/span>.&lt;span style="color:#a6e22e">forEach&lt;/span>(&lt;span style="color:#a6e22e">tag&lt;/span> =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">tagsColor&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span>[Math.&lt;span style="color:#a6e22e">floor&lt;/span>(Math.&lt;span style="color:#a6e22e">random&lt;/span>() &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#a6e22e">colorArr&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>)];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">tag&lt;/span>.&lt;span style="color:#a6e22e">style&lt;/span>.&lt;span style="color:#a6e22e">backgroundColor&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">tagsColor&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>})
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">/* 复制提示 */&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">kaygb_copy&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">kaygb_copy&lt;/span>(){&lt;span style="color:#a6e22e">$&lt;/span>(document).&lt;span style="color:#a6e22e">ready&lt;/span>(&lt;span style="color:#66d9ef">function&lt;/span>(){&lt;span style="color:#a6e22e">$&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;body&amp;#34;&lt;/span>).&lt;span style="color:#a6e22e">bind&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;copy&amp;#39;&lt;/span>,&lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">e&lt;/span>){&lt;span style="color:#a6e22e">hellolayer&lt;/span>()})});&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">sitesurl&lt;/span>&lt;span style="color:#f92672">=&lt;/span>window.&lt;span style="color:#a6e22e">location&lt;/span>.&lt;span style="color:#a6e22e">href&lt;/span>;&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">hellolayer&lt;/span>(){
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">$&lt;/span>.&lt;span style="color:#a6e22e">message&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">message&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;尊重原创，转载请注明出处！&amp;lt;br&amp;gt; 本文作者：醉后的星星&amp;lt;br&amp;gt;原文链接：&amp;lt;br&amp;gt;&amp;#34;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#a6e22e">sitesurl&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">title&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;复制成功&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;success&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">autoHide&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#f92672">!&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">time&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;15000&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="自定义head">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89head" class="header-anchor">&lt;/a>自定义Head
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--图标--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">link&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">rel&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;stylesheet&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--分享内容--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">itemprop&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;name&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">content&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;醉后的星星&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">itemprop&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;image&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">content&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://www.2bboy.com/usr/uploads/txmk.jpg&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;description&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">itemprop&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;description&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">content&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;我好菜啊&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--百度统计--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!--动态标题--&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;document.&lt;span style="color:#a6e22e">addEventListener&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;visibilitychange&amp;#39;&lt;/span>, &lt;span style="color:#66d9ef">function&lt;/span> () { &lt;span style="color:#66d9ef">if&lt;/span> (document.&lt;span style="color:#a6e22e">visibilityState&lt;/span> &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;hidden&amp;#39;&lt;/span>) { &lt;span style="color:#a6e22e">normal_title&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">title&lt;/span>; document.&lt;span style="color:#a6e22e">title&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;人呢？快回来！&amp;#39;&lt;/span>; } &lt;span style="color:#66d9ef">else&lt;/span> { document.&lt;span style="color:#a6e22e">title&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">normal_title&lt;/span>; } });&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="pio插件设置">&lt;a href="#pio%e6%8f%92%e4%bb%b6%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>pio插件设置
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;welcome&amp;#34;&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;你好，欢迎来到本站！&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;有问题欢迎留言&amp;#34;&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;touch&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;你这个绅士！&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;别碰我！&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;你在干什么？&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;再摸我就报警了！&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;HENTAI!&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;你够了喔！&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;萝莉是什么呀&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;skin&amp;#34;&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;想看看我的新服装吗？&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;新衣服真漂亮~&amp;#34;&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;home&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;点击这里回到首页&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;link&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;https://docs.paul.ren/pio/#/&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;referer&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Hi，欢迎来自 %t 的朋友&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;close&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;QWQ 下次再见吧~&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;custom&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;type&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;read&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.post-meta&amp;gt;h2 a&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.music-box&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;你想听歌吗o((;=? 3? =))o～?&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.comment-form-comment&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;填写真实邮箱可以收到回复通知哦(??ω-)～&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.searchform&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;会搜索的人运气不会太差o(≧▽≦)o&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.dropdown:nth-last-child(4)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;想关注我的bilibili频道吗&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.dropdown:nth-last-child(3)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;人生苦短&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> },
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;selector&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;.dropdown:nth-last-child(2)&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;text&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;可以不玩，不能没有&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Typecho主题推荐</title><link>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Sun, 15 Sep 2019 14:05:00 +0000</pubDate><guid>http://kizx.gitee.io/post/typecho%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="typecho主题推荐">&lt;a href="#typecho%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Typecho主题推荐
+&lt;/h1>&lt;h2 id="1-purelovefortypecho">&lt;a href="#1-purelovefortypecho" class="header-anchor">&lt;/a>1. &lt;a class="link" href="https://www.hoehub.com/PHP/typecho-pureLove.html" target="_blank" rel="noopener"
+>PureLoveForTypecho&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://www.hoehub.com/usr/uploads/2018/11/1320732040.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="2-pinghsu-theme">&lt;a href="#2-pinghsu-theme" class="header-anchor">&lt;/a>2. &lt;a class="link" href="https://www.linpx.com/p/pinghsu-a-typecho-theme.html" target="_blank" rel="noopener"
+>Pinghsu Theme&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://camo.githubusercontent.com/9ae215dc7ba9c5ad391708b9b777d7dc80c04a8a/68747470733a2f2f7773312e73696e61696d672e636e2f6c617267652f37633938333937646779316664796472336a7730796a3230727330666e74617a2e6a7067"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="3-rinvay-theme">&lt;a href="#3-rinvay-theme" class="header-anchor">&lt;/a>3. &lt;a class="link" href="https://www.rinvay.cc/archives/225/" target="_blank" rel="noopener"
+>Rinvay Theme&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://camo.githubusercontent.com/b7537b5d7bd2472027ce3a809316172e9130ab13/68747470733a2f2f7777772e72696e7661792e63632f7573722f7468656d65732f52696e7661792f73637265656e73686f742e6a7067"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="4-void">&lt;a href="#4-void" class="header-anchor">&lt;/a>4. &lt;a class="link" href="https://blog.imalan.cn/archives/247/" target="_blank" rel="noopener"
+>VOID&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://raw.githubusercontent.com/AlanDecode/Typecho-Theme-VOID/master/screenshot.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="5-armxmod">&lt;a href="#5-armxmod" class="header-anchor">&lt;/a>5. &lt;a class="link" href="https://vircloud.net/default/change-theme.html" target="_blank" rel="noopener"
+>ArmxMod&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://static.yecdn.com/jrotty/2019/08/2865738641.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="6-al_">&lt;a href="#6-al_" class="header-anchor">&lt;/a>6. &lt;a class="link" href="http://typecho.alapi.cn/archives/6/" target="_blank" rel="noopener"
+>AL_lolimeow&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://i.alone88.cn/usr/uploads/2019/04/4143539668.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="7-dux主题">&lt;a href="#7-dux%e4%b8%bb%e9%a2%98" class="header-anchor">&lt;/a>7. &lt;a class="link" href="https://github.com/hiCasper/Typecho-theme-DUX" target="_blank" rel="noopener"
+>DUX主题&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://camo.githubusercontent.com/f8253ebd611e01fefd113081337b4c8a5dc73e36/68747470733a2f2f692e6c6f6c692e6e65742f323031382f30392f32322f356261356430653536663363392e706e67"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="8-miracles">&lt;a href="#8-miracles" class="header-anchor">&lt;/a>8. &lt;a class="link" href="https://guhub.cn/p/miracles.html" target="_blank" rel="noopener"
+>Miracles&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://static.yecdn.com/jrotty/2019/08/979560890.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="9-typecho-theme-raw">&lt;a href="#9-typecho-theme-raw" class="header-anchor">&lt;/a>9. &lt;a class="link" href="https://blog.imalan.cn/archives/163/" target="_blank" rel="noopener"
+>Typecho-Theme-RAW&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://blog.imalan.cn/usr/uploads/2018/12/805561084.png#vwid=1910&amp;amp;vhei=895"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="10-hufman">&lt;a href="#10-hufman" class="header-anchor">&lt;/a>10. &lt;a class="link" href="https://github.com/foxnes/tp_theme" target="_blank" rel="noopener"
+>hufman&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://user-images.githubusercontent.com/22344037/57577796-760b5b80-74b1-11e9-8475-b18e17371f31.jpg"
+loading="lazy"
+>&lt;/p></description></item><item><title>Zblog主题推荐</title><link>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Fri, 06 Sep 2019 17:20:00 +0000</pubDate><guid>http://kizx.gitee.io/post/zblog%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="zblog主题推荐">&lt;a href="#zblog%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Zblog主题推荐
+&lt;/h1>&lt;h2 id="1-filmlee">&lt;a href="#1-filmlee" class="header-anchor">&lt;/a>1. filmlee
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.talklee.com/blog/162.html" target="_blank" rel="noopener"
+>https://www.talklee.com/blog/162.html&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907014938.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="2-免费博客主题blogs">&lt;a href="#2-%e5%85%8d%e8%b4%b9%e5%8d%9a%e5%ae%a2%e4%b8%bb%e9%a2%98blogs" class="header-anchor">&lt;/a>2. 免费博客主题Blogs
+&lt;/h2>&lt;p>&lt;a class="link" href="https://app.zblogcn.com/?id=1405" target="_blank" rel="noopener"
+>https://app.zblogcn.com/?id=1405&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907015136.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="3-奇客">&lt;a href="#3-%e5%a5%87%e5%ae%a2" class="header-anchor">&lt;/a>3. 奇客
+&lt;/h2>&lt;p>&lt;a class="link" href="http://jiuwanwl.com/post/81.html" target="_blank" rel="noopener"
+>http://jiuwanwl.com/post/81.html&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907015331.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="4-博客cms图片布局三合一主题">&lt;a href="#4-%e5%8d%9a%e5%ae%a2cms%e5%9b%be%e7%89%87%e5%b8%83%e5%b1%80%e4%b8%89%e5%90%88%e4%b8%80%e4%b8%bb%e9%a2%98" class="header-anchor">&lt;/a>4. 博客CMS图片布局三合一主题
+&lt;/h2>&lt;p>&lt;a class="link" href="https://app.zblogcn.com/?id=1326" target="_blank" rel="noopener"
+>https://app.zblogcn.com/?id=1326&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907015516.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="5-业余爱好">&lt;a href="#5-%e4%b8%9a%e4%bd%99%e7%88%b1%e5%a5%bd" class="header-anchor">&lt;/a>5. 业余爱好
+&lt;/h2>&lt;p>&lt;a class="link" href="https://app.zblogcn.com/?id=494" target="_blank" rel="noopener"
+>https://app.zblogcn.com/?id=494&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907020019.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="6-博客模板">&lt;a href="#6-%e5%8d%9a%e5%ae%a2%e6%a8%a1%e6%9d%bf" class="header-anchor">&lt;/a>6. 博客模板
+&lt;/h2>&lt;p>&lt;a class="link" href="https://app.zblogcn.com/?id=1168" target="_blank" rel="noopener"
+>https://app.zblogcn.com/?id=1168&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907020306.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="7-简单格子列表主题">&lt;a href="#7-%e7%ae%80%e5%8d%95%e6%a0%bc%e5%ad%90%e5%88%97%e8%a1%a8%e4%b8%bb%e9%a2%98" class="header-anchor">&lt;/a>7. 简单格子列表主题
+&lt;/h2>&lt;p>&lt;a class="link" href="https://app.zblogcn.com/?id=877" target="_blank" rel="noopener"
+>https://app.zblogcn.com/?id=877&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907020425.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>WordPress主题推荐</title><link>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Thu, 05 Sep 2019 17:19:00 +0000</pubDate><guid>http://kizx.gitee.io/post/wordpress%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="wordpress主题推荐">&lt;a href="#wordpress%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>WordPress主题推荐
+&lt;/h1>&lt;h2 id="1-dobby">&lt;a href="#1-dobby" class="header-anchor">&lt;/a>1. Dobby
+&lt;/h2>&lt;p>Download: &lt;a class="link" href="https://github.com/Vtrois/Dobby" target="_blank" rel="noopener"
+>https://github.com/Vtrois/Dobby&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907010136.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="2-git">&lt;a href="#2-git" class="header-anchor">&lt;/a>2. Git
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://gitcafe.net/" target="_blank" rel="noopener"
+>https://gitcafe.net/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://gitee.com/yunluo/git" target="_blank" rel="noopener"
+>https://gitee.com/yunluo/git&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907010317.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="3-h-siren">&lt;a href="#3-h-siren" class="header-anchor">&lt;/a>3. H-Siren
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://haremu.com/" target="_blank" rel="noopener"
+>https://haremu.com/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://github.com/galnetwen/H-Siren" target="_blank" rel="noopener"
+>https://github.com/galnetwen/H-Siren&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907010848.png"
+loading="lazy"
+>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907010921.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="4-kratos-pjax">&lt;a href="#4-kratos-pjax" class="header-anchor">&lt;/a>4. Kratos-pjax
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://moedog.org/787.html" target="_blank" rel="noopener"
+>https://moedog.org/787.html&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://github.com/xb2016/kratos-pjax" target="_blank" rel="noopener"
+>https://github.com/xb2016/kratos-pjax&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907011115.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="5-lolimoe">&lt;a href="#5-lolimoe" class="header-anchor">&lt;/a>5. lolimoe
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://www.boxmoe.com/" target="_blank" rel="noopener"
+>https://www.boxmoe.com/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://github.com/baomihuahua/lolimeow" target="_blank" rel="noopener"
+>https://github.com/baomihuahua/lolimeow&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907011322.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="6-sakura">&lt;a href="#6-sakura" class="header-anchor">&lt;/a>6. Sakura
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://2heng.xin/" target="_blank" rel="noopener"
+>https://2heng.xin/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://github.com/mashirozx/Sakura" target="_blank" rel="noopener"
+>https://github.com/mashirozx/Sakura&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907011544.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="7-memory">&lt;a href="#7-memory" class="header-anchor">&lt;/a>7. Memory
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="http://memory.shawnzeng.com/" target="_blank" rel="noopener"
+>http://memory.shawnzeng.com/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://shawnzeng.com/wordpress-theme-memory.html" target="_blank" rel="noopener"
+>https://shawnzeng.com/wordpress-theme-memory.html&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907012530.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="8-amativeness">&lt;a href="#8-amativeness" class="header-anchor">&lt;/a>8. Amativeness
+&lt;/h2>&lt;p>Demo: &lt;a class="link" href="https://diygod.me/" target="_blank" rel="noopener"
+>https://diygod.me/&lt;/a>&lt;br>
+Download: &lt;a class="link" href="https://github.com/DIYgod/Amativeness" target="_blank" rel="noopener"
+>https://github.com/DIYgod/Amativeness&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907013129.png"
+loading="lazy"
+>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907013155.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>Hexo主题推荐</title><link>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</link><pubDate>Tue, 03 Sep 2019 17:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/hexo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/</guid><description>&lt;h1 id="hexo主题推荐">&lt;a href="#hexo%e4%b8%bb%e9%a2%98%e6%8e%a8%e8%8d%90" class="header-anchor">&lt;/a>Hexo主题推荐
+&lt;/h1>&lt;h2 id="双栏">&lt;a href="#%e5%8f%8c%e6%a0%8f" class="header-anchor">&lt;/a>双栏
+&lt;/h2>&lt;h3 id="1-a-ace">&lt;a href="#1-a-ace" class="header-anchor">&lt;/a>1. A-ACE
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://www.sumoon.com/" target="_blank" rel="noopener"
+>http://www.sumoon.com/&lt;/a>&lt;/li>
+&lt;li>Download：https://github.com/kinggozhang/hexo-theme-ace&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906005021.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-aria">&lt;a href="#2-aria" class="header-anchor">&lt;/a>2. ARIA
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://sh.alynx.moe/" target="_blank" rel="noopener"
+>https://sh.alynx.moe/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/AlynxZhou/hexo-theme-aria/blob/master/README.zh_CN.md" target="_blank" rel="noopener"
+>https://github.com/AlynxZhou/hexo-theme-aria/blob/master/README.zh_CN.md&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906005101.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-asnippet">&lt;a href="#3-asnippet" class="header-anchor">&lt;/a>3. Asnippet
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://www.91h5.cc/" target="_blank" rel="noopener"
+>https://www.91h5.cc/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/shenliyang/hexo-theme-snippet" target="_blank" rel="noopener"
+>https://github.com/shenliyang/hexo-theme-snippet&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190904211757.jpg"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-jacman">&lt;a href="#4-jacman" class="header-anchor">&lt;/a>4. Jacman
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://wuchong.me/jacman/" target="_blank" rel="noopener"
+>http://wuchong.me/jacman/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/wuchong/jacman/blob/master/README_zh.md" target="_blank" rel="noopener"
+>https://github.com/wuchong/jacman/blob/master/README_zh.md&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190904212308.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-gal">&lt;a href="#5-gal" class="header-anchor">&lt;/a>5. gal
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://sora3.coding.me/" target="_blank" rel="noopener"
+>http://sora3.coding.me/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/ZEROKISEKI/hexo-theme-gal" target="_blank" rel="noopener"
+>https://github.com/ZEROKISEKI/hexo-theme-gal&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190904212938.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-nexmoe">&lt;a href="#6-nexmoe" class="header-anchor">&lt;/a>6. Nexmoe
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://nexmoe.com/" target="_blank" rel="noopener"
+>https://nexmoe.com/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://nexmoe.com/371865617.html" target="_blank" rel="noopener"
+>https://nexmoe.com/371865617.html&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906005133.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="7-sakura">&lt;a href="#7-sakura" class="header-anchor">&lt;/a>7. Sakura
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://sakura.hojun.cn/" target="_blank" rel="noopener"
+>https://sakura.hojun.cn/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/honjun/hexo-theme-sakura/blob/master/README-zh_cn.md" target="_blank" rel="noopener"
+>https://github.com/honjun/hexo-theme-sakura/blob/master/README-zh_cn.md&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906005218.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="8-diaspora">&lt;a href="#8-diaspora" class="header-anchor">&lt;/a>8. Diaspora
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://fech.in/" target="_blank" rel="noopener"
+>http://fech.in/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/Fechin/hexo-theme-diaspora" target="_blank" rel="noopener"
+>https://github.com/Fechin/hexo-theme-diaspora&lt;/a>&lt;br>
+&lt;img src="https://camo.githubusercontent.com/2a90d0266d4d54e618c7cbb46af683174f37347c/68747470733a2f2f666563682e696e2f7374617469632f696d616765732f44696173706f72612e6a7067"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h2 id="卡片式">&lt;a href="#%e5%8d%a1%e7%89%87%e5%bc%8f" class="header-anchor">&lt;/a>卡片式
+&lt;/h2>&lt;h3 id="1-skapp">&lt;a href="#1-skapp" class="header-anchor">&lt;/a>1. skapp
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://blog.minfive.com/" target="_blank" rel="noopener"
+>http://blog.minfive.com/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/Mrminfive/hexo-theme-skapp/blob/master/README-cn.md" target="_blank" rel="noopener"
+>https://github.com/Mrminfive/hexo-theme-skapp/blob/master/README-cn.md&lt;/a>&lt;br>
+&lt;img src="https://camo.githubusercontent.com/8fb49fe91a647fdf7d073a28789fbbad2724cf41/687474703a2f2f626c6f672e7374617469632e6d696e666976652e636f6d2f6f746865722f536b6170702e706e67"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="2-flex-block">&lt;a href="#2-flex-block" class="header-anchor">&lt;/a>2. flex-block
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://miiiku.xyz/" target="_blank" rel="noopener"
+>https://miiiku.xyz/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener"
+>https://github.com/miiiku/flex-block&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190904214141.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="3-matery">&lt;a href="#3-matery" class="header-anchor">&lt;/a>3. Matery
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://blinkfox.github.io" target="_blank" rel="noopener"
+>https://blinkfox.github.io&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/" target="_blank" rel="noopener"
+>https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10//matery-20181202-3.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="4-hueman">&lt;a href="#4-hueman" class="header-anchor">&lt;/a>4. Hueman
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://blog.zhangruipeng.me/hexo-theme-hueman/" target="_blank" rel="noopener"
+>https://blog.zhangruipeng.me/hexo-theme-hueman/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener"
+>https://github.com/ppoffice/hexo-theme-hueman&lt;/a>&lt;br>
+&lt;img src="https://camo.githubusercontent.com/0902c896a283714f7a795338dbfeca67092e9b02/687474703a2f2f70706f66666963652e6769746875622e696f2f6865786f2d7468656d652d6875656d616e2f67616c6c6572792f73637265656e73686f742e6a7067"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="5-material-flow">&lt;a href="#5-material-flow" class="header-anchor">&lt;/a>5. Material Flow
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="https://kntan.coding.me/kntan/" target="_blank" rel="noopener"
+>https://kntan.coding.me/kntan/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com/stkevintan/hexo-theme-material-flow" target="_blank" rel="noopener"
+>https://github.com/stkevintan/hexo-theme-material-flow&lt;/a>&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906005257.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul>
+&lt;h3 id="6-mic">&lt;a href="#6-mic" class="header-anchor">&lt;/a>6. Mic
+&lt;/h3>&lt;ul>
+&lt;li>Demo: &lt;a class="link" href="http://miccall.tech/" target="_blank" rel="noopener"
+>http://miccall.tech/&lt;/a>&lt;/li>
+&lt;li>Download: &lt;a class="link" href="https://github.com" target="_blank" rel="noopener"
+>https://github.com&lt;/a>、miccall/hexo-theme-Mic_Theme&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190906002802.png"
+loading="lazy"
+>&lt;/li>
+&lt;/ul></description></item></channel></rss>

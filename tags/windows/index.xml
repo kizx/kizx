@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 醉后的星星</title><link>http://kizx.gitee.io/tags/windows/</link><description>Recent content in Windows on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Wed, 29 Jul 2020 07:01:19 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/windows/index.xml" rel="self" type="application/rss+xml"/><item><title>电脑连接手机摄像头</title><link>http://kizx.gitee.io/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</link><pubDate>Wed, 29 Jul 2020 07:01:19 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%94%B5%E8%84%91%E8%BF%9E%E6%8E%A5%E6%89%8B%E6%9C%BA%E6%91%84%E5%83%8F%E5%A4%B4/</guid><description>&lt;p>台式机没有摄像头，有时候有些代码会调用摄像头，比如下面的项目有用到面部捕捉，这时候拿手机充当摄像头是个不错的选择。&lt;/p>
+&lt;p>[post cid=&amp;ldquo;147&amp;rdquo; cover=&amp;quot;&amp;quot;/]&lt;/p>
+&lt;h2 id="软件">&lt;a href="#%e8%bd%af%e4%bb%b6" class="header-anchor">&lt;/a>软件
+&lt;/h2>&lt;p>百度搜索 &lt;code>iVCam&lt;/code> 下载安装即可，手机上也要扫码安装相应的客户端。连接前必须保证手机和电脑处在同一个局域网中，如果手机搜索不到电脑，可以手动输入电脑的局域网ipv4地址（通过cmd窗口 &lt;code>ipconfig&lt;/code>命令可以查看）。&lt;/p>
+&lt;h2 id="捕获">&lt;a href="#%e6%8d%95%e8%8e%b7" class="header-anchor">&lt;/a>捕获
+&lt;/h2>&lt;p>之前的那个项目是使用OpenCV的api捕获摄像头的，默认摄像头的设备id为0，但用这个软件进行捕获时可能也为1或者更大的数字。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>video_capture &lt;span style="color:#f92672">=&lt;/span> cv2&lt;span style="color:#f92672">.&lt;/span>VideoCapture(&lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#75715e"># 摄像头id可能不为0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>几款看图软件测评</title><link>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</link><pubDate>Tue, 17 Mar 2020 07:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E7%9C%8B%E5%9B%BE%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%84/</guid><description>&lt;p>因为平时看图较多（不是那种图），所以一款好的看图软件显得很重要，我以连续查看4K大图作为测试手段，主要从速度、颜值、功能、便捷几个角度来评判。&lt;/p>
+&lt;h2 id="honeyview">&lt;a href="#honeyview" class="header-anchor">&lt;/a>HoneyView
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317132914.jpg"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/03/0317133544.jpg"
+loading="lazy"
+>
+我一直在用的看图软件，速度超级快，毫无卡顿，颜值在线，鼠标键位可以自由设置，右键有几个简单画面增强效果很好用，可以幻灯片播放，可以查看预览这点很棒。
+唯一缺点是放大锁定后无法锁定住当前位置。&lt;/p>
+&lt;h2 id="万能看图王">&lt;a href="#%e4%b8%87%e8%83%bd%e7%9c%8b%e5%9b%be%e7%8e%8b" class="header-anchor">&lt;/a>万能看图王
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317133945.jpg"
+loading="lazy"
+>
+看这名字和2345那个流氓有点像，实际页面也很像，但既然下载了就测试下。底部有预览窗，颜值也还好。
+缺点首先疑似会有广告，因为设置里有关闭广告的选项，至于流不流氓就不知道了。速度超级慢，光凭这一点就可以卸载了，放大锁定后不能锁定区域。&lt;/p>
+&lt;h2 id="看图啦">&lt;a href="#%e7%9c%8b%e5%9b%be%e5%95%a6" class="header-anchor">&lt;/a>看图啦
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317134833.jpg"
+loading="lazy"
+>
+同样是国产的一个软件，感觉也和上面那个有点像，但速度稍快一点，不过也仍然很慢，可以左右同时查看两张图这点是唯一亮点。
+操作不是很方便，感觉是bug，图片缩放锁定功能虽然有但也是坏的，总之不推荐。&lt;/p>
+&lt;h2 id="xnview">&lt;a href="#xnview" class="header-anchor">&lt;/a>XnView
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317140222.jpg"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/03/0317140510.jpg"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/03/0317140828.jpg"
+loading="lazy"
+>
+很多人推荐的软件，刚打开是一个文件浏览器的亚子，一看就知道功能很丰富，速度较快，但没有HoneyView快，有局部裁剪功能，也有划定一个区域然后放大的功能，放大后能固定放大比和区域，同时拥有许多调节画面的功能，完全可以当作一个简易PS用。
+缺点大概就是没有HoneyView快，然后那个浏览器界面复杂了点，把颜值一下拉低了，总体来说还是很推荐的。&lt;/p>
+&lt;h2 id="iranfanview">&lt;a href="#iranfanview" class="header-anchor">&lt;/a>IranfanView
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317142951.jpg"
+loading="lazy"
+>
+一个英文界面的软件，和上面的软件风格有点像，像是上面软件的精简版，有划定区域放大的功能，速度很快，和HoneyView差不多。
+缺点是无法锁定放大区域，颜值也不是很高，英文界面让我懒得看设置了(虽然好像有中文语言包)，不设置的话可以说体验不太好。&lt;/p>
+&lt;h2 id="jpegview">&lt;a href="#jpegview" class="header-anchor">&lt;/a>JPEGView
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317150037.jpg"
+loading="lazy"
+>
+一款小巧的软件，速度很快，毫无卡顿，有许多增强图片的功能，并且能保持参数，当然也能保持锁定放大比和放大区域。
+缺点是找不到设置快捷键的地方，只有一个配置文件，仔细找找应该有设置快捷键的地方。界面过于简陋，颜值差点。
+不在意颜值的话，这些增强功能真的很棒，而且可以保持参数这点太棒了。&lt;/p>
+&lt;h2 id="acdsee">&lt;a href="#acdsee" class="header-anchor">&lt;/a>ACDSee
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317152330.jpg"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/03/0317152200.jpg"
+loading="lazy"
+>
+官方免费版有广告，使用前还需要注册，打开一看就知道更偏向于图片管理软件，只是兼带图片查看功能而已，速度一般，功能似乎很多但懒得看了。
+免费版带广告这点就劝退了，偏向于管理图片而非单纯的图片查看。&lt;/p>
+&lt;h2 id="faststone-image-viewer">&lt;a href="#faststone-image-viewer" class="header-anchor">&lt;/a>FastStone Image Viewer
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317220051.jpg"
+loading="lazy"
+>
+和上面的XnView有点类似，颜值稍高一点，可以批量处理图片，没有缩放锁定。&lt;/p>
+&lt;h2 id="imageglass">&lt;a href="#imageglass" class="header-anchor">&lt;/a>ImageGlass
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317220859.jpg"
+loading="lazy"
+>
+颜值不错，但速度太慢，不考虑。&lt;/p>
+&lt;h2 id="pictus">&lt;a href="#pictus" class="header-anchor">&lt;/a>&lt;a class="link" href="https://poppeman.se/pictus/" target="_blank" rel="noopener"
+>Pictus&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317221730.jpg"
+loading="lazy"
+>
+非常小巧的一款软件，只有5M大小，所以功能没有很多，速度一般，适合追求极简的用户。&lt;/p>
+&lt;h2 id="fastpictureviewer">&lt;a href="#fastpictureviewer" class="header-anchor">&lt;/a>&lt;a class="link" href="https://www.fastpictureviewer.com/downloads/" target="_blank" rel="noopener"
+>FastPictureViewer&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/0317223134.jpg"
+loading="lazy"
+>
+左键按住显示原始大小，右键按住显示三倍大小，这个设定倒是很有趣，速度较慢，不支持tif格式。&lt;/p></description></item><item><title>VirtualBox安装linux虚拟机</title><link>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</link><pubDate>Wed, 08 Jan 2020 09:47:00 +0000</pubDate><guid>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid><description>&lt;p>VirtualBox下载地址：https://www.virtualbox.org/wiki/Downloads
+系统镜像下载，这是网易的镜像下载地址，速度很快：http://mirrors.163.com/ubuntu-releases/&lt;/p>
+&lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
+&lt;/h2>&lt;p>安装教程：
+&lt;a class="link" href="https://www.bilibili.com/video/av82489244" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/av82489244&lt;/a>&lt;/p>
+&lt;h2 id="可能遇到的问题">&lt;a href="#%e5%8f%af%e8%83%bd%e9%81%87%e5%88%b0%e7%9a%84%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>可能遇到的问题
+&lt;/h2>&lt;ol>
+&lt;li>VirtualBox中默认启用了硬件虚拟化，可以在任务管理器cpu里进行查看,未启用的话需在bios里启用
+&lt;img src="https://pan.2bboy.com/images/2020/01/0108175711.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>网络无法连接可以换回默认的连接方式&lt;/li>
+&lt;/ol></description></item><item><title>几款密码管理软件</title><link>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</link><pubDate>Sun, 29 Dec 2019 08:26:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%87%A0%E6%AC%BE%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6/</guid><description>&lt;p>i&amp;gt; We always have to remember a lot of accounts and passwords in our daily life. Some people like to use their particular passwords, while others like to keep them in a notebook. If you&amp;rsquo;re frustrated to manage your passwords, here are some password management tools you can have a try. Good tools can improve our efficiency, but even the best tools can be a burden if they don&amp;rsquo;t fit us; therefore, don&amp;rsquo;t use a tool just to use the tool.&lt;/p>
+&lt;h2 id="keepass">&lt;a href="#keepass" class="header-anchor">&lt;/a>keepass
+&lt;/h2>&lt;p>一款本地的密码管理软件，不能云端，就是个高级的带密码的记事本或者数据库，好像有浏览器插件但必须本地开着keepass的客户端才能用。如果只是喜欢记一些数据到本地，配合坚果云同步用用还可以。&lt;/p>
+&lt;h2 id="1password">&lt;a href="#1password" class="header-anchor">&lt;/a>1password
+&lt;/h2>&lt;p>之前刚好有活动就领了一年的试用，软件界面很漂亮，浏览器插件用着也很舒服，云端同步，平台齐全，唯一的缺点就是太贵了，虽然有一年试用，但我觉得还是没有必要在密码管理上花一笔钱就没继续用了&lt;/p>
+&lt;h2 id="lastpass">&lt;a href="#lastpass" class="header-anchor">&lt;/a>lastpass
+&lt;/h2>&lt;p>一款免费的密码管理软件，浏览器插件界面略丑，不支持中文，用了一个多月，老是弹升级信息。总之一句话不够简洁，越用越讨厌。&lt;/p>
+&lt;h2 id="bitwarden">&lt;a href="#bitwarden" class="header-anchor">&lt;/a>Bitwarden
+&lt;/h2>&lt;p>也是免费的一款软件，特点是可以自建云端，同时也自带的云端同步。浏览器插件界面简洁，支持中文，各方面都还优秀，唯一的缺点就是无法自动感知你网页密码的添加和改变，也不能自动填入密码，得在插件上点一下才行。如果不怕麻烦的话这款软件用着很舒服。&lt;/p></description></item><item><title>远程开机的几种方式</title><link>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 04 Dec 2019 10:16:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="开机棒">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%a3%92" class="header-anchor">&lt;/a>开机棒
+&lt;/h2>&lt;p>开机棒是插在路由器LAN口上使用的，如果是校园网那就用不了，因为你根本不知道路由器或者交换机在哪，知道在哪你也不能插个这么个玩意上去，不过你自己单独再整个路由器，然后电脑连路由器上应该可以。
+开机棒由一个usb线单独供电，远程开机的原理应该是WOL网络远程唤醒电脑，只要不是古董机，一般电脑主板都有这个功能。其实这个功能本来只能用于局域网唤醒主机，要实现外网唤醒，必须做内网穿透，但开机棒自己就能连接外网，所以内网穿透就不用我们操心了。&lt;/p>
+&lt;h2 id="开机插座">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%8f%92%e5%ba%a7" class="header-anchor">&lt;/a>开机插座
+&lt;/h2>&lt;p>开机插座和普通的智能插座没有多大不同，就是可以远程控制电源的开关。电脑的主板上都有一个通电后自启动的功能，这也是我们电脑为什么有时停电来电后能自动开机的原因。插座必须要连无线网，一般只支持2.4GWiFi，这样你才能远程控制插座的开关。开机插座可以和向日葵软件配合，实现电脑系统关机后过一会再断电，比起用一般的智能插座强制断电要好。但我寻思你远程桌面点击关机后再过两分钟关闭智能插座，效果不也一样嘛。&lt;/p>
+&lt;h2 id="开机卡">&lt;a href="#%e5%bc%80%e6%9c%ba%e5%8d%a1" class="header-anchor">&lt;/a>开机卡
+&lt;/h2>&lt;p>一块插在电脑主板PCI-E口上的板子，PCI-E的接口只有供电的作用。因为主板有系统关机但PCI-E不断电的功能，所以就保证了这块卡在关机状态下也能工作。开机卡也需要联网，板子上有接口和电脑的开机和重启的跳线相接，其实就是模拟你按下开机键进行开关机。通过开机卡的软件客户端可以实现定时开关机和语音唤醒等功能，具体就看厂商支持那些功能了。&lt;/p>
+&lt;hr>
+&lt;p>我买回来后才发现我这校园网虽然有2.4G信号，但需要网页验证，所以无法识别成功，没办法我就淘了个路由器利用路由器的WiFi才行。然后我就又发现淘的路由器太辣鸡不支持ipv6，无奈又整了个交换机，这一波投入有点亏，这是后话。&lt;/p></description></item><item><title>Rime-小狼毫输入法使用指南</title><link>http://kizx.gitee.io/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Wed, 27 Nov 2019 17:29:00 +0000</pubDate><guid>http://kizx.gitee.io/post/rime-%E5%B0%8F%E7%8B%BC%E6%AF%AB%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;p>下载地址：https://rime.im/
+官方说明：https://github.com/rime/home/wiki/UserGuide
+输入方案：https://github.com/rime/plum
+其他教程：
+&lt;a class="link" href="https://www.jianshu.com/p/296bba666604" target="_blank" rel="noopener"
+>https://www.jianshu.com/p/296bba666604&lt;/a>
+&lt;a class="link" href="https://www.bilibili.com/video/av31013072" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/av31013072&lt;/a>
+&lt;a class="link" href="https://segmentfault.com/a/1190000005754706" target="_blank" rel="noopener"
+>https://segmentfault.com/a/1190000005754706&lt;/a>&lt;/p>
+&lt;h2 id="使用入门">&lt;a href="#%e4%bd%bf%e7%94%a8%e5%85%a5%e9%97%a8" class="header-anchor">&lt;/a>使用入门
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>简体设置
+按&lt;code>F4&lt;/code>调出选项，选择&lt;code>西/半/漢&lt;/code>，再选择&lt;code>漢字-&amp;gt;汉字&lt;/code>，如果你只使用全拼的话，也可以直接使用带简化字的方案&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>选择候选方案和主题
+右键输入法设定，为需要的方案打上钩，然后点击&lt;code>中&lt;/code>选择配色方案，最后再点击&lt;code>中&lt;/code>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>添加双拼方案
+右键输入法设定，选择更多方案，弹出cmd窗口，输入相应的方案名称如&lt;code>double-pinyin&lt;/code>，也可自行下载解压到用户文件夹中。值得一提的是，安装&lt;code>prelude&lt;/code>可以下载一些用户配置，方便后面配置不用新建文件了。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>删除错误的候选词
+输入法会记住你输入的词组，当你第一次输入一个输入法不认识的词语后，第二次输入同样的词语该词语就会出现在候选词中，也正是如此才叫聪明的输入法，不过有时候会打错词语，等到下次再打相同词语时就会出现错误的候选词，这时可以选中该错误的候选词，按&lt;code>shift+del&lt;/code>删除&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>改变候选词个数
+在用户文件夹下新建&lt;code>default.custom.yaml&lt;/code>文件(如果没有的话)，添加以下内容，然后重新部署&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;menu/page_size&amp;#34;: &lt;/span>&lt;span style="color:#ae81ff">9&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="进阶定制">&lt;a href="#%e8%bf%9b%e9%98%b6%e5%ae%9a%e5%88%b6" class="header-anchor">&lt;/a>进阶定制
+&lt;/h2>&lt;ul>
+&lt;li>添加符号
+新建&lt;code>double_pinyin_mspy.custom.yaml&lt;/code>文件（以你使用的输入方案名为准），添加以下内容&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># double_pinyin_mspy.custom.yaml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;punctuator/import_preset&amp;#34;: &lt;/span>&lt;span style="color:#ae81ff">symbols&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;recognizer/patterns/punct&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;^/([A-Z|a-z]*|[0-9]|10)$&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>重新部署后输入&lt;code>/fh&lt;/code>等字样就可以输入各种符号了，这些符号保存在程序文件夹的&lt;code>data/symbols.yaml&lt;/code>文件中。&lt;/p>
+&lt;ul>
+&lt;li>自定义符号
+如果想添加自定义符号，可以将&lt;code>symbols.yaml&lt;/code>文件复制到用户文件夹下，然后在其中按照格式添加自己的符号，但更建议添加在自定义方案设置中，比如我自定义了常用邮箱&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#double_pinyin_mspy.custom.yaml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">punctuator/symbols&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;/mail&amp;#34;: &lt;/span>[&lt;span style="color:#ae81ff">kizxmoe@gmail.com, 3317200497@qq.com, kizx@qq.com, contact@2bboy.com]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后重新部署，输入&lt;code>/mail&lt;/code>即可弹出常用邮箱&lt;/p>
+&lt;ul>
+&lt;li>修改符号候选
+有时候在打出一个符号时会出现多个候选，这不符合大众习惯，这些设置也在symbols.yaml文件中，同样建议在自定义方案中修改,比如我把书名号改成唯一的样式&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;punctuator/import_preset&amp;#34;: &lt;/span>&lt;span style="color:#ae81ff">symbols&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;recognizer/patterns/punct&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;^/([A-Z|a-z]*|[0-9]|10)$&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">punctuator/full_shape&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;[&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;【&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;]&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;】&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">punctuator/half_shape&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;[&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;【&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;]&amp;#34;: &lt;/span>&lt;span style="color:#e6db74">&amp;#34;】&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>切换英文直接上屏&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># default.custom.yaml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ascii_composer&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">good_old_caps_lock&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">switch_key&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Shift_L&lt;/span>: &lt;span style="color:#ae81ff">commit_code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Shift_R&lt;/span>: &lt;span style="color:#ae81ff">commit_code&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Control_L&lt;/span>: &lt;span style="color:#ae81ff">noop&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Control_R&lt;/span>: &lt;span style="color:#ae81ff">noop&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Caps_Lock&lt;/span>: &lt;span style="color:#ae81ff">noop&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Eisu_toggle&lt;/span>: &lt;span style="color:#ae81ff">clear&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>定义某些应用默认中英文输入
+比如我想让vscode默认是英文输入，可以在任务管理器中查看进程名称，然后注意要小写&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># weasel.custom.yaml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">app_options/code.exe&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">ascii_mode&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实rime输入法能记住不同应用的中英文状态&lt;/p>
+&lt;ul>
+&lt;li>其他设置&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># weasel.custom.yaml&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">patch&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">style/horizontal&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#75715e"># 候选横排显示&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">style/display_tray_icon&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span> &lt;span style="color:#75715e"># 显示托盘图标&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[scode type=&amp;ldquo;yellow&amp;rdquo;]以上操作都记得重新部署生效[/scode]&lt;/p>
+&lt;ul>
+&lt;li>同步
+点击菜单中的用户资料同步即会在sync目录下生成一个同步文件夹，记录了当前电脑上的用户配置文件和词库，只需把这个文件夹同步到另一台电脑上相同的位置下，词库便会自动合并，但用户配置文件不会自动合并，需手动进行替换。文件夹的名字和位置可以在&lt;code>installation.yaml&lt;/code>中自行指定。&lt;/li>
+&lt;/ul></description></item><item><title>Git常用命令</title><link>http://kizx.gitee.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>http://kizx.gitee.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
+>https://gitee.com/help/categories/43&lt;/a>
+&lt;a class="link" href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener"
+>https://git-scm.com/book/zh/v2/&lt;/a>
+&lt;a class="link" href="https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5" target="_blank" rel="noopener"
+>https://git-scm.com/book/zh/v2/%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E7%9A%84-Git-%E7%94%9F%E6%88%90-SSH-%E5%85%AC%E9%92%A5&lt;/a>&lt;/p>
+&lt;h2 id="初始化">&lt;a href="#%e5%88%9d%e5%a7%8b%e5%8c%96" class="header-anchor">&lt;/a>初始化
+&lt;/h2>&lt;pre tabindex="0">&lt;code class="language-git" data-lang="git"># 设置用户信息
+git config --global user.name kizx
+git config --global user.email kizxmoe@gmail.com
+# 查看设置
+git config --list
+# 生成密钥
+ssh-keygen
+# 查看公钥
+cat ~/.ssh/id_rsa.pub
+&lt;/code>&lt;/pre>&lt;h2 id="创建仓库">&lt;a href="#%e5%88%9b%e5%bb%ba%e4%bb%93%e5%ba%93" class="header-anchor">&lt;/a>创建仓库
+&lt;/h2>&lt;pre tabindex="0">&lt;code class="language-git" data-lang="git"># 初始化
+git init
+# 添加所有文件
+git add .
+# 提交
+git commit -m &amp;#34;first commit&amp;#34;
+# 添加远程仓库
+git remote add origin git@gitee.com:kizx/rime.git
+# 推送
+git push -u origin master
+&lt;/code>&lt;/pre></description></item><item><title>我用的软件</title><link>http://kizx.gitee.io/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</link><pubDate>Fri, 22 Nov 2019 11:52:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E6%88%91%E7%94%A8%E7%9A%84%E8%BD%AF%E4%BB%B6/</guid><description>&lt;ul>
+&lt;li>百分浏览器 &lt;a class="link" href="https://www.centbrowser.cn/" target="_blank" rel="noopener"
+>https://www.centbrowser.cn/&lt;/a>&lt;/li>
+&lt;li>压缩 &lt;a class="link" href="http://www.bandisoft.com/bandizip/" target="_blank" rel="noopener"
+>http://www.bandisoft.com/bandizip/&lt;/a>&lt;/li>
+&lt;li>输入法&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://rime.im/" target="_blank" rel="noopener"
+>https://rime.im/&lt;/a>
+&lt;a class="link" href="https://shurufa.baidu.com/" target="_blank" rel="noopener"
+>https://shurufa.baidu.com/&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>浏览器插件推荐 &lt;a class="link" href="https://chrome.zzzmh.cn" target="_blank" rel="noopener"
+>https://chrome.zzzmh.cn&lt;/a>&lt;/li>
+&lt;li>鼠标驱动 &lt;a class="link" href="https://zh.roccat.org/Support" target="_blank" rel="noopener"
+>https://zh.roccat.org/Support&lt;/a>&lt;/li>
+&lt;li>文本编辑器
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/stefankueng/BowPad" target="_blank" rel="noopener"
+>https://github.com/stefankueng/BowPad&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.editpadpro.com/screen.html/" target="_blank" rel="noopener"
+>http://www.editpadpro.com/screen.html/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.pnotepad.org/" target="_blank" rel="noopener"
+>http://www.pnotepad.org/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.rizonesoft.com/downloads/notepad3/" target="_blank" rel="noopener"
+>https://www.rizonesoft.com/downloads/notepad3/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>office下载管理 &lt;a class="link" href="https://otp.landian.vip/zh-cn/" target="_blank" rel="noopener"
+>https://otp.landian.vip/zh-cn/&lt;/a>&lt;/li>
+&lt;li>卸载&amp;ndash;geek &lt;a class="link" href="https://geekuninstaller.com/" target="_blank" rel="noopener"
+>https://geekuninstaller.com/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="程序类">&lt;a href="#%e7%a8%8b%e5%ba%8f%e7%b1%bb" class="header-anchor">&lt;/a>程序类
+&lt;/h2>&lt;ul>
+&lt;li>vs &lt;a class="link" href="https://visualstudio.microsoft.com/zh-hans/" target="_blank" rel="noopener"
+>https://visualstudio.microsoft.com/zh-hans/&lt;/a>&lt;/li>
+&lt;li>网速显示 &lt;a class="link" href="https://github.com/zhongyang219/TrafficMonitorSkinEditor" target="_blank" rel="noopener"
+>https://github.com/zhongyang219/TrafficMonitorSkinEditor&lt;/a>&lt;/li>
+&lt;li>cmder &lt;a class="link" href="https://cmder.net/" target="_blank" rel="noopener"
+>https://cmder.net/&lt;/a>&lt;/li>
+&lt;li>sqlite数据库管理 &lt;a class="link" href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener"
+>https://sqlitebrowser.org/dl/&lt;/a>&lt;/li>
+&lt;li>git管理 &lt;a class="link" href="https://git-fork.com/" target="_blank" rel="noopener"
+>https://git-fork.com/&lt;/a>&lt;/li>
+&lt;li>SSH&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://www.vandyke.com/products/securecrt/" target="_blank" rel="noopener"
+>https://www.vandyke.com/products/securecrt/&lt;/a>
+&lt;a class="link" href="http://www.hostbuf.com/t/988.html" target="_blank" rel="noopener"
+>http://www.hostbuf.com/t/988.html&lt;/a>
+&lt;a class="link" href="https://www.netsarang.com/zh/free-for-home-school/" target="_blank" rel="noopener"
+>https://www.netsarang.com/zh/free-for-home-school/&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="办公类">&lt;a href="#%e5%8a%9e%e5%85%ac%e7%b1%bb" class="header-anchor">&lt;/a>办公类
+&lt;/h2>&lt;ul>
+&lt;li>万彩办公大师 &lt;a class="link" href="http://www.wofficebox.com/" target="_blank" rel="noopener"
+>http://www.wofficebox.com/&lt;/a>&lt;/li>
+&lt;li>PDF&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://www.sumatrapdfreader.org/downloadafter.html" target="_blank" rel="noopener"
+>https://www.sumatrapdfreader.org/downloadafter.html&lt;/a>
+&lt;a class="link" href="https://www.sumatrapdfreader.org/free-pdf-reader.html" target="_blank" rel="noopener"
+>https://www.sumatrapdfreader.org/free-pdf-reader.html&lt;/a>
+&lt;a class="link" href="https://tools.pdf24.org/zh/" target="_blank" rel="noopener"
+>https://tools.pdf24.org/zh/&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;ul>
+&lt;li>markdown &lt;a class="link" href="https://www.typora.io/#windows" target="_blank" rel="noopener"
+>https://www.typora.io/#windows&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="多媒体类">&lt;a href="#%e5%a4%9a%e5%aa%92%e4%bd%93%e7%b1%bb" class="header-anchor">&lt;/a>多媒体类
+&lt;/h2>&lt;ul>
+&lt;li>看图
+&lt;ul>
+&lt;li>&lt;a class="link" href="http://www.bandisoft.com/honeyview/" target="_blank" rel="noopener"
+>http://www.bandisoft.com/honeyview/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://sourceforge.net/projects/jpegview/" target="_blank" rel="noopener"
+>https://sourceforge.net/projects/jpegview/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.vieas.com/en/software/vieas.html" target="_blank" rel="noopener"
+>http://www.vieas.com/en/software/vieas.html&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;ul>
+&lt;li>图片压缩 + &lt;a class="link" href="https://tuya.xinxiao.tech/" target="_blank" rel="noopener"
+>https://tuya.xinxiao.tech/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;ul>
+&lt;li>视频播放器
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://potplayer.daum.net/?lang=zh_CN" target="_blank" rel="noopener"
+>https://potplayer.daum.net/?lang=zh_CN&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.dandanplay.com/" target="_blank" rel="noopener"
+>http://www.dandanplay.com/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>录屏-OBS &lt;a class="link" href="https://obsproject.com/" target="_blank" rel="noopener"
+>https://obsproject.com/&lt;/a>&lt;/li>
+&lt;li>音乐播放器-AIMP &lt;a class="link" href="https://www.aimp.ru/" target="_blank" rel="noopener"
+>https://www.aimp.ru/&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="应用类">&lt;a href="#%e5%ba%94%e7%94%a8%e7%b1%bb" class="header-anchor">&lt;/a>应用类
+&lt;/h2>&lt;ul>
+&lt;li>鼠标手势
+&lt;blockquote>
+&lt;p>&lt;a class="link" href="https://shuax.com/project/mouseinc/" target="_blank" rel="noopener"
+>https://shuax.com/project/mouseinc/&lt;/a>
+&lt;a class="link" href="http://www.yingdev.com/projects/wgestures" target="_blank" rel="noopener"
+>http://www.yingdev.com/projects/wgestures&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;/li>
+&lt;li>文件管理器TAB &lt;a class="link" href="http://qttabbar.wikidot.com/" target="_blank" rel="noopener"
+>http://qttabbar.wikidot.com/&lt;/a>&lt;/li>
+&lt;li>gif录制 &lt;a class="link" href="https://www.screentogif.com/?l=zh_cn" target="_blank" rel="noopener"
+>https://www.screentogif.com/?l=zh_cn&lt;/a>&lt;/li>
+&lt;li>快速复制 &lt;a class="link" href="https://fastcopy.jp/" target="_blank" rel="noopener"
+>https://fastcopy.jp/&lt;/a>&lt;/li>
+&lt;li>符号链接 &lt;a class="link" href="https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html" target="_blank" rel="noopener"
+>https://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html&lt;/a>&lt;/li>
+&lt;li>文件窗口标签 &lt;a class="link" href="https://shutters.160.com/" target="_blank" rel="noopener"
+>https://shutters.160.com/&lt;/a>&lt;/li>
+&lt;li>哈希校检工具 &lt;a class="link" href="https://www.binaryfortress.com/HashTools/" target="_blank" rel="noopener"
+>https://www.binaryfortress.com/HashTools/&lt;/a>&lt;/li>
+&lt;li>文献翻译 &lt;a class="link" href="http://i.zhiyunwenxian.cn/195.html" target="_blank" rel="noopener"
+>http://i.zhiyunwenxian.cn/195.html&lt;/a>&lt;/li>
+&lt;li>复制翻译 &lt;a class="link" href="https://copytranslator.github.io/download/" target="_blank" rel="noopener"
+>https://copytranslator.github.io/download/&lt;/a>&lt;/li>
+&lt;li>下载
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://v3-beta.6pan.cn/" target="_blank" rel="noopener"
+>https://v3-beta.6pan.cn/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.kancloud.cn/myzfb/thunderbird/1684667" target="_blank" rel="noopener"
+>https://www.kancloud.cn/myzfb/thunderbird/1684667&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.internetdownloadmanager.com/" target="_blank" rel="noopener"
+>http://www.internetdownloadmanager.com/&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="http://www.internetdownloadmanager.com/download.html" target="_blank" rel="noopener"
+>http://www.internetdownloadmanager.com/download.html&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="软件分享网站">&lt;a href="#%e8%bd%af%e4%bb%b6%e5%88%86%e4%ba%ab%e7%bd%91%e7%ab%99" class="header-anchor">&lt;/a>软件分享网站
+&lt;/h2>&lt;ul>
+&lt;li>这个网站有超多实用小程序
+&lt;a class="link" href="http://www.nirsoft.net/utils/index.html" target="_blank" rel="noopener"
+>http://www.nirsoft.net/utils/index.html&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Windows中的高级“快捷方式”</title><link>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</link><pubDate>Sat, 19 Oct 2019 05:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</guid><description>&lt;p>很久以前就知道windows中这么一种快捷方式，不同于普通的快捷方式，是一种可以和源文件发挥相同功效作用的“快捷方式”，但是一直未深入探索使用过，现在想起来或许这种快捷方式可以为我们的工作带来很大便利。
+部分参考资料：
+&lt;a class="link" href="https://baike.baidu.com/item/mklink/566760?fr=aladdin" title="mklink_百度百科"
+target="_blank" rel="noopener"
+>mklink_百度百科&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/5hongbing/article/details/77389079" target="_blank" rel="noopener"
+>Windows硬链接 软链接 符号链接 快捷方式&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/cxrsdn/article/details/86631541" title="Windows上创建符号链接的完整指南"
+target="_blank" rel="noopener"
+>Windows上创建符号链接的完整指南&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/guyue35/article/details/49761347" target="_blank" rel="noopener"
+>Windows下mklink使用, 硬链接, 软链接和快捷方式的区别&lt;/a>
+&lt;a class="link" href="https://www.jianshu.com/p/b1614a073087" target="_blank" rel="noopener"
+>windows mklink /d /h /j 精讲&lt;/a>
+&lt;a class="link" href="https://social.microsoft.com/Forums/zh-CN/95d0efc9-3ae9-4611-bb9d-68560c3c15ee/vista19979318672241120026junction21644symlink3034025991202142284126377?forum=vistazhchs" title="Vista下类型为JUNCTION和SYMLINK的文件夹有什么区别"
+target="_blank" rel="noopener"
+>Vista下类型为JUNCTION和SYMLINK的文件夹有什么区别&lt;/a>&lt;/p>
+&lt;h2 id="实践">&lt;a href="#%e5%ae%9e%e8%b7%b5" class="header-anchor">&lt;/a>实践
+&lt;/h2>&lt;p>看完许多资料，还是对windows下的mklink命令感到有些迷惑，我觉得还是自己实践下比较好。
+&lt;img src="https://pan.2bboy.com/img/2019/10/359859328.png"
+loading="lazy"
+>
+mklink一共只有3种链接，针对3种方式我分别对文件和文件夹进行如下实验。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>文件测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\d.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h D:\h.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h C:\Users\ZXIN\Desktop\opencv\h.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\j.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>文件夹测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\d C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h D:\h C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h C:\Users\ZXIN\Desktop\opencv\h C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\j C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>占用空间测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\bigd &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d G:\bigd &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h G:\bigh.zip &lt;span style="color:#e6db74">&amp;#34;G:\NPUBits\偷星九月天.zip&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\bigj &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j G:\bigj &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下是实验结果：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>项目&lt;/th>
+&lt;th>符号链接&lt;/th>
+&lt;th>硬链接&lt;/th>
+&lt;th>目录链接&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>参数&lt;/td>
+&lt;td>/D&lt;/td>
+&lt;td>/H&lt;/td>
+&lt;td>/J&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>管理员权限&lt;/td>
+&lt;td>需要&lt;/td>
+&lt;td>不需要&lt;/td>
+&lt;td>不需要&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>文件&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>文件夹&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>空间&lt;/td>
+&lt;td>不占用&lt;/td>
+&lt;td>不占用(理应占用)&lt;/td>
+&lt;td>不占用&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>跨磁盘&lt;/td>
+&lt;td>可以&lt;/td>
+&lt;td>不可以&lt;/td>
+&lt;td>可以&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>删除或移动源文件(夹)&lt;/td>
+&lt;td>无法访问&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>无法访问&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>移动链接&lt;/td>
+&lt;td>秒移，整个文件夹被移动&lt;/td>
+&lt;td>秒移&lt;/td>
+&lt;td>跨盘的话会发生复制行为，原地遗留一个空文件夹&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>和网上的图进行比较：
+&lt;img src="https://pan.2bboy.com/img/2019/10/2866579881.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>奇怪的地方来了，在我测试中三种方式都是不占用空间的，硬链接应该是会占用空间的才对，我检查占用空间的方式是右键磁盘查看可用空间，但是三种方式都不改变磁盘剩余空间，右键查看文件的占用空间三种方式也都是一样的，可能这种查看方式并不科学。&lt;/p>
+&lt;h2 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
+&lt;/h2>&lt;ul>
+&lt;li>与其叫快捷方式，其实这三种方式更像是文件共享，共同点都是文件的改动都是同步的，但是链接文件或目录的删除不影响源文件。&lt;/li>
+&lt;li>至于区别首先就是硬链接源文件的删除不影响链接文件，但是硬链接只能链接文件不能链接文件夹，而另两种方式只能链接文件夹，所以硬链接很适合备份数据。&lt;/li>
+&lt;li>如果什么参数都不加，创建的是文件符号链接。&lt;/li>
+&lt;li>另两种文件链接方式似乎没有什么大差别，/D需要管理员权限，在移动链接文件夹时是整体移动的，不会留下一个空文件夹。需要注意的是虽然删除目录链接的目录本身不会影响源文件，但是删除删除目录下的文件会导致同步删除。&lt;/li>
+&lt;/ul>
+&lt;h2 id="应用">&lt;a href="#%e5%ba%94%e7%94%a8" class="header-anchor">&lt;/a>应用
+&lt;/h2>&lt;ul>
+&lt;li>除了用硬链接备份数据外，因为这种创建链接的方式几乎是瞬间完成的，可以和OneDrive云盘配合使用，也可用作程序间的数据共享。&lt;/li>
+&lt;li>一个有意思的技巧，如果想使硬链接跨盘符使用该怎么办？可以使用软连接和硬链接相结合的方式，即在一个可以跨盘连接的软链接里创建硬链接，这样硬链接就会同步到另一个盘里。&lt;/li>
+&lt;li>另外如果每次都用命令行的方式进行操作未免太过极客了，刚好在参考文件里找到一个软件，直接将该功能集成到右键菜单里了，我觉得很赞。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>软件下载地址：http://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html
+[button color=&amp;ldquo;info&amp;rdquo; icon=&amp;ldquo;fa fa-download&amp;rdquo;]&lt;a class="link" href="https://pan.2bboy.com/Public/Software/HardLinkShellExt_X64.exe" target="_blank" rel="noopener"
+>本地下载&lt;/a>[/button]&lt;/p>&lt;/blockquote>
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>这个up在视频里讲解了硬链接，本文有些错误懒得改了，建议结合视频观看理解
+&lt;a class="link" href="https://www.bilibili.com/video/BV11b4y1t72B" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/BV11b4y1t72B&lt;/a>&lt;/p></description></item><item><title>OneDrive使用指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
+&lt;/h2>&lt;p>OneDrive当云盘的好处是不限速，但实际速度并不会跑满带宽，具体速度以实际情况为准，我的速度用客户端上传的话最快能跑到7M/s，网页下载配合idm的话有时能跑满带宽，还是相当给力的。其次还有一个优点就是内容不会被和谐。&lt;/p>
+&lt;p>但普通邮箱注册只有5G的免费空间，教育邮箱注册可以获得5T的免费空间，但一般正规教育邮箱注册只有1T的可用空间，不过1T也基本上够用了，如果没有教育邮箱可以选择花几块钱买一个5T账号省的麻烦。&lt;/p>
+&lt;p>注意我们这里注册的是office365的账号和微软账号通用，可以通过以下方法查看空间大小：登录到office365，进入OneDrive，选择右上角设置-&amp;gt;OneDrive设置，继续选择其他设置-&amp;gt;存储标准即可看到空间大小，或者打开onedrive桌面客户端也可以进行查看。&lt;/p>
+&lt;h2 id="2-桌面客户端使用">&lt;a href="#2-%e6%a1%8c%e9%9d%a2%e5%ae%a2%e6%88%b7%e7%ab%af%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>2. 桌面客户端使用
+&lt;/h2>&lt;p>win10系统是自带Onedrive客户端的，搜索打开OneDrive并登录后，设置一个文件夹为同步文件夹。&lt;/p>
+&lt;p>OneDrive不同于国内的网盘，和国内的坚果云有点类似。他是一个同步云盘，同步文件夹里所有文件都是和云端同步的，上传文件只需把文件拖进同步文件夹内即可。&lt;/p>
+&lt;p>但由于是同步的如果本地删除文件云端也会删除，云端删除文件本地也会删除，这点就很坑了，可能国人更喜欢把云盘当一个存储资料的硬盘来使用，我本地删除了云端也没了那还存个屁啊。在这一点上国内云盘就很人性化了，单独有一个同步文件夹可供使用。&lt;/p>
+&lt;p>所以微软是怎么解决这个问题的呢，OneDrive有个文件随选功能，具体见官方说明&lt;a class="link" href="https://support.office.com/zh-cn/article/%E9%80%9A%E8%BF%87%E9%80%82%E7%94%A8%E4%BA%8E-windows-10-%E7%9A%84-onedrive-%E6%96%87%E4%BB%B6%E9%9A%8F%E9%80%89%E8%8A%82%E7%9C%81%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4-0e6860d3-d9f3-4971-b321-7092438fb38e?ui=zh-CN&amp;amp;rs=zh-CN&amp;amp;ad=CN" target="_blank" rel="noopener"
+>通过适用于 Windows 10 的 OneDrive 文件随选节省磁盘空间&lt;/a>。
+通过右键文件选择释放空间，文件就会被标注为在联机时下载使用，也就是本地就是一个快捷方式一样的东西，在打开使用这个文件时就会下载这个文件。但要注意的是如果你删除这个“快捷方式”，云端同样会删除文件，坑啊。&lt;/p>
+&lt;p>还有一个办法是打开OneDrive设置，找到一个同步选项，去掉你想删除的文件使其不同步，这样一来本地文件就自动删除了而云端数据仍然保留，也就是使这个文件在本地不同步。但这个做法你想要再下载这个文件的话，要么去云端再下载，要么重新勾上同步，这就有点小麻烦了。&lt;/p>
+&lt;h2 id="3-搭建云盘">&lt;a href="#3-%e6%90%ad%e5%bb%ba%e4%ba%91%e7%9b%98" class="header-anchor">&lt;/a>3. 搭建云盘
+&lt;/h2>&lt;p>使用OneDrive还有一个好处就是可以用来搭建个人云盘，也可以用来搭建个人图床，如果你有一台服务器的话，那么你可以选择OneIndex,OLAINDEX,PyOne,CuteOne等方案来部署你的个人云盘，搭建过程和你安装博客程序差不多。&lt;/p>
+&lt;p>如果你手头没有空闲的主机，那么也可通过下面的方式利用腾讯云的云函数服务来搭建一个。
+我当初是参考这个教程的：https://logi.im/back-end/scf-onedrive-filelistor.html
+项目地址：https://github.com/qkqpttgf/OneManager-php
+顺便说下学校教育邮箱申请的onedrive可能无法使用这个项目，好像是无法开通api的缘故，但可以用下面的方案通过分享的方式来访问。&lt;/p>
+&lt;p>和上面的类似，可以尝试另一个云函数网盘方案&lt;a class="link" href="https://github.com/ukuq/onepoint" target="_blank" rel="noopener"
+>onepoint&lt;/a>。
+这里是使用说明：https://www.onesrc.cn/p/onepoint-configuration-process.html&lt;/p>
+&lt;h2 id="附onedrive种类示意图">&lt;a href="#%e9%99%84onedrive%e7%a7%8d%e7%b1%bb%e7%a4%ba%e6%84%8f%e5%9b%be" class="header-anchor">&lt;/a>附onedrive种类示意图
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/20200312191455.jpg"
+loading="lazy"
+>&lt;/p></description></item></channel></rss>

@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>算法 on 醉后的星星</title><link>http://kizx.gitee.io/tags/%E7%AE%97%E6%B3%95/</link><description>Recent content in 算法 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Mon, 25 Oct 2021 12:37:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml"/><item><title>Bezier曲线、B样条曲线、NURBS曲线</title><link>http://kizx.gitee.io/post/bezier%E6%9B%B2%E7%BA%BFb%E6%A0%B7%E6%9D%A1%E6%9B%B2%E7%BA%BFnurbs%E6%9B%B2%E7%BA%BF/</link><pubDate>Mon, 25 Oct 2021 12:37:00 +0000</pubDate><guid>http://kizx.gitee.io/post/bezier%E6%9B%B2%E7%BA%BFb%E6%A0%B7%E6%9D%A1%E6%9B%B2%E7%BA%BFnurbs%E6%9B%B2%E7%BA%BF/</guid><description>&lt;h3 id="bezier曲线">&lt;a href="#bezier%e6%9b%b2%e7%ba%bf" class="header-anchor">&lt;/a>Bezier曲线
+&lt;/h3>&lt;p>&lt;strong>定义&lt;/strong>：对于n+1个控制点V_i(i=0,1,2,&amp;hellip;,n)V_i(i=0,1,2,&amp;hellip;,n)，n次Bezier曲线为：
+$$
+\begin{align}
+P_n(t) &amp;amp;= \sum_{i=0}^{n} B_{n,i}(t)V_i,0\le t\le 1v \
+B_{n,i} &amp;amp;=\frac{n!}{(n-i)!i!}(1-t)^{n-i}t^i
+\end{align}
+$$
+其中B_{n,i}B_{n,i}称为n次Bernstein基函数。
+例如，当n=3时，即3次Bezier曲线为：;
+$$
+\begin{align}
+P_3(t) &amp;amp;= B_{3,0}(t)V_0+B_{3,1}(t)V_1+B_{3,2}(t)V_2+B_{3,3}(t)V_3,0\le t\le 1v \
+B_{3,i} &amp;amp;= \left{\begin{matrix}
+B_{3,0}(t)=(1-t)^3 \
+B_{3,1}(t)=3(1-t)^2t \
+B_{3,2}(t)=3(1-t)t^2 \
+B_{3,3}(t)=t^3
+\end{matrix}\right.
+\end{align}
+$$&lt;/p>
+&lt;p>&lt;strong>性质&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>两端重合：Bezier曲线和控制多边形起始两端点重合，P(0)=V_0,P(1)=V_nP(0)=V_0,P(1)=V_n&lt;/li>
+&lt;li>两端相切：Bezier曲线和控制多边形起始两端点相切，且切矢模长为n倍，P&amp;rsquo;(0)=n(V_1-V_0),P&amp;rsquo;(1)=n(V_n-V_{n-1})P&amp;rsquo;(0)=n(V_1-V_0),P&amp;rsquo;(1)=n(V_n-V_{n-1})&lt;/li>
+&lt;li>对称性：控制点反序够早的曲线一致，只是参数化相反&lt;/li>
+&lt;li>凸包性：曲线落在控制多边形形成的凸包内&lt;/li>
+&lt;li>几何不变形：曲线仅取决于控制点，与坐标系无关&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>递归分割de Casteljau算法&lt;/strong>
+在控制多边形每条边上按比例t:(1-t)进行分割，初始n+1个点，第一次分割得到n个点，n个点连起来组成新的控制点，第二次分割得到n-1个点，直到最后只剩一个点，该点即Bezier曲线上的点。
+de Casteljau建立的递归公式如下：
+$$
+\begin{array}{c}
+\left{\begin{matrix}
+&amp;amp;V_i^r(t) = (1-t)V_i^{r-1}+tV_{i+1}^{r-1} ,r = 0,1,2,&amp;hellip;,n\
+&amp;amp;V_i^0(t) = V_i,i = 0,1,2,&amp;hellip;,n
+\end{matrix}\right.
+\end{array}
+$$
+该方法适合于编程几何作图。&lt;/p>
+&lt;h3 id="有理bezier曲线">&lt;a href="#%e6%9c%89%e7%90%86bezier%e6%9b%b2%e7%ba%bf" class="header-anchor">&lt;/a>有理Bezier曲线
+&lt;/h3>&lt;p>&lt;strong>定义&lt;/strong>：比Bezier曲线多了个顶点权重系数，至于哪里有理了不清楚。
+$$
+P_(t)=\frac{\sum_{i=0}^{n}B_{n,i}(t)w_iV_i}{B_{n,i}(t)w_i} , 0\le t\le 1
+$$
+例如，3次有理Bezier曲线表示为：
+$$
+P_3(t)=\frac{(1-t)^3w_0V_0+3t(1-t)^2w_1V_1+3t^2(1-t)w_2V_2+t^3w_3V_3}{(1-t)^3w_0+3t(1-t)^2w_1+3t^2(1-t)w_2+t^3w_3}
+$$
+权重$w_i$可以一般取大于零的实数。&lt;/p>
+&lt;p>&lt;strong>递归分割Farin算法&lt;/strong>
+和上述过程类似：
+$$
+\begin{array}{c}
+\left{\begin{matrix}
+&amp;amp;V_i^r(t) = (1-t)\frac{W_i^{r-1}(t)}{W_i^r(t)} V_i^{r-1}+t\frac{W_{i-1}^{r-1}(t)}{W_i^r(t)}V_{i+1}^{r-1} ,r = 0,1,2,&amp;hellip;,n\
+&amp;amp;V_i^0(t) = V_i,i = 0,1,2,&amp;hellip;,n
+\end{matrix}\right.\
+\left{\begin{matrix}
+W_i^0=w_i \
+W_i^r(t)=\sum_{j=0}^{r}W_{i+j}^{r-1}B_{r,j}(t),r=1,2,&amp;hellip;,n
+\end{matrix}\right.
+\end{array}
+$$&lt;/p>
+&lt;h2 id="b样条方法">&lt;a href="#b%e6%a0%b7%e6%9d%a1%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>B样条方法
+&lt;/h2>&lt;p>B样条方法是Bezier方法的的一种一般化，给定n+1个控制点和阶次k，以及节点向量${t_0,t_1,&amp;hellip;,t_{n+k+1}}$:
+$$
+\begin{array}{c}
+P_n(t) = \sum_{i = 0}^{n}N_{i,k}(t)V_i=\sum_{i = j-k}^{j}N_{i,k}(t)V_i,t_j\le t\le t_{j+1}\
+N_{j,0}=\left{\begin{matrix}
+1,t_j\le t\le t_{j+1} \
+0,otherwise
+\end{matrix}\right.\
+N_{i,k}(t)=\frac{t-t_i}{t_{i+k}-t_i}N_{i,k-1}(t)+\frac{t_{i+k+1}-t}{t_{i+k+1}-t_{i+1}} N_{i+1,k-1}(t)
+\end{array}\
+*约定 frac{0}{0}=0
+$$
+其中$N_{i,k}(t)$为k阶( k-1次 )B样条基函数，${t_0,t_1,&amp;hellip;,t_{n+k+1}}$为节点矢量，B样条按其节点矢量分布可分为以下三类：&lt;/p>
+&lt;ul>
+&lt;li>均匀B样条：均匀分布或等距分布。&lt;/li>
+&lt;li>准均匀分布：与均匀B样条区别在于两端端点为重节点。&lt;/li>
+&lt;li>非均匀B样条：任意分布。
+例如三次均匀B样条基函数为：
+$$
+\left{\begin{matrix}
+N_{0,3}(t)=\frac{1}{6}(1-t)^3 \
+N_{1,3}(t)=\frac{1}{6}(3t^3-6t^2+4) \
+N_{2,3}(t)=\frac{1}{6}(-3t^3+3t^2+3t+1) \
+N_{3,3}(t)=\frac{1}{6}t^3
+\end{matrix}\right.
+$$
+B样条具有局部性：改变一个控制点时，只会对附近曲线段的形状产生影响。
+对于一个k次的n+1个控制点的B样条，当k=n时，退化为Bezier曲线。&lt;/li>
+&lt;/ul>
+&lt;h2 id="nurbs方法">&lt;a href="#nurbs%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>NURBS方法
+&lt;/h2>&lt;p>NURBS曲线全称非均匀有理B样条，是B样条的一般化，非均匀指节点的选取可以是不均匀的，有理主要体现在每个控制点有个权因子。
+$$
+R_n(t)=\frac{\sum_{i=0}^{n}N_{i,k}(t)w_iV_i}{N_{i,k}(t)w_i}
+$$&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/johnhany/article/details/8830928" target="_blank" rel="noopener"
+>https://blog.csdn.net/johnhany/article/details/8830928&lt;/a>
+《形状可调的参数曲线曲面造型方法研究》
+《Bezier曲线曲面的造型设计理论研究》&lt;/p></description></item><item><title>最小二乘法和移动最小二乘法</title><link>http://kizx.gitee.io/post/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/</link><pubDate>Thu, 14 Oct 2021 10:59:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95/</guid><description>&lt;h1 id="endbmatrix">&lt;a href="#endbmatrix" class="header-anchor">&lt;/a>已知未知系数的方程$ f(x)=p(x)^{T}*\alpha $，以及一系列数据点$(x_{i},y_{i})$，其中$p(x)$是基函数，$\alpha$是系数向量，求解该方程的系数向量，使得损失函数$J=\sum_{i=0}^{n} (f(x_{i})-y_{i})^2$值最小。联立所有方程，一般是一个超定方程组（等式个数大于未知数），一般可以表示为$Ax=b$形式，这里的$x$是指待求系数。
+以方程$f(x)=a+bx+cx^{2}$为例，可以表示成如下形式：
+$$
+\begin{bmatrix}
+1 &amp;amp; x_{1} &amp;amp; x_{1}^{2}\
+1 &amp;amp; x_{2} &amp;amp; x_{2}^{2}\
+&amp;hellip; &amp;amp; &amp;hellip; &amp;amp; &amp;hellip;\
+1 &amp;amp; x_{n} &amp;amp; x_{n}^{2}
+\end{bmatrix}
+*
+\begin{bmatrix}
+a\
+b\
+c
+\end{bmatrix}
+&lt;/h1>&lt;p>\begin{bmatrix}
+y_{1}\
+y_{2}\
+&amp;hellip;\
+y_{n}
+\end{bmatrix}
+$$&lt;/p>
+&lt;ul>
+&lt;li>求解上述问题，可以有两种思路，一种是从投影的角度，另一种是对损失函数求偏导数令其等于0。结果都是$x=(A^{T}A)^{-1}A^{T}b$，用法线方程法公式计算有个前提就是式中有个逆矩阵，必须保证可逆，否则得用别的方法求解。&lt;/li>
+&lt;li>上述方法解出来的解误差分布不一定理想，可以通过计算$Cond(A^TA)$条件数判断方程是否是病态的，必要时可以考虑QR分解等解法。&lt;/li>
+&lt;li>如果方程自变量个数不止一个，或者方程形式较复杂，一般都是通过化简和变量组合向上面的线性形式凑齐然后求解。&lt;/li>
+&lt;li>至于为什么损失函数是平方和，需要从概率论角度解释，大概意思是残差满足正态分布的最大似然估计就是最小二乘形式。&lt;/li>
+&lt;/ul>
+&lt;h2 id="移动最小二乘法mls-moving-least-square">&lt;a href="#%e7%a7%bb%e5%8a%a8%e6%9c%80%e5%b0%8f%e4%ba%8c%e4%b9%98%e6%b3%95mls-moving-least-square" class="header-anchor">&lt;/a>移动最小二乘法MLS (Moving Least Square)
+&lt;/h2>&lt;p>MLS的拟合方程：$f(x)=p(x)^{T}&lt;em>\alpha(x)$，其中$p(x)$是基函数列向量，$\alpha(x)$不再是常数，而是基于$x$的函数。常见的基函数有线性基：$[1,x]^T$，二次基：$[1,x,x^2]^T$，三次基：$[1,x,x^2，x^3]^T$，而$\alpha(x)$是我们欲求的未知函数。
+另外MLS引入了紧支概念：即某点处的函数值只受附近点的影响，或者说每个数据点只对自己影响区域内的拟合结果有影响，由此引入权函数$w(x)$，此时损失函数为$J=\sum_{i=0}^{n} w(x-x_i)(f(x_{i})-y_{i})^2=\sum_{i=0}^{n} w(x-x_i)(p(x)^{T}&lt;/em>\alpha(x)-y_{i})^2$。
+比如三次样条函数权函数如下：
+$$
+\begin{array}{c}
+s=\frac{|x-x_i|}{r}\
+w(s)=\left{\begin{matrix}
+\frac{2}{3}-4s^2+4s^3, &amp;amp;s\le 0.5 \
+\frac{4}{3}-4s+4s^2-\frac{4s^2}{3}, &amp;amp;0.5&amp;lt;s\le1\
+0,&amp;amp; s&amp;gt;1
+\end{matrix}\right.
+\end{array}
+$$
+其中$r$表示影响范围半径。
+对损失函数求偏导等于0可得$\alpha(x)$：
+$$
+\begin{align}
+\frac{\partial J}{\partial \alpha(x)} &amp;amp;= A(x)\alpha(x)-B(x)y = 0 \
+\alpha(x) &amp;amp;= A^{-1}(x)B(x)y \
+&amp;amp; 其中: \
+w_i(x) &amp;amp;= w(\frac{|x-x_i|}{r})\
+P &amp;amp;= \begin{bmatrix}
+p_1(x_1)&amp;amp; p_2(x_1)&amp;amp; &amp;hellip;&amp;amp; p_m(x_1)\
+p_1(x_2)&amp;amp; p_2(x_2)&amp;amp; &amp;hellip;&amp;amp; p_m(x_2)\
+&amp;hellip;&amp;amp; &amp;hellip;&amp;amp; &amp;hellip;&amp;amp; &amp;hellip;\
+p_1(x_n)&amp;amp; p_2(x_n)&amp;amp; &amp;hellip;&amp;amp; p_m(x_n)
+\end{bmatrix}\
+w(x) &amp;amp;= \begin{bmatrix}
+w_1(x) &amp;amp; 0&amp;amp; &amp;hellip;&amp;amp; 0\
+0&amp;amp; w_2(x)&amp;amp; &amp;hellip;&amp;amp; 0\
+&amp;hellip;&amp;amp; &amp;hellip;&amp;amp; &amp;hellip;&amp;amp; &amp;hellip;\
+0&amp;amp; 0&amp;amp; &amp;hellip;&amp;amp; w_n(x)
+\end{bmatrix}\
+A(x) &amp;amp;= P^TW(x)P \
+B(x) &amp;amp;= P^TW(x) \
+\end{align}
+$$&lt;/p>
+&lt;ul>
+&lt;li>权函数$w(s)$应该是非负的，并伴随着$||x-x_i||_2$增大而减小。&lt;/li>
+&lt;li>实际应用过程中，取不同基函数可以获得不同的拟合精度，取不同的权函数可以获得不同的平滑度。&lt;/li>
+&lt;li>一般基函数次数越高，曲线越平滑；影响半径越大，曲线越平滑。&lt;/li>
+&lt;li>影响半径不能太小，太小的话局部点数不够会造成奇异矩阵不可解。&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>最小二乘：
+&lt;a class="link" href="https://zhuanlan.zhihu.com/p/38128785" target="_blank" rel="noopener"
+>https://zhuanlan.zhihu.com/p/38128785&lt;/a>
+&lt;a class="link" href="https://www.zhihu.com/question/37031188/answer/2041682439" target="_blank" rel="noopener"
+>https://www.zhihu.com/question/37031188/answer/2041682439&lt;/a>
+&lt;a class="link" href="https://ww2.mathworks.cn/help/matlab/ref/lsqr.html" target="_blank" rel="noopener"
+>https://ww2.mathworks.cn/help/matlab/ref/lsqr.html&lt;/a>
+移动最小二乘：
+&lt;a class="link" href="https://wenku.baidu.com/view/fe7a74976f1aff00bed51eb1.html" target="_blank" rel="noopener"
+>https://wenku.baidu.com/view/fe7a74976f1aff00bed51eb1.html&lt;/a>
+&lt;a class="link" href="https://www.doc88.com/p-8778611828185.html" target="_blank" rel="noopener"
+>https://www.doc88.com/p-8778611828185.html&lt;/a>
+&lt;a class="link" href="https://www.freesion.com/article/7962225749/" target="_blank" rel="noopener"
+>https://www.freesion.com/article/7962225749/&lt;/a>
+&lt;a class="link" href="https://www.freesion.com/article/991733680/" target="_blank" rel="noopener"
+>https://www.freesion.com/article/991733680/&lt;/a>
+&lt;a class="link" href="https://www.doc88.com/p-8778611828185.html" target="_blank" rel="noopener"
+>https://www.doc88.com/p-8778611828185.html&lt;/a>
+&lt;a class="link" href="https://d.wanfangdata.com.cn/periodical/szjsyyy201510082" target="_blank" rel="noopener"
+>https://d.wanfangdata.com.cn/periodical/szjsyyy201510082&lt;/a>&lt;/p></description></item><item><title>各种排序算法的Python实现</title><link>http://kizx.gitee.io/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</link><pubDate>Thu, 15 Apr 2021 07:26:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>注：排序算法的稳定性指相等的元素在排序前后相对位置是否变化，稳定排序主要用于不同键值比较，比如ACM成绩排序，先按分数排序，相同分数再按用时最短排序。&lt;/p>
+&lt;h2 id="冒泡排序">&lt;a href="#%e5%86%92%e6%b3%a1%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>冒泡排序
+&lt;/h2>&lt;p>不断比较相邻元素，每次遍历将最大值移至队尾。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">bubble&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> swapped &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> end &lt;span style="color:#f92672">=&lt;/span> len(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> swapped:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> swapped &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1&lt;/span>, end):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> arr[i&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#f92672">&amp;gt;&lt;/span> arr[i]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[i&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>], arr[i] &lt;span style="color:#f92672">=&lt;/span> arr[i], arr[i&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> swapped &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> end &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="选择排序">&lt;a href="#%e9%80%89%e6%8b%a9%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>选择排序
+&lt;/h2>&lt;p>每次遍历找到一个最小值，将其移至队首。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">selection&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> start &lt;span style="color:#f92672">in&lt;/span> range(len(arr)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mini &lt;span style="color:#f92672">=&lt;/span> start
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(start&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, len(arr)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> arr[i] &lt;span style="color:#f92672">&amp;lt;&lt;/span> arr[mini]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> mini &lt;span style="color:#f92672">=&lt;/span> i
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[start], arr[mini] &lt;span style="color:#f92672">=&lt;/span> arr[mini], arr[start]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="插入排序">&lt;a href="#%e6%8f%92%e5%85%a5%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>插入排序
+&lt;/h2>&lt;p>很像打麻将，每摸到一张牌，就依次比较将其插入正确的位置。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">insertion&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> cur &lt;span style="color:#f92672">in&lt;/span> range(len(arr)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(cur&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> arr[cur] &lt;span style="color:#f92672">&amp;lt;&lt;/span> arr[i]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[cur], arr[i] &lt;span style="color:#f92672">=&lt;/span> arr[i], arr[cur]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> cur &lt;span style="color:#f92672">=&lt;/span> i
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">break&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="归并排序">&lt;a href="#%e5%bd%92%e5%b9%b6%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>归并排序
+&lt;/h2>&lt;p>分分合合&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">merge&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> l &lt;span style="color:#f92672">=&lt;/span> len(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> l &lt;span style="color:#f92672">&amp;lt;=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arrleft &lt;span style="color:#f92672">=&lt;/span> merge(arr[:l&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arright &lt;span style="color:#f92672">=&lt;/span> merge(arr[l&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>:])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> arrleft &lt;span style="color:#f92672">or&lt;/span> arright:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> arrleft &lt;span style="color:#f92672">and&lt;/span> arright:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res&lt;span style="color:#f92672">.&lt;/span>append(arrleft&lt;span style="color:#f92672">.&lt;/span>pop(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">0&lt;/span>) &lt;span style="color:#66d9ef">if&lt;/span> arrleft[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#f92672">&amp;lt;&lt;/span> arright[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#66d9ef">else&lt;/span> arright&lt;span style="color:#f92672">.&lt;/span>pop(&lt;span style="color:#ae81ff">0&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">elif&lt;/span> arrleft:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res&lt;span style="color:#f92672">.&lt;/span>append(arrleft&lt;span style="color:#f92672">.&lt;/span>pop(&lt;span style="color:#ae81ff">0&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">elif&lt;/span> arright:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res&lt;span style="color:#f92672">.&lt;/span>append(arright&lt;span style="color:#f92672">.&lt;/span>pop(&lt;span style="color:#ae81ff">0&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> res
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="快速排序">&lt;a href="#%e5%bf%ab%e9%80%9f%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>快速排序
+&lt;/h2>&lt;p>选一个基准，然后将基准放在正确的位置上，并保证左边比基准小，右边比基准大，再一直递推下去。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">quick&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">_quick&lt;/span>(i, j):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> i &lt;span style="color:#f92672">&amp;gt;=&lt;/span> j:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 这里选取左端点为参考点&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pivot &lt;span style="color:#f92672">=&lt;/span> arr[i]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> low &lt;span style="color:#f92672">=&lt;/span> i
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> high &lt;span style="color:#f92672">=&lt;/span> j
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> i &lt;span style="color:#f92672">!=&lt;/span> j:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 从右往左 找小于pivot的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> i &lt;span style="color:#f92672">&amp;lt;&lt;/span> j &lt;span style="color:#f92672">and&lt;/span> arr[j] &lt;span style="color:#f92672">&amp;gt;=&lt;/span> pivot:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> j &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[i] &lt;span style="color:#f92672">=&lt;/span> arr[j]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 从左往右 找大于pivot的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> i &lt;span style="color:#f92672">&amp;lt;&lt;/span> j &lt;span style="color:#f92672">and&lt;/span> arr[i] &lt;span style="color:#f92672">&amp;lt;=&lt;/span> pivot:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[j] &lt;span style="color:#f92672">=&lt;/span> arr[i]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[i] &lt;span style="color:#f92672">=&lt;/span> pivot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> _quick(low, i&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> _quick(i&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, high)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> _quick(&lt;span style="color:#ae81ff">0&lt;/span>, len(arr)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="堆排序">&lt;a href="#%e5%a0%86%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>堆排序
+&lt;/h2>&lt;p>每次将堆顶元素和最后一个元素交换，交换后上浮&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">HeapSort&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self, arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>arr &lt;span style="color:#f92672">=&lt;/span> arr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>len &lt;span style="color:#f92672">=&lt;/span> len(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(len(arr)&lt;span style="color:#f92672">//&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>heapify(i)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">heapify&lt;/span>(self, i):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> left &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>i&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> right &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">*&lt;/span>i&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> largest &lt;span style="color:#f92672">=&lt;/span> i
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> left &lt;span style="color:#f92672">&amp;lt;&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>len &lt;span style="color:#f92672">and&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>arr[left] &lt;span style="color:#f92672">&amp;gt;&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>arr[largest]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> largest &lt;span style="color:#f92672">=&lt;/span> left
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> right &lt;span style="color:#f92672">&amp;lt;&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>len &lt;span style="color:#f92672">and&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>arr[right] &lt;span style="color:#f92672">&amp;gt;&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>arr[largest]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> largest &lt;span style="color:#f92672">=&lt;/span> right
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> largest &lt;span style="color:#f92672">!=&lt;/span> i:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>swap(i, largest)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>heapify(largest)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">swap&lt;/span>(self, a, b):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>arr[a], self&lt;span style="color:#f92672">.&lt;/span>arr[b] &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>arr[b], self&lt;span style="color:#f92672">.&lt;/span>arr[a]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">heapSort&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq &lt;span style="color:#f92672">=&lt;/span> HeapSort(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(len(arr)&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>swap(&lt;span style="color:#ae81ff">0&lt;/span>, i)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>len &lt;span style="color:#f92672">-=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> heapq&lt;span style="color:#f92672">.&lt;/span>heapify(&lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> heapq&lt;span style="color:#f92672">.&lt;/span>arr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="计数排序">&lt;a href="#%e8%ae%a1%e6%95%b0%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>计数排序
+&lt;/h2>&lt;p>统计每个数字出现的次数，然后依次取出，适合都是整数且数字集中的场景。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">count&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> arr:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> minn &lt;span style="color:#f92672">=&lt;/span> min(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> maxn &lt;span style="color:#f92672">=&lt;/span> max(arr)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dic &lt;span style="color:#f92672">=&lt;/span> {n: &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> range(minn, maxn&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> arr:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dic[n] &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> range(minn, maxn&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res &lt;span style="color:#f92672">+=&lt;/span> [n]&lt;span style="color:#f92672">*&lt;/span>dic[n]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> res
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="基数排序">&lt;a href="#%e5%9f%ba%e6%95%b0%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>基数排序
+&lt;/h2>&lt;p>先创建10个队列（0~9桶），先按个位放入桶中，然后依次清空桶，然后是十位&amp;hellip;
+适合整数，数据跨度较大的场景。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">radix&lt;/span>(arr):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buckets &lt;span style="color:#f92672">=&lt;/span> [[] &lt;span style="color:#66d9ef">for&lt;/span> _ &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">10&lt;/span>)]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> flag &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rad &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> flag:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> flag &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> arr:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> buckets[n &lt;span style="color:#f92672">//&lt;/span> rad &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>append(n)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> flag &lt;span style="color:#f92672">and&lt;/span> n &lt;span style="color:#f92672">%&lt;/span> rad &lt;span style="color:#f92672">&amp;lt;&lt;/span> n:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> flag &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> bucket &lt;span style="color:#f92672">in&lt;/span> buckets:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> bucket:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> arr[i] &lt;span style="color:#f92672">=&lt;/span> bucket&lt;span style="color:#f92672">.&lt;/span>pop(&lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> i &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> rad &lt;span style="color:#f92672">*=&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> arr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="桶排序">&lt;a href="#%e6%a1%b6%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>桶排序
+&lt;/h2>&lt;p>每个桶有不同的范围，桶内有自己的排序算法
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/09/3462124853.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener"
+>https://visualgo.net/zh/sorting&lt;/a>&lt;/p></description></item><item><title>数据结构与算法</title><link>http://kizx.gitee.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link><pubDate>Tue, 02 Mar 2021 08:36:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid><description>&lt;p>查询：O(1)
+插入：O(n)
+删除：O(n)&lt;/p>
+&lt;h2 id="链表">&lt;a href="#%e9%93%be%e8%a1%a8" class="header-anchor">&lt;/a>链表
+&lt;/h2>&lt;p>查询：O(n)
+插入：O(1)
+删除：O(1)&lt;/p>
+&lt;ol>
+&lt;li>迭代&lt;/li>
+&lt;li>递归&lt;/li>
+&lt;/ol>
+&lt;h3 id="环判断">&lt;a href="#%e7%8e%af%e5%88%a4%e6%96%ad" class="header-anchor">&lt;/a>环判断
+&lt;/h3>&lt;ol>
+&lt;li>set判重&lt;/li>
+&lt;li>快慢指针&lt;/li>
+&lt;/ol>
+&lt;h2 id="栈stack">&lt;a href="#%e6%a0%88stack" class="header-anchor">&lt;/a>栈Stack
+&lt;/h2>&lt;p>先进后出(FILO)&lt;/p>
+&lt;h3 id="单调栈">&lt;a href="#%e5%8d%95%e8%b0%83%e6%a0%88" class="header-anchor">&lt;/a>&lt;a class="link" href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E5%8D%95%E8%B0%83%E6%A0%88.md" target="_blank" rel="noopener"
+>单调栈&lt;/a>
+&lt;/h3>&lt;p>下一个更大的数&lt;/p>
+&lt;h2 id="队列queue">&lt;a href="#%e9%98%9f%e5%88%97queue" class="header-anchor">&lt;/a>队列Queue
+&lt;/h2>&lt;p>先进先出(FIFO)&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> collections &lt;span style="color:#f92672">import&lt;/span> deque
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q &lt;span style="color:#f92672">=&lt;/span> deque()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q&lt;span style="color:#f92672">.&lt;/span>append(&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q&lt;span style="color:#f92672">.&lt;/span>append(&lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q&lt;span style="color:#f92672">.&lt;/span>append(&lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q&lt;span style="color:#f92672">.&lt;/span>popleft()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>q&lt;span style="color:#f92672">.&lt;/span>pop()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="堆">&lt;a href="#%e5%a0%86" class="header-anchor">&lt;/a>堆
+&lt;/h2>&lt;p>log(n)
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/03/931900376.png"
+loading="lazy"
+>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> heapq
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 小顶堆&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heap0 &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>heappush(heap0, &lt;span style="color:#ae81ff">5&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>heappush(heap0, &lt;span style="color:#ae81ff">4&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heap1 &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>heapify(heap1)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 优先队列&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heap2 &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>heappush(heap2, (&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;5&amp;#39;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>heappush(heap2, (&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;4&amp;#39;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(heapq&lt;span style="color:#f92672">.&lt;/span>heappop(heap0)) &lt;span style="color:#75715e"># 出堆&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(heapq&lt;span style="color:#f92672">.&lt;/span>heappushpop(heap0, &lt;span style="color:#ae81ff">0&lt;/span>)) &lt;span style="color:#75715e"># 先压后弹&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(heapq&lt;span style="color:#f92672">.&lt;/span>heapreplace(heap0, &lt;span style="color:#ae81ff">0&lt;/span>)) &lt;span style="color:#75715e"># 先弹后压&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 大顶堆，没法push，一般用小顶堆相反数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>heapq&lt;span style="color:#f92672">.&lt;/span>_heapify_max(data)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 优先队列，可以用heapq实现，也可以用下面的同步方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> queue &lt;span style="color:#f92672">import&lt;/span> PriorityQueue
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="二叉堆">&lt;a href="#%e4%ba%8c%e5%8f%89%e5%a0%86" class="header-anchor">&lt;/a>二叉堆
+&lt;/h3>&lt;p>父节点的权值不大于儿子的权值（小顶堆），可以用数组存储数据&lt;/p>
+&lt;h2 id="单调队列">&lt;a href="#%e5%8d%95%e8%b0%83%e9%98%9f%e5%88%97" class="header-anchor">&lt;/a>单调队列
+&lt;/h2>&lt;p>固定大小滑动窗口，获取最值。
+单独看 push 操作的复杂度确实不是 O(1)，但是算法整体的复杂度依然是 O(N) 线性时间。要这样想，nums 中的每个元素最多被 push_back 和 pop_back 一次，没有任何多余操作，所以整体的复杂度还是 O(N)。
+&lt;a class="link" href="https://github.com/labuladong/fucking-algorithm/blob/master/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B3%BB%E5%88%97/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97.md" target="_blank" rel="noopener"
+>单调队列&lt;/a>&lt;/p>
+&lt;h2 id="映射map">&lt;a href="#%e6%98%a0%e5%b0%84map" class="header-anchor">&lt;/a>映射Map
+&lt;/h2>&lt;p>HashMap/TreeMap
+无序/有序&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> collections
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 有序字典&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ordmap &lt;span style="color:#f92672">=&lt;/span> collections&lt;span style="color:#f92672">.&lt;/span>OrderedDict()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ordmap&lt;span style="color:#f92672">.&lt;/span>move_to_end(key)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ordmap&lt;span style="color:#f92672">.&lt;/span>popitem(last&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 计数字典&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>countmap &lt;span style="color:#f92672">=&lt;/span> collections&lt;span style="color:#f92672">.&lt;/span>Counter()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 访问不存在的key时自动添加key值为默认值&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>defaultdict([int,list,set,str,dict])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>散列冲突：分离链接、线性探查&lt;/p>
+&lt;h2 id="集合set">&lt;a href="#%e9%9b%86%e5%90%88set" class="header-anchor">&lt;/a>集合Set
+&lt;/h2>&lt;p>HashSet/TreeSet&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>set_a &lt;span style="color:#f92672">=&lt;/span> set(&lt;span style="color:#e6db74">&amp;#39;12345&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_b &lt;span style="color:#f92672">=&lt;/span> set([&lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;2&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;3&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;4&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;5&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;5&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_c &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_d &lt;span style="color:#f92672">=&lt;/span> set(set_a)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_a&lt;span style="color:#f92672">.&lt;/span>add(&lt;span style="color:#e6db74">&amp;#39;6&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_a&lt;span style="color:#f92672">.&lt;/span>update([&lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;2&amp;#39;&lt;/span>]) &lt;span style="color:#75715e"># 可以添加列表、集合等&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_a&lt;span style="color:#f92672">.&lt;/span>remove(&lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 元素不存在会报错&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set_a&lt;span style="color:#f92672">.&lt;/span>discard(&lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 元素不存在不会报错&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(set_a&lt;span style="color:#f92672">-&lt;/span>set_b)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(set_a &lt;span style="color:#f92672">|&lt;/span> set_b)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(set_a &lt;span style="color:#f92672">&amp;amp;&lt;/span> set_b)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(set_a &lt;span style="color:#f92672">^&lt;/span> set_b)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="树tree">&lt;a href="#%e6%a0%91tree" class="header-anchor">&lt;/a>树Tree
+&lt;/h2>&lt;p>二叉树-完全二叉树-满二叉树&lt;/p>
+&lt;h3 id="二叉搜索树bst">&lt;a href="#%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91bst" class="header-anchor">&lt;/a>二叉搜索树BST
+&lt;/h3>&lt;p>&lt;strong>左子树&lt;/strong>小于根节点
+&lt;strong>右子树&lt;/strong>大于根节点
+左右子书满足二叉搜索树&lt;/p>
+&lt;h4 id="遍历">&lt;a href="#%e9%81%8d%e5%8e%86" class="header-anchor">&lt;/a>遍历
+&lt;/h4>&lt;p>前序pre：根-左-右
+中序in：左-根-右 升序返回
+后续post：左-右-根
+中序遍历的两种写法&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-pyhton" data-lang="pyhton"># 递归
+def inorder(root):
+if root:
+inorder(root.left)
+print(root.val)
+inorder(root.right)
+# 迭代
+stack = []
+while root or stack:
+while root:
+stack.append(root)
+root = root.left
+root = stack.pop()
+print(root.val)
+root = root.right
+&lt;/code>&lt;/pre>&lt;h2 id="字典树前缀树trie">&lt;a href="#%e5%ad%97%e5%85%b8%e6%a0%91%e5%89%8d%e7%bc%80%e6%a0%91trie" class="header-anchor">&lt;/a>字典树/前缀树Trie
+&lt;/h2>&lt;h2 id="图graph">&lt;a href="#%e5%9b%begraph" class="header-anchor">&lt;/a>图Graph
+&lt;/h2>&lt;h3 id="广度优先搜索bfs">&lt;a href="#%e5%b9%bf%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2bfs" class="header-anchor">&lt;/a>广度优先搜索BFS
+&lt;/h3>&lt;p>最短路径问题&lt;/p>
+&lt;h3 id="狄克斯特拉算法">&lt;a href="#%e7%8b%84%e5%85%8b%e6%96%af%e7%89%b9%e6%8b%89%e7%ae%97%e6%b3%95" class="header-anchor">&lt;/a>狄克斯特拉算法
+&lt;/h3>&lt;p>有向无环加权图最小开销问题&lt;/p>
+&lt;h3 id="深度优先搜索dfs">&lt;a href="#%e6%b7%b1%e5%ba%a6%e4%bc%98%e5%85%88%e6%90%9c%e7%b4%a2dfs" class="header-anchor">&lt;/a>深度优先搜索DFS
+&lt;/h3>&lt;h2 id="递归">&lt;a href="#%e9%80%92%e5%bd%92" class="header-anchor">&lt;/a>递归
+&lt;/h2>&lt;p>重复计算-&amp;gt;效率低&lt;/p>
+&lt;h2 id="分治">&lt;a href="#%e5%88%86%e6%b2%bb" class="header-anchor">&lt;/a>分治
+&lt;/h2>&lt;h2 id="贪心">&lt;a href="#%e8%b4%aa%e5%bf%83" class="header-anchor">&lt;/a>贪心
+&lt;/h2>&lt;h2 id="剪枝-回溯">&lt;a href="#%e5%89%aa%e6%9e%9d-%e5%9b%9e%e6%ba%af" class="header-anchor">&lt;/a>剪枝-回溯
+&lt;/h2>&lt;h2 id="位运算">&lt;a href="#%e4%bd%8d%e8%bf%90%e7%ae%97" class="header-anchor">&lt;/a>位运算
+&lt;/h2>&lt;p>x^0=X
+x^x=0
+x&amp;amp;1==0or1 #判断奇偶
+x=x&amp;amp;(x-1) #清零最低位1
+x&amp;amp;(-x) #取最低位的1
+补码=反码+1
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/04/318515197.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="动态规划">&lt;a href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92" class="header-anchor">&lt;/a>动态规划
+&lt;/h2>&lt;h2 id="np完全问题">&lt;a href="#np%e5%ae%8c%e5%85%a8%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>NP完全问题
+&lt;/h2>&lt;p>旅行商问题
+集合覆盖问题&lt;/p>
+&lt;h2 id="并查集">&lt;a href="#%e5%b9%b6%e6%9f%a5%e9%9b%86" class="header-anchor">&lt;/a>并查集
+&lt;/h2>&lt;p>数组实现&lt;/p>
+&lt;h3 id="lrulfu-cache-缓存替换算法">&lt;a href="#lrulfu-cache-%e7%bc%93%e5%ad%98%e6%9b%bf%e6%8d%a2%e7%ae%97%e6%b3%95" class="header-anchor">&lt;/a>LRU/LFU Cache 缓存替换算法
+&lt;/h3>&lt;p>双链表实现&lt;/p>
+&lt;h3 id="布隆过滤器">&lt;a href="#%e5%b8%83%e9%9a%86%e8%bf%87%e6%bb%a4%e5%99%a8" class="header-anchor">&lt;/a>布隆过滤器
+&lt;/h3>&lt;p>判断在不在，肯定不在/应该在&lt;/p></description></item><item><title>计算空间三角形面积</title><link>http://kizx.gitee.io/post/%E8%AE%A1%E7%AE%97%E7%A9%BA%E9%97%B4%E4%B8%89%E8%A7%92%E5%BD%A2%E9%9D%A2%E7%A7%AF/</link><pubDate>Sat, 26 Dec 2020 13:14:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E8%AE%A1%E7%AE%97%E7%A9%BA%E9%97%B4%E4%B8%89%E8%A7%92%E5%BD%A2%E9%9D%A2%E7%A7%AF/</guid><description>&lt;p>一直空间散点坐标值，计算三点组成三角形的面积。&lt;/p>
+&lt;h2 id="方法1">&lt;a href="#%e6%96%b9%e6%b3%951" class="header-anchor">&lt;/a>方法1
+&lt;/h2>&lt;p>利用矩阵来计算
+这里是否需要加绝对值？&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">area&lt;/span>(p):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> p1, p2, p3 &lt;span style="color:#f92672">=&lt;/span> p
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a &lt;span style="color:#f92672">=&lt;/span> [[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [p2[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">0&lt;/span>], p2[&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">1&lt;/span>], p2[&lt;span style="color:#ae81ff">2&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">2&lt;/span>]],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [p3[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">0&lt;/span>], p3[&lt;span style="color:#ae81ff">1&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">1&lt;/span>], p3[&lt;span style="color:#ae81ff">2&lt;/span>] &lt;span style="color:#f92672">-&lt;/span> p1[&lt;span style="color:#ae81ff">2&lt;/span>]]]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.5&lt;/span> &lt;span style="color:#f92672">*&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>linalg&lt;span style="color:#f92672">.&lt;/span>det(a)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="方法2">&lt;a href="#%e6%96%b9%e6%b3%952" class="header-anchor">&lt;/a>方法2
+&lt;/h2>&lt;p>利用海伦公式&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">heron&lt;/span>(p):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> p1, p2, p3 &lt;span style="color:#f92672">=&lt;/span> p
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a &lt;span style="color:#f92672">=&lt;/span> ((p1[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p2[&lt;span style="color:#ae81ff">0&lt;/span>])&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p1[&lt;span style="color:#ae81ff">1&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p2[&lt;span style="color:#ae81ff">1&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p1[&lt;span style="color:#ae81ff">2&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p2[&lt;span style="color:#ae81ff">2&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">0.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> b &lt;span style="color:#f92672">=&lt;/span> ((p1[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">0&lt;/span>])&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p1[&lt;span style="color:#ae81ff">1&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">1&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p1[&lt;span style="color:#ae81ff">2&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">2&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">0.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> c &lt;span style="color:#f92672">=&lt;/span> ((p2[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">0&lt;/span>])&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p2[&lt;span style="color:#ae81ff">1&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">1&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">+&lt;/span>((p2[&lt;span style="color:#ae81ff">2&lt;/span>]&lt;span style="color:#f92672">-&lt;/span>p3[&lt;span style="color:#ae81ff">2&lt;/span>]))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">0.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> l &lt;span style="color:#f92672">=&lt;/span> (a&lt;span style="color:#f92672">+&lt;/span>b&lt;span style="color:#f92672">+&lt;/span>c)&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">=&lt;/span> (l&lt;span style="color:#f92672">*&lt;/span>(l&lt;span style="color:#f92672">-&lt;/span>a)&lt;span style="color:#f92672">*&lt;/span>(l&lt;span style="color:#f92672">-&lt;/span>b)&lt;span style="color:#f92672">*&lt;/span>(l&lt;span style="color:#f92672">-&lt;/span>c))&lt;span style="color:#f92672">**&lt;/span>&lt;span style="color:#ae81ff">0.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>单层离散Hopfield神经网络(DHNN)程序实现</title><link>http://kizx.gitee.io/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 03 Jul 2020 08:09:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>DHNN网络由n个神经元组成，每个神经元取值为1或-1。
+&lt;img src="https://pan.2bboy.com/img/2020/07/0703152535.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>每个神经元既是输入，也是输出，如果采用异步更新的策略，每次只更新一个神经元，更新顺序可以任意。激活函数为符号函数，大于等于零激活为1，反之为-1，每个神经元没有自反馈，即权重矩阵对角线为零。
+&lt;img src="https://pan.2bboy.com/img/2020/07/0703152908.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>DHNN输入一个值后，神经元状态不断更新后最终会收敛于某个“吸引子”。“吸引子”就是网络存储的记忆，是通过网络权重存储的。网络权重的计算方法一般有下面两种：联立方程求解法和外积和法。一般后面的方法用得较多。
+DHNN网络是批学习网络，一次性输入样本一次性学习。输入的样本即“吸引子”，若样本值两两正交，则网络最稳定，理论上样本数上限为n。但一般很难做到两两正交，减少样本数（p&amp;lt;0.14n）可以提高抗畸变性，否则会出现“伪吸引子”。
+&lt;img src="https://pan.2bboy.com/img/2020/07/0703153451.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>DHNN网络可以靠下面的能量函数判断收敛状态，随着网络更新，能量函数处于递减趋势。
+&lt;img src="https://pan.2bboy.com/img/2020/07/0703154113.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="程序实现">&lt;a href="#%e7%a8%8b%e5%ba%8f%e5%ae%9e%e7%8e%b0" class="header-anchor">&lt;/a>程序实现
+&lt;/h2>&lt;p>下面是一个简单的python实现程序，可以输入简单样本和预测目标后进行不断更新。
+[button color=&amp;ldquo;primary&amp;rdquo; icon=&amp;ldquo;fa fa-github&amp;rdquo; url=&amp;ldquo;https://github.com/kizx/DHNN&amp;rdquo; type=&amp;quot;&amp;quot;]Github地址[/button]&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># -*- coding: utf-8 -*-&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">sgn&lt;/span>(x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;激活函数&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> x &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">DHNN&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self, v0, tra):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;初始化&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>n &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>size(v0) &lt;span style="color:#75715e"># 神经元个数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>W &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>diag(np&lt;span style="color:#f92672">.&lt;/span>zeros(self&lt;span style="color:#f92672">.&lt;/span>n)) &lt;span style="color:#75715e"># 权矩阵 对角线元素为零的对称矩阵&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>V &lt;span style="color:#f92672">=&lt;/span> v0 &lt;span style="color:#75715e"># 神经元状态 取值:{-1,1}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>Ip &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>zeros(self&lt;span style="color:#f92672">.&lt;/span>n) &lt;span style="color:#75715e"># 偏置矢量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>T &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>zeros(self&lt;span style="color:#f92672">.&lt;/span>n) &lt;span style="color:#75715e"># 阈值矢量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>train(tra)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">update&lt;/span>(self, i):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;网络更新&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> net &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>dot(self&lt;span style="color:#f92672">.&lt;/span>V, self&lt;span style="color:#f92672">.&lt;/span>W[:, i]) &lt;span style="color:#f92672">+&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>Ip[i] &lt;span style="color:#f92672">-&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>T[i]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>V[i] &lt;span style="color:#f92672">=&lt;/span> sgn(net)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> E &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>dot(np&lt;span style="color:#f92672">.&lt;/span>dot(self&lt;span style="color:#f92672">.&lt;/span>V&lt;span style="color:#f92672">.&lt;/span>T, self&lt;span style="color:#f92672">.&lt;/span>W), self&lt;span style="color:#f92672">.&lt;/span>V) &lt;span style="color:#f92672">-&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>dot(self&lt;span style="color:#f92672">.&lt;/span>Ip&lt;span style="color:#f92672">.&lt;/span>T, self&lt;span style="color:#f92672">.&lt;/span>V) &lt;span style="color:#f92672">+&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>dot(self&lt;span style="color:#f92672">.&lt;/span>T&lt;span style="color:#f92672">.&lt;/span>T, self&lt;span style="color:#f92672">.&lt;/span>V)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># print(&amp;#39;能量&amp;#39;, E)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># print(&amp;#39;状态&amp;#39;, self.V)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> E, sgn(net)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">train&lt;/span>(self, sample):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;网络权重计算（记忆存储）&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> S &lt;span style="color:#f92672">=&lt;/span> sample
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(self&lt;span style="color:#f92672">.&lt;/span>n):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> j &lt;span style="color:#f92672">in&lt;/span> range(self&lt;span style="color:#f92672">.&lt;/span>n):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> delta &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#66d9ef">if&lt;/span> i &lt;span style="color:#f92672">==&lt;/span> j &lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> m &lt;span style="color:#f92672">in&lt;/span> S:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a_ &lt;span style="color:#f92672">=&lt;/span> m[i] &lt;span style="color:#f92672">*&lt;/span> m[j]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> a&lt;span style="color:#f92672">.&lt;/span>append(a_)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>W[i, j] &lt;span style="color:#f92672">=&lt;/span> (&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">-&lt;/span> delta) &lt;span style="color:#f92672">*&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>sum(a)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;权重&lt;/span>&lt;span style="color:#ae81ff">\n&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>, self&lt;span style="color:#f92672">.&lt;/span>W)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#39;__main__&amp;#39;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> St &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>array([[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test &lt;span style="color:#f92672">=&lt;/span> DHNN(np&lt;span style="color:#f92672">.&lt;/span>array([&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>]), St)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time&lt;span style="color:#f92672">.&lt;/span>sleep(&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> test&lt;span style="color:#f92672">.&lt;/span>update(&lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上面这个程序我还做了一个gui界面用于上课演示。
+&lt;img src="https://pan.2bboy.com/img/2020/07/0703155000.png"
+loading="lazy"
+>
+当我将上面的程序用于手写数字识别时，图片采用16*16共256个神经元，当样本数量小于4个时，还有点效果，当样本数多了之后，某些“伪吸引子”和样本的吸引力实在太强导致网络效果极差。想必用于实际用途需要更多的改进算法。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://zhuanlan.zhihu.com/p/144624580" target="_blank" rel="noopener"
+>https://zhuanlan.zhihu.com/p/144624580&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/qq_41185868/article/details/80789989" target="_blank" rel="noopener"
+>https://blog.csdn.net/qq_41185868/article/details/80789989&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/weixin_42398658/article/details/84027012" target="_blank" rel="noopener"
+>https://blog.csdn.net/weixin_42398658/article/details/84027012&lt;/a>
+&lt;a class="link" href="https://space.bilibili.com/529985682/video" target="_blank" rel="noopener"
+>https://space.bilibili.com/529985682/video&lt;/a>&lt;/p></description></item><item><title>点云球面最小二乘拟合的python实现</title><link>http://kizx.gitee.io/post/%E7%82%B9%E4%BA%91%E7%90%83%E9%9D%A2%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8B%9F%E5%90%88%E7%9A%84python%E5%AE%9E%E7%8E%B0/</link><pubDate>Wed, 29 Apr 2020 04:44:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%82%B9%E4%BA%91%E7%90%83%E9%9D%A2%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%8B%9F%E5%90%88%E7%9A%84python%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>现有近似分布在球面上的点云，试进行球面拟合，求出球心坐标和半径。&lt;/p>
+&lt;h2 id="解">&lt;a href="#%e8%a7%a3" class="header-anchor">&lt;/a>解
+&lt;/h2>&lt;p>球面方程为：
+$$
+(x-x_0)^{2}+(y-y_0)^{2}+(z-z_0)^{2}=r^{2}
+$$
+其中 $ x_0, y_0, z_0, r $是我们要求的参数。&lt;/p>
+&lt;h3 id="利用求偏导的方式求最小值">&lt;a href="#%e5%88%a9%e7%94%a8%e6%b1%82%e5%81%8f%e5%af%bc%e7%9a%84%e6%96%b9%e5%bc%8f%e6%b1%82%e6%9c%80%e5%b0%8f%e5%80%bc" class="header-anchor">&lt;/a>利用求偏导的方式求最小值
+&lt;/h3>&lt;p>构造方程：
+$$
+E(x_0,y_0,z_0,r)=\sum_{i=0}^n((x-x_0)^2+(y-y_0)^2+(z-z_0)^2-r^2)^2
+$$
+使方程 $E$ 值最小的参数 $x_0, y_0, z_0, r$ 就是我们的所求。
+求偏导并使其等于0：
+$$
+\frac{\partial E}{\partial x_0}=-4\sum_{i=0}^n(x_i-x_0)((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\frac{\partial E}{\partial y_0}=-4\sum_{i=0}^n(x_i-y_0)((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\frac{\partial E}{\partial z_0}=-4\sum_{i=0}^n(z_i-z_0)((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\frac{\partial E}{\partial r}=-4\sum_{i=0}^nr((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$&lt;/p>
+&lt;p>化简得：
+$$
+\sum_{i=0}^nx_i((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\sum_{i=0}^ny_i((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\sum_{i=0}^nz_i((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$
+$$
+\sum_{i=0}^n((x_i-x_0)^2+(y_i-y_0)^2+(z_i-z_0)^2-r^2)=0
+$$&lt;/p>
+&lt;p>整理得：
+$$
+\frac{\overline{x^3}}{\overline{x}}-2x_0\frac{\overline{x^2}}{\overline{x}}+x_0^2+\frac{\overline{xy^2}}{\overline{x}}-2y_0\frac{\overline{xy}}{\overline{x}}+y_0^2+\frac{\overline{xz^2}}{\overline{x}}-2z_0\frac{\overline{xz}}{\overline{x}}+z_0^2=r^2
+\tag{1}
+$$
+$$
+\frac{\overline{xy^2}}{\overline{y}}-2x_0\frac{\overline{xy}}{\overline{y}}+x_0^2+\frac{\overline{y^3}}{\overline{y}}-2y_0\frac{\overline{y^2}}{\overline{y}}+y_0^2+\frac{\overline{yz^2}}{\overline{y}}-2z_0\frac{\overline{yz}}{\overline{y}}+z_0^2=r^2\tag{2}
+$$
+$$
+\frac{\overline{x^2z}}{\overline{z}}-2x_0\frac{\overline{xz}}{\overline{z}}+x_0^2+\frac{\overline{y^2z}}{\overline{z}}-2y_0\frac{\overline{yz}}{\overline{z}}+y_0^2+\frac{\overline{z^3}}{\overline{x}}-2z_0\frac{\overline{yz}}{\overline{z}}+z_0^2=r^2\tag{3}
+$$
+$$
+\overline{x^2}-2x_0\overline{x}+x_0^2+\overline{y^2}-2y_0\overline{y}+y_0^2+\overline{z^2}-2z_0\overline{z}+z_0^2=r^2\tag{4}
+$$&lt;/p>
+&lt;p>分别减去 (4) 式最终可以得到如下线性方程组：&lt;/p>
+&lt;p>$$
+\begin{bmatrix}
+\overline{x^2}-\bar{x}^2 &amp;amp; \overline{xy}-\bar{x}\cdot \bar{y} &amp;amp; \overline{xz}-\bar{x}&lt;em>\bar{z} \
+\overline{xy}-\bar{x}&lt;/em>\bar{y} &amp;amp; \overline{y^2}-\bar{y}^2 &amp;amp; \overline{yz}-\bar{y}&lt;em>\bar{z} \
+\overline{xz}-\bar{x}&lt;/em>\bar{z} &amp;amp; \overline{yz}-\bar{y}&lt;em>\bar{z} &amp;amp; \overline{z^2}-\bar{z}^2 \
+\end{bmatrix}
+\begin{bmatrix}
+x_0\
+y_0\
+z_0\
+\end{bmatrix}=\frac{1}{2}
+\begin{bmatrix}
+(\overline{x^3}-\bar{x}&lt;/em>\overline{x^2})+(\overline{x y^2}-\bar{x}&lt;em>\overline{y^2})+(\overline{xz^2}-\bar{x}&lt;/em>\overline{z^2}) \
+(\overline{x^2y}-\overline{x^2}&lt;em>\bar{y})+(\overline{y^3}-\bar{y}&lt;/em>\overline{y^2})+(\overline{yz^2}-\bar{y}&lt;em>\overline{z^2}) \
+(\overline{x^2z}-\overline{x^2}&lt;/em>\bar{z})+(\overline{zy^2}-\bar{z}*\overline{y^2})+(\overline{z^3}-\bar{z} * \overline{z^2})\
+\end{bmatrix}
+$$&lt;/p>
+&lt;p>解此线性方程组即可得到坐标 $(x_0, y_0, z_0)$，再代回 (4) 式求出 $r$ 即可。&lt;/p>
+&lt;h3 id="利用法方程求解矩阵">&lt;a href="#%e5%88%a9%e7%94%a8%e6%b3%95%e6%96%b9%e7%a8%8b%e6%b1%82%e8%a7%a3%e7%9f%a9%e9%98%b5" class="header-anchor">&lt;/a>利用法方程求解矩阵
+&lt;/h3>&lt;p>也可以直接对球面的方程进行拟合，每一个点云坐标对应一个方程，方程数显然大于未知数，可以利用最小二乘法进行求解出一个最小值。&lt;/p>
+&lt;p>将方程稍微化简可得：
+$$
+2ax+2by+2cz+r^2-(a^2+b^2+c^2)=x^2+y^2+z^2
+$$&lt;/p>
+&lt;p>将每一个点坐标代入得到一个 $n\times4$ 的矩阵 A：
+$$
+\begin{bmatrix}
+x_1&amp;amp;y_1&amp;amp;z_1&amp;amp;1\
+x_2&amp;amp;y_2&amp;amp;z_2&amp;amp;1\
+\vdots&amp;amp;\vdots&amp;amp;\vdots&amp;amp;\vdots\
+x_n&amp;amp;y_n&amp;amp;z_n&amp;amp;1\
+\end{bmatrix}\begin{bmatrix}2a\2b\2c\r^2-(a^2+b^2+c^2)\end{bmatrix}=
+\begin{bmatrix}x_1^2+y_1^2+z_1^2\\vdots\x_n^2+y_n^2+z_n^2\end{bmatrix}
+$$
+方程两边同时左乘以 $A^T$ 可以得到和第一种方法一样的方程，或者直接用公式 $x=(A^TA)^{-1}A^Tb$ 进行求解，这两种方法在本质上是完全一样的。&lt;/p>
+&lt;h2 id="python实现">&lt;a href="#python%e5%ae%9e%e7%8e%b0" class="header-anchor">&lt;/a>python实现
+&lt;/h2>&lt;p>针对第一种方法的具体代码&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>points &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>array(coor) &lt;span style="color:#75715e"># coor为点云坐标的列表&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>points &lt;span style="color:#f92672">=&lt;/span> points&lt;span style="color:#f92672">.&lt;/span>astype(np&lt;span style="color:#f92672">.&lt;/span>float64) &lt;span style="color:#75715e"># 防止溢出&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>num_points &lt;span style="color:#f92672">=&lt;/span> points&lt;span style="color:#f92672">.&lt;/span>shape[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(num_points)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> points[:, &lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>y &lt;span style="color:#f92672">=&lt;/span> points[:, &lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>z &lt;span style="color:#f92672">=&lt;/span> points[:, &lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_avr &lt;span style="color:#f92672">=&lt;/span> sum(x) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>y_avr &lt;span style="color:#f92672">=&lt;/span> sum(y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>z_avr &lt;span style="color:#f92672">=&lt;/span> sum(z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xx_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> x) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yy_avr &lt;span style="color:#f92672">=&lt;/span> sum(y &lt;span style="color:#f92672">*&lt;/span> y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zz_avr &lt;span style="color:#f92672">=&lt;/span> sum(z &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xy_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xz_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yz_avr &lt;span style="color:#f92672">=&lt;/span> sum(y &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xxx_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> x &lt;span style="color:#f92672">*&lt;/span> x) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xxy_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> x &lt;span style="color:#f92672">*&lt;/span> y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xxz_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> x &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xyy_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> y &lt;span style="color:#f92672">*&lt;/span> y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>xzz_avr &lt;span style="color:#f92672">=&lt;/span> sum(x &lt;span style="color:#f92672">*&lt;/span> z &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yyy_avr &lt;span style="color:#f92672">=&lt;/span> sum(y &lt;span style="color:#f92672">*&lt;/span> y &lt;span style="color:#f92672">*&lt;/span> y) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yyz_avr &lt;span style="color:#f92672">=&lt;/span> sum(y &lt;span style="color:#f92672">*&lt;/span> y &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yzz_avr &lt;span style="color:#f92672">=&lt;/span> sum(y &lt;span style="color:#f92672">*&lt;/span> z &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zzz_avr &lt;span style="color:#f92672">=&lt;/span> sum(z &lt;span style="color:#f92672">*&lt;/span> z &lt;span style="color:#f92672">*&lt;/span> z) &lt;span style="color:#f92672">/&lt;/span> num_points
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>A &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>array([[xx_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> x_avr, xy_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> y_avr, xz_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> z_avr],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [xy_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> y_avr, yy_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> y_avr, yz_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> z_avr],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [xz_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> z_avr, yz_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> z_avr, zz_avr &lt;span style="color:#f92672">-&lt;/span> z_avr &lt;span style="color:#f92672">*&lt;/span> z_avr]])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>array([xxx_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> xx_avr &lt;span style="color:#f92672">+&lt;/span> xyy_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> yy_avr &lt;span style="color:#f92672">+&lt;/span> xzz_avr &lt;span style="color:#f92672">-&lt;/span> x_avr &lt;span style="color:#f92672">*&lt;/span> zz_avr,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xxy_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> xx_avr &lt;span style="color:#f92672">+&lt;/span> yyy_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> yy_avr &lt;span style="color:#f92672">+&lt;/span> yzz_avr &lt;span style="color:#f92672">-&lt;/span> y_avr &lt;span style="color:#f92672">*&lt;/span> zz_avr,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> xxz_avr &lt;span style="color:#f92672">-&lt;/span> z_avr &lt;span style="color:#f92672">*&lt;/span> xx_avr &lt;span style="color:#f92672">+&lt;/span> yyz_avr &lt;span style="color:#f92672">-&lt;/span> z_avr &lt;span style="color:#f92672">*&lt;/span> yy_avr &lt;span style="color:#f92672">+&lt;/span> zzz_avr &lt;span style="color:#f92672">-&lt;/span> z_avr &lt;span style="color:#f92672">*&lt;/span> zz_avr])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># print(A, b)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> b &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>center &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>linalg&lt;span style="color:#f92672">.&lt;/span>solve(A, b)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x0 &lt;span style="color:#f92672">=&lt;/span> center[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>y0 &lt;span style="color:#f92672">=&lt;/span> center[&lt;span style="color:#ae81ff">1&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>z0 &lt;span style="color:#f92672">=&lt;/span> center[&lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>r2 &lt;span style="color:#f92672">=&lt;/span> xx_avr &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> x0 &lt;span style="color:#f92672">*&lt;/span> x_avr &lt;span style="color:#f92672">+&lt;/span> x0 &lt;span style="color:#f92672">*&lt;/span> x0 &lt;span style="color:#f92672">+&lt;/span> yy_avr &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> y0 &lt;span style="color:#f92672">*&lt;/span> y_avr &lt;span style="color:#f92672">+&lt;/span> y0 &lt;span style="color:#f92672">*&lt;/span> y0 &lt;span style="color:#f92672">+&lt;/span> zz_avr &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> z0 &lt;span style="color:#f92672">*&lt;/span> z_avr &lt;span style="color:#f92672">+&lt;/span> z0 &lt;span style="color:#f92672">*&lt;/span> z0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>r &lt;span style="color:#f92672">=&lt;/span> r2 &lt;span style="color:#f92672">**&lt;/span> &lt;span style="color:#ae81ff">0.5&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(center, r)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/sunshine_zoe/article/details/78852978" target="_blank" rel="noopener"
+>https://blog.csdn.net/sunshine_zoe/article/details/78852978&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/liyuanbhu/article/details/80201371" target="_blank" rel="noopener"
+>https://blog.csdn.net/liyuanbhu/article/details/80201371&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/woniu199166/article/details/79459807?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1" target="_blank" rel="noopener"
+>https://blog.csdn.net/woniu199166/article/details/79459807?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&lt;/a>&lt;/p></description></item></channel></rss>

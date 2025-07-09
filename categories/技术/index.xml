@@ -1,0 +1,1181 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>技术 on 醉后的星星</title><link>http://kizx.gitee.io/categories/%E6%8A%80%E6%9C%AF/</link><description>Recent content in 技术 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Wed, 15 Mar 2023 15:52:01 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/categories/%E6%8A%80%E6%9C%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>javascript中文按拼音顺序排序</title><link>http://kizx.gitee.io/post/javascript%E4%B8%AD%E6%96%87%E6%8C%89%E6%8B%BC%E9%9F%B3%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%BA%8F/</link><pubDate>Wed, 15 Mar 2023 15:52:01 +0000</pubDate><guid>http://kizx.gitee.io/post/javascript%E4%B8%AD%E6%96%87%E6%8C%89%E6%8B%BC%E9%9F%B3%E9%A1%BA%E5%BA%8F%E6%8E%92%E5%BA%8F/</guid><description>&lt;p>js的sort函数的默认排序方法是将排序对象转成字符串，然后根据字符串中每个字符的ascll码依次进行排序，对于不在ascll表中的中文无法进行排序。&lt;/p>
+&lt;h2 id="localecompare">&lt;a href="#localecompare" class="header-anchor">&lt;/a>localeCompare
+&lt;/h2>&lt;p>localeCompare函数可以比较两个中文的顺序，用该方法配合sort方法可以实现中文排序：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">names&lt;/span>.&lt;span style="color:#a6e22e">sort&lt;/span>((&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">a&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">b&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>进一步，如果想获得中文首字母，可以依次和每个字母的第一个中文进行比较，进而得出该中文字符的首字母：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">getFirstLetter&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;ABCDEFGHJKLMNOPQRSTWXYZ#&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">zh&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;阿八嚓哒妸发旮哈讥咔垃呣拏噢妑七呥扨它穵夕丫帀糳&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; &lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">++&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">word&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">zh&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span>], &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>) &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#a6e22e">word&lt;/span>.&lt;span style="color:#a6e22e">localeCompare&lt;/span>(&lt;span style="color:#a6e22e">zh&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>], &lt;span style="color:#e6db74">&amp;#39;zh&amp;#39;&lt;/span>) &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">letters&lt;/span>[&lt;span style="color:#a6e22e">i&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#e6db74">&amp;#39;#&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意有些字母没有对应的姓氏，因此不在比较之列。
+本方法最大的问题是，微信小程序和很多浏览器内核都不支持该函数，用之前先做好测试。&lt;/p>
+&lt;h2 id="第三方库">&lt;a href="#%e7%ac%ac%e4%b8%89%e6%96%b9%e5%ba%93" class="header-anchor">&lt;/a>第三方库
+&lt;/h2>&lt;p>若不能使用上述方法，发现一个第三方库jian-pinyin，体积不大，可以直接给出汉字的拼音，很棒。
+地址：&lt;a class="link" href="https://github.com/xinglie/pinyin" target="_blank" rel="noopener"
+>https://github.com/xinglie/pinyin&lt;/a>
+通过该库直接获取汉字的拼音，然后通过sort函数进行排序，注意js中字符串之间是可以直接比较大小的，比较的依据仍然是ascll。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">getSpell&lt;/span>(&lt;span style="color:#a6e22e">word&lt;/span>, &lt;span style="color:#66d9ef">function&lt;/span>(&lt;span style="color:#a6e22e">charactor&lt;/span>, &lt;span style="color:#a6e22e">spell&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">spell&lt;/span>[&lt;span style="color:#ae81ff">0&lt;/span>];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">names&lt;/span>.&lt;span style="color:#a6e22e">sort&lt;/span>((&lt;span style="color:#a6e22e">a&lt;/span>, &lt;span style="color:#a6e22e">b&lt;/span>) =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span>(&lt;span style="color:#a6e22e">a&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">b&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">sp&lt;/span>(&lt;span style="color:#a6e22e">b&lt;/span>.&lt;span style="color:#a6e22e">username&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;lt;&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">a&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#a6e22e">b&lt;/span>) &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Pyside6使用指南</title><link>http://kizx.gitee.io/post/pyside6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 10 Dec 2021 02:47:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyside6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;p>Pyside6是Qt6对应的官方python库，官方有较全面的使用文档：https://doc.qt.io/qtforpython/contents.html。
+本文使用Python3.7版本，从头安装使用Pyside6。&lt;/p>
+&lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
+&lt;/h2>&lt;p>python版安装只需要一句命令即可：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>pip install pyside6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装包有点大，建议手动下载whl直接安装。
+安装后会多两个库：PySide6和shiboken。
+在Python环境下的Scripts文件夹下还会多出&lt;code>pyside6-designer.exe&lt;/code>、&lt;code>pyside6-uic.exe&lt;/code>等几个exe程序。&lt;/p>
+&lt;h2 id="界面设计工具设置">&lt;a href="#%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%e5%b7%a5%e5%85%b7%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>界面设计工具设置
+&lt;/h2>&lt;p>打开&lt;code>pyside6-designer.exe&lt;/code>，是qt的界面设计程序，可以拖拽设计界面并保存为ui文件。
+使用pyside6-uic.exe，通过以下程序命令可以将ui文件转成py文件。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>pyside6-uic.exe ui_mainwindow.ui -o ui_mainwindow.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果用的是Pycharm，可以添加右键工具直接在文件右键快速打开，添加工具的方法参考以下文章。
+[post cid=&amp;ldquo;119&amp;rdquo; /]&lt;/p>
+&lt;h2 id="初始代码">&lt;a href="#%e5%88%9d%e5%a7%8b%e4%bb%a3%e7%a0%81" class="header-anchor">&lt;/a>初始代码
+&lt;/h2>&lt;p>参考官方文档：https://doc.qt.io/qtforpython/tutorials/basictutorial/uifiles.html&lt;/p>
+&lt;h3 id="直接使用ui文件">&lt;a href="#%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8ui%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>直接使用ui文件
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtUiTools &lt;span style="color:#f92672">import&lt;/span> QUiLoader
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtCore &lt;span style="color:#f92672">import&lt;/span> QFile, QIODevice
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app &lt;span style="color:#f92672">=&lt;/span> QApplication(sys&lt;span style="color:#f92672">.&lt;/span>argv)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file_name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;mainwindow.ui&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file &lt;span style="color:#f92672">=&lt;/span> QFile(ui_file_name)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> ui_file&lt;span style="color:#f92672">.&lt;/span>open(QIODevice&lt;span style="color:#f92672">.&lt;/span>ReadOnly):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Cannot open &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>ui_file_name&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">: &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>ui_file&lt;span style="color:#f92672">.&lt;/span>errorString()&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> loader &lt;span style="color:#f92672">=&lt;/span> QUiLoader()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window &lt;span style="color:#f92672">=&lt;/span> loader&lt;span style="color:#f92672">.&lt;/span>load(ui_file)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> window:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(loader&lt;span style="color:#f92672">.&lt;/span>errorString())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(app&lt;span style="color:#f92672">.&lt;/span>exec())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="转成py文件再加载">&lt;a href="#%e8%bd%ac%e6%88%90py%e6%96%87%e4%bb%b6%e5%86%8d%e5%8a%a0%e8%bd%bd" class="header-anchor">&lt;/a>转成py文件再加载
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication, QMainWindow
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtCore &lt;span style="color:#f92672">import&lt;/span> QFile
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> ui_mainwindow &lt;span style="color:#f92672">import&lt;/span> Ui_MainWindow
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainWindow&lt;/span>(QMainWindow):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super(MainWindow, self)&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> Ui_MainWindow()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>setupUi(self)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app &lt;span style="color:#f92672">=&lt;/span> QApplication(sys&lt;span style="color:#f92672">.&lt;/span>argv)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window &lt;span style="color:#f92672">=&lt;/span> MainWindow()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(app&lt;span style="color:#f92672">.&lt;/span>exec())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>建议转成py文件再打开，感觉IDE提示更准确，不过直接加载更方便就是了。&lt;/p>
+&lt;h2 id="打包">&lt;a href="#%e6%89%93%e5%8c%85" class="header-anchor">&lt;/a>打包
+&lt;/h2>&lt;p>打包建议使用auto-py-to-exe，这是一个基于pyinstaller的带Ui界面的打包程序，对新手极其友好。
+使用以下命令安装：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>pip install auto-py-to-exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过以下命令启动程序：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>auto-py-to-exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>阿里云OSS自动上传部署静态网站</title><link>http://kizx.gitee.io/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link><pubDate>Sat, 29 May 2021 13:44:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%98%BF%E9%87%8C%E4%BA%91oss%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E9%83%A8%E7%BD%B2%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid><description>&lt;h2 id="准备">&lt;a href="#%e5%87%86%e5%a4%87" class="header-anchor">&lt;/a>准备
+&lt;/h2>&lt;p>现要利用阿里云OSS部署一个静态网页，通过本地编译生成静态网页后实现自动上传更新部署。&lt;/p>
+&lt;ol>
+&lt;li>首先开通阿里OSS服务，然后新建一个存储桶，权限设为公共可读，地域选择香港，因为国内域名需备案。&lt;/li>
+&lt;li>去存储桶基础设置-&amp;gt;静态页面设置首页为index.html；然后去传输管理-&amp;gt;绑定域名，最后去DNS设置cname，也可以自行配置CDN加速。&lt;/li>
+&lt;li>然后去阿里云控制台新建一个RAM访问控制用户，记住accessKeyId和accessKeySecret，然后为该用户添加OSS权限。&lt;/li>
+&lt;/ol>
+&lt;h2 id="本地上传代码">&lt;a href="#%e6%9c%ac%e5%9c%b0%e4%b8%8a%e4%bc%a0%e4%bb%a3%e7%a0%81" class="header-anchor">&lt;/a>本地上传代码
+&lt;/h2>&lt;p>本地安装&lt;code>npm i ali-oss -D&lt;/code>，我们要实现将本地dist目录下所有的文件原封不动的上传至OSS上，为了保持OSS文件清洁，上传前最好先清空OSS，最终代码如下。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">OSS&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;ali-oss&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">path&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;path&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">fs&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;fs&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">client&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">OSS&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">region&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;oss-cn-hongkong&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">accessKeyId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">accessKeySecret&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxxxxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">bucket&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;xxxxxx&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">list&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">client&lt;/span>.&lt;span style="color:#a6e22e">list&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span>.&lt;span style="color:#a6e22e">objects&lt;/span> &lt;span style="color:#f92672">||&lt;/span> [];
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">file_list&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span>.&lt;span style="color:#a6e22e">map&lt;/span>(&lt;span style="color:#a6e22e">i&lt;/span> =&amp;gt; &lt;span style="color:#a6e22e">i&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">file_list&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (&lt;span style="color:#a6e22e">err&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">err&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">deleteMulti&lt;/span>(&lt;span style="color:#a6e22e">filelist&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">client&lt;/span>.&lt;span style="color:#a6e22e">deleteMulti&lt;/span>(&lt;span style="color:#a6e22e">filelist&lt;/span>, {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">verbose&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">true&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;deleted:\n&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">result&lt;/span>.&lt;span style="color:#a6e22e">deleted&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (&lt;span style="color:#a6e22e">e&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">e&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">put&lt;/span>(&lt;span style="color:#a6e22e">filename&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">result&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">client&lt;/span>.&lt;span style="color:#a6e22e">put&lt;/span>(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">filename&lt;/span>.&lt;span style="color:#a6e22e">slice&lt;/span>(&lt;span style="color:#ae81ff">5&lt;/span>).&lt;span style="color:#a6e22e">replace&lt;/span>(&lt;span style="color:#e6db74">/\\/g&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;/&amp;#34;&lt;/span>),
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">path&lt;/span>.&lt;span style="color:#a6e22e">normalize&lt;/span>(&lt;span style="color:#a6e22e">filename&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;upload: &amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">result&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#66d9ef">catch&lt;/span> (&lt;span style="color:#a6e22e">e&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">e&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">getAllfiles&lt;/span>(&lt;span style="color:#a6e22e">dir&lt;/span>, &lt;span style="color:#a6e22e">filelist&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">files&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">fs&lt;/span>.&lt;span style="color:#a6e22e">readdirSync&lt;/span>(&lt;span style="color:#a6e22e">dir&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">files&lt;/span>.&lt;span style="color:#a6e22e">forEach&lt;/span>(&lt;span style="color:#a6e22e">file&lt;/span> =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">filepath&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">path&lt;/span>.&lt;span style="color:#a6e22e">join&lt;/span>(&lt;span style="color:#a6e22e">dir&lt;/span>, &lt;span style="color:#a6e22e">file&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">stat&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">fs&lt;/span>.&lt;span style="color:#a6e22e">statSync&lt;/span>(&lt;span style="color:#a6e22e">filepath&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">stat&lt;/span>.&lt;span style="color:#a6e22e">isFile&lt;/span>()) &lt;span style="color:#a6e22e">filelist&lt;/span>.&lt;span style="color:#a6e22e">push&lt;/span>(&lt;span style="color:#a6e22e">filepath&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">stat&lt;/span>.&lt;span style="color:#a6e22e">isDirectory&lt;/span>()) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">filelist&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">filelist&lt;/span>.&lt;span style="color:#a6e22e">concat&lt;/span>(&lt;span style="color:#a6e22e">getAllfiles&lt;/span>(&lt;span style="color:#a6e22e">filepath&lt;/span>, []));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">filelist&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">file_list&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">list&lt;/span>();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;quire result:\n&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">file_list&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#a6e22e">file_list&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">await&lt;/span> &lt;span style="color:#a6e22e">deleteMulti&lt;/span>(&lt;span style="color:#a6e22e">file_list&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">files&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">getAllfiles&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;./dist&amp;#34;&lt;/span>, []);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">files&lt;/span>.&lt;span style="color:#a6e22e">forEach&lt;/span>(&lt;span style="color:#a6e22e">file&lt;/span> =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">put&lt;/span>(&lt;span style="color:#a6e22e">file&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">main&lt;/span>();
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/05/2576308873.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://help.aliyun.com/document_detail/32068.html?spm=a2c4g.11186623.6.1058.42b92a220SHC2F" target="_blank" rel="noopener"
+>https://help.aliyun.com/document_detail/32068.html?spm=a2c4g.11186623.6.1058.42b92a220SHC2F&lt;/a>
+&lt;a class="link" href="https://help.aliyun.com/document_detail/39630.html?spm=a2c4g.11186623.6.666.1b263331Q5jiQY" target="_blank" rel="noopener"
+>https://help.aliyun.com/document_detail/39630.html?spm=a2c4g.11186623.6.666.1b263331Q5jiQY&lt;/a>&lt;/p></description></item><item><title>gulp入门</title><link>http://kizx.gitee.io/post/gulp%E5%85%A5%E9%97%A8/</link><pubDate>Fri, 28 May 2021 12:30:00 +0000</pubDate><guid>http://kizx.gitee.io/post/gulp%E5%85%A5%E9%97%A8/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>// 全局安装以便可以命令行调用gulp命令
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm install -g gulp-cli
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm init -y
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm i gulp -D
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="gulpfilejs">&lt;a href="#gulpfilejs" class="header-anchor">&lt;/a>gulpfile.js
+&lt;/h2>&lt;ul>
+&lt;li>旧task写法&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">imagemin&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-imagemin&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">uglify&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-uglify&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">sass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-sass&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">concat&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-concat&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> { &lt;span style="color:#a6e22e">series&lt;/span> } &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 复制文件
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.html&amp;#34;&lt;/span>).&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 压缩图片 得用cnpm安装
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;img&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.{jpg,png,gif}&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">imagemin&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/imgs&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 压缩合并js
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;js&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.js&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">concat&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;index.js&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">uglify&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/js&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// sass处理
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;css&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.scss&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">sass&lt;/span>().&lt;span style="color:#a6e22e">on&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;error&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">sass&lt;/span>.&lt;span style="color:#a6e22e">logError&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/css&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 监听文件变化
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;watch&amp;#34;&lt;/span>, &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">watch&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.js&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;js&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">watch&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.html&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>});
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 组合任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">task&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;default&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;html&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;css&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;img&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;js&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>推荐写法&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">imagemin&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-imagemin&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">uglify&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-uglify&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">sass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-sass&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">concat&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-concat&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">babel&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp-babel&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;gulp&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">del&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;del&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 复制文件
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">html&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.html&amp;#34;&lt;/span>).&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 压缩图片 得用cnpm安装
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">img&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.{jpg,png,gif}&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">imagemin&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/imgs&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 压缩合并js
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">js&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.js&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">concat&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;index.js&amp;#34;&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">babel&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">uglify&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/js&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// sass处理
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">css&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">src&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.scss&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">sass&lt;/span>().&lt;span style="color:#a6e22e">on&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;error&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">sass&lt;/span>.&lt;span style="color:#a6e22e">logError&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">pipe&lt;/span>(&lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">dest&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/css&amp;#34;&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 清空输出
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">clean&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">del&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;dist/**/*&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 监听文件变化
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">watch&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">watch&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.js&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#a6e22e">js&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">watch&lt;/span>(&lt;span style="color:#e6db74">&amp;#34;src/*.html&amp;#34;&lt;/span>, &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#a6e22e">html&lt;/span>));
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// 组合任务
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">exports&lt;/span>.&lt;span style="color:#66d9ef">default&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">gulp&lt;/span>.&lt;span style="color:#a6e22e">series&lt;/span>(&lt;span style="color:#a6e22e">clean&lt;/span>, &lt;span style="color:#a6e22e">html&lt;/span>, &lt;span style="color:#a6e22e">css&lt;/span>, &lt;span style="color:#a6e22e">js&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">exports&lt;/span>.&lt;span style="color:#a6e22e">watch&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">watch&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">exports&lt;/span>.&lt;span style="color:#a6e22e">clean&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">clean&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">exports&lt;/span>.&lt;span style="color:#a6e22e">img&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">img&lt;/span>; &lt;span style="color:#75715e">//测试时这个插件有问题
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>启动&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>//编译
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gulp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>//监听
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gulp watch
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="其他">&lt;a href="#%e5%85%b6%e4%bb%96" class="header-anchor">&lt;/a>其他
+&lt;/h2>&lt;ul>
+&lt;li>新版sass需要安装&lt;code>npm i -D sass gulp-sass&lt;/code>并如下引用&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">sass&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;gulp-sass&amp;#39;&lt;/span>)(&lt;span style="color:#a6e22e">require&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;sass&amp;#39;&lt;/span>));
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://www.gulpjs.com.cn/docs/getting-started/quick-start/" target="_blank" rel="noopener"
+>https://www.gulpjs.com.cn/docs/getting-started/quick-start/&lt;/a>&lt;/p></description></item><item><title>JS原型与继承</title><link>http://kizx.gitee.io/post/js%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/</link><pubDate>Sun, 11 Apr 2021 12:33:00 +0000</pubDate><guid>http://kizx.gitee.io/post/js%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF/</guid><description>&lt;h3 id="隐式原型__proto__">&lt;a href="#%e9%9a%90%e5%bc%8f%e5%8e%9f%e5%9e%8b__proto__" class="header-anchor">&lt;/a>隐式原型__proto__
+&lt;/h3>&lt;p>除了元对象Object，每个js对象都有隐式原型，但也可以通过&lt;code>Object.create(null)&lt;/code>强制创建一个没有__proto__的对象，__proto__指向该对象的构造函数的原型对象。
+原型链指的就是__proto__串起来的链。&lt;/p>
+&lt;h3 id="原型prototype">&lt;a href="#%e5%8e%9f%e5%9e%8bprototype" class="header-anchor">&lt;/a>原型prototype
+&lt;/h3>&lt;p>函数对象拥有prototype属性，函数的原型对象包含所有实例共享的方法，包含__proto__和constructor两个属性，constructor指回函数本身，函数原型对象也有__proto__属性，指向构造函数的原型即Function.prototype。
+实例的__proto__指向函数原型对象，即&lt;code>f1.__proto__ === Foo.prototype&lt;/code>。
+Object.prototype.__proto__指向null。&lt;/p>
+&lt;h3 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
+&lt;/h3>&lt;p>定义函数时自动创建prototype原型对象，原型对象包含constructor构造函数，构造函数指回函数本身，new出来的实例拥有__proto__指向prototype原型对象。
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/08/2508891233.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="类式继承原型链继承">&lt;a href="#%e7%b1%bb%e5%bc%8f%e7%bb%a7%e6%89%bf%e5%8e%9f%e5%9e%8b%e9%93%be%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>类式继承（原型链继承）
+&lt;/h2>&lt;p>将父类的实例赋给子类的prototype，缺点是父类共有属性为引用对象时，所有子类实例会公用同一个对象；无法向父类传参；子类不是父类的实例，而子类的原型是父类的实例，缺少constructor属性。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="构造函数继承">&lt;a href="#%e6%9e%84%e9%80%a0%e5%87%bd%e6%95%b0%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>构造函数继承
+&lt;/h2>&lt;p>将子类的变量在父类中执行一遍，即在子类的构造函数中执行一次父类的构造函数，缺点只执行了父类的构造函数，没有继承父类原型，父类的所有方法必须在构造函数中声明才能继承。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//执行父类构造函数
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// dog.getname() //无法继承原型方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">// dog.getsupername()
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="组合继承">&lt;a href="#%e7%bb%84%e5%90%88%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>组合继承
+&lt;/h2>&lt;p>结合前面两种方法，在子类构造函数中执行父类构造函数，子类原型指向父类的实例，缺点是父类构造函数执行了两遍，子类不是父类的实例。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//继承属性
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>() &lt;span style="color:#75715e">//继承方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="原型式继承">&lt;a href="#%e5%8e%9f%e5%9e%8b%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>原型式继承
+&lt;/h2>&lt;p>和类式继承相似，创建一个新对象并使用父类对象做为新对象的原型对象，和类式继承存在一样的问题，引用值会在实例间共享。和&lt;code>Object.create()&lt;/code>方法作用一致。适合不需要单独创建构造函数，但仍需要在实例间共享属性的场合。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">Animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="寄生式继承">&lt;a href="#%e5%af%84%e7%94%9f%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>寄生式继承
+&lt;/h2>&lt;p>对原型继承的二次封装，对继承的对象进行了拓展。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">name&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;动物&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">createDog&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">obj&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">o&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#75715e">// 增加属性和方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">createDog&lt;/span>(&lt;span style="color:#a6e22e">Animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="寄生组合式继承">&lt;a href="#%e5%af%84%e7%94%9f%e7%bb%84%e5%90%88%e5%bc%8f%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>寄生组合式继承
+&lt;/h2>&lt;p>寄生继承和构造函数继承的组合，修复子类的原型，子类的原型指向父类原型的一份实例，construction指向子类本身。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">o&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>() { }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">F&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">o&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">F&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">inheritPtototype&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>, &lt;span style="color:#a6e22e">superClass&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">let&lt;/span> &lt;span style="color:#a6e22e">p&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">inherit&lt;/span>(&lt;span style="color:#a6e22e">superClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">p&lt;/span>.&lt;span style="color:#a6e22e">construction&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">subClass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">p&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">inheritPtototype&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">dog&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>但是上面左还有一个小问题，就是遍历子类实例属性时，会把construction也遍历出来，可以通过&lt;code>Object.defineProperty&lt;/code>方法禁止遍历。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">key&lt;/span> &lt;span style="color:#66d9ef">in&lt;/span> &lt;span style="color:#a6e22e">dog&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#a6e22e">key&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>所以再升级一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>, &lt;span style="color:#a6e22e">superClass&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span> &lt;span style="color:#f92672">=&lt;/span> Object.&lt;span style="color:#a6e22e">create&lt;/span>(&lt;span style="color:#a6e22e">superClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Object.&lt;span style="color:#a6e22e">defineProperty&lt;/span>(&lt;span style="color:#a6e22e">subClass&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;constructor&amp;#34;&lt;/span>, {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">value&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#a6e22e">subClass&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">enumerable&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#75715e">//禁止遍历
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> });
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">name&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;父类属性&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;执行了父类构造函数&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">function&lt;/span> () {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">animal&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="mixin多继承">&lt;a href="#mixin%e5%a4%9a%e7%bb%a7%e6%89%bf" class="header-anchor">&lt;/a>mixin多继承
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-js" data-lang="js">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">Mammal&lt;/span> &lt;span style="color:#f92672">=&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">skill&lt;/span>() {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>.&lt;span style="color:#a6e22e">name&lt;/span> &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;是哺乳动物&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>} &lt;span style="color:#75715e">// mixin类
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">function&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#a6e22e">name&lt;/span>) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">Animal&lt;/span>.&lt;span style="color:#a6e22e">call&lt;/span>(&lt;span style="color:#66d9ef">this&lt;/span>, &lt;span style="color:#a6e22e">name&lt;/span>) &lt;span style="color:#75715e">//构造函数式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">extend&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>, &lt;span style="color:#a6e22e">Animal&lt;/span>) &lt;span style="color:#75715e">//寄生式继承
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>Object.&lt;span style="color:#a6e22e">assign&lt;/span>(&lt;span style="color:#a6e22e">Dog&lt;/span>.&lt;span style="color:#a6e22e">prototype&lt;/span>, &lt;span style="color:#a6e22e">Mammal&lt;/span>) &lt;span style="color:#75715e">//往子类原型拓展其他类方法
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">dog&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;狗&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getname&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">getsupername&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">dog&lt;/span>.&lt;span style="color:#a6e22e">skill&lt;/span>()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/cc18868876837/article/details/81211729" target="_blank" rel="noopener"
+>帮你彻底搞懂JS中的prototype、__proto__与constructor（图解）&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/cc18868876837/article/details/103149502" target="_blank" rel="noopener"
+>JavaScript中的new操作符的原理解析&lt;/a>
+&lt;a class="link" href="https://www.zhihu.com/question/34183746" target="_blank" rel="noopener"
+>js中__proto__和prototype的区别和关系？&lt;/a>
+&lt;a class="link" href="https://doc.houdunren.com/js/11%20%E5%8E%9F%E5%9E%8B%E4%B8%8E%E7%BB%A7%E6%89%BF.html" target="_blank" rel="noopener"
+>原型基础&lt;/a>&lt;/p></description></item><item><title>字幕朗读器——利用云语音平台为视频配音</title><link>http://kizx.gitee.io/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E5%88%A9%E7%94%A8%E4%BA%91%E8%AF%AD%E9%9F%B3%E5%B9%B3%E5%8F%B0%E4%B8%BA%E8%A7%86%E9%A2%91%E9%85%8D%E9%9F%B3/</link><pubDate>Thu, 28 Jan 2021 07:30:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E5%88%A9%E7%94%A8%E4%BA%91%E8%AF%AD%E9%9F%B3%E5%B9%B3%E5%8F%B0%E4%B8%BA%E8%A7%86%E9%A2%91%E9%85%8D%E9%9F%B3/</guid><description>&lt;p>本软件集成百度云、阿里云和讯飞云的在线语音合成的功能，可以实现将SRT格式的字幕文件或TXT格式的台词文本转换为时间轴对应的语音。&lt;/p>
+&lt;h2 id="下载地址">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80" class="header-anchor">&lt;/a>下载地址
+&lt;/h2>&lt;p>当前版本：V3.0.0
+[button color=&amp;ldquo;info&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://github.com/kizx/subtitle2audio&amp;rdquo; type=&amp;quot;&amp;quot;]开源地址[/button]
+[button color=&amp;ldquo;success&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://kizx.lanzoui.com/b01hhub9g&amp;rdquo; type=&amp;quot;&amp;quot;]密码:gyb3[/button]&lt;/p>
+&lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
+&lt;/h2>&lt;h3 id="获取相关key">&lt;a href="#%e8%8e%b7%e5%8f%96%e7%9b%b8%e5%85%b3key" class="header-anchor">&lt;/a>获取相关KEY
+&lt;/h3>&lt;p>使用前需先去相关云平台注册并开通语音合成服务，各个平台语音种类和收费策略不一样，个人轻量使用白嫖完全够用。
+百度云：https://ai.baidu.com/tech/speech/tts
+阿里云：https://ai.aliyun.com/nls/tts
+讯飞云：https://www.xfyun.cn/services/online_tts&lt;/p>
+&lt;p>各个平台具体注册和开通语音合成服务的过程这里就不赘述了，如果遇到问题可以向平台客服求助，以下是各个平台开通后密钥的位置。
+[tabs]
+[tab name=&amp;ldquo;百度云&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/921220331.png"
+loading="lazy"
+>[/tab]
+[tab name=&amp;ldquo;阿里云&amp;rdquo;]
+阿里云的密钥需要在两个页面分别获取
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/408608881.png"
+loading="lazy"
+>
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/2773965244.png"
+loading="lazy"
+>
+[/tab]
+[tab name=&amp;ldquo;讯飞云&amp;rdquo;]
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/2332581614.png"
+loading="lazy"
+>
+[/tab]
+[/tabs]&lt;/p>
+&lt;h3 id="字幕生成语音">&lt;a href="#%e5%ad%97%e5%b9%95%e7%94%9f%e6%88%90%e8%af%ad%e9%9f%b3" class="header-anchor">&lt;/a>字幕生成语音
+&lt;/h3>&lt;p>本软件只支持utf8编码的srt格式的字幕文件，其他格式的需要先自行转换下，生成成功后会自动打开输出目录，输出目录里包含&lt;code>输出.mp3&lt;/code>和&lt;code>audio&lt;/code>文件夹，文件夹内为一句句单独的语音供备用。
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/2091177316.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="文本生成语音">&lt;a href="#%e6%96%87%e6%9c%ac%e7%94%9f%e6%88%90%e8%af%ad%e9%9f%b3" class="header-anchor">&lt;/a>文本生成语音
+&lt;/h3>&lt;p>和字幕生成语音操作没有区别，文本的格式为每行一句台词，唯一不同的是可以设置两句话之间的停顿时间。
+&lt;img src="https://www.2bboy.com/usr/uploads/2021/01/442892500.png"
+loading="lazy"
+>&lt;/p></description></item><item><title>blender脚本python代码自动补全方法</title><link>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%ACpython%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%96%B9%E6%B3%95/</link><pubDate>Wed, 19 Aug 2020 12:13:16 +0000</pubDate><guid>http://kizx.gitee.io/post/blender%E8%84%9A%E6%9C%ACpython%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8%E6%96%B9%E6%B3%95/</guid><description>&lt;p>只要安装&lt;code>fake-bpy-module&lt;/code>这个模块就可以实现代码自动补全了，正如其名，这个库只用于代码提示补全作用，并不具备任何实质可运行代码。&lt;/p>
+&lt;h2 id="pip安装">&lt;a href="#pip%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>pip安装
+&lt;/h2>&lt;p>如果你编程时使用的是自己的python坏境，那么使用以下的pip命令安装即可。&lt;/p>
+&lt;pre tabindex="0">&lt;code>pip install fake-bpy-module- &amp;lt;version&amp;gt;
+# version: 2.78|2.79|2.80|2.81|2.82|2.83
+# e.g.
+pip install fake-bpy-module-2.80
+&lt;/code>&lt;/pre>&lt;h2 id="手动安装">&lt;a href="#%e6%89%8b%e5%8a%a8%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>手动安装
+&lt;/h2>&lt;p>如果你用的是blender自带的python坏境，不好用pip进行安装，此时只能手动安装了。&lt;/p>
+&lt;h3 id="vscode">&lt;a href="#vscode" class="header-anchor">&lt;/a>vscode
+&lt;/h3>&lt;p>从 &lt;a class="link" href="https://github.com/nutti/fake-bpy-module/releases" target="_blank" rel="noopener"
+>https://github.com/nutti/fake-bpy-module/releases&lt;/a> 页面下载对应版本的包并解压，打开vscode，&lt;code>Ctrl+Shift+P&lt;/code>搜索&lt;code>Settings&lt;/code>打开工作区设置（打开设置文件setting.json），设置以下内容，其中填写刚才解压的路径。&lt;/p>
+&lt;pre tabindex="0">&lt;code>{
+&amp;#34;python.autoComplete.extraPaths&amp;#34;: [
+&amp;#34;&amp;lt;path-to-generated-modules&amp;gt;&amp;#34;
+]
+}
+&lt;/code>&lt;/pre>&lt;p>保存后重启vscode就行了。&lt;/p>
+&lt;h3 id="pycharm">&lt;a href="#pycharm" class="header-anchor">&lt;/a>pycharm
+&lt;/h3>&lt;p>日后补充&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/nutti/fake-bpy-module" target="_blank" rel="noopener"
+>https://github.com/nutti/fake-bpy-module&lt;/a>&lt;/p></description></item><item><title>在vscode中开发blender插件和脚本</title><link>http://kizx.gitee.io/post/%E5%9C%A8vscode%E4%B8%AD%E5%BC%80%E5%8F%91blender%E6%8F%92%E4%BB%B6%E5%92%8C%E8%84%9A%E6%9C%AC/</link><pubDate>Tue, 18 Aug 2020 14:50:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%9C%A8vscode%E4%B8%AD%E5%BC%80%E5%8F%91blender%E6%8F%92%E4%BB%B6%E5%92%8C%E8%84%9A%E6%9C%AC/</guid><description>&lt;p>用blender内置的文本编辑器来编写代码体验实在是太糟糕了，利用JacquesLucke大神编写的vscode插件&lt;code>Blender Development&lt;/code>就可以开心的在vscode里编写代码了。
+打开vscode在插件市场里搜索&lt;code>Blender Development&lt;/code>安装即可，该插件依赖于&lt;code>python&lt;/code>和&lt;code>C/C++&lt;/code>插件，安装时会自动安装依赖，如果没有安装请手动安装。&lt;/p>
+&lt;p>&lt;img src="https://www.2bboy.com/usr/uploads/2020/08/615827561.png"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="使用">&lt;a href="#%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>使用
+&lt;/h2>&lt;h3 id="插件">&lt;a href="#%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>插件
+&lt;/h3>&lt;p>&lt;code>ctrl+shift+P&lt;/code>打开控制台，输入&lt;code>blender&lt;/code>就能看到本插件的所有命令，点击&lt;code>Blender: New Addon&lt;/code>，弹出模板选项，可以选择&lt;code>Simple&lt;/code>简单模板或者&lt;code>WithAutoLoad&lt;/code>模板。然后输入插件名和作者名，最后给插件选择一个目录，一个插件模板就新建成功了。&lt;/p>
+&lt;p>如果你选的是&lt;code>Simple&lt;/code>模板，那么就只会生成一个&lt;code>__init__.py&lt;/code>，如果你选择的是&lt;code>WithAutoLoad&lt;/code>模板，会生成&lt;code>__init__.py&lt;/code>、&lt;code>auto_load.py&lt;/code>、&lt;code>operators.py&lt;/code>三个文件，两个模板的主要区别在于后者会自动注册&lt;code>register()&lt;/code>和注销&lt;code>unregister()&lt;/code>operators.py中的类，当然我们我们自己写一下注册方法也不是多麻烦。&lt;/p>
+&lt;p>代码有了，下面就是如何联合blender了，我们都知道blender里自带一个python解释器，首先我们应该在vscode中点击左下角的python解释器选择blender安装文件夹里的python.exe作为解释器，这个路径一般形如 &lt;code>\blender-2.83.0-windows64\2.83\python\bin\python.exe&lt;/code>。当然你不用blender自带的解释器也行，但是需要在vscode设置里打开&lt;code>blender.allowModifyExternalPython&lt;/code>，允许后面自动下载依赖库。&lt;/p>
+&lt;p>然后&lt;code>ctrl+shift+P&lt;/code>打开控制台，搜索执行&lt;code>Blender: Start&lt;/code>命令，这时选择你的blender.exe，一切正常的话，程序会自动下载&lt;code>ptvsd&lt;/code>、&lt;code>flask&lt;/code>、&lt;code>requests&lt;/code>几个库，所以第一次启动会慢点，如果你卡在这里的话，一般是网络原因，请尝试更新pip、更换pip镜像源，再不济手动安装这些库。&lt;/p>
+&lt;p>[post cid=&amp;ldquo;156&amp;rdquo; cover=&amp;ldquo;http://&amp;rdquo;/]&lt;/p>
+&lt;p>启动blender后，打开N面板有一个Dev的面板就说明成功了。&lt;/p>
+&lt;p>&lt;img src="https://www.2bboy.com/usr/uploads/2020/08/2078653010.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="保存自动刷新">&lt;a href="#%e4%bf%9d%e5%ad%98%e8%87%aa%e5%8a%a8%e5%88%b7%e6%96%b0" class="header-anchor">&lt;/a>保存自动刷新
+&lt;/h3>&lt;p>当我们更改代码后，我们总是希望已保存代码blender那边就立马更新，只需要在vscode设置里打开&lt;code>blender.addon.reloadOnSave&lt;/code>即可。&lt;/p>
+&lt;h3 id="脚本">&lt;a href="#%e8%84%9a%e6%9c%ac" class="header-anchor">&lt;/a>脚本
+&lt;/h3>&lt;p>插件还提供了快速脚本功能，脚本就是类似于直接在blender交互式命令行直接输入命令，不用像写插件一样那么麻烦了，&lt;code>ctrl+shift+P&lt;/code>打开控制台选择&lt;code>Blender: New Script&lt;/code>就可以新建一个脚本，然后通过&lt;code>Blender: Start&lt;/code>打开blender，运行脚本用&lt;code>Blender: Run Script&lt;/code>命令，不过我测试了下这个脚本命令写的一不留神一运行就闪退了，感觉不如在blender的文本编辑器里好用。&lt;/p>
+&lt;h3 id="更改上下文">&lt;a href="#%e6%9b%b4%e6%94%b9%e4%b8%8a%e4%b8%8b%e6%96%87" class="header-anchor">&lt;/a>更改上下文
+&lt;/h3>&lt;p>有时脚本需要特定的模式下，通过&lt;code>Blender: Set Script Context&lt;/code>命令可以设置形如&lt;code>#context.area: VIEW_3D&lt;/code>的注释来达到控制上下文的作用。&lt;/p>
+&lt;h3 id="debug">&lt;a href="#debug" class="header-anchor">&lt;/a>Debug
+&lt;/h3>&lt;p>用vscode的一大好处在于可以打断点进行debug，这些都是vscode的基本操作就不说了。&lt;/p>
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>vscode插件更新到0.0.15版本后，只能适配blender2.92及以上版本，如果还用小于2.92的版本，就需要安装0.0.14版本的插件，并禁用vscode插件自动更新功能。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/JacquesLucke/blender_vscode" target="_blank" rel="noopener"
+>https://github.com/JacquesLucke/blender_vscode&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.bilibili.com/video/BV1EJ41187hT" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/BV1EJ41187hT&lt;/a>&lt;/p></description></item><item><title>Onedrive云盘程序——OneManager小白设置指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</link><pubDate>Sun, 24 May 2020 08:06:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemanager%E5%B0%8F%E7%99%BD%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="onemanager是什么">&lt;a href="#onemanager%e6%98%af%e4%bb%80%e4%b9%88" class="header-anchor">&lt;/a>OneManager是什么
+&lt;/h2>&lt;p>这是一个利用微软onedrive api将onedrive目录映射成一个云盘的程序，类似的程序有很多，比如OneIndex、Pyone、OnePoint等等。这个程序的特点是支持多种onedrive类型，可以部署在vps，heroku，以及腾讯云scf上。
+[button color=&amp;ldquo;info&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://github.com/qkqpttgf/OneManager-php&amp;rdquo; type=&amp;quot;&amp;quot;]项目地址[/button]
+[button color=&amp;ldquo;info&amp;rdquo; icon=&amp;quot;&amp;quot; url=&amp;ldquo;https://pan.2bboy.com/&amp;rdquo; type=&amp;quot;&amp;quot;]我的Demo[/button]&lt;/p>
+&lt;h2 id="部署教程">&lt;a href="#%e9%83%a8%e7%bd%b2%e6%95%99%e7%a8%8b" class="header-anchor">&lt;/a>部署教程
+&lt;/h2>&lt;p>参考项目readme说明，网上一些博客也有不少教程，这不是本文的重点，本文主要讲的是部署好后的设置问题。
+部署成功后在设置-&amp;gt;首页里添加相应的盘，可以添加多个盘，同一个盘也可以添加多次。&lt;/p>
+&lt;h2 id="平台变量">&lt;a href="#%e5%b9%b3%e5%8f%b0%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>平台变量
+&lt;/h2>&lt;p>登录后，在&lt;code>管理&lt;/code>&amp;gt;&lt;code>设置&lt;/code>里有一些自定义设置，有些人不清楚这些设置是干嘛的，这可以理解，毕竟项目的说明写的太简单了。
+注意本文的操作都是针对程序默认主题来说的，其他主题由于是第三方人员开发，不保证所有功能都能正常使用。&lt;/p>
+&lt;h3 id="adminloginpage">&lt;a href="#adminloginpage" class="header-anchor">&lt;/a>adminloginpage
+&lt;/h3>&lt;p>自定义登录地址，设置后就会隐藏登录按钮(有些主题本来就没有登录按钮)，登录时需要手动在网盘地址后加上&lt;code>?你设置的值&lt;/code>进行登录。
+比如设置为&lt;code>abc&lt;/code>，那么你只能通过&lt;code>http://xxx.com/xxx?abc&lt;/code>地址来登录 。所以一旦设置就要记住你设置的值，不然连你自己也没法知道登录地址那就麻烦了。
+这个设置是为了防止别人通过默认的登录界面尝试登录你的网盘，设置本项后只要猜不到登录界面，即使别人知道登录密码也没用，多一道防护墙，让网盘更安全。&lt;/p>
+&lt;h3 id="autojumpfirstdisk">&lt;a href="#autojumpfirstdisk" class="header-anchor">&lt;/a>autoJumpFirstDisk
+&lt;/h3>&lt;p>设置点击网盘标题时跳转到绑定的第一个盘还是当前绑定的网盘根目录。&lt;/p>
+&lt;h3 id="background">&lt;a href="#background" class="header-anchor">&lt;/a>background
+&lt;/h3>&lt;p>自定义背景图片，填入一个图片的url地址，因为图片加载通常需要更多时间，为了速度考虑不建议放入大体积图片。&lt;/p>
+&lt;h3 id="backgroundm">&lt;a href="#backgroundm" class="header-anchor">&lt;/a>backgroundm
+&lt;/h3>&lt;p>手机端显示的背景图片地址。&lt;/p>
+&lt;h3 id="customcss">&lt;a href="#customcss" class="header-anchor">&lt;/a>customCss
+&lt;/h3>&lt;p>设置自定义css的地方，这里设置的css会作用于网盘所有页面。
+比如我想隐藏语言选项框：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">style&lt;/span>&amp;gt;.&lt;span style="color:#a6e22e">changelanguage&lt;/span>{&lt;span style="color:#66d9ef">display&lt;/span>:&lt;span style="color:#66d9ef">none&lt;/span>}&amp;lt;/&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同时隐藏复制下载链接按钮&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">style&lt;/span>&amp;gt;.&lt;span style="color:#a6e22e">file&lt;/span> &lt;span style="color:#f92672">button&lt;/span>{&lt;span style="color:#66d9ef">display&lt;/span>:&lt;span style="color:#66d9ef">none&lt;/span>}.&lt;span style="color:#a6e22e">changelanguage&lt;/span>{&lt;span style="color:#66d9ef">display&lt;/span>:&lt;span style="color:#66d9ef">none&lt;/span>}&amp;lt;/&lt;span style="color:#f92672">style&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="customscript">&lt;a href="#customscript" class="header-anchor">&lt;/a>customScript
+&lt;/h3>&lt;p>设置自定义js，会作用于所有页面。
+比如设置http重定向到https：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text/javascript&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">var&lt;/span> &lt;span style="color:#a6e22e">targetProtocol&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;https:&amp;#34;&lt;/span>;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (window.&lt;span style="color:#a6e22e">location&lt;/span>.&lt;span style="color:#a6e22e">protocol&lt;/span> &lt;span style="color:#f92672">!=&lt;/span> &lt;span style="color:#a6e22e">targetProtocol&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window.&lt;span style="color:#a6e22e">location&lt;/span>.&lt;span style="color:#a6e22e">href&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">targetProtocol&lt;/span> &lt;span style="color:#f92672">+&lt;/span> window.&lt;span style="color:#a6e22e">location&lt;/span>.&lt;span style="color:#a6e22e">href&lt;/span>.&lt;span style="color:#a6e22e">substring&lt;/span>(window.&lt;span style="color:#a6e22e">location&lt;/span>.&lt;span style="color:#a6e22e">protocol&lt;/span>.&lt;span style="color:#a6e22e">length&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="customtheme">&lt;a href="#customtheme" class="header-anchor">&lt;/a>customTheme
+&lt;/h3>&lt;p>通过url的方式引用html主题，比如你可以通过设置下面的地址来使用我的主题。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.html
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="disablechangetheme">&lt;a href="#disablechangetheme" class="header-anchor">&lt;/a>disableChangeTheme
+&lt;/h3>&lt;p>设置为&lt;code>1&lt;/code>后游客浏览时将不显示右下角的主题切换功能。&lt;/p>
+&lt;h3 id="disableshowthumb">&lt;a href="#disableshowthumb" class="header-anchor">&lt;/a>disableShowThumb
+&lt;/h3>&lt;p>设置为&lt;code>1&lt;/code>后将不显示缩略图的按钮和功能，对于云函数用户来说，建议设为&lt;code>1&lt;/code>来关闭该功能，因为该功能可能点一下就是一分钱。&lt;/p>
+&lt;h3 id="hidefunctionalityfile">&lt;a href="#hidefunctionalityfile" class="header-anchor">&lt;/a>hideFunctionalityFile
+&lt;/h3>&lt;p>设置为&lt;code>1&lt;/code>后，游客浏览网盘时就会看不到read.md，head.md，head.ofm，foo.omf这些文件，这些文件是干嘛的后面会说。&lt;/p>
+&lt;h3 id="passfile">&lt;a href="#passfile" class="header-anchor">&lt;/a>passfile
+&lt;/h3>&lt;p>设置密码文件名，比如这里设置为password.txt，那么在某一个目录下新建一个password.txt文件，其中写入密码，这样任何人在浏览这个网盘目录时都需要输入相应密码后才能访问。&lt;/p>
+&lt;h3 id="sitename">&lt;a href="#sitename" class="header-anchor">&lt;/a>sitename
+&lt;/h3>&lt;p>设置网站名称。&lt;/p>
+&lt;h3 id="theme">&lt;a href="#theme" class="header-anchor">&lt;/a>theme
+&lt;/h3>&lt;p>切换主题。&lt;/p>
+&lt;h3 id="timezone">&lt;a href="#timezone" class="header-anchor">&lt;/a>timezone
+&lt;/h3>&lt;p>设置时区，国内可设置为8。&lt;/p>
+&lt;h2 id="每个盘独立变量">&lt;a href="#%e6%af%8f%e4%b8%aa%e7%9b%98%e7%8b%ac%e7%ab%8b%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>每个盘独立变量
+&lt;/h2>&lt;h3 id="diskname">&lt;a href="#diskname" class="header-anchor">&lt;/a>diskname
+&lt;/h3>&lt;p>多盘在网盘界面显示的名称。&lt;/p>
+&lt;h3 id="domain_path">&lt;a href="#domain_path" class="header-anchor">&lt;/a>domain_path
+&lt;/h3>&lt;p>当绑定多个域名时，可以使不同域名打开时访问不同目录。当然如果你只有一个域名也可以用，通过这种方式可以使当前域名访问一个指定子目录，和后面的public_path起到一样的作用。
+下面是两个域名的设置方法，中间用&lt;code>|&lt;/code>隔开，如果有多个域名只设置一个域名时，未设置的域名好像也会只访问该目录，要访问根目录dirname设置为&lt;code>/&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>domain1.com:/dir1name|domain2.com:/dir2name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="downloadencrypt">&lt;a href="#downloadencrypt" class="header-anchor">&lt;/a>downloadencrypt
+&lt;/h3>&lt;p>设置为&lt;code>1&lt;/code>时启用该功能，这样在设置了密码的目录下的文件虽然无法在网页端浏览，但可以通过具体的文件链接进行下载。&lt;/p>
+&lt;h3 id="guestup_path">&lt;a href="#guestup_path" class="header-anchor">&lt;/a>guestup_path
+&lt;/h3>&lt;p>设置图床路径或者叫游客上传路径，设置后游客只能看到上传按钮看不到目录下的文件。&lt;/p>
+&lt;h3 id="public_path">&lt;a href="#public_path" class="header-anchor">&lt;/a>public_path
+&lt;/h3>&lt;p>设置该盘的显示的根目录，默认为&lt;code>/&lt;/code>，换个说法就是可以显示指定的文件夹，默认显示全部。
+比如我们只想将网盘下的public文件夹内容作为网盘，可以设置为&lt;code>/public/&lt;/code>。
+有了这个功能，即使只有一个onedrive账号，我们也可以通过重复绑定同一个账号来生成多盘，然后每个盘的public_path设置为不同的路径，这样可以将一个盘的功能分开。&lt;/p>
+&lt;hr>
+&lt;p>还有一种特殊情况是我既想让游客上传文件，又想让游客看见上传后的文件目录，目前就只能通过这种方法将该目录设置到两个盘，一个盘作上传，一个盘作目录展示。&lt;/p>
+&lt;h2 id="进阶设置">&lt;a href="#%e8%bf%9b%e9%98%b6%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>进阶设置
+&lt;/h2>&lt;h3 id="设置网站ico图标">&lt;a href="#%e8%ae%be%e7%bd%ae%e7%bd%91%e7%ab%99ico%e5%9b%be%e6%a0%87" class="header-anchor">&lt;/a>设置网站ico图标
+&lt;/h3>&lt;p>将favicon.ico图片放在网盘根目录下，&lt;del>如果你设置了多盘的的话，则需要在每个盘的根目录下都放置一个favicon.ico文件&lt;/del>，新版的html主题只需要在绑定的第一个盘下面设置就行了。
+当然你也可以在customCss或customScript中进行全局设置：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">link&lt;/span> &lt;span style="color:#a6e22e">rel&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;icon&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://cloud.tencent.com/favicon.ico&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;image/x-icon&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>这里我使用了腾讯云的网站图标，你应该改为自己的favicon.ico图片地址。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="刷新自动切换背景图片">&lt;a href="#%e5%88%b7%e6%96%b0%e8%87%aa%e5%8a%a8%e5%88%87%e6%8d%a2%e8%83%8c%e6%99%af%e5%9b%be%e7%89%87" class="header-anchor">&lt;/a>刷新自动切换背景图片
+&lt;/h3>&lt;p>这个是通过设置特殊的图片api来实现的，这些api每次刷新都会返回一张不同的图片，将后台background设置为这些api的url即可。
+网上类似的api有很多，以下是群友收集的免费图片api：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>https://api.ixiaowai.cn/api/api.php (二次元动漫)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>http://www.dmoe.cc/random.php（二次元随机图）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>https://api.ixiaowai.cn/mcapi/mcapi.php （menhera酱）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>https://api.ixiaowai.cn/gqapi/gqapi.php （风景）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>https://acg.yanwz.cn/wallpaper/api.php（二次元随机图）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="利用indexhtml设置自定义页面">&lt;a href="#%e5%88%a9%e7%94%a8indexhtml%e8%ae%be%e7%bd%ae%e8%87%aa%e5%ae%9a%e4%b9%89%e9%a1%b5%e9%9d%a2" class="header-anchor">&lt;/a>利用index.html设置自定义页面
+&lt;/h3>&lt;p>如果一个目录下有名为index.html的文件，则直接显示该文件，可以利用这个功能设置一个自定义页面或者用于隐藏一个特定页面，相当于部署了一个静态页面。&lt;/p>
+&lt;h3 id="设置顶部和底部说明文字">&lt;a href="#%e8%ae%be%e7%bd%ae%e9%a1%b6%e9%83%a8%e5%92%8c%e5%ba%95%e9%83%a8%e8%af%b4%e6%98%8e%e6%96%87%e5%ad%97" class="header-anchor">&lt;/a>设置顶部和底部说明文字
+&lt;/h3>&lt;p>在需要展示顶部说明的目录下新建一个&lt;code>head.md&lt;/code>文件，在文件里写入说明内容即可，这是一个markdown文件，可以使用markdown语言进行书写。
+底部说明说明文字对应的是&lt;code>readme.md&lt;/code>文件，规则与顶部文字一样。&lt;/p>
+&lt;h3 id="利用headomf设置一言">&lt;a href="#%e5%88%a9%e7%94%a8headomf%e8%ae%be%e7%bd%ae%e4%b8%80%e8%a8%80" class="header-anchor">&lt;/a>利用head.omf设置一言
+&lt;/h3>&lt;p>head.omf作用和head.md一样，区别是他不支持markdonw语言，但是支持html语言，可以写入html、css、js内容。
+在想展示一言的目录新建&lt;code>head.omf&lt;/code>文件，然后写入以下内容：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hitokoto&amp;#34;&lt;/span>&amp;gt;:D 获取中...&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">fetch&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;https://v1.hitokoto.cn&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">then&lt;/span>(&lt;span style="color:#a6e22e">response&lt;/span> =&amp;gt; &lt;span style="color:#a6e22e">response&lt;/span>.&lt;span style="color:#a6e22e">json&lt;/span>())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#a6e22e">then&lt;/span>(&lt;span style="color:#a6e22e">data&lt;/span> =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">const&lt;/span> &lt;span style="color:#a6e22e">hitokoto&lt;/span> &lt;span style="color:#f92672">=&lt;/span> document.&lt;span style="color:#a6e22e">getElementById&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;hitokoto&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">hitokoto&lt;/span>.&lt;span style="color:#a6e22e">innerText&lt;/span> &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#a6e22e">data&lt;/span>.&lt;span style="color:#a6e22e">hitokoto&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> .&lt;span style="color:#66d9ef">catch&lt;/span>(&lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">error&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以上是使用了https://developer.hitokoto.cn/ 的一言接口，你也可以尝试更换其他接口或者自建接口。&lt;/p>
+&lt;h3 id="利用footomf设置valine评论">&lt;a href="#%e5%88%a9%e7%94%a8footomf%e8%ae%be%e7%bd%aevaline%e8%af%84%e8%ae%ba" class="header-anchor">&lt;/a>利用foot.omf设置Valine评论
+&lt;/h3>&lt;p>使用Valine需要先注册&lt;a class="link" href="https://www.leancloud.cn/" target="_blank" rel="noopener"
+>LeanCloud&lt;/a>并实名认证，然后新建应用获取AppID和AppKey。
+具体过程参考：https://valine.js.org/quickstart.html
+然后新建&lt;code>foot.omf&lt;/code>，写入以下内容（注意填入替换自己的AppID和AppKey）：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;//unpkg.com/valine/dist/Valine.min.js&amp;#39;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;vcomments&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">new&lt;/span> &lt;span style="color:#a6e22e">Valine&lt;/span>({
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">el&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;#vcomments&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">appId&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;你获取的AppID&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">appKey&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#39;你获取的AppKey&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> })
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ps: 上面的js用的是unpkg的cdn，国内速度完全不行，建议改用jsdelivr的cdn&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;//cdn.jsdelivr.net/npm/valine/dist/Valine.min.js&amp;#39;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>展示Demo见：https://pan.2bboy.com/home/&lt;/p>
+&lt;ul>
+&lt;li>如果对样式不满意，建议直接在omf文件写css美化。&lt;/li>
+&lt;/ul>
+&lt;h3 id="设置动态背景">&lt;a href="#%e8%ae%be%e7%bd%ae%e5%8a%a8%e6%80%81%e8%83%8c%e6%99%af" class="header-anchor">&lt;/a>设置动态背景
+&lt;/h3>&lt;p>这里的动态背景指我们经常在一些网页见到的那种下雪、粒子线条、彩条等动态背景，一般是通过js实现的，可以自己在网上找找现成的教程，js我不会，这里只展示一种我找到的动态彩条背景。
+我将下面的代码写在了foot.omf中，可以访问 &lt;a class="link" href="https://pan.2bboy.com/home/test/colored-ribbon/" target="_blank" rel="noopener"
+>https://pan.2bboy.com/home/test/colored-ribbon/&lt;/a> 查看其效果。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">script&lt;/span> &lt;span style="color:#a6e22e">size&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;90&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">alpha&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;0.5&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">zIndex&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;0&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">src&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://pan.2bboy.com/ppx/test/ribbon.js&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text/javascript&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;utf-8&amp;#34;&lt;/span>&amp;gt;&amp;lt;/&lt;span style="color:#f92672">script&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其中最重要的是 ribbon.js 这个js文件，我将他放在网盘目录下，你应该下载该文件放在自己的云空间里，然后替换引用的地址。
+如果将代码放在omf文件里则只能在当前目录有效果，设置在后台的customScript中就可以全局生效了。&lt;/p>
+&lt;p>当然只要你懂点js，利用omf文件可以玩出很多东西，比我这里有一些示例：https://pan.2bboy.com/home/test/&lt;/p>
+&lt;h3 id="美化自定义登录页面">&lt;a href="#%e7%be%8e%e5%8c%96%e8%87%aa%e5%ae%9a%e4%b9%89%e7%99%bb%e5%bd%95%e9%a1%b5%e9%9d%a2" class="header-anchor">&lt;/a>美化自定义登录页面
+&lt;/h3>&lt;p>修改common.php相应地方，添加style和br&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-php" data-lang="php">&lt;span style="display:flex;">&lt;span>$html &lt;span style="color:#f92672">.=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;style&amp;gt;body{background-image:linear-gradient(60deg,#343b44 0%,#485563 100%);background-attachment:fixed;color:#343b44}body&amp;gt;div{position:absolute;text-align:center;background-color:rgba(221,221,221,.5);border-radius:20px;width:75vw;max-width:500px;height:350px;margin:auto;top:25%;bottom:50%;left:0;right:0}body&amp;gt;div:hover{box-shadow:3px 3px 6px 3px rgba(0,0,0,.3)}h4{font-size:40px}input{font-size:20px;margin:2%auto;border:#343b44 2px solid;border-radius:10px;padding:10px;height:50px;text-align:center}input:last-of-type{color:#343b44;height:50px;width:80px;font-weight:800}input:hover:last-of-type{cursor:pointer;color:#ddd;background-color:#485563}&amp;lt;/style&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;body&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;center&amp;gt;&amp;lt;h4&amp;gt;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getconstStr&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;InputPassword&amp;#39;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&amp;lt;/h4&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;form action=&amp;#34;&amp;#34; method=&amp;#34;post&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;input name=&amp;#34;password1&amp;#34; type=&amp;#34;password&amp;#34;/&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/br&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">getconstStr&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;Login&amp;#39;&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#e6db74">&amp;#39;&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/form&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/center&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/div&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;&lt;/span>;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/05/0530183122.png"
+loading="lazy"
+>&lt;/p>
+&lt;h3 id="提示">&lt;a href="#%e6%8f%90%e7%a4%ba" class="header-anchor">&lt;/a>提示
+&lt;/h3>&lt;ul>
+&lt;li>游客上传文件时只能单个上传，不能批量上传。&lt;/li>
+&lt;li>由于scf的缓存系统，在scf上进行某项改动后有时候不会立马生效，或者刷新后时而生效时而不生效，只要多等一会儿，等旧缓存自己失效就好了。&lt;/li>
+&lt;li>php格式的主题为旧版主题，许多功能不支持，html格式的主题为新版主题，不同主题的作者更新频率和支持功能都可能不同，功能测试请以最新版本的默认主题为准。&lt;/li>
+&lt;/ul></description></item><item><title>利用腾讯云SCF免费搭建自己的一言API接口</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</link><pubDate>Thu, 16 Apr 2020 14:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E8%85%BE%E8%AE%AF%E4%BA%91scf%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%80%E8%A8%80api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>通常我们如果想要搭建一个API服务，最起码都需要一个服务器，但是即使是最便宜的虚拟主机价格也不一定便宜，而且就算你会用自己的语言写API接口，服务器的响应环境配置也是相当麻烦。而利用云函数则完美避开了这些坑，腾讯云函数的免费额度个人用的话基本等于免费。关于云函数的使用我之前也略微了解过，下面就用Python搭建一个简单的一言API接口来实际操作下。
+[post cid=&amp;ldquo;143&amp;rdquo; /]&lt;/p>
+&lt;h2 id="搭建过程">&lt;a href="#%e6%90%ad%e5%bb%ba%e8%bf%87%e7%a8%8b" class="header-anchor">&lt;/a>搭建过程
+&lt;/h2>&lt;p>首先新建函数，这里我选择python3.6环境
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416210358.jpg"
+loading="lazy"
+>
+函数创建完成后，去触发方式里添加一个触发方式，这里要保持默认不勾选集成响应，因为我们返回的不是网页
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416210657.jpg"
+loading="lazy"
+>
+触发方式创建后会生成一个链接，这个链接就是我们的API接口，现在点击这个链接应该会返回&amp;quot;Hello World&amp;quot;
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416210806.jpg"
+loading="lazy"
+>
+下面我们开始写我们自己的函数，如果你看了官方文档会本地部署的话，比如用vscode云函数插件，可以用插件把当前项目下载到本地，不会本地的话直接在网页上操作也是可以的。
+新建一个yiyan.py和yiyan.txt&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> random
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">yiyan&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(&lt;span style="color:#e6db74">&amp;#34;yiyan.txt&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;r&amp;#39;&lt;/span>, encoding&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;utf-8&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> lines &lt;span style="color:#f92672">=&lt;/span> f&lt;span style="color:#f92672">.&lt;/span>readlines()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> line &lt;span style="color:#f92672">=&lt;/span> random&lt;span style="color:#f92672">.&lt;/span>sample(lines, &lt;span style="color:#ae81ff">1&lt;/span>)[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> line &lt;span style="color:#f92672">=&lt;/span> line&lt;span style="color:#f92672">.&lt;/span>strip()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> line
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(yiyan())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>yiyan.txt里写入所有一言语句，比如我写的燕双鹰语录&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-txt" data-lang="txt">&lt;span style="display:flex;">&lt;span>你太情绪化，也不大冷静，不习惯用大脑思考问题。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>在行动面前，语言永远是苍白无力的。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>老子是你祖宗！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我说过，你们会付出十倍的代价！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>为什么总有人觉得自己能够杀得了我？
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>恐吓是最低级的手段，是外强中干的表现。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你通常都会把自己爱的人，引进伏击圈吗？说实话，这种表达爱情的方式太与众不同，也太令人毛骨悚然了你的心！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>不要再大喊大叫了，心疼心疼自己可怜的肺吧！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你喜欢死吗？
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>不要做个破坏气场的人，这样会受到自然的惩罚。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我会让你看到自己的脑浆。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>回答我！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我总是很快。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>谁要低估女人的能力，一定吃大亏！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>要站在敌人的背后，让敌人变成睁眼瞎。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>能够让你轻易背叛的，绝不是你真正的信仰。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>即使你拿枪对准了我的后背，我也可以在一秒钟之内让你看到自己的脑浆。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你没听到我说的话吗？
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我赌你的枪里没有子弹。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>谁要是低估女人的能力，一定会吃大亏！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>手段并不能说明什么，只有目的才能分得出正义和邪恶。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>小心背后啊。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>一个善良的人，不管他的信仰是什么，也不管他是不是有信仰，至少会做出善良的事情。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>不要制造自己解决不了的麻烦，也不要许下无法兑现的诺言。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>自信总不是坏事，只要不是盲目的。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>意志并不是空穴来风，想有就有，那里面闪烁着正义和人性的光芒。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>不要用枪指着我的头，否则你会看到自己的脑浆！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>这一点已经不重要了。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>别让我再说第二遍。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你的眼睛会欺骗你，你的直觉会误导你，只有心才是最可靠的！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你信不信，我可以在一秒钟内让你看到自己的脑浆！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你只需要知道，我所知道的比你们知道的要多得多！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你已经死了，死人能杀人吗？
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你真的不会讲故事！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>这种死法，真的是很惨。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我有个习惯，会杀死向自己开枪的人，哪怕他的枪里没有子弹。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>速度不是靠双臂和力量达到的，而是靠心。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>我的枪口再低半寸，你们就会看到自己老大的脑浆！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>这种试探才可怕是在拿自己弟兄的生命开玩笑，这种不信任更加可怕很难想象今后你我双方能够精诚合作。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>你相信自己的眼睛吗？有时眼睛会欺骗你。
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>像你这样的人要怎么改变，嗯？你不会改变，只有死！
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>休息是养精蓄锐，睡觉则是懒惰松散！
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后重写index.py&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># -*- coding: utf8 -*-&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> logging
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> yiyan &lt;span style="color:#f92672">import&lt;/span> yiyan
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>logger &lt;span style="color:#f92672">=&lt;/span> logging&lt;span style="color:#f92672">.&lt;/span>getLogger()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">main_handler&lt;/span>(event, context):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> result &lt;span style="color:#f92672">=&lt;/span> yiyan()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> logger&lt;span style="color:#f92672">.&lt;/span>info(result)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> result
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上传部署或者点击完成后，点击测试或者打开前面生成的API链接，应该就可以返回一言了
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416211232.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="自定义域名">&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e5%9f%9f%e5%90%8d" class="header-anchor">&lt;/a>自定义域名
+&lt;/h2>&lt;p>这个默认链接太长了，我们可以自定义域名。回到上面的触发方式那里，点击这个服务名
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416211421.jpg"
+loading="lazy"
+>
+点击自定义域名，然后点击新建
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416211508.jpg"
+loading="lazy"
+>
+根据页面提示自行添加域名解析，如果选择https的话，还需要自行添加证书，建议在腾讯云申请证书，这样就不用再添加一遍证书密钥什么的了，最后别忘了自定义路径映射，否则访问链接都得带&lt;code>/release/&lt;/code>样的后缀
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416214810.jpg"
+loading="lazy"
+>
+现在我们访问[域名]/[云函数的名称]（比如http://api.2bboy.com/api）就能访问到你的一言啦！
+如果你不想要后面这个云函数的名称或者想换一个，还是那个服务界面，选择管理API，点击编辑就能自定义后缀了，修改后按照提示下一步然后重新发布就行了，现在就能通过http://api.2bboy.com/访问了
+&lt;img src="https://pan.2bboy.com/img/2020/04/0416220637.jpg"
+loading="lazy"
+>&lt;/p></description></item><item><title>OneDrive-OneManager云盘程序onemoe主题</title><link>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</link><pubDate>Wed, 19 Feb 2020 13:28:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive-onemanager%E4%BA%91%E7%9B%98%E7%A8%8B%E5%BA%8Fonemoe%E4%B8%BB%E9%A2%98/</guid><description>&lt;p>假期刚看了一点css教程，就花了两个晚上给&lt;a class="link" href="https://github.com/qkqpttgf/OneManager-php" target="_blank" rel="noopener"
+>onedrive-OneManager&lt;/a>重新写了个样式当作练手了，本来是想在原有的基础上做一点美化，但程序原样式都是内部样式，而且还有许多内联样式，改起来超级麻烦，所以干脆就从头开始重写了。&lt;/p>
+&lt;h2 id="下载地址">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80" class="header-anchor">&lt;/a>下载地址
+&lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://github.com/kizx/onedrive-index-theme" target="_blank" rel="noopener"
+>下载地址&lt;/a>[/scode]&lt;/p>
+&lt;h2 id="预览">&lt;a href="#%e9%a2%84%e8%a7%88" class="header-anchor">&lt;/a>预览
+&lt;/h2>&lt;p>[scode type=&amp;ldquo;green&amp;rdquo;]&lt;a class="link" href="https://pan.2bboy.com/" target="_blank" rel="noopener"
+>在线预览&lt;/a>[/scode]
+虽然本人的审美不咋地，但是原主题那个超大的圆角我已经忍了很久了┻━┻ ヘ╰( ??ε?? ╰)，主题的配色我不是很懂，你要是不喜欢反正在我css的基础上改起来也简单。&lt;/p>
+&lt;h2 id="使用说明">&lt;a href="#%e4%bd%bf%e7%94%a8%e8%af%b4%e6%98%8e" class="header-anchor">&lt;/a>使用说明
+&lt;/h2>&lt;p>[tabs]
+[tab name=&amp;quot;&lt;del>旧版本&lt;/del>&amp;quot;]&lt;/p>
+&lt;ul>
+&lt;li>简单点就是直接把下载的onemoe.php复制到theme文件夹下然后网站后台切换主题即可。&lt;/li>
+&lt;li>我的onemoe.php其实是在classic.php基础上改的，本着尽量不改动内部的原则（其实是我不会php,另一个是改动的越少主程序更新时就修改的越少），改动的地方是把head里所有内部样式删除，然后替换成下面这句。
+&lt;code>&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;[onemoe.css的地址]&amp;quot; type=&amp;quot;text/css&amp;quot; /&amp;gt;&lt;/code>&lt;/li>
+&lt;li>更新多盘后发现多了个div不好定位，无奈只好在内部加了两个onemoe的class，一个位于底部readme，一个位于多盘位置，另外删除了文件大小和时间两个标题的内联样式。所以如果你用这个主题出现什么问题，除了显示样式上的问题，其余的bug肯定与我无瓜。&lt;/li>
+&lt;li>现在我把onemoe.css文件放在我的网站上并提供了百度cdn加速，如果你想修改主题配色什么的，可以直接在我的css上进行修改，然后把你修改的css文件放在自己的onedrive目录或者别的cdn处，然后把上面的链接替换下就可以了，主题更新时同理也只需把新的css文件链接替换下就行。
+[/tab]
+[tab name=&amp;ldquo;新版本&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]&lt;/li>
+&lt;li>程序已内置本主题，后台切换主题即可使用。&lt;/li>
+&lt;li>或者可以手动下载onemoe.html放在程序theme文件夹下后台启用主题，以此来获取最新主题。&lt;/li>
+&lt;li>本主题只是基于classic主题的css重写，并未改动原主题任何主体内容。&lt;/li>
+&lt;li>css文件默认从 &lt;a class="link" href="https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css" target="_blank" rel="noopener"
+>https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css&lt;/a> 加载，你也可以自行修改上述地址，改成自己的cdn地址。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">link&lt;/span> &lt;span style="color:#a6e22e">rel&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;stylesheet&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">href&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;https://cdn.jsdelivr.net/gh/kizx/onemoe-theme/onemoe.min.css&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">type&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;text/css&amp;#34;&lt;/span> /&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
+[/tabs]&lt;/p>
+&lt;h2 id="更多关于onemanager的设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e5%85%b3%e4%ba%8eonemanager%e7%9a%84%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多关于OneManager的设置
+&lt;/h2>&lt;p>[post cid=&amp;ldquo;176&amp;rdquo; /]&lt;/p></description></item><item><title>VirtualBox安装linux虚拟机</title><link>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</link><pubDate>Wed, 08 Jan 2020 09:47:00 +0000</pubDate><guid>http://kizx.gitee.io/post/virtualbox%E5%AE%89%E8%A3%85linux%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid><description>&lt;p>VirtualBox下载地址：https://www.virtualbox.org/wiki/Downloads
+系统镜像下载，这是网易的镜像下载地址，速度很快：http://mirrors.163.com/ubuntu-releases/&lt;/p>
+&lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
+&lt;/h2>&lt;p>安装教程：
+&lt;a class="link" href="https://www.bilibili.com/video/av82489244" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/av82489244&lt;/a>&lt;/p>
+&lt;h2 id="可能遇到的问题">&lt;a href="#%e5%8f%af%e8%83%bd%e9%81%87%e5%88%b0%e7%9a%84%e9%97%ae%e9%a2%98" class="header-anchor">&lt;/a>可能遇到的问题
+&lt;/h2>&lt;ol>
+&lt;li>VirtualBox中默认启用了硬件虚拟化，可以在任务管理器cpu里进行查看,未启用的话需在bios里启用
+&lt;img src="https://pan.2bboy.com/images/2020/01/0108175711.png"
+loading="lazy"
+>&lt;/li>
+&lt;li>网络无法连接可以换回默认的连接方式&lt;/li>
+&lt;/ol></description></item><item><title>远程开机的几种方式</title><link>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 04 Dec 2019 10:16:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E8%BF%9C%E7%A8%8B%E5%BC%80%E6%9C%BA%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="开机棒">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%a3%92" class="header-anchor">&lt;/a>开机棒
+&lt;/h2>&lt;p>开机棒是插在路由器LAN口上使用的，如果是校园网那就用不了，因为你根本不知道路由器或者交换机在哪，知道在哪你也不能插个这么个玩意上去，不过你自己单独再整个路由器，然后电脑连路由器上应该可以。
+开机棒由一个usb线单独供电，远程开机的原理应该是WOL网络远程唤醒电脑，只要不是古董机，一般电脑主板都有这个功能。其实这个功能本来只能用于局域网唤醒主机，要实现外网唤醒，必须做内网穿透，但开机棒自己就能连接外网，所以内网穿透就不用我们操心了。&lt;/p>
+&lt;h2 id="开机插座">&lt;a href="#%e5%bc%80%e6%9c%ba%e6%8f%92%e5%ba%a7" class="header-anchor">&lt;/a>开机插座
+&lt;/h2>&lt;p>开机插座和普通的智能插座没有多大不同，就是可以远程控制电源的开关。电脑的主板上都有一个通电后自启动的功能，这也是我们电脑为什么有时停电来电后能自动开机的原因。插座必须要连无线网，一般只支持2.4GWiFi，这样你才能远程控制插座的开关。开机插座可以和向日葵软件配合，实现电脑系统关机后过一会再断电，比起用一般的智能插座强制断电要好。但我寻思你远程桌面点击关机后再过两分钟关闭智能插座，效果不也一样嘛。&lt;/p>
+&lt;h2 id="开机卡">&lt;a href="#%e5%bc%80%e6%9c%ba%e5%8d%a1" class="header-anchor">&lt;/a>开机卡
+&lt;/h2>&lt;p>一块插在电脑主板PCI-E口上的板子，PCI-E的接口只有供电的作用。因为主板有系统关机但PCI-E不断电的功能，所以就保证了这块卡在关机状态下也能工作。开机卡也需要联网，板子上有接口和电脑的开机和重启的跳线相接，其实就是模拟你按下开机键进行开关机。通过开机卡的软件客户端可以实现定时开关机和语音唤醒等功能，具体就看厂商支持那些功能了。&lt;/p>
+&lt;hr>
+&lt;p>我买回来后才发现我这校园网虽然有2.4G信号，但需要网页验证，所以无法识别成功，没办法我就淘了个路由器利用路由器的WiFi才行。然后我就又发现淘的路由器太辣鸡不支持ipv6，无奈又整了个交换机，这一波投入有点亏，这是后话。&lt;/p></description></item><item><title>Windows中的高级“快捷方式”</title><link>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</link><pubDate>Sat, 19 Oct 2019 05:18:00 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E4%B8%AD%E7%9A%84%E9%AB%98%E7%BA%A7%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</guid><description>&lt;p>很久以前就知道windows中这么一种快捷方式，不同于普通的快捷方式，是一种可以和源文件发挥相同功效作用的“快捷方式”，但是一直未深入探索使用过，现在想起来或许这种快捷方式可以为我们的工作带来很大便利。
+部分参考资料：
+&lt;a class="link" href="https://baike.baidu.com/item/mklink/566760?fr=aladdin" title="mklink_百度百科"
+target="_blank" rel="noopener"
+>mklink_百度百科&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/5hongbing/article/details/77389079" target="_blank" rel="noopener"
+>Windows硬链接 软链接 符号链接 快捷方式&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/cxrsdn/article/details/86631541" title="Windows上创建符号链接的完整指南"
+target="_blank" rel="noopener"
+>Windows上创建符号链接的完整指南&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/guyue35/article/details/49761347" target="_blank" rel="noopener"
+>Windows下mklink使用, 硬链接, 软链接和快捷方式的区别&lt;/a>
+&lt;a class="link" href="https://www.jianshu.com/p/b1614a073087" target="_blank" rel="noopener"
+>windows mklink /d /h /j 精讲&lt;/a>
+&lt;a class="link" href="https://social.microsoft.com/Forums/zh-CN/95d0efc9-3ae9-4611-bb9d-68560c3c15ee/vista19979318672241120026junction21644symlink3034025991202142284126377?forum=vistazhchs" title="Vista下类型为JUNCTION和SYMLINK的文件夹有什么区别"
+target="_blank" rel="noopener"
+>Vista下类型为JUNCTION和SYMLINK的文件夹有什么区别&lt;/a>&lt;/p>
+&lt;h2 id="实践">&lt;a href="#%e5%ae%9e%e8%b7%b5" class="header-anchor">&lt;/a>实践
+&lt;/h2>&lt;p>看完许多资料，还是对windows下的mklink命令感到有些迷惑，我觉得还是自己实践下比较好。
+&lt;img src="https://pan.2bboy.com/img/2019/10/359859328.png"
+loading="lazy"
+>
+mklink一共只有3种链接，针对3种方式我分别对文件和文件夹进行如下实验。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>文件测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\d.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h D:\h.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h C:\Users\ZXIN\Desktop\opencv\h.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\j.txt C:\Users\ZXIN\Desktop\src.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>文件夹测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\d C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h D:\h C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h C:\Users\ZXIN\Desktop\opencv\h C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\j C:\Users\ZXIN\Desktop\src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>占用空间测试
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d D:\bigd &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /d G:\bigd &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /h G:\bigh.zip &lt;span style="color:#e6db74">&amp;#34;G:\NPUBits\偷星九月天.zip&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j D:\bigj &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">mklink&lt;/span> /j G:\bigj &lt;span style="color:#e6db74">&amp;#34;G:\ONE PIECE\820-866&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以下是实验结果：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>项目&lt;/th>
+&lt;th>符号链接&lt;/th>
+&lt;th>硬链接&lt;/th>
+&lt;th>目录链接&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>参数&lt;/td>
+&lt;td>/D&lt;/td>
+&lt;td>/H&lt;/td>
+&lt;td>/J&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>管理员权限&lt;/td>
+&lt;td>需要&lt;/td>
+&lt;td>不需要&lt;/td>
+&lt;td>不需要&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>文件&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>文件夹&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>空间&lt;/td>
+&lt;td>不占用&lt;/td>
+&lt;td>不占用(理应占用)&lt;/td>
+&lt;td>不占用&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>跨磁盘&lt;/td>
+&lt;td>可以&lt;/td>
+&lt;td>不可以&lt;/td>
+&lt;td>可以&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>删除或移动源文件(夹)&lt;/td>
+&lt;td>无法访问&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>无法访问&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>移动链接&lt;/td>
+&lt;td>秒移，整个文件夹被移动&lt;/td>
+&lt;td>秒移&lt;/td>
+&lt;td>跨盘的话会发生复制行为，原地遗留一个空文件夹&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>和网上的图进行比较：
+&lt;img src="https://pan.2bboy.com/img/2019/10/2866579881.png"
+loading="lazy"
+>&lt;/p>
+&lt;p>奇怪的地方来了，在我测试中三种方式都是不占用空间的，硬链接应该是会占用空间的才对，我检查占用空间的方式是右键磁盘查看可用空间，但是三种方式都不改变磁盘剩余空间，右键查看文件的占用空间三种方式也都是一样的，可能这种查看方式并不科学。&lt;/p>
+&lt;h2 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
+&lt;/h2>&lt;ul>
+&lt;li>与其叫快捷方式，其实这三种方式更像是文件共享，共同点都是文件的改动都是同步的，但是链接文件或目录的删除不影响源文件。&lt;/li>
+&lt;li>至于区别首先就是硬链接源文件的删除不影响链接文件，但是硬链接只能链接文件不能链接文件夹，而另两种方式只能链接文件夹，所以硬链接很适合备份数据。&lt;/li>
+&lt;li>如果什么参数都不加，创建的是文件符号链接。&lt;/li>
+&lt;li>另两种文件链接方式似乎没有什么大差别，/D需要管理员权限，在移动链接文件夹时是整体移动的，不会留下一个空文件夹。需要注意的是虽然删除目录链接的目录本身不会影响源文件，但是删除删除目录下的文件会导致同步删除。&lt;/li>
+&lt;/ul>
+&lt;h2 id="应用">&lt;a href="#%e5%ba%94%e7%94%a8" class="header-anchor">&lt;/a>应用
+&lt;/h2>&lt;ul>
+&lt;li>除了用硬链接备份数据外，因为这种创建链接的方式几乎是瞬间完成的，可以和OneDrive云盘配合使用，也可用作程序间的数据共享。&lt;/li>
+&lt;li>一个有意思的技巧，如果想使硬链接跨盘符使用该怎么办？可以使用软连接和硬链接相结合的方式，即在一个可以跨盘连接的软链接里创建硬链接，这样硬链接就会同步到另一个盘里。&lt;/li>
+&lt;li>另外如果每次都用命令行的方式进行操作未免太过极客了，刚好在参考文件里找到一个软件，直接将该功能集成到右键菜单里了，我觉得很赞。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>软件下载地址：http://schinagl.priv.at/nt/hardlinkshellext/linkshellextension.html
+[button color=&amp;ldquo;info&amp;rdquo; icon=&amp;ldquo;fa fa-download&amp;rdquo;]&lt;a class="link" href="https://pan.2bboy.com/Public/Software/HardLinkShellExt_X64.exe" target="_blank" rel="noopener"
+>本地下载&lt;/a>[/button]&lt;/p>&lt;/blockquote>
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>这个up在视频里讲解了硬链接，本文有些错误懒得改了，建议结合视频观看理解
+&lt;a class="link" href="https://www.bilibili.com/video/BV11b4y1t72B" target="_blank" rel="noopener"
+>https://www.bilibili.com/video/BV11b4y1t72B&lt;/a>&lt;/p></description></item><item><title>jupyter安装和配置</title><link>http://kizx.gitee.io/post/jupyter%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 08:38:00 +0000</pubDate><guid>http://kizx.gitee.io/post/jupyter%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="方案一anaconda自带">&lt;a href="#%e6%96%b9%e6%a1%88%e4%b8%80anaconda%e8%87%aa%e5%b8%a6" class="header-anchor">&lt;/a>方案一：Anaconda自带
+&lt;/h2>&lt;p>这个不用细说，进入&lt;a class="link" href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener"
+>Anaconda官网&lt;/a>下载安装包安装即可，安装完自带jupyter。&lt;/p>
+&lt;h2 id="方案二手动安装">&lt;a href="#%e6%96%b9%e6%a1%88%e4%ba%8c%e6%89%8b%e5%8a%a8%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>方案二：手动安装
+&lt;/h2>&lt;ul>
+&lt;li>通过pip安装
+&lt;code>pip install jupyter notebook&lt;/code>&lt;/li>
+&lt;li>安装完命令行输入命令打开
+&lt;code>jupyter notebook&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h1 id="配置">&lt;a href="#%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>配置
+&lt;/h1>&lt;h2 id="先安装nbextension">&lt;a href="#%e5%85%88%e5%ae%89%e8%a3%85nbextension" class="header-anchor">&lt;/a>先安装nbextension
+&lt;/h2>&lt;pre>&lt;code>jupyter contrib nbextension install
+jupyter contrib nbextension install --user
+&lt;/code>&lt;/pre>
+&lt;p>安装完打开jupyter首页应该就会多出一个Nbextension的插件配置页&lt;/p>
+&lt;h2 id="代码自动规范">&lt;a href="#%e4%bb%a3%e7%a0%81%e8%87%aa%e5%8a%a8%e8%a7%84%e8%8c%83" class="header-anchor">&lt;/a>代码自动规范
+&lt;/h2>&lt;ul>
+&lt;li>安装插件
+&lt;code>pip install yapf &lt;/code>&lt;/li>
+&lt;li>在插件配置页勾选&lt;code>Code prettify&lt;/code>
+安装启用完在代码页的菜单栏就会多出一个油漆滚筒的图标，点击即可代码自动格式化&lt;/li>
+&lt;/ul>
+&lt;h2 id="代码提示">&lt;a href="#%e4%bb%a3%e7%a0%81%e6%8f%90%e7%a4%ba" class="header-anchor">&lt;/a>代码提示
+&lt;/h2>&lt;p>虽然在写代码时按&lt;code>Tab&lt;/code>键可以进行代码提示，但不是实时的，效率很低，最好能像ide里一样进行自动提示。方法很简单，在Nbextension的插件配置页勾选&lt;code>Hinterland&lt;/code>即可。&lt;/p></description></item><item><title>OneDrive使用指南</title><link>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Mon, 23 Sep 2019 03:35:00 +0000</pubDate><guid>http://kizx.gitee.io/post/onedrive%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;h2 id="1-获取5t空间">&lt;a href="#1-%e8%8e%b7%e5%8f%965t%e7%a9%ba%e9%97%b4" class="header-anchor">&lt;/a>1. 获取5T空间
+&lt;/h2>&lt;p>OneDrive当云盘的好处是不限速，但实际速度并不会跑满带宽，具体速度以实际情况为准，我的速度用客户端上传的话最快能跑到7M/s，网页下载配合idm的话有时能跑满带宽，还是相当给力的。其次还有一个优点就是内容不会被和谐。&lt;/p>
+&lt;p>但普通邮箱注册只有5G的免费空间，教育邮箱注册可以获得5T的免费空间，但一般正规教育邮箱注册只有1T的可用空间，不过1T也基本上够用了，如果没有教育邮箱可以选择花几块钱买一个5T账号省的麻烦。&lt;/p>
+&lt;p>注意我们这里注册的是office365的账号和微软账号通用，可以通过以下方法查看空间大小：登录到office365，进入OneDrive，选择右上角设置-&amp;gt;OneDrive设置，继续选择其他设置-&amp;gt;存储标准即可看到空间大小，或者打开onedrive桌面客户端也可以进行查看。&lt;/p>
+&lt;h2 id="2-桌面客户端使用">&lt;a href="#2-%e6%a1%8c%e9%9d%a2%e5%ae%a2%e6%88%b7%e7%ab%af%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>2. 桌面客户端使用
+&lt;/h2>&lt;p>win10系统是自带Onedrive客户端的，搜索打开OneDrive并登录后，设置一个文件夹为同步文件夹。&lt;/p>
+&lt;p>OneDrive不同于国内的网盘，和国内的坚果云有点类似。他是一个同步云盘，同步文件夹里所有文件都是和云端同步的，上传文件只需把文件拖进同步文件夹内即可。&lt;/p>
+&lt;p>但由于是同步的如果本地删除文件云端也会删除，云端删除文件本地也会删除，这点就很坑了，可能国人更喜欢把云盘当一个存储资料的硬盘来使用，我本地删除了云端也没了那还存个屁啊。在这一点上国内云盘就很人性化了，单独有一个同步文件夹可供使用。&lt;/p>
+&lt;p>所以微软是怎么解决这个问题的呢，OneDrive有个文件随选功能，具体见官方说明&lt;a class="link" href="https://support.office.com/zh-cn/article/%E9%80%9A%E8%BF%87%E9%80%82%E7%94%A8%E4%BA%8E-windows-10-%E7%9A%84-onedrive-%E6%96%87%E4%BB%B6%E9%9A%8F%E9%80%89%E8%8A%82%E7%9C%81%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4-0e6860d3-d9f3-4971-b321-7092438fb38e?ui=zh-CN&amp;amp;rs=zh-CN&amp;amp;ad=CN" target="_blank" rel="noopener"
+>通过适用于 Windows 10 的 OneDrive 文件随选节省磁盘空间&lt;/a>。
+通过右键文件选择释放空间，文件就会被标注为在联机时下载使用，也就是本地就是一个快捷方式一样的东西，在打开使用这个文件时就会下载这个文件。但要注意的是如果你删除这个“快捷方式”，云端同样会删除文件，坑啊。&lt;/p>
+&lt;p>还有一个办法是打开OneDrive设置，找到一个同步选项，去掉你想删除的文件使其不同步，这样一来本地文件就自动删除了而云端数据仍然保留，也就是使这个文件在本地不同步。但这个做法你想要再下载这个文件的话，要么去云端再下载，要么重新勾上同步，这就有点小麻烦了。&lt;/p>
+&lt;h2 id="3-搭建云盘">&lt;a href="#3-%e6%90%ad%e5%bb%ba%e4%ba%91%e7%9b%98" class="header-anchor">&lt;/a>3. 搭建云盘
+&lt;/h2>&lt;p>使用OneDrive还有一个好处就是可以用来搭建个人云盘，也可以用来搭建个人图床，如果你有一台服务器的话，那么你可以选择OneIndex,OLAINDEX,PyOne,CuteOne等方案来部署你的个人云盘，搭建过程和你安装博客程序差不多。&lt;/p>
+&lt;p>如果你手头没有空闲的主机，那么也可通过下面的方式利用腾讯云的云函数服务来搭建一个。
+我当初是参考这个教程的：https://logi.im/back-end/scf-onedrive-filelistor.html
+项目地址：https://github.com/qkqpttgf/OneManager-php
+顺便说下学校教育邮箱申请的onedrive可能无法使用这个项目，好像是无法开通api的缘故，但可以用下面的方案通过分享的方式来访问。&lt;/p>
+&lt;p>和上面的类似，可以尝试另一个云函数网盘方案&lt;a class="link" href="https://github.com/ukuq/onepoint" target="_blank" rel="noopener"
+>onepoint&lt;/a>。
+这里是使用说明：https://www.onesrc.cn/p/onepoint-configuration-process.html&lt;/p>
+&lt;h2 id="附onedrive种类示意图">&lt;a href="#%e9%99%84onedrive%e7%a7%8d%e7%b1%bb%e7%a4%ba%e6%84%8f%e5%9b%be" class="header-anchor">&lt;/a>附onedrive种类示意图
+&lt;/h2>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/03/20200312191455.jpg"
+loading="lazy"
+>&lt;/p></description></item><item><title>百度云虚拟主机BCH + Typecho的一些坑</title><link>http://kizx.gitee.io/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</link><pubDate>Fri, 13 Sep 2019 17:31:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%99%BE%E5%BA%A6%E4%BA%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAbch-+-typecho%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9D%91/</guid><description>&lt;h2 id="1-ssl配置">&lt;a href="#1-ssl%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>1. SSL配置
+&lt;/h2>&lt;p>默认情况下使用SSL浏览器会提示有危险加载项，而且后台也进不去，这时只需要在后台将在目录下的 &lt;code>config.inc.php&lt;/code>文件中添加一下代码即可一切正常&lt;/p>
+&lt;pre tabindex="0">&lt;code>/** 开启HTTPS */
+define(&amp;#39;__TYPECHO_SECURE__&amp;#39;,true);
+&lt;/code>&lt;/pre>&lt;h2 id="2-只显示首页">&lt;a href="#2-%e5%8f%aa%e6%98%be%e7%a4%ba%e9%a6%96%e9%a1%b5" class="header-anchor">&lt;/a>2. 只显示首页
+&lt;/h2>&lt;ul>
+&lt;li>这个问题比较蛋疼，只有首页和后台可以显示，文章页和其他页面无法显示，点击任何文章或其他链接都只会显示首页，刚开始我还以为是安装过程出错，来回重装了好几次都还是这样，经过大量搜索查阅，都说是当前php不支持pathinfo的缘故，但我发现只要把设置里的永久链接自定义文章路径改成除默认路径以外的路径，点击文章就能够正常打开文章页了。&lt;/li>
+&lt;li>但问题是文章是可以显示了，还有其他页面比如下一页和分类页面还是无法跳转啊，于是我又继续研读了百度云虚拟主机的官方文档，在尝试了网上各种设置后均失败了。但经过大量尝试发现应该是网址中只要出现index.php就无法正常跳转，于是我灵机一动如果设置伪静态rewrite是不是就可以了，结果尝试了一下果然可以。设置也很简单，在后台开启地址重写，然后ftp登录网站空间，在webroot下新建bcloud_nginx_user.conf文件，并写入以下代码即可：&lt;/li>
+&lt;/ul>
+&lt;pre tabindex="0">&lt;code>if (!-e $request_filename) {
+rewrite ^(.*)$ /index.php$1 last;
+}
+&lt;/code>&lt;/pre>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://blog.csdn.net/enweitech/article/details/75108048" target="_blank" rel="noopener"
+>https://blog.csdn.net/enweitech/article/details/75108048&lt;/a>&lt;/p></description></item><item><title>零基础不花一分钱建站之WordPress篇</title><link>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</link><pubDate>Sat, 17 Aug 2019 17:17:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bwordpress%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/h2>&lt;p>最近懒癌犯了，本来应该紧接着上一个hexo篇写的，这样也好做一个对比，但长时间不操作我也有点忘了，赶紧靠着仅存的记忆记一下wp建站的操作。&lt;/p>
+&lt;p>比起hexo建站，wp在操作上可以说是很简单了，但wp的功能和可玩性比hexo更强，毕竟是应用最广泛的建站方案，其主题数量和应用范围远远超过hexo，除了博客网站，各种新闻、商店、图片等网站也大量使用wp。&lt;/p>
+&lt;p>本篇主题为零基础不花一分钱建站，建站需要两样东西：主机空间和域名。我这里的不花一分钱主要指免费的主机空间，主机空间一般都有临时域名可以拿来用用，所以买域名的钱我就不算了，而且最便宜的域名也只要1块钱，也不算贵。&lt;/p>
+&lt;h2 id="方案一coding一键部署方案">&lt;a href="#%e6%96%b9%e6%a1%88%e4%b8%80coding%e4%b8%80%e9%94%ae%e9%83%a8%e7%bd%b2%e6%96%b9%e6%a1%88" class="header-anchor">&lt;/a>方案一：coding一键部署方案
+&lt;/h2>&lt;p>没错还是hexo里用到的那个coding，依赖于腾讯的在线云平台cloud studio实现免费的主机空间，只需两步即可款速实现一键部署wp。&lt;/p>
+&lt;p>&lt;a class="link" href="https://dev.tencent.com/help/cloud-studio/one-click-deploy#i-4" target="_blank" rel="noopener"
+>这是官方使用指南&lt;/a>&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>第一步进入cloud studio从模板新建一个wordpress工作空间&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907022353.png"
+loading="lazy"
+alt="新建工作空间"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>第二步进入工作空间打开右侧的一键部署，点击一键部署，部署完毕后点击打开测试域名就进入到下图所示的wp的初始化界面了，然后填写相应信息网站即创建成功，数据库的信息在一键部署的资源面板里可以查到，注意信息不能填错了。&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907022418.png"
+loading="lazy"
+alt="欢迎界面"
+>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;ul>
+&lt;li>第二步补充，如果信息怎么填都不对的话，可以试试主动修改主目录下的wp-config-sample.php文件其中的四个参数，注意主机要填写 mysql.coding.io，填写好后另存为wp-config.php文件即可。&lt;br>
+建议采用补充的方法，这样每次重新部署时就不需要重新再填一遍信息了，不过要注意相应的仓库不能公开，不然别人就知道你的数据库了。&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907022443.png"
+loading="lazy"
+alt="手动填写"
+>&lt;/li>
+&lt;/ul>
+&lt;ol start="3">
+&lt;li>第三步，如果你有域名的话，可以为域名添加解析，然后在一键部署面板里添加域名绑定，这样就可以用域名来访问网站了，添加解析的操作具体看官方指南这里略过。&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>评价&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>优点：操作简单无脑，在线操作不需要下载上传任何文件，只要cloud stidio不关门应该就能一直用，而且由于coding是香港服务器访问速度也比较快。&lt;/li>
+&lt;li>缺点：免费必然有限制，coding默认模板的wp版本较低且为英文版，没有中文，而且coding一键部署的网站不能连接外网，导致wp不能更新，更不能在线下载主题和插件，想要更新wp版本和安装主题只能单独下载新版本wp和自己喜欢的主题，然后自己在coding上新开一个仓库把自己下载解压后的wp和主题push到仓库中，然后以这个仓库为模板新建一个php环境的工作空间进行一键部署，还是比较麻烦的。&lt;/li>
+&lt;/ul>&lt;/blockquote>&lt;/blockquote>
+&lt;h2 id="方案二免费的网站服务器">&lt;a href="#%e6%96%b9%e6%a1%88%e4%ba%8c%e5%85%8d%e8%b4%b9%e7%9a%84%e7%bd%91%e7%ab%99%e6%9c%8d%e5%8a%a1%e5%99%a8" class="header-anchor">&lt;/a>方案二：免费的网站服务器
+&lt;/h2>&lt;p>虽然coding的一键部署很方便，但是还是有很多的限制，不如白嫖一个服务器来的实在，哎这里并不是在打广告，我之前找到一个叫强人网络的服务商，可以白嫖一年的网站服务器，凑合着玩玩还是相当不错的。注意这是真的免费而不是像国内有些服务商打着免费的旗号骗注册然后发现要免费使用还要帮它宣传，实在是太恶心了。&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>第一步：从wordpress官网下载最新安装包，上传到主机上，我白嫖的这个服务器有自己的控制台，所以连ftp都省了，直接从网页控制台上传压缩包然后在线解压就成了。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>第二步：进入服务商提供的临时域名，后面就和方案一没差了，填写相关信息完成网站初始化，相关信息服务商应该会发邮件给你。&lt;br>
+&lt;img src="https://pan.2bboy.com/img/2019/10/20190907022516.png"
+loading="lazy"
+alt="控制台"
+>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>第三步：如果有域名的话，为域名添加解析，并在服务器控制台绑定域名，然后你就可以通过域名访问你创建的网站了。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>评价：&lt;/p>
+&lt;blockquote>
+&lt;ul>
+&lt;li>优点：操作上由于有控制台，免去了ftp和解压的麻烦，还是相当方便的，最重要的是免费哈哈。&lt;/li>
+&lt;li>缺点：服务器在国外访问速度较慢，但也还能接受啦，只能免费用一年。&lt;/li>
+&lt;/ul>&lt;/blockquote>&lt;/blockquote>
+&lt;h2 id="和hexo比较">&lt;a href="#%e5%92%8chexo%e6%af%94%e8%be%83" class="header-anchor">&lt;/a>和Hexo比较
+&lt;/h2>&lt;p>由于wordpress有自己的后台管理，在功能上比静态的hexo要强大不少，部署的操作上比较简单，但是部署后网站的后台维护和管理感觉会更麻烦，后台里一堆设置看得人眼花。虽然wp的主题多到数不过来，但是优秀的主题如大海捞针，而且好看的主题大部分都是收费的。从操作上我更喜欢wp，hexo每次都要部署实属麻烦，但hexo的主题我倒是更喜欢。一句话喜欢折腾搞花样的选择wp，喜欢轻便只写博客的选择hexo。&lt;/p></description></item><item><title>零基础不花一分钱建站之Hexo篇</title><link>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</link><pubDate>Fri, 16 Aug 2019 17:15:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E9%9B%B6%E5%9F%BA%E7%A1%80%E4%B8%8D%E8%8A%B1%E4%B8%80%E5%88%86%E9%92%B1%E5%BB%BA%E7%AB%99%E4%B9%8Bhexo%E7%AF%87/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/h2>&lt;p>之前一个偶然的机会b站首页推荐了一个github+hexo建站的视频，虽然我对写博客没什么兴趣，但是对建站本身倒是很感兴趣，于是尝试做了一下，下面只宏观介绍下，不细节展开了。&lt;/p>
+&lt;h2 id="建站流程">&lt;a href="#%e5%bb%ba%e7%ab%99%e6%b5%81%e7%a8%8b" class="header-anchor">&lt;/a>建站流程
+&lt;/h2>&lt;p>建站流程大致如下（这只是一般步骤，后面还有更简单的方案）&lt;/p>
+&lt;ol>
+&lt;li>注册github账号并新建一个github.io仓库并进行相应设置&lt;/li>
+&lt;li>下载安装git并配置好ssh连接&lt;/li>
+&lt;li>下载安装node.js&lt;/li>
+&lt;li>开始建站&lt;/li>
+&lt;/ol>
+&lt;p>前两步对于大多数接触过github和git的人来说应该不难，但对于新手来说尤其是git操作其实是还蛮复杂的，但好在这方面的教程相当多，网上随便找找都是教程，b站也有很多视频教程，下面是一个写得很好的比较简洁的教程：&lt;a class="link" href="https://www.simon96.online/2018/10/12/hexo-tutorial/" target="_blank" rel="noopener"
+>另一个教程&lt;/a>&lt;/p>
+&lt;p>后两步也可以参照下面hexo的官网步骤一步步来就好了：&lt;a class="link" href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener"
+>Hexo官方文档&lt;/a>&lt;/p>
+&lt;p>视频教程的话推荐上面官方文档里的视频，视频在b站也有：&lt;a class="link" href="https://space.bilibili.com/362224537/channel/detail?cid=61636" target="_blank" rel="noopener"
+>官方视频教程B站链接&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>个人遇到的坑大概就是由于网络不佳，其中有些命令执行后在下载时经常卡住，多来几次就好了(可能需要fq)，建议命令都在git-bash里执行，cmd里可能会卡住。&lt;/li>
+&lt;/ul>
+&lt;p>然后就是让博客换个好看点的主题，官网提供了不少主题，而且都是免费的，主题的使用方法一般主题介绍里会有写。下面是官方所有主题地址：&lt;a class="link" href="https://hexo.io/themes/" target="_blank" rel="noopener"
+>Hexo官方主题&lt;/a>&lt;/p>
+&lt;p>完成上面的步骤，在浏览器里输入相应的github.io的博客网址应该就能看到属于自己的博客网站了，到这里也就大功告成了。&lt;/p>
+&lt;h2 id="域名">&lt;a href="#%e5%9f%9f%e5%90%8d" class="header-anchor">&lt;/a>域名
+&lt;/h2>&lt;p>如果你还想继续折腾的话，可以去注册一个域名，这个免费的域名我倒没见过，不过最便宜的域名也只要1块钱，去腾讯云、阿里云、百度云都可以，哪个便宜就选哪个。国内域名购买后首先需要上传身份证实名认证一下，由于github服务器在海外，备案就不需要了。然后按照教程给域名添加解析，并在github里添加绑定。如果这一趟下来无误的话，浏览器里输入你的域名就可以重定向到博客网站上了。&lt;/p>
+&lt;p>还有一点不得不提的就是github的国内访问速度较慢，可以使用国内的代码托管平台码云或者是coding。个人更推荐coding，因为码云免费版不支持自定义域名，要想绑定域名还得花钱升级pro版才行。而coding支持自定义域名，而且服务器在香港也不用备案。&lt;/p>
+&lt;h2 id="一个更简单的方法">&lt;a href="#%e4%b8%80%e4%b8%aa%e6%9b%b4%e7%ae%80%e5%8d%95%e7%9a%84%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>一个更简单的方法
+&lt;/h2>&lt;p>说到coding就不得不提一个更骚的操作，因为coding现在好像和腾讯合作，腾讯出了个cloud studio的云平台功能，可以直接用云平台码代码，这也就意味着只要我们有网络，什么环境都不用装，利用腾讯的cloud studio直接从第四步开始建站就行了，这个可以说是最简单的方法了，非常适合小白。具体教程见下面的链接，用云平台的话部署就不用hexo g命令了，因为平台已经向我们提供了一键部署的功能，具体可以看coding的帮助文档。最后在退出的时候别忘了将代码提交和推送，下次再继续写文章时前拉取一下就可以回到上次提交的进度了。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://blog.coding.net/blog/CS-Hexo" target="_blank" rel="noopener"
+>最快的 Hexo 博客搭建方法&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Hexo搭配代码托管平台搭建博客网站的好处是轻量化，文章支持markdown格式，但只能搭建静态网页，没有后台，一切操作都在本地进行，本地编辑完了再生成网页并部署上传到代码托管平台，至于这是优点还是缺点就看个人偏好了。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PyTorch on 醉后的星星</title><link>http://kizx.gitee.io/tags/pytorch/</link><description>Recent content in PyTorch on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Mon, 27 Apr 2020 12:12:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml"/><item><title>Windows本地部署3d-photo-inpainting项目</title><link>http://kizx.gitee.io/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 27 Apr 2020 12:12:00 +0000</pubDate><guid>http://kizx.gitee.io/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前几天我接触了一个由2D图片生成3D视频的开源项目：https://github.com/vt-vl-lab/3d-photo-inpainting
+[post cid=&amp;ldquo;168&amp;rdquo; /]
+当时是在谷歌的Colab平台上运行的，在线平台虽方便，但是连接性不好，时断时续的体验差。最蛋疼的是运行环境不能被保存，第二天想用就得从头安装环境，相当耽误时间。于是我就试了本地部署该项目，虽然官方给出的Linux上的部署教程，但我又不是程序员，懒得整一套Linux系统了，就仿照着在Windows上部署了一下，结果是完全可行的。&lt;/p>
+&lt;h2 id="前提">&lt;a href="#%e5%89%8d%e6%8f%90" class="header-anchor">&lt;/a>前提
+&lt;/h2>&lt;ol>
+&lt;li>电脑已安装Anaconda&lt;/li>
+&lt;li>电脑GPU支持cuda加速并安装相应版本cuda驱动&lt;/li>
+&lt;/ol>
+&lt;p>[post cid=&amp;ldquo;146&amp;rdquo; /]&lt;/p>
+&lt;h2 id="步骤">&lt;a href="#%e6%ad%a5%e9%aa%a4" class="header-anchor">&lt;/a>步骤
+&lt;/h2>&lt;ul>
+&lt;li>打开Anaconda控制台新建一个环境&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>conda create -n 3DP python=3.7 anaconda
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conda activate 3DP
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>下载项目和模型&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>git clone git@github.com:vt-vl-lab/3d-photo-inpainting.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>手动下载这里面的4个模型并放置在相应文件夹：https://github.com/vt-vl-lab/3d-photo-inpainting/blob/master/download.sh
+[scode type=&amp;ldquo;blue&amp;rdquo;]这一步我下好并打包放在一起了：https://pan.2bboy.com/Public/Software/www/3d-photo-inpainting.zip[/scode]&lt;/p>
+&lt;ul>
+&lt;li>下载依赖库&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">cd&lt;/span> 3d-photo-inpainting
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pip install -r requirements.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>conda install pytorch==1.4.0 torchvision==0.5.0 cudatoolkit==10.1.243 -c pytorch
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下载速度感人请试着换源或代理
+[post cid=&amp;ldquo;163&amp;rdquo; /]&lt;/p>
+&lt;ul>
+&lt;li>将jpg格式的图片放在image目录下，运行命令&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>python main.py --config argument.yml
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;h2 id="更多设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多设置
+&lt;/h2>&lt;p>项目默认运行的参数都写在了&lt;code>argument.yml&lt;/code>文件中，这里面的参数意义参考：https://github.com/vt-vl-lab/3d-photo-inpainting/blob/master/DOCUMENTATION.md
+这里面参数可以控制输出视频大小和镜头运动等，具体设置就自己探索吧。&lt;/p></description></item><item><title>利用分层深度修补技术将2D图片3D化</title><link>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E5%88%86%E5%B1%82%E6%B7%B1%E5%BA%A6%E4%BF%AE%E8%A1%A5%E6%8A%80%E6%9C%AF%E5%B0%862d%E5%9B%BE%E7%89%873d%E5%8C%96/</link><pubDate>Wed, 22 Apr 2020 11:16:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%88%A9%E7%94%A8%E5%88%86%E5%B1%82%E6%B7%B1%E5%BA%A6%E4%BF%AE%E8%A1%A5%E6%8A%80%E6%9C%AF%E5%B0%862d%E5%9B%BE%E7%89%873d%E5%8C%96/</guid><description>&lt;p>偶然在 &lt;a class="link" href="https://mp.weixin.qq.com/s/ODx3MAnOZwecZV0zOfZZHw" target="_blank" rel="noopener"
+>果壳的推送&lt;/a> 中看到这个项目：https://shihmengli.github.io/3D-Photo-Inpainting/
+感觉很有意思，可以将一张普通的2D照片经过处理得到一张具有深度空间的3D照片，准确点来说这应该叫2.5D比较像。应该是基于Pytorch训练出来的模型，官网展示的效果都相当惊艳。
+官网展示的都是现实中照片，下面我试着对动漫图片进行处理，看看能不能得到一个“3D老婆”。&lt;/p>
+&lt;h2 id="实践">&lt;a href="#%e5%ae%9e%e8%b7%b5" class="header-anchor">&lt;/a>实践
+&lt;/h2>&lt;p>官网拉到下面的Links，开发者提供了github链接和Golab链接，github链接的文档有详细的本地部署说明，用的是Anaconda部署的。
+这里我笔记本不便于运行这种大项目，好在它直接提供了Golab的demo，只要你有一个谷歌账号或者说是gmail邮箱，然后能上得了人家的Colab网站，直接点击官网的Demo或者下面的链接就可以在线部署运行了。
+&lt;a class="link" href="https://colab.research.google.com/drive/1706ToQrkIZshRSJSHvZ1RuCiM__YX3Bz" target="_blank" rel="noopener"
+>https://colab.research.google.com/drive/1706ToQrkIZshRSJSHvZ1RuCiM__YX3Bz&lt;/a>
+先点击切换到playgrand模式，当然你也可以继续点击复制到云端硬盘来创建属于你的副本。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0426200137.jpg"
+loading="lazy"
+>&lt;img src="https://pan.2bboy.com/img/2020/04/0426201157.jpg"
+loading="lazy"
+>
+然后按顺序一路点击运行即可，中间需要的只有漫长的等待。运行前可以先看下它遗留的那一长串运行结果，我们命令执行完成后会得到与之相同的输出结果，如果哪一句运行失败继续点击重新运行直至成功。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0422155541.jpg"
+loading="lazy"
+>&lt;img src="https://pan.2bboy.com/img/2020/04/0426202208.jpg"
+loading="lazy"
+>&lt;img src="https://pan.2bboy.com/img/2020/04/0426202650.jpg"
+loading="lazy"
+>
+运行下面这一句上传一张原始jpg图片，上传的图片会放在左边image目录下，上传前最好清空image目录下的图片防止后面一步读取到错误的图片。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0426202815.jpg"
+loading="lazy"
+>
+有时候由于连接性问题会上传不上去，这时候可以试试手动上传然后将图片拖动到image目录下。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0426203729.jpg"
+loading="lazy"
+>
+最后一步生成3D深度图片，这里也需要等待。。。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0422183112.jpg"
+loading="lazy"
+>
+生成的可视化视频在video目录下，每次程序会生成四个不同角度的的视频，双击可下载到本地。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0422183224.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;h2 id="视频演示">&lt;a href="#%e8%a7%86%e9%a2%91%e6%bc%94%e7%a4%ba" class="header-anchor">&lt;/a>视频演示
+&lt;/h2>&lt;!-- raw HTML omitted -->
+&lt;p>B站上面部分图片打了码，下面是原视频。
+[vplayer url=&amp;ldquo;https://pan.2bboy.com/img/video/3dpic_p2.mp4&amp;rdquo; /]&lt;/p>
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>[post cid=&amp;ldquo;170&amp;rdquo; /]&lt;/p></description></item><item><title>基于深度学习的Vtuber生成器</title><link>http://kizx.gitee.io/post/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84vtuber%E7%94%9F%E6%88%90%E5%99%A8/</link><pubDate>Sat, 11 Jan 2020 12:52:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84vtuber%E7%94%9F%E6%88%90%E5%99%A8/</guid><description>&lt;p>什么是Vtuber我就不多说了，目前的Vtuber大概要么是传统的基于Live2D，然后配合视频捕捉；要么就是3D模型结合动补设备来实现。本篇介绍的这个生成器主要是类似前者，因为即使是平面的Live2D，制作起来也是非常耗时费力的。
+那么有没有这么一种方法可以直接从一张人设图直接生成可动的模型呢，然后配合视频捕捉出道Vtuber呢，这就是今天所介绍的生成器的功能。&lt;/p>
+&lt;h2 id="原理">&lt;a href="#%e5%8e%9f%e7%90%86" class="header-anchor">&lt;/a>原理
+&lt;/h2>&lt;p>这是原作者的说明界面：https://pkhungurn.github.io/talking-head-anime/
+里面较为详细介绍了他的生成器的原理和训练过程。
+这里介绍一个图片生成网站：https://waifulabs.com/
+一个可以生成老婆半身像的网站，作者用这个网站生成的图片来对软件进行测试，当然你也可以拿自己喜欢的图来测试。&lt;/p>
+&lt;h2 id="试玩">&lt;a href="#%e8%af%95%e7%8e%a9" class="header-anchor">&lt;/a>试玩
+&lt;/h2>&lt;p>这是原作者的源码：https://github.com/pkhungurn/talking-head-anime-demo
+以下是我根据源码说明做的简单总结。
+步骤：
+[scode type=&amp;ldquo;lblue&amp;rdquo;]1. 安装PyTorch，电脑要求必须是能支持CUDA的N卡才行，&lt;a class="link" href="https://www.2bboy.com/archives/146.html" target="_blank" rel="noopener"
+>PyTorch安装&lt;/a>[/scode]&lt;/p>
+&lt;p>[scode type=&amp;ldquo;yellow&amp;rdquo;]后面作者的源码和readme都进行了一定更新，建议自己根据源码里的readme进行部署，本文的文件和方法可能过时，仅供参考。[/scode]&lt;/p>
+&lt;p>[scode type=&amp;ldquo;lblue&amp;rdquo;] 2. 下载上面的源码，然后下载这里的&lt;a class="link" href="https://drive.google.com/file/d/1ajHViqyLDKFKfBtGPE5cbSGcMNa8rz8k/view" target="_blank" rel="noopener"
+>模型数据&lt;/a> 和 &lt;a class="link" href="https://github.com/davisking/dlib-models/blob/master/shape_predictor_68_face_landmarks.dat.bz2" target="_blank" rel="noopener"
+>这个文件&lt;/a>。下载好后把文件按源码说明解压放到data目录下。[/scode]&lt;/p>
+&lt;p>[scode type=&amp;ldquo;lblue&amp;rdquo;]3. 接下来要安装相应的库，简单点就按作者文档里的运行要先安装cv2和dlib库，否则会报错，安装cv2用 &lt;code>pip install opencv-python &lt;/code>,安装dlib还有个坑，&lt;a class="link" href="https://blog.csdn.net/fengguanxi/article/details/80445652" target="_blank" rel="noopener"
+>踩坑&lt;/a>。[/scode]&lt;/p>
+&lt;p>[scode type=&amp;ldquo;lblue&amp;rdquo;] 4. 进入PyTorch环境，cd到项目文件夹，输入 &lt;code>python app/manual_poser.py&lt;/code>，弹出界面，导入图片即可，这里的图片还必须是256x256的背景为空的png图片，人物的脸也要保持在中间位置，然后拖动滑块图片就能动了。
+强调一下这里仅仅是让图片动起来了，并不能生成其他的什么模型用于第三方软件，而且图片也挑的，不是随便张图片都能有很好的效果。[/scode]&lt;/p>
+&lt;p>[scode type=&amp;ldquo;lblue&amp;rdquo;]5. 作者原文里还有一个 &lt;code>python app/puppeteer.py&lt;/code>应该是直接动补摄像头数据的，由于我电脑没有摄像头，后面有空再研究。[/scode]&lt;/p>
+&lt;h2 id="视频演示">&lt;a href="#%e8%a7%86%e9%a2%91%e6%bc%94%e7%a4%ba" class="header-anchor">&lt;/a>视频演示
+&lt;/h2>&lt;!-- raw HTML omitted -->
+&lt;h2 id="后记">&lt;a href="#%e5%90%8e%e8%ae%b0" class="header-anchor">&lt;/a>后记
+&lt;/h2>&lt;p>后来用手机摄像头连接电脑，测试了面捕功能，见视频的P2。&lt;/p></description></item><item><title>Win10安装PyTorch（GPU）</title><link>http://kizx.gitee.io/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</link><pubDate>Sat, 11 Jan 2020 10:48:00 +0000</pubDate><guid>http://kizx.gitee.io/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</guid><description>&lt;p>先确保你的电脑的独显支持CUDA，否则只能用CPU运算。
+这里可以查看自己显卡型号是否支持CUDA以及CUDA计算能力：https://developer.nvidia.com/
+安装工具：Anaconda &lt;a class="link" href="https://www.2bboy.com/archives/145.html" target="_blank" rel="noopener"
+>常用命令&lt;/a>
+这是官方安装指南：https://pytorch.org/get-started/locally/#anaconda&lt;/p>
+&lt;h2 id="安装cuda">&lt;a href="#%e5%ae%89%e8%a3%85cuda" class="header-anchor">&lt;/a>安装CUDA
+&lt;/h2>&lt;p>官方安装指南：https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html
+查看自己的显卡驱动型号支持的CUDA版本：&lt;/p>
+&lt;h3 id="方式一">&lt;a href="#%e6%96%b9%e5%bc%8f%e4%b8%80" class="header-anchor">&lt;/a>方式一
+&lt;/h3>&lt;p>在命令行里依次输入下面两条命令&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">cd&lt;/span> C:\Program Files\NVIDIA Corporation\NVSMI
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nvidia-smi.exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后根据显示的 Driver Version 和下面的图确定自己驱动支持的cude版本
+&lt;img src="https://pan.2bboy.com/img/2020/06/062001.png"
+loading="lazy"
+>
+上面这张表来自：https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions&lt;/p>
+&lt;h3 id="方式二">&lt;a href="#%e6%96%b9%e5%bc%8f%e4%ba%8c" class="header-anchor">&lt;/a>方式二
+&lt;/h3>&lt;p>通过NVIDIA的控制面板查看自己显卡驱动版本：https://jingyan.baidu.com/article/363872ecf07d652f4ba16fda.html&lt;/p>
+&lt;hr>
+&lt;p>确定CUDA版本后去官网下载：https://developer.nvidia.com/cuda-toolkit-archive
+根据自己系统选择相应版本下载后安装。
+下载完成后点击安装即可，安装完在cmd控制台输入&lt;code>nvcc -V&lt;/code>返回版本信息即安装成功。
+&lt;img src="https://pan.2bboy.com/img/2020/01/0111183104.png"
+loading="lazy"
+>
+注：有些安装教程会要求安装cudnn，我这里暂时不用&lt;/p>
+&lt;h2 id="安装pytorch">&lt;a href="#%e5%ae%89%e8%a3%85pytorch" class="header-anchor">&lt;/a>安装PyTorch
+&lt;/h2>&lt;p>因为是用Anaconda安装，先进入Anaconda控制台新建一个环境并激活，然后进入https://pytorch.org/get-started/locally/#anaconda 选择你要安装的版本和方式，会自动生成一条安装命令，复制命令粘贴运行。
+&lt;img src="https://pan.2bboy.com/img/2020/01/0111183540.png"
+loading="lazy"
+>
+安装过程可能会很艰辛，主要就是那个pytorch的包太大了，足足有480M，建议试试换镜像源看看速度是否会提升，反正我最后是开了全局代理才下下来的。其他安装方式也可以试试。
+安装完成后输入python然后运行以下代码，返回Ture就说明CUDA是可以使用的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> torch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>torch&lt;span style="color:#f92672">.&lt;/span>cuda&lt;span style="color:#f92672">.&lt;/span>is_available()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/01/0111184723.png"
+loading="lazy"
+>&lt;/p></description></item></channel></rss>

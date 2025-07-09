@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Qt on 醉后的星星</title><link>http://kizx.gitee.io/tags/qt/</link><description>Recent content in Qt on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Fri, 10 Dec 2021 02:47:00 +0000</lastBuildDate><atom:link href="http://kizx.gitee.io/tags/qt/index.xml" rel="self" type="application/rss+xml"/><item><title>Pyside6使用指南</title><link>http://kizx.gitee.io/post/pyside6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link><pubDate>Fri, 10 Dec 2021 02:47:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyside6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid><description>&lt;p>Pyside6是Qt6对应的官方python库，官方有较全面的使用文档：https://doc.qt.io/qtforpython/contents.html。
+本文使用Python3.7版本，从头安装使用Pyside6。&lt;/p>
+&lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
+&lt;/h2>&lt;p>python版安装只需要一句命令即可：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>pip install pyside6
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>安装包有点大，建议手动下载whl直接安装。
+安装后会多两个库：PySide6和shiboken。
+在Python环境下的Scripts文件夹下还会多出&lt;code>pyside6-designer.exe&lt;/code>、&lt;code>pyside6-uic.exe&lt;/code>等几个exe程序。&lt;/p>
+&lt;h2 id="界面设计工具设置">&lt;a href="#%e7%95%8c%e9%9d%a2%e8%ae%be%e8%ae%a1%e5%b7%a5%e5%85%b7%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>界面设计工具设置
+&lt;/h2>&lt;p>打开&lt;code>pyside6-designer.exe&lt;/code>，是qt的界面设计程序，可以拖拽设计界面并保存为ui文件。
+使用pyside6-uic.exe，通过以下程序命令可以将ui文件转成py文件。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>pyside6-uic.exe ui_mainwindow.ui -o ui_mainwindow.py
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>如果用的是Pycharm，可以添加右键工具直接在文件右键快速打开，添加工具的方法参考以下文章。
+[post cid=&amp;ldquo;119&amp;rdquo; /]&lt;/p>
+&lt;h2 id="初始代码">&lt;a href="#%e5%88%9d%e5%a7%8b%e4%bb%a3%e7%a0%81" class="header-anchor">&lt;/a>初始代码
+&lt;/h2>&lt;p>参考官方文档：https://doc.qt.io/qtforpython/tutorials/basictutorial/uifiles.html&lt;/p>
+&lt;h3 id="直接使用ui文件">&lt;a href="#%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8ui%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>直接使用ui文件
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtUiTools &lt;span style="color:#f92672">import&lt;/span> QUiLoader
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtCore &lt;span style="color:#f92672">import&lt;/span> QFile, QIODevice
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app &lt;span style="color:#f92672">=&lt;/span> QApplication(sys&lt;span style="color:#f92672">.&lt;/span>argv)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file_name &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;mainwindow.ui&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file &lt;span style="color:#f92672">=&lt;/span> QFile(ui_file_name)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> ui_file&lt;span style="color:#f92672">.&lt;/span>open(QIODevice&lt;span style="color:#f92672">.&lt;/span>ReadOnly):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Cannot open &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>ui_file_name&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">: &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>ui_file&lt;span style="color:#f92672">.&lt;/span>errorString()&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> loader &lt;span style="color:#f92672">=&lt;/span> QUiLoader()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window &lt;span style="color:#f92672">=&lt;/span> loader&lt;span style="color:#f92672">.&lt;/span>load(ui_file)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ui_file&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> window:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(loader&lt;span style="color:#f92672">.&lt;/span>errorString())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(app&lt;span style="color:#f92672">.&lt;/span>exec())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="转成py文件再加载">&lt;a href="#%e8%bd%ac%e6%88%90py%e6%96%87%e4%bb%b6%e5%86%8d%e5%8a%a0%e8%bd%bd" class="header-anchor">&lt;/a>转成py文件再加载
+&lt;/h3>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication, QMainWindow
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide6.QtCore &lt;span style="color:#f92672">import&lt;/span> QFile
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> ui_mainwindow &lt;span style="color:#f92672">import&lt;/span> Ui_MainWindow
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainWindow&lt;/span>(QMainWindow):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super(MainWindow, self)&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> Ui_MainWindow()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>setupUi(self)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app &lt;span style="color:#f92672">=&lt;/span> QApplication(sys&lt;span style="color:#f92672">.&lt;/span>argv)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window &lt;span style="color:#f92672">=&lt;/span> MainWindow()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sys&lt;span style="color:#f92672">.&lt;/span>exit(app&lt;span style="color:#f92672">.&lt;/span>exec())
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>建议转成py文件再打开，感觉IDE提示更准确，不过直接加载更方便就是了。&lt;/p>
+&lt;h2 id="打包">&lt;a href="#%e6%89%93%e5%8c%85" class="header-anchor">&lt;/a>打包
+&lt;/h2>&lt;p>打包建议使用auto-py-to-exe，这是一个基于pyinstaller的带Ui界面的打包程序，对新手极其友好。
+使用以下命令安装：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>pip install auto-py-to-exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>通过以下命令启动程序：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>auto-py-to-exe
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Pyqt提升控件为自定义控件的方法(动态加载ui文件)</title><link>http://kizx.gitee.io/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</link><pubDate>Tue, 12 May 2020 16:43:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</guid><description>&lt;p>[post cid=&amp;ldquo;159&amp;rdquo; /]
+我之前需要对一个QLineEdit控件实现文件拖拽的功能，在折腾一番后发现只有继承QLineEdit类重写方法才能实现我的功能，但我是用动态加载ui文件的方法，所以没办法直接加载我写的自定义控件，当时是用把原控件删除了再把自己的控件加进去的野蛮方法，但后来我看了黑羽的新教程才知道Qt设计师里右键有个提升控件功能就是专门解决这个问题的。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainWindow&lt;/span>(QObject):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> QUiLoader()&lt;span style="color:#f92672">.&lt;/span>load(&lt;span style="color:#e6db74">&amp;#39;static/mainwindow.ui&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path&lt;span style="color:#f92672">.&lt;/span>deleteLater() &lt;span style="color:#75715e"># 删除原有的路径框&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path &lt;span style="color:#f92672">=&lt;/span> MyQLine() &lt;span style="color:#75715e"># 新建自己的替换原有的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path&lt;span style="color:#f92672">.&lt;/span>setPlaceholderText(&lt;span style="color:#e6db74">&amp;#39;浏览或拖拽SRT字幕文件到这里&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>horizontalLayout_2&lt;span style="color:#f92672">.&lt;/span>addWidget(self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>horizontalLayout_2&lt;span style="color:#f92672">.&lt;/span>addWidget(self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="方法">&lt;a href="#%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>方法
+&lt;/h2>&lt;p>先新建一个MyWidget.py文件用于写自定义控件。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide2.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QLineEdit
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyQLine&lt;/span>(QLineEdit):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;实现文件拖放功能&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self, parent&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>(parent)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>setAcceptDrops(&lt;span style="color:#66d9ef">True&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">dragEnterEvent&lt;/span>(self, e):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> e&lt;span style="color:#f92672">.&lt;/span>mimeData()&lt;span style="color:#f92672">.&lt;/span>text()&lt;span style="color:#f92672">.&lt;/span>endswith(&lt;span style="color:#e6db74">&amp;#39;.srt&amp;#39;&lt;/span>): &lt;span style="color:#75715e"># 这里只接受拖入srt文件，别的文件拖入无效&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e&lt;span style="color:#f92672">.&lt;/span>accept()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e&lt;span style="color:#f92672">.&lt;/span>ignore()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">dropEvent&lt;/span>(self, e):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> path &lt;span style="color:#f92672">=&lt;/span> e&lt;span style="color:#f92672">.&lt;/span>mimeData()&lt;span style="color:#f92672">.&lt;/span>text()&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#39;file:///&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>setText(path)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>先在Qt设计师里右键提升控件，提升控件的基类一般就是控件自身本来的类，提升的类名称就是自定义的类名称，头文件是指自定义的类所在的库的名称。如果搞不清这里，可以将ui文件转为py文件，然后查看import部分就明白了。
+&lt;img src="https://pan.2bboy.com/img/2020/05/0513002609.jpg"
+loading="lazy"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/05/0513003251.jpg"
+loading="lazy"
+>&lt;/p>
+&lt;p>这里就要注意了，这个提升的类名的路径是基于我们ui文件而言的，所以我这里ui文件必须和MyWidget.py在同一目录下，而且必须保证这里不能有报错，比如我之前在自定义MyQLine时没有传入parent参数就会报错。&lt;/p>
+&lt;hr>
+&lt;p>然后就是在主程序里加载界面就行了，如果用的是Pyside2还需要加一步注册&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainWindow&lt;/span>(QObject):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> loader &lt;span style="color:#f92672">=&lt;/span> QUiLoader()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> loader&lt;span style="color:#f92672">.&lt;/span>registerCustomWidget(MyQLine) &lt;span style="color:#75715e"># 注册&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> loader&lt;span style="color:#f92672">.&lt;/span>load(&lt;span style="color:#e6db74">&amp;#39;mainwindow.ui&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">···&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="http://www.python3.vip/tut/py/gui/pyqtgraph-2/" target="_blank" rel="noopener"
+>http://www.python3.vip/tut/py/gui/pyqtgraph-2/&lt;/a>
+&lt;a class="link" href="https://blog.csdn.net/qq937772489/article/details/81332037" target="_blank" rel="noopener"
+>https://blog.csdn.net/qq937772489/article/details/81332037&lt;/a>&lt;/p></description></item><item><title>QPixmap.scaled在Pyside2和Pyqt5中的不同</title><link>http://kizx.gitee.io/post/qpixmap.scaled%E5%9C%A8pyside2%E5%92%8Cpyqt5%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C/</link><pubDate>Mon, 13 Apr 2020 16:23:00 +0000</pubDate><guid>http://kizx.gitee.io/post/qpixmap.scaled%E5%9C%A8pyside2%E5%92%8Cpyqt5%E4%B8%AD%E7%9A%84%E4%B8%8D%E5%90%8C/</guid><description>&lt;p>这个参数有以下三个值。
+&lt;img src="https://pan.2bboy.com/ppx/img/2020/04/qimage-scaling.png"
+loading="lazy"
+>&lt;/p>
+&lt;hr>
+&lt;p>对于一个单独的布局的label来说，两者参数的表现并无不同，但是当我的图片放置在一个网格布局中时，Pyside2的参数设置为&lt;code>KeepAspectRatio&lt;/code>和Pyqt5参数设置为&lt;code>KeepAspectRatioByExpanding&lt;/code>表现是一样的，很是奇怪。
+以下是Pyqt5的显示结果。
+&lt;img src="https://pan.2bboy.com/img/2020/04/0414001415.jpg"
+loading="lazy"
+alt="KeepAspectRatioByExpanding"
+>
+&lt;img src="https://pan.2bboy.com/img/2020/04/0414002010.jpg"
+loading="lazy"
+alt="KeepAspectRatio"
+>
+准确点来说是Pyqt5的参数在这里显示有点不对劲，具体原因有待研究。&lt;/p>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>&lt;a class="link" href="https://doc.qt.io/qtforpython/PySide2/QtGui/QPixmap.html?highlight=qpixmap#PySide2.QtGui.PySide2.QtGui.QPixmap.scaled" target="_blank" rel="noopener"
+>https://doc.qt.io/qtforpython/PySide2/QtGui/QPixmap.html?highlight=qpixmap#PySide2.QtGui.PySide2.QtGui.QPixmap.scaled&lt;/a>
+&lt;a class="link" href="https://doc.qt.io/archives/qtjambi-4.5.2_01/com/trolltech/qt/core/Qt.AspectRatioMode.html" target="_blank" rel="noopener"
+>https://doc.qt.io/archives/qtjambi-4.5.2_01/com/trolltech/qt/core/Qt.AspectRatioMode.html&lt;/a>&lt;/p></description></item><item><title>Pyqt加载ui文件界面的方法</title><link>http://kizx.gitee.io/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 13 Apr 2020 15:55:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;p>注意我这里主界面ui文件是一个QWidget，不是一个QMainWindow，QMainWindow的稍有不同。&lt;/p>
+&lt;h2 id="动态加载">&lt;a href="#%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd" class="header-anchor">&lt;/a>动态加载
+&lt;/h2>&lt;p>动态加载不用将ui文件转换为py文件，边改界面就能边用，很是方便，适合绝大多数情况，这种方法唯一的缺点大概就是编程时控件不能进行自动补全，因为IDE没法知道控件继承自哪里。
+[tabs]
+[tab name=&amp;ldquo;Pyside2的加载方法&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide2.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide2.QtUiTools &lt;span style="color:#f92672">import&lt;/span> QUiLoader
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Window&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> QUiLoader()&lt;span style="color:#f92672">.&lt;/span>load(&lt;span style="color:#e6db74">&amp;#39;view.ui&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 假设我们的ui文件为view.ui&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app &lt;span style="color:#f92672">=&lt;/span> QApplication([])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>window &lt;span style="color:#f92672">=&lt;/span> Window()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>window&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app&lt;span style="color:#f92672">.&lt;/span>exec_()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>官网教程:https://doc.qt.io/qtforpython/tutorials/basictutorial/uifiles.html
+[/tab]
+[tab name=&amp;ldquo;Pyqt5的加载方法&amp;rdquo;]&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PyQt5.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PyQt5 &lt;span style="color:#f92672">import&lt;/span> uic
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Window&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> uic&lt;span style="color:#f92672">.&lt;/span>loadUi(&lt;span style="color:#e6db74">&amp;#34;view.ui&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app &lt;span style="color:#f92672">=&lt;/span> QApplication([])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>window &lt;span style="color:#f92672">=&lt;/span> Window()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>window&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>show()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>app&lt;span style="color:#f92672">.&lt;/span>exec_()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
+[/tabs]&lt;/p>
+&lt;h2 id="静态加载">&lt;a href="#%e9%9d%99%e6%80%81%e5%8a%a0%e8%bd%bd" class="header-anchor">&lt;/a>静态加载
+&lt;/h2>&lt;p>就是先用uic工具将ui文件转换成py文件，然后再导入ui文件，每次ui文件更新都需要重新转换一次。适合需要对控件功能进行重写的场合，一句话就是辅助手写ui而已，另一个在用pyinstaller打包时这样应该能减小打包后的体积，因为转换出来的py文件默认&lt;code>from PySide2.QtWidgets import *&lt;/code>，直接导入了所有包，如果按需导入的话应该可以减小一点体积，不过经我测试只减小了1M不到的体积，意义不大。
+[tabs]
+[tab name=&amp;ldquo;Pyside2的加载方法&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> PySide2.QtWidgets &lt;span style="color:#f92672">import&lt;/span> QApplication, QWidget
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> view &lt;span style="color:#f92672">import&lt;/span> Ui_Form
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Window&lt;/span>(QWidget): &lt;span style="color:#75715e"># 这里继承QWidget,因为我的ui主界面是Widget,官网上这点不一样&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui &lt;span style="color:#f92672">=&lt;/span> Ui_Form()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>setupUi(self)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> __name__ &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#e6db74">&amp;#34;__main__&amp;#34;&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app &lt;span style="color:#f92672">=&lt;/span> QApplication([])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window &lt;span style="color:#f92672">=&lt;/span> Window()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> window&lt;span style="color:#f92672">.&lt;/span>show() &lt;span style="color:#75715e"># 这里不是self.ui&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> app&lt;span style="color:#f92672">.&lt;/span>exec_()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>[/tab]
+[tab name=&amp;ldquo;Pyqt5的加载方法&amp;rdquo;]
+和前面类似，注意要用Pyqt5的uic工具进行转换才行，因为生成的py文件自动导入的包名不一样。
+[/tab]
+[/tabs]&lt;/p>
+&lt;h2 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
+&lt;/h2>&lt;p>动态加载不能进行代码自动补全，打包时ui文件也必须一同打包；静态加载每次手动转换麻烦了点，但转换后因为有了明确的代码可以自动补全代码，进行一些高级编程时有问题也可以更好的debug。
+所以我觉得最好先用动态加载的方法把界面先搞定，然后写代码时再切到静态加载方法。&lt;/p></description></item><item><title>pyqt实现文件拖放获取路径</title><link>http://kizx.gitee.io/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</link><pubDate>Sat, 21 Mar 2020 14:11:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</guid><description>&lt;p>文件拖放自动填充路径操作本应该是个很简单的操作，结果搜到的教程都在讲控件的拖拽，几经折磨后终于算是实现了这个功能吧。&lt;/p>
+&lt;h2 id="操作">&lt;a href="#%e6%93%8d%e4%bd%9c" class="header-anchor">&lt;/a>操作
+&lt;/h2>&lt;p>首先，要知道pyqt的控件有个setAcceptDrops(bool)方法可以设置控件是否接受拖放这个动作，如果是用qt设计师设计的界面可以看到该属性是默认打开的，既然默认打开，那么理论就应该可以实现文件拖放功能。
+&lt;img src="https://pan.2bboy.com/img/2020/03/0321214758.jpg"
+loading="lazy"
+>
+但实际操作时我却发现在IDE里可以拖放，但是到了实际的桌面却无法拖放，这一点我真是无法理解啊。。
+&lt;img src="https://pan.2bboy.com/img/2020/03/0321.gif"
+loading="lazy"
+>&lt;/p>
+&lt;hr>
+&lt;p>因此我只好去看了一些拖拽的教程，发现在重写一个新的QLineEdit类的情况下是可以使用的，重写的类如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MyQLine&lt;/span>(QLineEdit):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;实现文件拖放功能&amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">__init__&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>&lt;span style="color:#a6e22e">__init__&lt;/span>()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>setAcceptDrops(&lt;span style="color:#66d9ef">True&lt;/span>) &lt;span style="color:#75715e"># 设置接受拖放动作&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">dragEnterEvent&lt;/span>(self, e):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> e&lt;span style="color:#f92672">.&lt;/span>mimeData()&lt;span style="color:#f92672">.&lt;/span>text()&lt;span style="color:#f92672">.&lt;/span>endswith(&lt;span style="color:#e6db74">&amp;#39;.srt&amp;#39;&lt;/span>): &lt;span style="color:#75715e"># 如果是.srt结尾的路径接受&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e&lt;span style="color:#f92672">.&lt;/span>accept()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> e&lt;span style="color:#f92672">.&lt;/span>ignore()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">dropEvent&lt;/span>(self, e): &lt;span style="color:#75715e"># 放下文件后的动作&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> path &lt;span style="color:#f92672">=&lt;/span> e&lt;span style="color:#f92672">.&lt;/span>mimeData()&lt;span style="color:#f92672">.&lt;/span>text()&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#39;file:///&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 删除多余开头&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>setText(path)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>最关键的是e.mimeData().text()获取路径，这里的mimeData()可以参考官方说明 &lt;a class="link" href="https://doc.qt.io/qtforpython/PySide2/QtCore/QMimeData.html" target="_blank" rel="noopener"
+>https://doc.qt.io/qtforpython/PySide2/QtCore/QMimeData.html&lt;/a>。
+在上面的动图里能看到拖放文件后获得的文件路径是以&amp;rsquo;file:///&amp;lsquo;开头的，所以需要去掉这玩意，剩下的应该很简单了。&lt;/p>
+&lt;hr>
+&lt;p>还有一个问题就是我是用qt设计师设计界面然后动态导入的，我自己新建了一个单行文本控件后，哪怕控件名字和之前的名字一样，最后生成的界面里还是会出现两个文本框，但我又不想在qt设计师里删除原来的文本框。所以我只好来个移花接木，把原来的文本框删掉并替换成我自己的。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path&lt;span style="color:#f92672">.&lt;/span>deleteLater() &lt;span style="color:#75715e"># 删除原有的路径框&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path &lt;span style="color:#f92672">=&lt;/span> MyQLine() &lt;span style="color:#75715e"># 新建自己的替换原有的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path&lt;span style="color:#f92672">.&lt;/span>setPlaceholderText(&lt;span style="color:#e6db74">&amp;#39;浏览或拖拽SRT字幕文件到这里&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>horizontalLayout_2&lt;span style="color:#f92672">.&lt;/span>addWidget(self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file_path)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>horizontalLayout_2&lt;span style="color:#f92672">.&lt;/span>addWidget(self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>针对上面的问题我后来找到了解决方案。
+[post cid=&amp;ldquo;173&amp;rdquo; /]&lt;/p></description></item><item><title>Pyinstaller打包的正确姿势</title><link>http://kizx.gitee.io/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 04 Mar 2020 06:03:00 +0000</pubDate><guid>http://kizx.gitee.io/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>python打包成exe程序的方法有不少，但最常用的还是pyinstaller，打包python程序主要是为了给那些不懂python的人用的，而且如果是像pyqt一类的图形界面程序，打包一下也会变得更易用。&lt;/p>
+&lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
+&lt;/h2>&lt;p>建议被打包的程序都放在一个虚拟环境中，不论是用venv，pipenv还是conda都是可以的，然后在虚拟环境中安装pyinstaller。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pip install pyinstaller
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="使用">&lt;a href="#%e4%bd%bf%e7%94%a8" class="header-anchor">&lt;/a>使用
+&lt;/h2>&lt;p>命令行进入虚拟环境，使用pyinstaller就是一条命令行的事，命令的格式如下：
+&lt;code>pyinstaller [选项] xxx.py&lt;/code>
+其中选项可以用命令 &lt;code>pyinstaller -h&lt;/code> 查看，常用命令如下:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>选项&lt;/th>
+&lt;th>功能&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>-h, &amp;ndash;help&lt;/td>
+&lt;td>帮助&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&amp;ndash;distpath DIR&lt;/td>
+&lt;td>生成exe程序的位置，默认在当前目录的dist文件下&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&amp;ndash;workpath WORKPATH&lt;/td>
+&lt;td>生成临时文件的位置，默认在当前目录的build文件下&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&amp;ndash;clean&lt;/td>
+&lt;td>清除生成的文件（重新生成前先清除）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-D, &amp;ndash;onedir&lt;/td>
+&lt;td>打包成一个包含exe程序的文件夹&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-F, &amp;ndash;onefile&lt;/td>
+&lt;td>打包成一个独立的exe程序（运行起来会慢很多）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>&amp;ndash;hidden-import MODULENAME&lt;/td>
+&lt;td>有些依赖包是动态导入的需手动导入告诉pyinstaller&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-d {all,imports,bootloader,noarchive}&lt;/td>
+&lt;td>生成debug版本&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-w, &amp;ndash;windowed, &amp;ndash;noconsole&lt;/td>
+&lt;td>隐藏命令行窗口&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-i &amp;lt;FILE.ico or FILE.exe,ID or FILE.icns&amp;gt;&lt;/td>
+&lt;td>为程序添加ico图标&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>-n NAME, &amp;ndash;name NAME&lt;/td>
+&lt;td>为exe程序指定名称，默认和py程序名一样&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>打包完成后会生成三个文件(夹)：build，dist，以及一个.spec文件，这个文件记录你的打包参数，可以直接在里面修改参数，然后执行以下命令直接打包，对于依赖复杂的程序这么做更方便，毕竟谁也不想每次打包都输那么长的命令行。
+&lt;code>pyinstaller xxx.spec&lt;/code>
+至于spec文件具体怎么用参考&lt;a class="link" href="https://pyinstaller.readthedocs.io/en/stable/spec-files.html" target="_blank" rel="noopener"
+>官方文档&lt;/a>。&lt;/p>
+&lt;h2 id="一些坑">&lt;a href="#%e4%b8%80%e4%ba%9b%e5%9d%91" class="header-anchor">&lt;/a>一些坑
+&lt;/h2>&lt;h3 id="打包pyqt程序">&lt;a href="#%e6%89%93%e5%8c%85pyqt%e7%a8%8b%e5%ba%8f" class="header-anchor">&lt;/a>打包pyqt程序
+&lt;/h3>&lt;p>[scode type=&amp;ldquo;blue&amp;rdquo;]
+虽然理论上程序打包很简单，但实际上可能会遇到各种问题，在打包pyqt程序时如果用的是动态导入ui文件，那么就得加上 &lt;code>--hidden-import PySide2.QtXml&lt;/code> 并且把ui文件也一同放入exe文件夹内，因为程序并不会打包ui文件；如果程序用到了什么像图标，图片之类的静态文件，也需要都放到exe文件夹下。
+[/scode]&lt;/p>
+&lt;h3 id="单个程序还是文件夹">&lt;a href="#%e5%8d%95%e4%b8%aa%e7%a8%8b%e5%ba%8f%e8%bf%98%e6%98%af%e6%96%87%e4%bb%b6%e5%a4%b9" class="header-anchor">&lt;/a>单个程序还是文件夹
+&lt;/h3>&lt;p>[scode type=&amp;ldquo;blue&amp;rdquo;]
+程序打包默认打包成一个文件夹，使用&lt;code>-F&lt;/code>参数可以打包成一个单独的exe程序，但经测试，单独一个程序启动速度起码慢了10倍不止，所以建议还是默认文件夹方式，但文件夹太乱了怎么办，可以采取后面的方法整理一下。
+另外我发现我的程序在打包成一个独立的exe的情况下，隐藏命令行窗口的话，程序中间有个命令无法正常运行，但是打包成文件夹就可以正常运行，由此可见打包成文件夹的容错率更大。
+[/scode]
+[tabs]
+[tab name=&amp;ldquo;方法1. 利用runtime-hook参数&amp;rdquo; active=&amp;ldquo;true&amp;rdquo;]
+新建一个runtimehook.py文件：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> sys
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>currentdir &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>path&lt;span style="color:#f92672">.&lt;/span>dirname(sys&lt;span style="color:#f92672">.&lt;/span>argv[&lt;span style="color:#ae81ff">0&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>libdir &lt;span style="color:#f92672">=&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>path&lt;span style="color:#f92672">.&lt;/span>join(currentdir, &lt;span style="color:#e6db74">&amp;#34;lib&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(currentdir)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sys&lt;span style="color:#f92672">.&lt;/span>path&lt;span style="color:#f92672">.&lt;/span>append(libdir)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>os&lt;span style="color:#f92672">.&lt;/span>environ[&lt;span style="color:#e6db74">&amp;#39;path&amp;#39;&lt;/span>] &lt;span style="color:#f92672">+=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;;./lib&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后打包时加上参数 &lt;code>--runtime-hook=&amp;quot;runtimehook.py&amp;quot;&lt;/code> ，这样就可以把除了下面的几个文件外的库文件放到一个&lt;code>lib&lt;/code>文件夹中了。&lt;/p>
+&lt;pre tabindex="0">&lt;code>base_library.zip
+xxxx.exe
+xxxx.exe.manifest
+python37.dll
+&lt;/code>&lt;/pre>&lt;p>这个方法摘自&lt;a class="link" href="http://www.python3.vip/doc/tutorial/python/level2/toexe/" target="_blank" rel="noopener"
+>白月黑羽&lt;/a>，注意文件夹不能放到lib里。[/tab]
+[tab name=&amp;ldquo;方法2. 利用快捷方式&amp;rdquo;]
+新建一个快捷方式或者符号链接，可以参照我另一篇&lt;a class="link" href="https://www.2bboy.com/archives/99.html" target="_blank" rel="noopener"
+>文章&lt;/a>。不过在自己电脑新建的快捷方式不能打包发给别人，因为绝对路径不一样，如果用符号链接的话在打成压缩包时会被打回原型。
+所以我们可以仿照某些软件安装包的样子做一个自解压的压缩包，在解压软件安装时加上生成桌面快捷方式的选项。打包可以用一些打包工具（比如某些压缩工具就带这个功能），直接打包生成自解压的exe文件然后还带桌面快捷方式，这样显得更高大上。[/tab]
+[/tabs]&lt;/p>
+&lt;h3 id="隐藏命令行窗口">&lt;a href="#%e9%9a%90%e8%97%8f%e5%91%bd%e4%bb%a4%e8%a1%8c%e7%aa%97%e5%8f%a3" class="header-anchor">&lt;/a>隐藏命令行窗口
+&lt;/h3>&lt;p>[scode type=&amp;ldquo;blue&amp;rdquo;]&lt;/p>
+&lt;ul>
+&lt;li>如果你是gui程序自然不希望出现命令行，那么加上&lt;code>-w&lt;/code>参数就行了。&lt;/li>
+&lt;li>另外隐藏命令行的话，就无法查看报错信息，那么只能在程序里捕捉异常然后通过gui的方法把错误显示出来。但这种错误显示通常不能获取多少有用信息，只是给用户看的。&lt;/li>
+&lt;li>有时候程序隐藏了窗口，但运行时总有黑黑的命令行窗口不时的闪现出来，网上查找到的弹窗多半是因为程序中引用了&lt;code>os.system&lt;/code>引起的，但其实任何可能调用命令行窗口的程序命令都有可能导致弹窗。&lt;/li>
+&lt;li>比如我的程序因为黑窗口闪现太快肉眼无法捕捉，为了看清这个窗口究竟是什么，我利用录屏一帧帧查看发现是ffmpeg.exe的窗口，好吧，我的程序的pydub库的确用到了它，但怎么让它消失呢，我找到了一篇&lt;a class="link" href="https://www.cnblogs.com/hard-snail/p/12154532.html" target="_blank" rel="noopener"
+>参考文章&lt;/a>。因为pydub库的源码是直接使用subprocess调用ffmpeg.exe和ffprobe.exe的，只需要在audio_segment.py和utils.py文件中调用subprocess.Popen()时指定参数 shell=True, stdin=subprocess.PIPE 即可。
+[/scode]&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
+&lt;/h2>&lt;p>Pyinstaller文档：https://pyinstaller.readthedocs.io/en/stable/
+白月黑羽教Python：http://www.python3.vip/doc/tutorial/python/level2/gui/qt_04/&lt;/p></description></item><item><title>用Astyle为Qt Creator添加代码自动格式化功能</title><link>http://kizx.gitee.io/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</link><pubDate>Wed, 09 Oct 2019 11:55:00 +0000</pubDate><guid>http://kizx.gitee.io/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>先要下载安装Astyle &lt;a class="link" href="https://sourceforge.net/projects/astyle/files/" target="_blank" rel="noopener"
+>https://sourceforge.net/projects/astyle/files/&lt;/a>&lt;/p>
+&lt;h2 id="2-添加beautifier插件">&lt;a href="#2-%e6%b7%bb%e5%8a%a0beautifier%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>2. 添加Beautifier插件
+&lt;/h2>&lt;p>打开Qt Creator，在帮助-&amp;gt;关于插件中打开Beautifier插件&lt;/p>
+&lt;h2 id="3-配置astyle">&lt;a href="#3-%e9%85%8d%e7%bd%aeastyle" class="header-anchor">&lt;/a>3. 配置Astyle
+&lt;/h2>&lt;p>打开工具-&amp;gt;选项-&amp;gt;Beautifier&lt;/p>
+&lt;p>设置Astyle的路径&lt;/p>
+&lt;p>设置自定义风格&lt;/p>
+&lt;p>风格可以参考官方说明http://astyle.sourceforge.net/astyle.html#_Brace%20Style%20Options&lt;/p>
+&lt;h2 id="4-设置快捷键">&lt;a href="#4-%e8%ae%be%e7%bd%ae%e5%bf%ab%e6%8d%b7%e9%94%ae" class="header-anchor">&lt;/a>4. 设置快捷键
+&lt;/h2>&lt;p>在选项-&amp;gt;环境-&amp;gt;键盘里搜索format，选择相应项设置快捷键，当然我们设置了保存时自动规范，不用快捷键也行，在工具菜单栏里也可以相应命令&lt;/p>
+&lt;p>参考：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.techieliang.com/2018/01/873/" target="_blank" rel="noopener"
+>https://www.techieliang.com/2018/01/873/&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>OpenCV + Qt 配置</title><link>http://kizx.gitee.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 14:20:00 +0000</pubDate><guid>http://kizx.gitee.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>假设已经下载安装了OpenCV和Qt并且配置好了OpenCV的环境变量，环境变量设置可以参考以前的文章。&lt;/p>
+&lt;h2 id="cmake编译">&lt;a href="#cmake%e7%bc%96%e8%af%91" class="header-anchor">&lt;/a>CMake编译
+&lt;/h2>&lt;p>许多教程都会从CMake编译OpenCV开始，但其实我们下载的安装包解压后已经编译好了，bulid文件下就是编译后的文件，除非有特殊要求，可以不用亲自编译。主要是我尝试用CMake编译Source但是报错失败了，就此作罢。&lt;/p>
+&lt;h2 id="编写pri文件">&lt;a href="#%e7%bc%96%e5%86%99pri%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>编写pri文件
+&lt;/h2>&lt;p>新建一个文件，重命名为&lt;code>opencv.pri&lt;/code>，写入以下内容，其实和在VS2017里配置库环境是一样的道理。&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-pri" data-lang="pri">INCLUDEPATH += c:/opencv/build/include
+Debug: {
+LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411d
+}
+Release: {
+LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411
+}
+&lt;/code>&lt;/pre>&lt;h2 id="新建工程">&lt;a href="#%e6%96%b0%e5%bb%ba%e5%b7%a5%e7%a8%8b" class="header-anchor">&lt;/a>新建工程
+&lt;/h2>&lt;p>在Qt里新建一个最普通的工程，编译器选择VS2017 64bit，新建完成后在工程的pro文件最后添加刚才的pri文件路径：
+&lt;code>include(c:/opencv/opencv.pri)&lt;/code>&lt;/p>
+&lt;h2 id="测试代码">&lt;a href="#%e6%b5%8b%e8%af%95%e4%bb%a3%e7%a0%81" class="header-anchor">&lt;/a>测试代码
+&lt;/h2>&lt;p>在main函数里进行测试&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cpp" data-lang="cpp">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;#34;mainwindow.h&amp;#34;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;lt;QApplication&amp;gt;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#include&lt;/span> &lt;span style="color:#75715e">&amp;#34;opencv2/opencv.hpp&amp;#34;&lt;/span>&lt;span style="color:#75715e">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">int&lt;/span> &lt;span style="color:#a6e22e">main&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> argc, &lt;span style="color:#66d9ef">char&lt;/span> &lt;span style="color:#f92672">*&lt;/span>argv[])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> QApplication a(argc, argv);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">using&lt;/span> &lt;span style="color:#66d9ef">namespace&lt;/span> cv;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Mat img &lt;span style="color:#f92672">=&lt;/span> imread(&lt;span style="color:#e6db74">&amp;#34;../001.png&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> imshow(&lt;span style="color:#e6db74">&amp;#34;TEST&amp;#34;&lt;/span>,img);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> waitKey(&lt;span style="color:#ae81ff">0&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a.exec();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
