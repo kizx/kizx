@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>代码 on 醉后的星星</title><link>https://kizx.github.io/kizx/categories/%E4%BB%A3%E7%A0%81/</link><description>Recent content in 代码 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Tue, 28 Jun 2022 15:32:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/kizx/categories/%E4%BB%A3%E7%A0%81/index.xml" rel="self" type="application/rss+xml"/><item><title>VS2019配置pthread多线程</title><link>https://kizx.github.io/kizx/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><pubDate>Tue, 28 Jun 2022 15:32:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid><description>&lt;p>在VS里用MS编译器不能直接调用pthread库，需要先自行下载该库：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>代码 on 醉后的星星</title><link>https://kizx.github.io/categories/%E4%BB%A3%E7%A0%81/</link><description>Recent content in 代码 on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Tue, 28 Jun 2022 15:32:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/categories/%E4%BB%A3%E7%A0%81/index.xml" rel="self" type="application/rss+xml"/><item><title>VS2019配置pthread多线程</title><link>https://kizx.github.io/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><pubDate>Tue, 28 Jun 2022 15:32:00 +0000</pubDate><guid>https://kizx.github.io/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid><description>&lt;p>在VS里用MS编译器不能直接调用pthread库，需要先自行下载该库：
 &lt;a class="link" href="http://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip" target="_blank" rel="noopener"
 >http://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip&lt;/a>
 解压后用的到的只有&lt;code>Pre-built.2&lt;/code>文件夹下的文件。&lt;/p>
@@ -66,7 +66,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.cnblogs.com/maycpou/p/13895295.html" target="_blank" rel="noopener"
 >https://www.cnblogs.com/maycpou/p/13895295.html&lt;/a>
 &lt;a class="link" href="https://zhuanlan.zhihu.com/p/97418361" target="_blank" rel="noopener"
->https://zhuanlan.zhihu.com/p/97418361&lt;/a>&lt;/p></description></item><item><title>npm基本命令</title><link>https://kizx.github.io/kizx/post/npm%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link><pubDate>Sat, 12 Feb 2022 14:26:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/npm%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm -v
+>https://zhuanlan.zhihu.com/p/97418361&lt;/a>&lt;/p></description></item><item><title>npm基本命令</title><link>https://kizx.github.io/post/npm%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link><pubDate>Sat, 12 Feb 2022 14:26:00 +0000</pubDate><guid>https://kizx.github.io/post/npm%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm -v
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
 &lt;li>初始化&lt;/li>
 &lt;/ul>
@@ -115,7 +115,7 @@ loading="lazy"
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>npm config set registry https://registry.npm.taobao.org
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>查看镜像
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>npm config get registry
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python调用子进程subprocess</title><link>https://kizx.github.io/kizx/post/python%E8%B0%83%E7%94%A8%E5%AD%90%E8%BF%9B%E7%A8%8Bsubprocess/</link><pubDate>Thu, 13 May 2021 03:06:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E8%B0%83%E7%94%A8%E5%AD%90%E8%BF%9B%E7%A8%8Bsubprocess/</guid><description>&lt;p>subprocess库用于在控制台中调用子进程，可以模拟控制台命令输入输出。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python调用子进程subprocess</title><link>https://kizx.github.io/post/python%E8%B0%83%E7%94%A8%E5%AD%90%E8%BF%9B%E7%A8%8Bsubprocess/</link><pubDate>Thu, 13 May 2021 03:06:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E8%B0%83%E7%94%A8%E5%AD%90%E8%BF%9B%E7%A8%8Bsubprocess/</guid><description>&lt;p>subprocess库用于在控制台中调用子进程，可以模拟控制台命令输入输出。&lt;/p>
 &lt;h2 id="subprocessrun">&lt;a href="#subprocessrun" class="header-anchor">&lt;/a>subprocess.run
 &lt;/h2>&lt;p>如果只是简单调用运行第三方程序的话，使用subprocess.run最为简单。
 下面以调用&lt;code>ping&lt;/code>命令为例&lt;/p>
@@ -207,7 +207,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.runoob.com/w3cnote/python3-subprocess.html" target="_blank" rel="noopener"
 >https://www.runoob.com/w3cnote/python3-subprocess.html&lt;/a>
 &lt;a class="link" href="https://docs.python.org/zh-cn/3/library/subprocess.html" target="_blank" rel="noopener"
->https://docs.python.org/zh-cn/3/library/subprocess.html&lt;/a>&lt;/p></description></item><item><title>CSS盒子居中的几种方法</title><link>https://kizx.github.io/kizx/post/css%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 13 May 2021 02:32:35 +0000</pubDate><guid>https://kizx.github.io/kizx/post/css%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
+>https://docs.python.org/zh-cn/3/library/subprocess.html&lt;/a>&lt;/p></description></item><item><title>CSS盒子居中的几种方法</title><link>https://kizx.github.io/post/css%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 13 May 2021 02:32:35 +0000</pubDate><guid>https://kizx.github.io/post/css%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&amp;lt;!DOCTYPE html&amp;gt;&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">html&lt;/span> &lt;span style="color:#a6e22e">lang&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;en&amp;#34;&lt;/span>&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">head&lt;/span>&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">meta&lt;/span> &lt;span style="color:#a6e22e">charset&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;UTF-8&amp;#34;&lt;/span> /&amp;gt;
@@ -284,7 +284,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>.&lt;span style="color:#a6e22e">content&lt;/span> {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">margin&lt;/span>: &lt;span style="color:#66d9ef">auto&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>各种排序算法的Python实现</title><link>https://kizx.github.io/kizx/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</link><pubDate>Thu, 15 Apr 2021 07:26:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>注：排序算法的稳定性指相等的元素在排序前后相对位置是否变化，稳定排序主要用于不同键值比较，比如ACM成绩排序，先按分数排序，相同分数再按用时最短排序。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>各种排序算法的Python实现</title><link>https://kizx.github.io/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</link><pubDate>Thu, 15 Apr 2021 07:26:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84python%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>注：排序算法的稳定性指相等的元素在排序前后相对位置是否变化，稳定排序主要用于不同键值比较，比如ACM成绩排序，先按分数排序，相同分数再按用时最短排序。&lt;/p>
 &lt;h2 id="冒泡排序">&lt;a href="#%e5%86%92%e6%b3%a1%e6%8e%92%e5%ba%8f" class="header-anchor">&lt;/a>冒泡排序
 &lt;/h2>&lt;p>不断比较相邻元素，每次遍历将最大值移至队尾。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">bubble&lt;/span>(arr):
@@ -435,7 +435,7 @@ loading="lazy"
 >&lt;/p>
 &lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
 &lt;/h2>&lt;p>&lt;a class="link" href="https://visualgo.net/zh/sorting" target="_blank" rel="noopener"
->https://visualgo.net/zh/sorting&lt;/a>&lt;/p></description></item><item><title>PyQt多行文本QPlainTextEdit拖放文件后光标不动解决方法</title><link>https://kizx.github.io/kizx/post/pyqt%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%ACqplaintextedit%E6%8B%96%E6%94%BE%E6%96%87%E4%BB%B6%E5%90%8E%E5%85%89%E6%A0%87%E4%B8%8D%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 26 Jan 2021 14:32:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pyqt%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%ACqplaintextedit%E6%8B%96%E6%94%BE%E6%96%87%E4%BB%B6%E5%90%8E%E5%85%89%E6%A0%87%E4%B8%8D%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid><description>&lt;p>如标题所示，在重写了QPlainTextEdit的拖放方法后，发现拖放文件后光标就不动了，但编辑功能正常，就很奇怪，虽然不会报bug，但很影响使用，文档里翻了半天没有找到问题，换了个搜索姿势后找到了和我遇到相同问题的人，并且解决方法也很奇特。&lt;/p>
+>https://visualgo.net/zh/sorting&lt;/a>&lt;/p></description></item><item><title>PyQt多行文本QPlainTextEdit拖放文件后光标不动解决方法</title><link>https://kizx.github.io/post/pyqt%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%ACqplaintextedit%E6%8B%96%E6%94%BE%E6%96%87%E4%BB%B6%E5%90%8E%E5%85%89%E6%A0%87%E4%B8%8D%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 26 Jan 2021 14:32:00 +0000</pubDate><guid>https://kizx.github.io/post/pyqt%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%ACqplaintextedit%E6%8B%96%E6%94%BE%E6%96%87%E4%BB%B6%E5%90%8E%E5%85%89%E6%A0%87%E4%B8%8D%E5%8A%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid><description>&lt;p>如标题所示，在重写了QPlainTextEdit的拖放方法后，发现拖放文件后光标就不动了，但编辑功能正常，就很奇怪，虽然不会报bug，但很影响使用，文档里翻了半天没有找到问题，换了个搜索姿势后找到了和我遇到相同问题的人，并且解决方法也很奇特。&lt;/p>
 &lt;h2 id="解决方法">&lt;a href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>解决方法
 &lt;/h2>&lt;p>方法来自：&lt;a class="link" href="https://fishc.com.cn/thread-187937-1-1.html" target="_blank" rel="noopener"
 >PyQt5 QTextEdit重写dropEvent方法后拖入文件光标不动的问题&lt;/a>
@@ -457,7 +457,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> path &lt;span style="color:#f92672">=&lt;/span> e&lt;span style="color:#f92672">.&lt;/span>mimeData()&lt;span style="color:#f92672">.&lt;/span>text()&lt;span style="color:#f92672">.&lt;/span>replace(&lt;span style="color:#e6db74">&amp;#39;file:///&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>dropEvent(e) &lt;span style="color:#75715e"># 加这一句即可&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>setPlainText(path)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>单层离散Hopfield神经网络(DHNN)程序实现</title><link>https://kizx.github.io/kizx/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 03 Jul 2020 08:09:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>DHNN网络由n个神经元组成，每个神经元取值为1或-1。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>单层离散Hopfield神经网络(DHNN)程序实现</title><link>https://kizx.github.io/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</link><pubDate>Fri, 03 Jul 2020 08:09:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%8D%95%E5%B1%82%E7%A6%BB%E6%95%A3hopfield%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9Cdhnn%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0/</guid><description>&lt;p>DHNN网络由n个神经元组成，每个神经元取值为1或-1。
 &lt;img src="https://pan.2bboy.com/img/2020/07/0703152535.png"
 loading="lazy"
 >&lt;/p>
@@ -541,7 +541,7 @@ loading="lazy"
 &lt;a class="link" href="https://blog.csdn.net/weixin_42398658/article/details/84027012" target="_blank" rel="noopener"
 >https://blog.csdn.net/weixin_42398658/article/details/84027012&lt;/a>
 &lt;a class="link" href="https://space.bilibili.com/529985682/video" target="_blank" rel="noopener"
->https://space.bilibili.com/529985682/video&lt;/a>&lt;/p></description></item><item><title>再谈Python读取stl模型</title><link>https://kizx.github.io/kizx/post/%E5%86%8D%E8%B0%88python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B/</link><pubDate>Sun, 14 Jun 2020 14:28:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%86%8D%E8%B0%88python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>[post cid=&amp;ldquo;184&amp;rdquo; /]
+>https://space.bilibili.com/529985682/video&lt;/a>&lt;/p></description></item><item><title>再谈Python读取stl模型</title><link>https://kizx.github.io/post/%E5%86%8D%E8%B0%88python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B/</link><pubDate>Sun, 14 Jun 2020 14:28:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%86%8D%E8%B0%88python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B/</guid><description>&lt;p>[post cid=&amp;ldquo;184&amp;rdquo; /]
 前面借助vtk库实现读取stl模型，不过这有点杀鸡牛刀了，因为stl模型本身并不复杂，参考&lt;a class="link" href="https://blog.csdn.net/qq_28249373/article/details/75368441" target="_blank" rel="noopener"
 >这篇文章&lt;/a>。自己手写一个读取stl的程序也很简单，但我就是懒得写怎么办 ::aru:cryingface::&lt;/p>
 &lt;h2 id="stl库">&lt;a href="#stl%e5%ba%93" class="header-anchor">&lt;/a>stl库
@@ -567,7 +567,7 @@ print(kiki.name)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#39;点&amp;#39;&lt;/span>, your_mesh&lt;span style="color:#f92672">.&lt;/span>points)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#39;v0表示三角面第一个点&amp;#39;&lt;/span>, your_mesh&lt;span style="color:#f92672">.&lt;/span>v0)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#39;x表示所有点的x坐标&amp;#39;&lt;/span>, your_mesh&lt;span style="color:#f92672">.&lt;/span>x)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python读取stl模型并获取点坐标值</title><link>https://kizx.github.io/kizx/post/python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%82%B9%E5%9D%90%E6%A0%87%E5%80%BC/</link><pubDate>Sat, 13 Jun 2020 16:03:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%82%B9%E5%9D%90%E6%A0%87%E5%80%BC/</guid><description>&lt;p>本来以为python应该有个专门的库用来读取stl模型，实际上也的确有个叫 &lt;code>stl&lt;/code>的库，不过经测试这个库完全没法用(或许是我不会用？)。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python读取stl模型并获取点坐标值</title><link>https://kizx.github.io/post/python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%82%B9%E5%9D%90%E6%A0%87%E5%80%BC/</link><pubDate>Sat, 13 Jun 2020 16:03:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E8%AF%BB%E5%8F%96stl%E6%A8%A1%E5%9E%8B%E5%B9%B6%E8%8E%B7%E5%8F%96%E7%82%B9%E5%9D%90%E6%A0%87%E5%80%BC/</guid><description>&lt;p>本来以为python应该有个专门的库用来读取stl模型，实际上也的确有个叫 &lt;code>stl&lt;/code>的库，不过经测试这个库完全没法用(或许是我不会用？)。
 后来发现vtk库可以读取并显示stl模型，查了一下vtk无法直接pip安装，需要手动下载whl &lt;a class="link" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#vtk" target="_blank" rel="noopener"
 >https://www.lfd.uci.edu/~gohlke/pythonlibs/#vtk&lt;/a>，下载时根据自己python版本下载就行了，下载完进入工程venv环境进行pip安装。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>pip install VTK&lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>&lt;span style="color:#ae81ff">8.2.0&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>cp37&lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>cp37m&lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>win32&lt;span style="color:#f92672">.&lt;/span>whl
@@ -626,7 +626,7 @@ print(kiki.name)
 &lt;a class="link" href="https://blog.csdn.net/genispan/article/details/79593913?utm_source=blogxgwz5" target="_blank" rel="noopener"
 >从文件读取STL数据&lt;/a>
 &lt;a class="link" href="https://blog.csdn.net/donglany/article/details/78583380" target="_blank" rel="noopener"
->Python配置VTK库&lt;/a>&lt;/p></description></item><item><title>Visual Studio配置glut/freeglut开发环境</title><link>https://kizx.github.io/kizx/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Mon, 01 Jun 2020 08:17:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>&lt;p>glut/freeglut是opengl的一个封装库，虽然现在一般都是用glfw了，但一些教材和课堂上仍旧采用glut库，没办法，那就来配置一下吧。其中glut比较古老，而且好像闭源且早已不再维护了，其官网首页也直接推荐到freeglut库。freeglut是glut的开源版，且一直有人维护。
+>Python配置VTK库&lt;/a>&lt;/p></description></item><item><title>Visual Studio配置glut/freeglut开发环境</title><link>https://kizx.github.io/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Mon, 01 Jun 2020 08:17:00 +0000</pubDate><guid>https://kizx.github.io/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>&lt;p>glut/freeglut是opengl的一个封装库，虽然现在一般都是用glfw了，但一些教材和课堂上仍旧采用glut库，没办法，那就来配置一下吧。其中glut比较古老，而且好像闭源且早已不再维护了，其官网首页也直接推荐到freeglut库。freeglut是glut的开源版，且一直有人维护。
 glut官网：https://www.opengl.org/resources/libraries/glut/
 freeglut官网下载：https://www.transmissionzero.co.uk/software/freeglut-devel/&lt;/p>
 &lt;blockquote>
@@ -676,7 +676,7 @@ loading="lazy"
 &lt;h2 id="glut配置">&lt;a href="#glut%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>glut配置
 &lt;/h2>&lt;p>如果非要用glut也不是不行，官方下载地址：https://www.opengl.org/resources/libraries/glut/glut_downloads.php#windows 选择&lt;code>Download the GLUT 3.6 headers and pre-compiled libraries: glutdlls36.zip&lt;/code>下载应该就可以。
 下载解压后就5个文件和一个readme，这怎么用？网上的教程都是分别塞到系统目录和VS安装目录下的，这里我觉得可以像上面freeglut一样进行配置，手动将这5个文件安排成和freeglut相似的目录结构：新建三个&lt;code>bin&lt;/code>,&lt;code>include/GL&lt;/code>,&lt;code>lib&lt;/code>目录然后将5个文件一一放进去，将&lt;code>bin&lt;/code>的目录添加到系统&lt;code>path&lt;/code>环境变量。
-然后后面在VS里的设置就和上面freeglut一样了，只需要将相应名称改一下就行了，测试代码也是一样的。&lt;/p></description></item><item><title>Windows编译安装CGAL</title><link>https://kizx.github.io/kizx/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</link><pubDate>Mon, 25 May 2020 18:11:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</guid><description>&lt;p>CGAL是一个C++计算几何算法库，官方安装说明：https://doc.cgal.org/latest/Manual/windows.html
+然后后面在VS里的设置就和上面freeglut一样了，只需要将相应名称改一下就行了，测试代码也是一样的。&lt;/p></description></item><item><title>Windows编译安装CGAL</title><link>https://kizx.github.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</link><pubDate>Mon, 25 May 2020 18:11:00 +0000</pubDate><guid>https://kizx.github.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</guid><description>&lt;p>CGAL是一个C++计算几何算法库，官方安装说明：https://doc.cgal.org/latest/Manual/windows.html
 我的配置是win10+vs2019，已安装有CMake。
 [button color=&amp;ldquo;success&amp;rdquo; icon=&amp;ldquo;fa fa-download&amp;rdquo; url=&amp;ldquo;https://pan.2bboy.com/Public/Software/CGAL/&amp;rdquo; type=&amp;quot;&amp;quot;]我用到的所有安装文件[/button]&lt;/p>
 &lt;h2 id="下载安装boost">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85boost" class="header-anchor">&lt;/a>下载安装boost
@@ -758,7 +758,7 @@ loading="lazy"
 &lt;a class="link" href="https://blog.csdn.net/s_lisheng/article/details/72871218" target="_blank" rel="noopener"
 >https://blog.csdn.net/s_lisheng/article/details/72871218&lt;/a>
 &lt;a class="link" href="https://zhuanlan.zhihu.com/p/99814130" target="_blank" rel="noopener"
->https://zhuanlan.zhihu.com/p/99814130&lt;/a>&lt;/p></description></item><item><title>Pyqt提升控件为自定义控件的方法(动态加载ui文件)</title><link>https://kizx.github.io/kizx/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</link><pubDate>Tue, 12 May 2020 16:43:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</guid><description>&lt;p>[post cid=&amp;ldquo;159&amp;rdquo; /]
+>https://zhuanlan.zhihu.com/p/99814130&lt;/a>&lt;/p></description></item><item><title>Pyqt提升控件为自定义控件的方法(动态加载ui文件)</title><link>https://kizx.github.io/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</link><pubDate>Tue, 12 May 2020 16:43:00 +0000</pubDate><guid>https://kizx.github.io/post/pyqt%E6%8F%90%E5%8D%87%E6%8E%A7%E4%BB%B6%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%A7%E4%BB%B6%E7%9A%84%E6%96%B9%E6%B3%95%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6/</guid><description>&lt;p>[post cid=&amp;ldquo;159&amp;rdquo; /]
 我之前需要对一个QLineEdit控件实现文件拖拽的功能，在折腾一番后发现只有继承QLineEdit类重写方法才能实现我的功能，但我是用动态加载ui文件的方法，所以没办法直接加载我写的自定义控件，当时是用把原控件删除了再把自己的控件加进去的野蛮方法，但后来我看了黑羽的新教程才知道Qt设计师里右键有个提升控件功能就是专门解决这个问题的。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">MainWindow&lt;/span>(QObject):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -815,7 +815,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="http://www.python3.vip/tut/py/gui/pyqtgraph-2/" target="_blank" rel="noopener"
 >http://www.python3.vip/tut/py/gui/pyqtgraph-2/&lt;/a>
 &lt;a class="link" href="https://blog.csdn.net/qq937772489/article/details/81332037" target="_blank" rel="noopener"
->https://blog.csdn.net/qq937772489/article/details/81332037&lt;/a>&lt;/p></description></item><item><title>Windows本地部署3d-photo-inpainting项目</title><link>https://kizx.github.io/kizx/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 27 Apr 2020 12:12:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前几天我接触了一个由2D图片生成3D视频的开源项目：https://github.com/vt-vl-lab/3d-photo-inpainting
+>https://blog.csdn.net/qq937772489/article/details/81332037&lt;/a>&lt;/p></description></item><item><title>Windows本地部署3d-photo-inpainting项目</title><link>https://kizx.github.io/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 27 Apr 2020 12:12:00 +0000</pubDate><guid>https://kizx.github.io/post/windows%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B23d-photo-inpainting%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前几天我接触了一个由2D图片生成3D视频的开源项目：https://github.com/vt-vl-lab/3d-photo-inpainting
 [post cid=&amp;ldquo;168&amp;rdquo; /]
 当时是在谷歌的Colab平台上运行的，在线平台虽方便，但是连接性不好，时断时续的体验差。最蛋疼的是运行环境不能被保存，第二天想用就得从头安装环境，相当耽误时间。于是我就试了本地部署该项目，虽然官方给出的Linux上的部署教程，但我又不是程序员，懒得整一套Linux系统了，就仿照着在Windows上部署了一下，结果是完全可行的。&lt;/p>
 &lt;h2 id="前提">&lt;a href="#%e5%89%8d%e6%8f%90" class="header-anchor">&lt;/a>前提
@@ -851,7 +851,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;h2 id="更多设置">&lt;a href="#%e6%9b%b4%e5%a4%9a%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>更多设置
 &lt;/h2>&lt;p>项目默认运行的参数都写在了&lt;code>argument.yml&lt;/code>文件中，这里面的参数意义参考：https://github.com/vt-vl-lab/3d-photo-inpainting/blob/master/DOCUMENTATION.md
-这里面参数可以控制输出视频大小和镜头运动等，具体设置就自己探索吧。&lt;/p></description></item><item><title>Pyqt加载ui文件界面的方法</title><link>https://kizx.github.io/kizx/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 13 Apr 2020 15:55:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;p>注意我这里主界面ui文件是一个QWidget，不是一个QMainWindow，QMainWindow的稍有不同。&lt;/p>
+这里面参数可以控制输出视频大小和镜头运动等，具体设置就自己探索吧。&lt;/p></description></item><item><title>Pyqt加载ui文件界面的方法</title><link>https://kizx.github.io/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 13 Apr 2020 15:55:00 +0000</pubDate><guid>https://kizx.github.io/post/pyqt%E5%8A%A0%E8%BD%BDui%E6%96%87%E4%BB%B6%E7%95%8C%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;p>注意我这里主界面ui文件是一个QWidget，不是一个QMainWindow，QMainWindow的稍有不同。&lt;/p>
 &lt;h2 id="动态加载">&lt;a href="#%e5%8a%a8%e6%80%81%e5%8a%a0%e8%bd%bd" class="header-anchor">&lt;/a>动态加载
 &lt;/h2>&lt;p>动态加载不用将ui文件转换为py文件，边改界面就能边用，很是方便，适合绝大多数情况，这种方法唯一的缺点大概就是编程时控件不能进行自动补全，因为IDE没法知道控件继承自哪里。
 [tabs]
@@ -915,7 +915,7 @@ loading="lazy"
 [/tabs]&lt;/p>
 &lt;h2 id="总结">&lt;a href="#%e6%80%bb%e7%bb%93" class="header-anchor">&lt;/a>总结
 &lt;/h2>&lt;p>动态加载不能进行代码自动补全，打包时ui文件也必须一同打包；静态加载每次手动转换麻烦了点，但转换后因为有了明确的代码可以自动补全代码，进行一些高级编程时有问题也可以更好的debug。
-所以我觉得最好先用动态加载的方法把界面先搞定，然后写代码时再切到静态加载方法。&lt;/p></description></item><item><title>conda设置国内镜像源</title><link>https://kizx.github.io/kizx/post/conda%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link><pubDate>Tue, 07 Apr 2020 08:59:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/conda%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid><description>&lt;p>与 &lt;a class="link" href="https://www.2bboy.com/archives/156.html" target="_blank" rel="noopener"
+所以我觉得最好先用动态加载的方法把界面先搞定，然后写代码时再切到静态加载方法。&lt;/p></description></item><item><title>conda设置国内镜像源</title><link>https://kizx.github.io/post/conda%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</link><pubDate>Tue, 07 Apr 2020 08:59:00 +0000</pubDate><guid>https://kizx.github.io/post/conda%E8%AE%BE%E7%BD%AE%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E6%BA%90/</guid><description>&lt;p>与 &lt;a class="link" href="https://www.2bboy.com/archives/156.html" target="_blank" rel="noopener"
 >pip设置pypi源&lt;/a> 不同，conda需要设置的源是anaconda的源，annaconda的国内镜像目前好像只有清华。科大那个现在直接重定向转到清华，已经不能用了。&lt;/p>
 &lt;h2 id="设置">&lt;a href="#%e8%ae%be%e7%bd%ae" class="header-anchor">&lt;/a>设置
 &lt;/h2>&lt;p>与pip设置pypi源类似，conda可以在windows用户目录下创建一个&lt;code>.condarc&lt;/code>文件，然后写入以下内容即可。&lt;/p>
@@ -946,7 +946,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener"
 >https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/&lt;/a>
 &lt;a class="link" href="http://mirrors.ustc.edu.cn/help/anaconda.html" target="_blank" rel="noopener"
->http://mirrors.ustc.edu.cn/help/anaconda.html&lt;/a>&lt;/p></description></item><item><title>Python处理和保存json文件注意事项</title><link>https://kizx.github.io/kizx/post/python%E5%A4%84%E7%90%86%E5%92%8C%E4%BF%9D%E5%AD%98json%E6%96%87%E4%BB%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link><pubDate>Fri, 27 Mar 2020 11:00:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E5%A4%84%E7%90%86%E5%92%8C%E4%BF%9D%E5%AD%98json%E6%96%87%E4%BB%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid><description>&lt;p>Python处理json文件很简单，只需要&lt;code>import json&lt;/code>即可，所需要掌握的函数也只有以下四个。
+>http://mirrors.ustc.edu.cn/help/anaconda.html&lt;/a>&lt;/p></description></item><item><title>Python处理和保存json文件注意事项</title><link>https://kizx.github.io/post/python%E5%A4%84%E7%90%86%E5%92%8C%E4%BF%9D%E5%AD%98json%E6%96%87%E4%BB%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</link><pubDate>Fri, 27 Mar 2020 11:00:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E5%A4%84%E7%90%86%E5%92%8C%E4%BF%9D%E5%AD%98json%E6%96%87%E4%BB%B6%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</guid><description>&lt;p>Python处理json文件很简单，只需要&lt;code>import json&lt;/code>即可，所需要掌握的函数也只有以下四个。
 json.dumps(obj)：将python数据类型转化为str类型
 json.dump(obj,fp)：将python数据写入文件fp中&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> json
@@ -988,7 +988,7 @@ json.loas(str)：将str类型转换为python数据类型&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>config&lt;span style="color:#f92672">.&lt;/span>pop(&lt;span style="color:#e6db74">&amp;#39;c&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 剔除参数&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">with&lt;/span> open(&lt;span style="color:#e6db74">&amp;#39;config.json&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;w&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f: &lt;span style="color:#75715e"># &amp;#39;w&amp;#39;模式打开文件默认先清空&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> json&lt;span style="color:#f92672">.&lt;/span>dump(config, f, indent&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>) &lt;span style="color:#75715e"># 写入新配置&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>pyqt实现文件拖放获取路径</title><link>https://kizx.github.io/kizx/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</link><pubDate>Sat, 21 Mar 2020 14:11:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</guid><description>&lt;p>文件拖放自动填充路径操作本应该是个很简单的操作，结果搜到的教程都在讲控件的拖拽，几经折磨后终于算是实现了这个功能吧。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>pyqt实现文件拖放获取路径</title><link>https://kizx.github.io/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</link><pubDate>Sat, 21 Mar 2020 14:11:00 +0000</pubDate><guid>https://kizx.github.io/post/pyqt%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E6%8B%96%E6%94%BE%E8%8E%B7%E5%8F%96%E8%B7%AF%E5%BE%84/</guid><description>&lt;p>文件拖放自动填充路径操作本应该是个很简单的操作，结果搜到的教程都在讲控件的拖拽，几经折磨后终于算是实现了这个功能吧。&lt;/p>
 &lt;h2 id="操作">&lt;a href="#%e6%93%8d%e4%bd%9c" class="header-anchor">&lt;/a>操作
 &lt;/h2>&lt;p>首先，要知道pyqt的控件有个setAcceptDrops(bool)方法可以设置控件是否接受拖放这个动作，如果是用qt设计师设计的界面可以看到该属性是默认打开的，既然默认打开，那么理论就应该可以实现文件拖放功能。
 &lt;img src="https://pan.2bboy.com/img/2020/03/0321214758.jpg"
@@ -1028,7 +1028,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>horizontalLayout_2&lt;span style="color:#f92672">.&lt;/span>addWidget(self&lt;span style="color:#f92672">.&lt;/span>ui&lt;span style="color:#f92672">.&lt;/span>file)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
 &lt;p>针对上面的问题我后来找到了解决方案。
-[post cid=&amp;ldquo;173&amp;rdquo; /]&lt;/p></description></item><item><title>pip设置pypi国内镜像</title><link>https://kizx.github.io/kizx/post/pip%E8%AE%BE%E7%BD%AEpypi%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F/</link><pubDate>Wed, 11 Mar 2020 12:14:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pip%E8%AE%BE%E7%BD%AEpypi%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F/</guid><description>&lt;h2 id="开源镜像站">&lt;a href="#%e5%bc%80%e6%ba%90%e9%95%9c%e5%83%8f%e7%ab%99" class="header-anchor">&lt;/a>开源镜像站
+[post cid=&amp;ldquo;173&amp;rdquo; /]&lt;/p></description></item><item><title>pip设置pypi国内镜像</title><link>https://kizx.github.io/post/pip%E8%AE%BE%E7%BD%AEpypi%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F/</link><pubDate>Wed, 11 Mar 2020 12:14:00 +0000</pubDate><guid>https://kizx.github.io/post/pip%E8%AE%BE%E7%BD%AEpypi%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F/</guid><description>&lt;h2 id="开源镜像站">&lt;a href="#%e5%bc%80%e6%ba%90%e9%95%9c%e5%83%8f%e7%ab%99" class="header-anchor">&lt;/a>开源镜像站
 &lt;/h2>&lt;p>[scode type=&amp;ldquo;blue&amp;rdquo;]&lt;a class="link" href="https://developer.aliyun.com/mirror/" target="_blank" rel="noopener"
 >阿里镜像&lt;/a>&lt;code>https://mirrors.aliyun.com/pypi/simple/&lt;/code>[/scode]&lt;/p>
 &lt;p>[scode type=&amp;ldquo;blue&amp;rdquo;]&lt;a class="link" href="https://mirrors.163.com/" target="_blank" rel="noopener"
@@ -1075,7 +1075,7 @@ pip.ini里可以这样写&lt;/p>
 &lt;a class="link" href="https://developer.aliyun.com/mirror/pypi?spm=a2c6h.13651102.0.0.3e221b11kAuK9K" target="_blank" rel="noopener"
 >https://developer.aliyun.com/mirror/pypi?spm=a2c6h.13651102.0.0.3e221b11kAuK9K&lt;/a>
 &lt;a class="link" href="https://pip.pypa.io/en/stable/user_guide/#config-file" target="_blank" rel="noopener"
->https://pip.pypa.io/en/stable/user_guide/#config-file&lt;/a>&lt;/p></description></item><item><title>Pyinstaller打包的正确姿势</title><link>https://kizx.github.io/kizx/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 04 Mar 2020 06:03:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>python打包成exe程序的方法有不少，但最常用的还是pyinstaller，打包python程序主要是为了给那些不懂python的人用的，而且如果是像pyqt一类的图形界面程序，打包一下也会变得更易用。&lt;/p>
+>https://pip.pypa.io/en/stable/user_guide/#config-file&lt;/a>&lt;/p></description></item><item><title>Pyinstaller打包的正确姿势</title><link>https://kizx.github.io/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Wed, 04 Mar 2020 06:03:00 +0000</pubDate><guid>https://kizx.github.io/post/pyinstaller%E6%89%93%E5%8C%85%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;p>python打包成exe程序的方法有不少，但最常用的还是pyinstaller，打包python程序主要是为了给那些不懂python的人用的，而且如果是像pyqt一类的图形界面程序，打包一下也会变得更易用。&lt;/p>
 &lt;h2 id="安装">&lt;a href="#%e5%ae%89%e8%a3%85" class="header-anchor">&lt;/a>安装
 &lt;/h2>&lt;p>建议被打包的程序都放在一个虚拟环境中，不论是用venv，pipenv还是conda都是可以的，然后在虚拟环境中安装pyinstaller。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pip install pyinstaller
@@ -1186,7 +1186,7 @@ python37.dll
 &lt;/ul>
 &lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
 &lt;/h2>&lt;p>Pyinstaller文档：https://pyinstaller.readthedocs.io/en/stable/
-白月黑羽教Python：http://www.python3.vip/doc/tutorial/python/level2/gui/qt_04/&lt;/p></description></item><item><title>字幕朗读器——由字幕文件生成音频</title><link>https://kizx.github.io/kizx/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E7%94%B1%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E9%9F%B3%E9%A2%91/</link><pubDate>Mon, 27 Jan 2020 12:46:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E7%94%B1%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E9%9F%B3%E9%A2%91/</guid><description>&lt;p>最新版本请转下面这篇
+白月黑羽教Python：http://www.python3.vip/doc/tutorial/python/level2/gui/qt_04/&lt;/p></description></item><item><title>字幕朗读器——由字幕文件生成音频</title><link>https://kizx.github.io/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E7%94%B1%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E9%9F%B3%E9%A2%91/</link><pubDate>Mon, 27 Jan 2020 12:46:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%AD%97%E5%B9%95%E6%9C%97%E8%AF%BB%E5%99%A8%E7%94%B1%E5%AD%97%E5%B9%95%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90%E9%9F%B3%E9%A2%91/</guid><description>&lt;p>最新版本请转下面这篇
 [post cid=&amp;ldquo;210&amp;rdquo; /]&lt;/p>
 &lt;h2 id="这是什么">&lt;a href="#%e8%bf%99%e6%98%af%e4%bb%80%e4%b9%88" class="header-anchor">&lt;/a>这是什么
 &lt;/h2>&lt;p>起因是我做视频懒得说话，最多在视频做好后加上字幕，但光有字幕没语音感觉还是差了点意思。市面上有很多文本朗读器，可是我并没有找到一款能朗读字幕的应用，我这里的朗读字幕指语音能自动和字幕时间轴匹配。虽然有几款播放器（potplayer、kmplayer、VLC）自带字幕朗读功能，通过一边朗读一遍录音的话就可以得到我想要的音频，但这种做法过于笨拙。本着学习的目的，我试着用py写了一个小程序实现了字幕朗读的功能。&lt;/p>
@@ -1280,7 +1280,7 @@ loading="lazy"
 &lt;/h2>&lt;p>后来发现一个有同样功能的软件：http://www.cross-plus-a.com/cn/balabolka.htm 打开工具-&amp;gt;字幕转换器功能就是，这功能藏的太隐秘当初都没找到。&lt;/p>
 &lt;hr>
 &lt;p>后后来发现一个叫&lt;a class="link" href="http://www.subspeak.top/" target="_blank" rel="noopener"
->字幕说&lt;/a>的网站也有类似的服务，不过介绍来看，这个是输入文本，然后生成同步的语音和字幕。虽然节省了做字幕的功夫，但这种只适合那种一刻不停的说的视频，适用性还有待提高（有空我也可以整合实现这种功能）。&lt;/p></description></item><item><title>Python音频处理——pydub库</title><link>https://kizx.github.io/kizx/post/python%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86pydub%E5%BA%93/</link><pubDate>Sat, 25 Jan 2020 15:41:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86pydub%E5%BA%93/</guid><description>&lt;p>&lt;a class="link" href="https://github.com/jiaaro/pydub#installation" target="_blank" rel="noopener"
+>字幕说&lt;/a>的网站也有类似的服务，不过介绍来看，这个是输入文本，然后生成同步的语音和字幕。虽然节省了做字幕的功夫，但这种只适合那种一刻不停的说的视频，适用性还有待提高（有空我也可以整合实现这种功能）。&lt;/p></description></item><item><title>Python音频处理——pydub库</title><link>https://kizx.github.io/post/python%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86pydub%E5%BA%93/</link><pubDate>Sat, 25 Jan 2020 15:41:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86pydub%E5%BA%93/</guid><description>&lt;p>&lt;a class="link" href="https://github.com/jiaaro/pydub#installation" target="_blank" rel="noopener"
 >官方安装说明&lt;/a>&lt;/p>
 &lt;ol>
 &lt;li>下载解压&lt;a class="link" href="https://ffmpeg.zeranoe.com/builds/" target="_blank" rel="noopener"
@@ -1296,7 +1296,7 @@ loading="lazy"
 >python音频处理&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://blog.csdn.net/baidu_29198395/article/details/86694365" target="_blank" rel="noopener"
 >pydub的中文文档&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>百度语音合成平台使用</title><link>https://kizx.github.io/kizx/post/%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8/</link><pubDate>Sat, 25 Jan 2020 10:22:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8/</guid><description>&lt;ul>
+&lt;/ul></description></item><item><title>百度语音合成平台使用</title><link>https://kizx.github.io/post/%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8/</link><pubDate>Sat, 25 Jan 2020 10:22:00 +0000</pubDate><guid>https://kizx.github.io/post/%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8/</guid><description>&lt;ul>
 &lt;li>&lt;a class="link" href="https://ai.baidu.com/tech/speech/tts" target="_blank" rel="noopener"
 >在线试用&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://ai.baidu.com/ai-doc/SPEECH/yk38y8h3j" target="_blank" rel="noopener"
@@ -1340,7 +1340,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> isinstance(result, dict):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(&lt;span style="color:#e6db74">&amp;#39;auido.mp3&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;wb&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> f&lt;span style="color:#f92672">.&lt;/span>write(result)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Google Golab——免费的GPU深度学习平台</title><link>https://kizx.github.io/kizx/post/google-golab%E5%85%8D%E8%B4%B9%E7%9A%84gpu%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0/</link><pubDate>Mon, 13 Jan 2020 03:41:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/google-golab%E5%85%8D%E8%B4%B9%E7%9A%84gpu%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0/</guid><description>&lt;p>&lt;a class="link" href="https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d" target="_blank" rel="noopener"
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Google Golab——免费的GPU深度学习平台</title><link>https://kizx.github.io/post/google-golab%E5%85%8D%E8%B4%B9%E7%9A%84gpu%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0/</link><pubDate>Mon, 13 Jan 2020 03:41:00 +0000</pubDate><guid>https://kizx.github.io/post/google-golab%E5%85%8D%E8%B4%B9%E7%9A%84gpu%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%B9%B3%E5%8F%B0/</guid><description>&lt;p>&lt;a class="link" href="https://medium.com/deep-learning-turkey/google-colab-free-gpu-tutorial-e113627b9f5d" target="_blank" rel="noopener"
 >官方教程&lt;/a>
 &lt;a class="link" href="https://www.jianshu.com/p/000d2a9d36a0" target="_blank" rel="noopener"
 >Google Colab——用谷歌免费GPU跑你的深度学习代码&lt;/a>
@@ -1370,7 +1370,7 @@ loading="lazy"
 loading="lazy"
 alt="安装截图"
 >&lt;/li>
-&lt;/ul></description></item><item><title>Win10安装PyTorch（GPU）</title><link>https://kizx.github.io/kizx/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</link><pubDate>Sat, 11 Jan 2020 10:48:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</guid><description>&lt;p>先确保你的电脑的独显支持CUDA，否则只能用CPU运算。
+&lt;/ul></description></item><item><title>Win10安装PyTorch（GPU）</title><link>https://kizx.github.io/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</link><pubDate>Sat, 11 Jan 2020 10:48:00 +0000</pubDate><guid>https://kizx.github.io/post/win10%E5%AE%89%E8%A3%85pytorchgpu/</guid><description>&lt;p>先确保你的电脑的独显支持CUDA，否则只能用CPU运算。
 这里可以查看自己显卡型号是否支持CUDA以及CUDA计算能力：https://developer.nvidia.com/
 安装工具：Anaconda &lt;a class="link" href="https://www.2bboy.com/archives/145.html" target="_blank" rel="noopener"
 >常用命令&lt;/a>
@@ -1408,7 +1408,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>torch&lt;span style="color:#f92672">.&lt;/span>cuda&lt;span style="color:#f92672">.&lt;/span>is_available()
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;img src="https://pan.2bboy.com/img/2020/01/0111184723.png"
 loading="lazy"
->&lt;/p></description></item><item><title>Anaconda常用命令</title><link>https://kizx.github.io/kizx/post/anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sat, 11 Jan 2020 08:03:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://www.jianshu.com/p/742dc4d8f4c5" target="_blank" rel="noopener"
+>&lt;/p></description></item><item><title>Anaconda常用命令</title><link>https://kizx.github.io/post/anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sat, 11 Jan 2020 08:03:00 +0000</pubDate><guid>https://kizx.github.io/post/anaconda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://www.jianshu.com/p/742dc4d8f4c5" target="_blank" rel="noopener"
 >Anaconda简单入门&lt;/a>&lt;/p>
 &lt;h2 id="命令">&lt;a href="#%e5%91%bd%e4%bb%a4" class="header-anchor">&lt;/a>命令
 &lt;/h2>&lt;pre tabindex="0">&lt;code># 查看conda版本
@@ -1444,7 +1444,7 @@ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/m
 conda config --set show_channel_urls yes
 # 换回默认的源
 conda config --remove-key channels
-&lt;/code>&lt;/pre></description></item><item><title>腾讯云函数入门</title><link>https://kizx.github.io/kizx/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8/</link><pubDate>Thu, 09 Jan 2020 13:43:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8/</guid><description>&lt;h2 id="使用腾讯云控制台城建函数">&lt;a href="#%e4%bd%bf%e7%94%a8%e8%85%be%e8%ae%af%e4%ba%91%e6%8e%a7%e5%88%b6%e5%8f%b0%e5%9f%8e%e5%bb%ba%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>使用腾讯云控制台城建函数
+&lt;/code>&lt;/pre></description></item><item><title>腾讯云函数入门</title><link>https://kizx.github.io/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8/</link><pubDate>Thu, 09 Jan 2020 13:43:00 +0000</pubDate><guid>https://kizx.github.io/post/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%87%BD%E6%95%B0%E5%85%A5%E9%97%A8/</guid><description>&lt;h2 id="使用腾讯云控制台城建函数">&lt;a href="#%e4%bd%bf%e7%94%a8%e8%85%be%e8%ae%af%e4%ba%91%e6%8e%a7%e5%88%b6%e5%8f%b0%e5%9f%8e%e5%bb%ba%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>使用腾讯云控制台城建函数
 &lt;/h2>&lt;p>之前安装onedrive云盘用的就是这种方式，装多了感觉就简单了，官方文档：https://cloud.tencent.com/document/product/583/37509&lt;/p>
 &lt;h2 id="使用控制台创建函数">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%8e%a7%e5%88%b6%e5%8f%b0%e5%88%9b%e5%bb%ba%e5%87%bd%e6%95%b0" class="header-anchor">&lt;/a>使用控制台创建函数
 &lt;/h2>&lt;p>官方文档：https://cloud.tencent.com/document/product/583/37510
@@ -1466,7 +1466,7 @@ conda config --remove-key channels
 &lt;/h2>&lt;p>官方教程：https://cloud.tencent.com/document/product/583/37511
 在插件市场搜索Tencent Serverless安装结果第一个即可，将之前的命令都按钮化了，更简单直观，还能在vscode里debug。&lt;/p>
 &lt;h2 id="为云函数打包依赖">&lt;a href="#%e4%b8%ba%e4%ba%91%e5%87%bd%e6%95%b0%e6%89%93%e5%8c%85%e4%be%9d%e8%b5%96" class="header-anchor">&lt;/a>为云函数打包依赖
-&lt;/h2>&lt;p>函数用到了第三方依赖需自行打包随函数一起上传：https://cloud.tencent.com/developer/article/1443081&lt;/p></description></item><item><title>aiohttp异步编程入门</title><link>https://kizx.github.io/kizx/post/aiohttp%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link><pubDate>Mon, 30 Dec 2019 03:56:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/aiohttp%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid><description>&lt;p>教程官方教程就够了：
+&lt;/h2>&lt;p>函数用到了第三方依赖需自行打包随函数一起上传：https://cloud.tencent.com/developer/article/1443081&lt;/p></description></item><item><title>aiohttp异步编程入门</title><link>https://kizx.github.io/post/aiohttp%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</link><pubDate>Mon, 30 Dec 2019 03:56:00 +0000</pubDate><guid>https://kizx.github.io/post/aiohttp%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</guid><description>&lt;p>教程官方教程就够了：
 &lt;a class="link" href="https://docs.aiohttp.org/en/latest/client.html" target="_blank" rel="noopener"
 >https://docs.aiohttp.org/en/latest/client.html&lt;/a>&lt;/p>
 &lt;p>案例：&lt;/p>
@@ -1510,7 +1510,7 @@ conda config --remove-key channels
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loop &lt;span style="color:#f92672">=&lt;/span> asyncio&lt;span style="color:#f92672">.&lt;/span>get_event_loop()
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>task &lt;span style="color:#f92672">=&lt;/span> [acgpic1(i) &lt;span style="color:#66d9ef">for&lt;/span> i &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">10&lt;/span>)]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loop&lt;span style="color:#f92672">.&lt;/span>run_until_complete(asyncio&lt;span style="color:#f92672">.&lt;/span>wait(task))
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Git常用命令</title><link>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Git常用命令</title><link>https://kizx.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>https://kizx.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
 >https://gitee.com/help/categories/43&lt;/a>
 &lt;a class="link" href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener"
 >https://git-scm.com/book/zh/v2/&lt;/a>
@@ -1537,7 +1537,7 @@ git commit -m &amp;#34;first commit&amp;#34;
 git remote add origin git@gitee.com:kizx/rime.git
 # 推送
 git push -u origin master
-&lt;/code>&lt;/pre></description></item><item><title>利用QQ机器人发送时光机</title><link>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</link><pubDate>Fri, 15 Nov 2019 12:38:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</guid><description>&lt;p>现在handsome主题已经有了微信公众号和浏览器拓展两种方式向时光机发送消息，那么自然就想到QQ端是否也可以做到，所以我就通过对浏览器扩展发送时光机进行抓包，然后基于酷Q和nonebot，实现了通过向QQ小号发送消息的方式向时光机发送消息。
+&lt;/code>&lt;/pre></description></item><item><title>利用QQ机器人发送时光机</title><link>https://kizx.github.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</link><pubDate>Fri, 15 Nov 2019 12:38:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%88%A9%E7%94%A8qq%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%8F%91%E9%80%81%E6%97%B6%E5%85%89%E6%9C%BA/</guid><description>&lt;p>现在handsome主题已经有了微信公众号和浏览器拓展两种方式向时光机发送消息，那么自然就想到QQ端是否也可以做到，所以我就通过对浏览器扩展发送时光机进行抓包，然后基于酷Q和nonebot，实现了通过向QQ小号发送消息的方式向时光机发送消息。
 [scode type=&amp;ldquo;share&amp;rdquo;]代码见&lt;a class="link" href="https://github.com/kizx/coolq-cross-bot" target="_blank" rel="noopener"
 >github&lt;/a>[/scode]&lt;/p>
 &lt;h2 id="使用方法">&lt;a href="#%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>使用方法
@@ -1675,7 +1675,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;glyphicon glyphicon-record m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 改成下面这样
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&amp;lt;?php echo &lt;/span>&lt;span style="color:#e6db74">$ua-&amp;gt;returnTimeUa&lt;/span>&lt;span style="color:#e6db74">()[&amp;#39;icon&amp;#39;] ?&amp;gt; m-l-sm&amp;#34;&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;lt;/&lt;/span>&lt;span style="color:#a6e22e">i&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#a6e22e">nbsp&lt;/span>;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python爬虫学习</title><link>https://kizx.github.io/kizx/post/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 06 Nov 2019 09:21:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python爬虫学习</title><link>https://kizx.github.io/post/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 06 Nov 2019 09:21:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0/</guid><description>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> requests
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> bs4 &lt;span style="color:#f92672">import&lt;/span> BeautifulSoup
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> lxml &lt;span style="color:#f92672">import&lt;/span> etree
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -1708,7 +1708,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> img &lt;span style="color:#f92672">=&lt;/span> requests&lt;span style="color:#f92672">.&lt;/span>get(link)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> open(&lt;span style="color:#e6db74">&amp;#39;img/&amp;#39;&lt;/span>&lt;span style="color:#f92672">+&lt;/span>str(index)&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#e6db74">&amp;#39;.jpg&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;wb+&amp;#39;&lt;/span>) &lt;span style="color:#66d9ef">as&lt;/span> f:
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> f&lt;span style="color:#f92672">.&lt;/span>write(img&lt;span style="color:#f92672">.&lt;/span>content)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Pycharm之自定义工具</title><link>https://kizx.github.io/kizx/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</link><pubDate>Sat, 02 Nov 2019 06:05:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</guid><description>&lt;p>可以在Tool里添加工具来代替某些命令行操作，新建一个工程后，建议使用系统环境解释器，这样安装包时可以直接安装到环境中，这样在别的工程里也能用上，使用虚拟环境的话，虚拟环境变动了就找不到工具了，当然本质上只要在选择程序时选择环境里的程序就行了。添加的地方在setting-&amp;gt;Tools-&amp;gt;External Tools。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Pycharm之自定义工具</title><link>https://kizx.github.io/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</link><pubDate>Sat, 02 Nov 2019 06:05:00 +0000</pubDate><guid>https://kizx.github.io/post/pycharm%E4%B9%8B%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B7%A5%E5%85%B7/</guid><description>&lt;p>可以在Tool里添加工具来代替某些命令行操作，新建一个工程后，建议使用系统环境解释器，这样安装包时可以直接安装到环境中，这样在别的工程里也能用上，使用虚拟环境的话，虚拟环境变动了就找不到工具了，当然本质上只要在选择程序时选择环境里的程序就行了。添加的地方在setting-&amp;gt;Tools-&amp;gt;External Tools。&lt;/p>
 &lt;h2 id="示例">&lt;a href="#%e7%a4%ba%e4%be%8b" class="header-anchor">&lt;/a>示例
 &lt;/h2>&lt;h3 id="1-qt-designer">&lt;a href="#1-qt-designer" class="header-anchor">&lt;/a>1. Qt Designer
 &lt;/h3>&lt;p>首先确保库中安装了pyqt5，然后如下图配置&lt;/p>
@@ -1734,7 +1734,7 @@ working directory: $ProjectFileDir$
 &lt;pre tabindex="0">&lt;code class="language-pycharm" data-lang="pycharm">program: C:\Users\ZXIN\AppData\Roaming\Python\Python37\Scripts\black.exe
 Arguments: $FilePath$
 working directory: $FileDir$
-&lt;/code>&lt;/pre></description></item><item><title>Nonebot酷Q应用开发</title><link>https://kizx.github.io/kizx/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Wed, 30 Oct 2019 13:49:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>前面已经研究过&lt;a class="link" href="https://www.2bboy.com/archives/3.html" target="_blank" rel="noopener"
+&lt;/code>&lt;/pre></description></item><item><title>Nonebot酷Q应用开发</title><link>https://kizx.github.io/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Wed, 30 Oct 2019 13:49:00 +0000</pubDate><guid>https://kizx.github.io/post/nonebot%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>前面已经研究过&lt;a class="link" href="https://www.2bboy.com/archives/3.html" target="_blank" rel="noopener"
 >Python&lt;/a>和&lt;a class="link" href="https://www.2bboy.com/archives/116.html" target="_blank" rel="noopener"
 >C++&lt;/a>的酷Q应用开发流程了，其中慕晓飞大大的SDK虽然前期配置需要一定经验，但配置好后上手很快很简单的，但这个SDK不支持并发是最大的硬伤，限制了其使用范围。而C++的SDK无疑写起来过于麻烦，好在该SDK的大神richardchien在C++ SDK的基础上开发出了基于&lt;a class="link" href="https://github.com/richardchien/coolq-http-api" target="_blank" rel="noopener"
 >HTTP的API接口&lt;/a>，由此衍生出了基于该HTTP API的多种语言开发版本，其中就有同样是该作者基于Quart框架开发的&lt;a class="link" href="https://github.com/richardchien/nonebot" target="_blank" rel="noopener"
@@ -1768,7 +1768,7 @@ working directory: $FileDir$
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">async&lt;/span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">repeat&lt;/span>(session: NLPSession):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> msg &lt;span style="color:#f92672">=&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>ctx[&lt;span style="color:#e6db74">&amp;#34;message&amp;#34;&lt;/span>]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">await&lt;/span> session&lt;span style="color:#f92672">.&lt;/span>send(msg)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还有更多应用后续再研究。。。&lt;/p></description></item><item><title>C++酷Q应用开发</title><link>https://kizx.github.io/kizx/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Sat, 26 Oct 2019 09:31:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>以前自己的水平不够，这个项目一直搞不懂，现在起码能跑通了，其实也是比较简单的，项目地址：https://github.com/richardchien/coolq-cpp-sdk&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>还有更多应用后续再研究。。。&lt;/p></description></item><item><title>C++酷Q应用开发</title><link>https://kizx.github.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Sat, 26 Oct 2019 09:31:00 +0000</pubDate><guid>https://kizx.github.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>以前自己的水平不够，这个项目一直搞不懂，现在起码能跑通了，其实也是比较简单的，项目地址：https://github.com/richardchien/coolq-cpp-sdk&lt;/p>
 &lt;h2 id="步骤">&lt;a href="#%e6%ad%a5%e9%aa%a4" class="header-anchor">&lt;/a>步骤
 &lt;/h2>&lt;p>在该装的东西都装了后，在cmd中依次执行以下命令即可。其中最后一个命令，可能需要先进powershell管理员模式运行&lt;code>Set-ExecutionPolicy&lt;/code>并选择是来打开权限。另外由于网络原因，可能会在Unpacking objects这一步卡住，我是通过加速来解决的。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>git clone https://github.com/richardchien/coolq-cpp-sdk.git my-awesome-app
@@ -1779,7 +1779,7 @@ working directory: $FileDir$
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后编译项目，把编译出来的相应文件丢进酷Q的dev文件夹里就行了。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>powershell .\scripts\generate.ps1 Release
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>powershell .\scripts\build.ps1 Release
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python多进程，多线程，协程</title><link>https://kizx.github.io/kizx/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Wed, 23 Oct 2019 12:31:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>&lt;p>以下仅为个人理解&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python多进程，多线程，协程</title><link>https://kizx.github.io/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Wed, 23 Oct 2019 12:31:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>&lt;p>以下仅为个人理解&lt;/p>
 &lt;ul>
 &lt;li>进程——在windows的任务管理器里看到的一个个程序就是进程，最常看见的多进程就是浏览器的多进程，一个程序启动后至少会有一个进程，通常为了效率，会给多核CPU每个核分配几个进程以充分利用CPU。进程之间互不影响，一个进程挂了并不会影响另一个进程。&lt;/li>
 &lt;li>线程——一个进程至少会有一个线程，线程是最小的执行单位。一个进程可以有多线程，多线程可以提高效率。一个线程挂了会导致该进程挂了从而该进程下的线程都会挂掉。&lt;/li>
@@ -1929,7 +1929,7 @@ working directory: $FileDir$
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loop&lt;span style="color:#f92672">.&lt;/span>close()
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>stop &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time()
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(stop &lt;span style="color:#f92672">-&lt;/span> start)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个程序最终需要时间仅为10秒多点，因此是并行的，但要注意这利用的是 yield from asyncio.sleep(5)，这里代表的是一个IO阻塞，并不是什么函数放在这里都能够并行的。&lt;/p></description></item><item><title>Matplotlib学习</title><link>https://kizx.github.io/kizx/post/matplotlib%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 14 Oct 2019 13:46:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/matplotlib%E5%AD%A6%E4%B9%A0/</guid><description>&lt;ul>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个程序最终需要时间仅为10秒多点，因此是并行的，但要注意这利用的是 yield from asyncio.sleep(5)，这里代表的是一个IO阻塞，并不是什么函数放在这里都能够并行的。&lt;/p></description></item><item><title>Matplotlib学习</title><link>https://kizx.github.io/post/matplotlib%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 14 Oct 2019 13:46:00 +0000</pubDate><guid>https://kizx.github.io/post/matplotlib%E5%AD%A6%E4%B9%A0/</guid><description>&lt;ul>
 &lt;li>&lt;a class="link" href="https://matplotlib.org/tutorials/index.html" target="_blank" rel="noopener"
 >官方网站&lt;/a>&lt;/li>
 &lt;li>&lt;a class="link" href="https://www.runoob.com/w3cnote/matplotlib-tutorial.html" target="_blank" rel="noopener"
@@ -2026,12 +2026,12 @@ working directory: $FileDir$
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在屏幕上显示&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>show()
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Windows下使用make命令</title><link>https://kizx.github.io/kizx/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 13 Oct 2019 08:47:03 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>看CMake教程时每次在cmake后都会跟着一个make命令，Linux系统下天然有这个命令。但是我的电脑装了MinGW，也设了环境变量却用不了make命令。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Windows下使用make命令</title><link>https://kizx.github.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 13 Oct 2019 08:47:03 +0000</pubDate><guid>https://kizx.github.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>看CMake教程时每次在cmake后都会跟着一个make命令，Linux系统下天然有这个命令。但是我的电脑装了MinGW，也设了环境变量却用不了make命令。&lt;/p>
 &lt;h2 id="解决">&lt;a href="#%e8%a7%a3%e5%86%b3" class="header-anchor">&lt;/a>解决
 &lt;/h2>&lt;p>先去MinGW的安装目录下的bin目录里看看有没有mingw32-make.exe文件，如果没有用以下命令下载：
 &lt;code>mingw-get install gcc g++ mingw32-make&lt;/code>
 然后将该文件重命名为make.exe即可。
-这样通过CMake利用MinGW编译生成MakeFile相关文件，直接调用make命令就能生成可执行文件了，比起用微软的VS要方便不少。&lt;/p></description></item><item><title>CMake+VS2017编译OpenCV程序</title><link>https://kizx.github.io/kizx/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</link><pubDate>Fri, 11 Oct 2019 16:27:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</guid><description>&lt;p>起因来自下面的OpenCVd官方的一个教程，尝试使用CMake。&lt;/p>
+这样通过CMake利用MinGW编译生成MakeFile相关文件，直接调用make命令就能生成可执行文件了，比起用微软的VS要方便不少。&lt;/p></description></item><item><title>CMake+VS2017编译OpenCV程序</title><link>https://kizx.github.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</link><pubDate>Fri, 11 Oct 2019 16:27:00 +0000</pubDate><guid>https://kizx.github.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</guid><description>&lt;p>起因来自下面的OpenCVd官方的一个教程，尝试使用CMake。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html" target="_blank" rel="noopener"
 >https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html&lt;/a>&lt;/li>
@@ -2086,7 +2086,7 @@ loading="lazy"
 loading="lazy"
 >&lt;/li>
 &lt;li>如果还有报错的话，建议gui左上角清除CMake缓存重新开始，没有问题的话继续点击Generate和Open Project，软件自动打开build下的VS工程文件，VS里右键生成解决方案即可。&lt;/li>
-&lt;/ul></description></item><item><title>用Astyle为Qt Creator添加代码自动格式化功能</title><link>https://kizx.github.io/kizx/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</link><pubDate>Wed, 09 Oct 2019 11:55:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>先要下载安装Astyle &lt;a class="link" href="https://sourceforge.net/projects/astyle/files/" target="_blank" rel="noopener"
+&lt;/ul></description></item><item><title>用Astyle为Qt Creator添加代码自动格式化功能</title><link>https://kizx.github.io/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</link><pubDate>Wed, 09 Oct 2019 11:55:00 +0000</pubDate><guid>https://kizx.github.io/post/%E7%94%A8astyle%E4%B8%BAqt-creator%E6%B7%BB%E5%8A%A0%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%8A%9F%E8%83%BD/</guid><description>&lt;p>先要下载安装Astyle &lt;a class="link" href="https://sourceforge.net/projects/astyle/files/" target="_blank" rel="noopener"
 >https://sourceforge.net/projects/astyle/files/&lt;/a>&lt;/p>
 &lt;h2 id="2-添加beautifier插件">&lt;a href="#2-%e6%b7%bb%e5%8a%a0beautifier%e6%8f%92%e4%bb%b6" class="header-anchor">&lt;/a>2. 添加Beautifier插件
 &lt;/h2>&lt;p>打开Qt Creator，在帮助-&amp;gt;关于插件中打开Beautifier插件&lt;/p>
@@ -2101,7 +2101,7 @@ loading="lazy"
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://www.techieliang.com/2018/01/873/" target="_blank" rel="noopener"
 >https://www.techieliang.com/2018/01/873/&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>OpenCV + Qt 配置</title><link>https://kizx.github.io/kizx/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 14:20:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>假设已经下载安装了OpenCV和Qt并且配置好了OpenCV的环境变量，环境变量设置可以参考以前的文章。&lt;/p>
+&lt;/ul></description></item><item><title>OpenCV + Qt 配置</title><link>https://kizx.github.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 14:20:00 +0000</pubDate><guid>https://kizx.github.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>假设已经下载安装了OpenCV和Qt并且配置好了OpenCV的环境变量，环境变量设置可以参考以前的文章。&lt;/p>
 &lt;h2 id="cmake编译">&lt;a href="#cmake%e7%bc%96%e8%af%91" class="header-anchor">&lt;/a>CMake编译
 &lt;/h2>&lt;p>许多教程都会从CMake编译OpenCV开始，但其实我们下载的安装包解压后已经编译好了，bulid文件下就是编译后的文件，除非有特殊要求，可以不用亲自编译。主要是我尝试用CMake编译Source但是报错失败了，就此作罢。&lt;/p>
 &lt;h2 id="编写pri文件">&lt;a href="#%e7%bc%96%e5%86%99pri%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>编写pri文件
@@ -2134,7 +2134,7 @@ LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a.exec();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>NumPy学习（二）</title><link>https://kizx.github.io/kizx/post/numpy%E5%AD%A6%E4%B9%A0%E4%BA%8C/</link><pubDate>Thu, 26 Sep 2019 10:18:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/numpy%E5%AD%A6%E4%B9%A0%E4%BA%8C/</guid><description>&lt;h2 id="1-加减">&lt;a href="#1-%e5%8a%a0%e5%87%8f" class="header-anchor">&lt;/a>1. 加减
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>NumPy学习（二）</title><link>https://kizx.github.io/post/numpy%E5%AD%A6%E4%B9%A0%E4%BA%8C/</link><pubDate>Thu, 26 Sep 2019 10:18:00 +0000</pubDate><guid>https://kizx.github.io/post/numpy%E5%AD%A6%E4%B9%A0%E4%BA%8C/</guid><description>&lt;h2 id="1-加减">&lt;a href="#1-%e5%8a%a0%e5%87%8f" class="header-anchor">&lt;/a>1. 加减
 &lt;/h2>&lt;p>得益于广播机制，numpy的算术比较灵活&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -2241,7 +2241,7 @@ LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411
 &lt;td>&lt;/td>
 &lt;/tr>
 &lt;/tbody>
-&lt;/table></description></item><item><title>NumPy学习（一）</title><link>https://kizx.github.io/kizx/post/numpy%E5%AD%A6%E4%B9%A0%E4%B8%80/</link><pubDate>Wed, 25 Sep 2019 08:43:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/numpy%E5%AD%A6%E4%B9%A0%E4%B8%80/</guid><description>&lt;h2 id="1-安装和学习">&lt;a href="#1-%e5%ae%89%e8%a3%85%e5%92%8c%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>1. 安装和学习
+&lt;/table></description></item><item><title>NumPy学习（一）</title><link>https://kizx.github.io/post/numpy%E5%AD%A6%E4%B9%A0%E4%B8%80/</link><pubDate>Wed, 25 Sep 2019 08:43:00 +0000</pubDate><guid>https://kizx.github.io/post/numpy%E5%AD%A6%E4%B9%A0%E4%B8%80/</guid><description>&lt;h2 id="1-安装和学习">&lt;a href="#1-%e5%ae%89%e8%a3%85%e5%92%8c%e5%ad%a6%e4%b9%a0" class="header-anchor">&lt;/a>1. 安装和学习
 &lt;/h2>&lt;ul>
 &lt;li>pip安装 &lt;code>pip install numpy&lt;/code>&lt;/li>
 &lt;li>Anaconda自带&lt;/li>
@@ -2376,7 +2376,7 @@ LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(x[[&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>]])
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>arange(&lt;span style="color:#ae81ff">32&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>reshape((&lt;span style="color:#ae81ff">8&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>))
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(x[np&lt;span style="color:#f92672">.&lt;/span>ix_([&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>], [&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>])])
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Visual Studio2017 配置</title><link>https://kizx.github.io/kizx/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 17:25:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="1-下载安装opencv并添加环境变量">&lt;a href="#1-%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85opencv%e5%b9%b6%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>1. 下载安装OpenCV并添加环境变量
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Visual Studio2017 配置</title><link>https://kizx.github.io/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 17:25:00 +0000</pubDate><guid>https://kizx.github.io/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="1-下载安装opencv并添加环境变量">&lt;a href="#1-%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85opencv%e5%b9%b6%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>1. 下载安装OpenCV并添加环境变量
 &lt;/h2>&lt;p>下载地址：https://opencv.org/releases/
 安装参考：http://c.biancheng.net/view/1104.html
 我安装的是Opencv4.1.1版本，然后管理员cmd命令添加环境变量，其实不用命令手动添加也行,不过这一步似乎不是必须的，但可能会与某些步骤有关联。
@@ -2425,7 +2425,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> waitKey(&lt;span style="color:#ae81ff">0&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Anaconda + VSCode 配置</title><link>https://kizx.github.io/kizx/post/opencv-+-anaconda-+-vscode-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 08:23:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opencv-+-anaconda-+-vscode-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>我这个搭配有点奇怪，但是顺手最重要嘛，先收藏几个教程
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Anaconda + VSCode 配置</title><link>https://kizx.github.io/post/opencv-+-anaconda-+-vscode-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 08:23:00 +0000</pubDate><guid>https://kizx.github.io/post/opencv-+-anaconda-+-vscode-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>我这个搭配有点奇怪，但是顺手最重要嘛，先收藏几个教程
 &lt;a class="link" href="http://c.biancheng.net/opencv/" target="_blank" rel="noopener"
 >OpenCV教程&lt;/a>&lt;/p>
 &lt;ol>
@@ -2453,7 +2453,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cv2&lt;span style="color:#f92672">.&lt;/span>imshow(&lt;span style="color:#e6db74">&amp;#34;Image&amp;#34;&lt;/span>, img)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cv2&lt;span style="color:#f92672">.&lt;/span>waitKey(&lt;span style="color:#ae81ff">0&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cv2&lt;span style="color:#f92672">.&lt;/span>destroyAllWindows()
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python酷Q应用开发</title><link>https://kizx.github.io/kizx/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Tue, 03 Sep 2019 16:59:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python酷Q应用开发</title><link>https://kizx.github.io/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Tue, 03 Sep 2019 16:59:00 +0000</pubDate><guid>https://kizx.github.io/post/python%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
 &lt;/h2>&lt;ul>
 &lt;li>酷Q机器人应用一般都是用易语言开发的，但是一方面不想再多学一门易语言，另一方面开发脚本还是用Python比较舒服。关于Python的酷Q的SDK我在论坛找了一下，目前用的比较多的有两个（现在应该是三个了，见文末），一个是基于http的none-bot，功能更强大，但上手有一定难度，所以最简单的我觉得还是慕晓飞大大的 &lt;a class="link" href="https://gitee.com/muxiaofei/coolq_sdk_x/wikis/pages?sort_id=1415025&amp;amp;doc_id=287242" target="_blank" rel="noopener"
 >&lt;strong>Python酷Q_SDK_X&lt;/strong>&lt;/a>&lt;/li>
@@ -2505,7 +2505,7 @@ alt="案例"
 &lt;li>由于Python的GLI锁机制，本插件不支持并发处理。表现为有事件发生时，比如各种消息和定时器事件，插件便会调用一次&lt;em>CQPlusHandler.py&lt;/em>进行事件处理，所以当上一次事件还未处理完时，下一个事件又紧接着发，这时便会发生内存报错。虽然报错了程序并不会崩溃，不过如果程序要处理网络请求一类的耗时任务，这个缺陷是致命的。要想避免这种报错，只在&lt;em>CQPlusHandler.py&lt;/em>文件里下功夫（比如用多线程）应该是不行的，估计得从源码上想想办法才行。不过我的机器人不需要处理大量消息，消息处理的也很快，所以凑合用用也还行。&lt;/li>
 &lt;li>后来有大神重新写了个支持并发的&lt;a class="link" href="https://github.com/crud-boy/cqp-sdk-for-py37-native" target="_blank" rel="noopener"
 >python SDK&lt;/a>，现在也更推荐使用这个或者更高级的nonebot。&lt;/li>
-&lt;/ul></description></item><item><title>加速Python的几种方法</title><link>https://kizx.github.io/kizx/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 04 Aug 2019 17:12:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/ul></description></item><item><title>加速Python的几种方法</title><link>https://kizx.github.io/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 04 Aug 2019 17:12:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
 &lt;/h2>&lt;p>&lt;em>注意以下内容均为本人主观操作感受，运行环境为Win10+python3.7_32位，仅供本人日后查阅&lt;/em>&lt;/p>
 &lt;p>众所周知，python是一门优美而简洁的编程语言，其最大的不足在于运行速度过于感人，而C语言作为最接近底层的高级语言，速度快是他最大的优势。python被誉为胶水语言，应该有办法和C语言胶和起来，我查阅资料发现python调用C语言最普遍的方式大概有三种：&lt;/p>
 &lt;ol>

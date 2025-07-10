@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C/C++ on 醉后的星星</title><link>https://kizx.github.io/kizx/tags/c/c++/</link><description>Recent content in C/C++ on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Tue, 28 Jun 2022 15:32:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/kizx/tags/c/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>VS2019配置pthread多线程</title><link>https://kizx.github.io/kizx/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><pubDate>Tue, 28 Jun 2022 15:32:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid><description>&lt;p>在VS里用MS编译器不能直接调用pthread库，需要先自行下载该库：
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C/C++ on 醉后的星星</title><link>https://kizx.github.io/tags/c/c++/</link><description>Recent content in C/C++ on 醉后的星星</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><copyright>kizx</copyright><lastBuildDate>Tue, 28 Jun 2022 15:32:00 +0000</lastBuildDate><atom:link href="https://kizx.github.io/tags/c/c++/index.xml" rel="self" type="application/rss+xml"/><item><title>VS2019配置pthread多线程</title><link>https://kizx.github.io/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link><pubDate>Tue, 28 Jun 2022 15:32:00 +0000</pubDate><guid>https://kizx.github.io/post/vs2019%E9%85%8D%E7%BD%AEpthread%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid><description>&lt;p>在VS里用MS编译器不能直接调用pthread库，需要先自行下载该库：
 &lt;a class="link" href="http://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip" target="_blank" rel="noopener"
 >http://sourceware.org/pub/pthreads-win32/pthreads-w32-2-9-1-release.zip&lt;/a>
 解压后用的到的只有&lt;code>Pre-built.2&lt;/code>文件夹下的文件。&lt;/p>
@@ -66,7 +66,7 @@ loading="lazy"
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.cnblogs.com/maycpou/p/13895295.html" target="_blank" rel="noopener"
 >https://www.cnblogs.com/maycpou/p/13895295.html&lt;/a>
 &lt;a class="link" href="https://zhuanlan.zhihu.com/p/97418361" target="_blank" rel="noopener"
->https://zhuanlan.zhihu.com/p/97418361&lt;/a>&lt;/p></description></item><item><title>CLion编译运行OpenGL项目</title><link>https://kizx.github.io/kizx/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</link><pubDate>Thu, 04 Jun 2020 13:31:51 +0000</pubDate><guid>https://kizx.github.io/kizx/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前面已经用Visual Studio成功运行了OpenGL了，但是VS的界面比较丑，而且代码提示和补全等各方面不够人性化（主要是我不习惯），相比之下，JB家的CLion虽然运行上慢一点，bug多一点，配置麻烦一点（喂！这缺点太多了吧），但是为了颜值和流畅的编程体验，用一下也不是不可以。&lt;/p>
+>https://zhuanlan.zhihu.com/p/97418361&lt;/a>&lt;/p></description></item><item><title>CLion编译运行OpenGL项目</title><link>https://kizx.github.io/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</link><pubDate>Thu, 04 Jun 2020 13:31:51 +0000</pubDate><guid>https://kizx.github.io/post/clion%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Copengl%E9%A1%B9%E7%9B%AE/</guid><description>&lt;p>前面已经用Visual Studio成功运行了OpenGL了，但是VS的界面比较丑，而且代码提示和补全等各方面不够人性化（主要是我不习惯），相比之下，JB家的CLion虽然运行上慢一点，bug多一点，配置麻烦一点（喂！这缺点太多了吧），但是为了颜值和流畅的编程体验，用一下也不是不可以。&lt;/p>
 &lt;h2 id="配置">&lt;a href="#%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>配置
 &lt;/h2>&lt;p>安装什么的就不说了，新建一个项目，Clion会自动生成一个&lt;code>CMakeLists.txt&lt;/code>和&lt;code>main.cpp&lt;/code>，点击运行没毛病，那就进入opengl的环境配置。
 我这里用的是glut库，别的库参照着配置问题应该不大。在vs里我们是通过右键项目属性设置“三大件”的，但CLion是通过cmake来管理编译和链接的，只能通过手写CMakelists来进行配置。其实配置思路都差不多，手写配置还可以更清晰。
@@ -250,7 +250,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Visual Studio配置glut/freeglut开发环境</title><link>https://kizx.github.io/kizx/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Mon, 01 Jun 2020 08:17:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>&lt;p>glut/freeglut是opengl的一个封装库，虽然现在一般都是用glfw了，但一些教材和课堂上仍旧采用glut库，没办法，那就来配置一下吧。其中glut比较古老，而且好像闭源且早已不再维护了，其官网首页也直接推荐到freeglut库。freeglut是glut的开源版，且一直有人维护。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Visual Studio配置glut/freeglut开发环境</title><link>https://kizx.github.io/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</link><pubDate>Mon, 01 Jun 2020 08:17:00 +0000</pubDate><guid>https://kizx.github.io/post/visual-studio%E9%85%8D%E7%BD%AEglutfreeglut%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</guid><description>&lt;p>glut/freeglut是opengl的一个封装库，虽然现在一般都是用glfw了，但一些教材和课堂上仍旧采用glut库，没办法，那就来配置一下吧。其中glut比较古老，而且好像闭源且早已不再维护了，其官网首页也直接推荐到freeglut库。freeglut是glut的开源版，且一直有人维护。
 glut官网：https://www.opengl.org/resources/libraries/glut/
 freeglut官网下载：https://www.transmissionzero.co.uk/software/freeglut-devel/&lt;/p>
 &lt;blockquote>
@@ -300,7 +300,7 @@ loading="lazy"
 &lt;h2 id="glut配置">&lt;a href="#glut%e9%85%8d%e7%bd%ae" class="header-anchor">&lt;/a>glut配置
 &lt;/h2>&lt;p>如果非要用glut也不是不行，官方下载地址：https://www.opengl.org/resources/libraries/glut/glut_downloads.php#windows 选择&lt;code>Download the GLUT 3.6 headers and pre-compiled libraries: glutdlls36.zip&lt;/code>下载应该就可以。
 下载解压后就5个文件和一个readme，这怎么用？网上的教程都是分别塞到系统目录和VS安装目录下的，这里我觉得可以像上面freeglut一样进行配置，手动将这5个文件安排成和freeglut相似的目录结构：新建三个&lt;code>bin&lt;/code>,&lt;code>include/GL&lt;/code>,&lt;code>lib&lt;/code>目录然后将5个文件一一放进去，将&lt;code>bin&lt;/code>的目录添加到系统&lt;code>path&lt;/code>环境变量。
-然后后面在VS里的设置就和上面freeglut一样了，只需要将相应名称改一下就行了，测试代码也是一样的。&lt;/p></description></item><item><title>Visual Studio保存工程环境配置</title><link>https://kizx.github.io/kizx/post/visual-studio%E4%BF%9D%E5%AD%98%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 31 May 2020 15:44:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/visual-studio%E4%BF%9D%E5%AD%98%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>要说到VS(C/C++)最麻烦的地方就是各种环境，各种库配置来配置去，因此将配置好的工程设置保存下来，以备下次新建工程时直接引用很有必要。&lt;/p>
+然后后面在VS里的设置就和上面freeglut一样了，只需要将相应名称改一下就行了，测试代码也是一样的。&lt;/p></description></item><item><title>Visual Studio保存工程环境配置</title><link>https://kizx.github.io/post/visual-studio%E4%BF%9D%E5%AD%98%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 31 May 2020 15:44:00 +0000</pubDate><guid>https://kizx.github.io/post/visual-studio%E4%BF%9D%E5%AD%98%E5%B7%A5%E7%A8%8B%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>要说到VS(C/C++)最麻烦的地方就是各种环境，各种库配置来配置去，因此将配置好的工程设置保存下来，以备下次新建工程时直接引用很有必要。&lt;/p>
 &lt;h2 id="方法">&lt;a href="#%e6%96%b9%e6%b3%95" class="header-anchor">&lt;/a>方法
 &lt;/h2>&lt;p>切到属性管理器窗口，右键选择添加一个新的属性表。
 &lt;img src="https://pan.2bboy.com/img/2020/05/0531233207.png"
@@ -316,7 +316,7 @@ loading="lazy"
 loading="lazy"
 >&lt;/p>
 &lt;hr>
-&lt;p>当新建一个工程时只需要在同样的地方添加现有属性表即可。&lt;/p></description></item><item><title>OPENGL环境配置</title><link>https://kizx.github.io/kizx/post/opengl%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 31 May 2020 04:57:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opengl%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>基于glfw和glew进行开发配置。&lt;/p>
+&lt;p>当新建一个工程时只需要在同样的地方添加现有属性表即可。&lt;/p></description></item><item><title>OPENGL环境配置</title><link>https://kizx.github.io/post/opengl%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</link><pubDate>Sun, 31 May 2020 04:57:00 +0000</pubDate><guid>https://kizx.github.io/post/opengl%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>基于glfw和glew进行开发配置。&lt;/p>
 &lt;h2 id="下载安装库">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85%e5%ba%93" class="header-anchor">&lt;/a>下载安装库
 &lt;/h2>&lt;p>下载32位glfw二进制包：https://www.glfw.org/download.html
 下载glew二进制包：http://glew.sourceforge.net/
@@ -384,7 +384,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="参考">&lt;a href="#%e5%8f%82%e8%80%83" class="header-anchor">&lt;/a>参考
 &lt;/h2>&lt;p>&lt;a class="link" href="https://www.bilibili.com/video/BV11W411N7b9" target="_blank" rel="noopener"
->https://www.bilibili.com/video/BV11W411N7b9&lt;/a>&lt;/p></description></item><item><title>Windows编译安装CGAL</title><link>https://kizx.github.io/kizx/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</link><pubDate>Mon, 25 May 2020 18:11:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</guid><description>&lt;p>CGAL是一个C++计算几何算法库，官方安装说明：https://doc.cgal.org/latest/Manual/windows.html
+>https://www.bilibili.com/video/BV11W411N7b9&lt;/a>&lt;/p></description></item><item><title>Windows编译安装CGAL</title><link>https://kizx.github.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</link><pubDate>Mon, 25 May 2020 18:11:00 +0000</pubDate><guid>https://kizx.github.io/post/windows%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85cgal/</guid><description>&lt;p>CGAL是一个C++计算几何算法库，官方安装说明：https://doc.cgal.org/latest/Manual/windows.html
 我的配置是win10+vs2019，已安装有CMake。
 [button color=&amp;ldquo;success&amp;rdquo; icon=&amp;ldquo;fa fa-download&amp;rdquo; url=&amp;ldquo;https://pan.2bboy.com/Public/Software/CGAL/&amp;rdquo; type=&amp;quot;&amp;quot;]我用到的所有安装文件[/button]&lt;/p>
 &lt;h2 id="下载安装boost">&lt;a href="#%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85boost" class="header-anchor">&lt;/a>下载安装boost
@@ -466,7 +466,7 @@ loading="lazy"
 &lt;a class="link" href="https://blog.csdn.net/s_lisheng/article/details/72871218" target="_blank" rel="noopener"
 >https://blog.csdn.net/s_lisheng/article/details/72871218&lt;/a>
 &lt;a class="link" href="https://zhuanlan.zhihu.com/p/99814130" target="_blank" rel="noopener"
->https://zhuanlan.zhihu.com/p/99814130&lt;/a>&lt;/p></description></item><item><title>Git常用命令</title><link>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
+>https://zhuanlan.zhihu.com/p/99814130&lt;/a>&lt;/p></description></item><item><title>Git常用命令</title><link>https://kizx.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 24 Nov 2019 02:30:00 +0000</pubDate><guid>https://kizx.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>&lt;a class="link" href="https://gitee.com/help/categories/43" target="_blank" rel="noopener"
 >https://gitee.com/help/categories/43&lt;/a>
 &lt;a class="link" href="https://git-scm.com/book/zh/v2/" target="_blank" rel="noopener"
 >https://git-scm.com/book/zh/v2/&lt;/a>
@@ -493,7 +493,7 @@ git commit -m &amp;#34;first commit&amp;#34;
 git remote add origin git@gitee.com:kizx/rime.git
 # 推送
 git push -u origin master
-&lt;/code>&lt;/pre></description></item><item><title>C++酷Q应用开发</title><link>https://kizx.github.io/kizx/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Sat, 26 Oct 2019 09:31:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>以前自己的水平不够，这个项目一直搞不懂，现在起码能跑通了，其实也是比较简单的，项目地址：https://github.com/richardchien/coolq-cpp-sdk&lt;/p>
+&lt;/code>&lt;/pre></description></item><item><title>C++酷Q应用开发</title><link>https://kizx.github.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</link><pubDate>Sat, 26 Oct 2019 09:31:00 +0000</pubDate><guid>https://kizx.github.io/post/c++%E9%85%B7q%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/</guid><description>&lt;p>以前自己的水平不够，这个项目一直搞不懂，现在起码能跑通了，其实也是比较简单的，项目地址：https://github.com/richardchien/coolq-cpp-sdk&lt;/p>
 &lt;h2 id="步骤">&lt;a href="#%e6%ad%a5%e9%aa%a4" class="header-anchor">&lt;/a>步骤
 &lt;/h2>&lt;p>在该装的东西都装了后，在cmd中依次执行以下命令即可。其中最后一个命令，可能需要先进powershell管理员模式运行&lt;code>Set-ExecutionPolicy&lt;/code>并选择是来打开权限。另外由于网络原因，可能会在Unpacking objects这一步卡住，我是通过加速来解决的。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>git clone https://github.com/richardchien/coolq-cpp-sdk.git my-awesome-app
@@ -504,12 +504,12 @@ git push -u origin master
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后编译项目，把编译出来的相应文件丢进酷Q的dev文件夹里就行了。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmd" data-lang="cmd">&lt;span style="display:flex;">&lt;span>powershell .\scripts\generate.ps1 Release
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>powershell .\scripts\build.ps1 Release
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Windows下使用make命令</title><link>https://kizx.github.io/kizx/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 13 Oct 2019 08:47:03 +0000</pubDate><guid>https://kizx.github.io/kizx/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>看CMake教程时每次在cmake后都会跟着一个make命令，Linux系统下天然有这个命令。但是我的电脑装了MinGW，也设了环境变量却用不了make命令。&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Windows下使用make命令</title><link>https://kizx.github.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</link><pubDate>Sun, 13 Oct 2019 08:47:03 +0000</pubDate><guid>https://kizx.github.io/post/windows%E4%B8%8B%E4%BD%BF%E7%94%A8make%E5%91%BD%E4%BB%A4/</guid><description>&lt;p>看CMake教程时每次在cmake后都会跟着一个make命令，Linux系统下天然有这个命令。但是我的电脑装了MinGW，也设了环境变量却用不了make命令。&lt;/p>
 &lt;h2 id="解决">&lt;a href="#%e8%a7%a3%e5%86%b3" class="header-anchor">&lt;/a>解决
 &lt;/h2>&lt;p>先去MinGW的安装目录下的bin目录里看看有没有mingw32-make.exe文件，如果没有用以下命令下载：
 &lt;code>mingw-get install gcc g++ mingw32-make&lt;/code>
 然后将该文件重命名为make.exe即可。
-这样通过CMake利用MinGW编译生成MakeFile相关文件，直接调用make命令就能生成可执行文件了，比起用微软的VS要方便不少。&lt;/p></description></item><item><title>CMake+VS2017编译OpenCV程序</title><link>https://kizx.github.io/kizx/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</link><pubDate>Fri, 11 Oct 2019 16:27:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</guid><description>&lt;p>起因来自下面的OpenCVd官方的一个教程，尝试使用CMake。&lt;/p>
+这样通过CMake利用MinGW编译生成MakeFile相关文件，直接调用make命令就能生成可执行文件了，比起用微软的VS要方便不少。&lt;/p></description></item><item><title>CMake+VS2017编译OpenCV程序</title><link>https://kizx.github.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</link><pubDate>Fri, 11 Oct 2019 16:27:00 +0000</pubDate><guid>https://kizx.github.io/post/cmake+vs2017%E7%BC%96%E8%AF%91opencv%E7%A8%8B%E5%BA%8F/</guid><description>&lt;p>起因来自下面的OpenCVd官方的一个教程，尝试使用CMake。&lt;/p>
 &lt;ul>
 &lt;li>&lt;a class="link" href="https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html" target="_blank" rel="noopener"
 >https://docs.opencv.org/4.1.1/db/df5/tutorial_linux_gcc_cmake.html&lt;/a>&lt;/li>
@@ -564,7 +564,7 @@ loading="lazy"
 loading="lazy"
 >&lt;/li>
 &lt;li>如果还有报错的话，建议gui左上角清除CMake缓存重新开始，没有问题的话继续点击Generate和Open Project，软件自动打开build下的VS工程文件，VS里右键生成解决方案即可。&lt;/li>
-&lt;/ul></description></item><item><title>OpenCV + Qt 配置</title><link>https://kizx.github.io/kizx/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 14:20:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>假设已经下载安装了OpenCV和Qt并且配置好了OpenCV的环境变量，环境变量设置可以参考以前的文章。&lt;/p>
+&lt;/ul></description></item><item><title>OpenCV + Qt 配置</title><link>https://kizx.github.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 07 Oct 2019 14:20:00 +0000</pubDate><guid>https://kizx.github.io/post/opencv--+-qt-%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>假设已经下载安装了OpenCV和Qt并且配置好了OpenCV的环境变量，环境变量设置可以参考以前的文章。&lt;/p>
 &lt;h2 id="cmake编译">&lt;a href="#cmake%e7%bc%96%e8%af%91" class="header-anchor">&lt;/a>CMake编译
 &lt;/h2>&lt;p>许多教程都会从CMake编译OpenCV开始，但其实我们下载的安装包解压后已经编译好了，bulid文件下就是编译后的文件，除非有特殊要求，可以不用亲自编译。主要是我尝试用CMake编译Source但是报错失败了，就此作罢。&lt;/p>
 &lt;h2 id="编写pri文件">&lt;a href="#%e7%bc%96%e5%86%99pri%e6%96%87%e4%bb%b6" class="header-anchor">&lt;/a>编写pri文件
@@ -597,7 +597,7 @@ LIBS += -lc:/opencv/build/x64/vc15/lib/opencv_world411
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> a.exec();
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Visual Studio2017 配置</title><link>https://kizx.github.io/kizx/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 17:25:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="1-下载安装opencv并添加环境变量">&lt;a href="#1-%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85opencv%e5%b9%b6%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>1. 下载安装OpenCV并添加环境变量
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>OpenCV + Visual Studio2017 配置</title><link>https://kizx.github.io/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</link><pubDate>Wed, 11 Sep 2019 17:25:00 +0000</pubDate><guid>https://kizx.github.io/post/opencv-+-visual-studio2017-%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="1-下载安装opencv并添加环境变量">&lt;a href="#1-%e4%b8%8b%e8%bd%bd%e5%ae%89%e8%a3%85opencv%e5%b9%b6%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f" class="header-anchor">&lt;/a>1. 下载安装OpenCV并添加环境变量
 &lt;/h2>&lt;p>下载地址：https://opencv.org/releases/
 安装参考：http://c.biancheng.net/view/1104.html
 我安装的是Opencv4.1.1版本，然后管理员cmd命令添加环境变量，其实不用命令手动添加也行,不过这一步似乎不是必须的，但可能会与某些步骤有关联。
@@ -646,7 +646,7 @@ loading="lazy"
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> waitKey(&lt;span style="color:#ae81ff">0&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>加速Python的几种方法</title><link>https://kizx.github.io/kizx/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 04 Aug 2019 17:12:00 +0000</pubDate><guid>https://kizx.github.io/kizx/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>加速Python的几种方法</title><link>https://kizx.github.io/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 04 Aug 2019 17:12:00 +0000</pubDate><guid>https://kizx.github.io/post/%E5%8A%A0%E9%80%9Fpython%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="前言">&lt;a href="#%e5%89%8d%e8%a8%80" class="header-anchor">&lt;/a>前言
 &lt;/h2>&lt;p>&lt;em>注意以下内容均为本人主观操作感受，运行环境为Win10+python3.7_32位，仅供本人日后查阅&lt;/em>&lt;/p>
 &lt;p>众所周知，python是一门优美而简洁的编程语言，其最大的不足在于运行速度过于感人，而C语言作为最接近底层的高级语言，速度快是他最大的优势。python被誉为胶水语言，应该有办法和C语言胶和起来，我查阅资料发现python调用C语言最普遍的方式大概有三种：&lt;/p>
 &lt;ol>
